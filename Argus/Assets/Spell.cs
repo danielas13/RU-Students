@@ -6,8 +6,9 @@ public class Spell : MonoBehaviour {
     public float damage = 1;    //damage of a fireball spell.
     public LayerMask NotHit;
     private float spellDistance = 5;
-
     Transform spellPoint;
+
+    public Transform FirePrefab;
 
     void Awake(){
         spellPoint = transform.FindChild("SpellCast");
@@ -24,8 +25,7 @@ public class Spell : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        CastFireBall();
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             CastFireBall();
         }
@@ -37,19 +37,32 @@ public class Spell : MonoBehaviour {
 
         GameObject character = GameObject.FindGameObjectWithTag("Player");
         Vector2  playerPos = character.transform.position;
-        Debug.Log(playerPos);
-        Debug.Log(SpellPosition);
-        RaycastHit2D hit = Physics2D.Raycast(SpellPosition, playerPos - SpellPosition, spellDistance, NotHit);
-
-        if(SpellPosition.x > playerPos.x)
+        RaycastHit2D hit = Physics2D.Raycast(SpellPosition, new Vector2(SpellPosition.x - playerPos.x, SpellPosition.y - playerPos.y), spellDistance, NotHit);
+        if (SpellPosition.x > playerPos.x)
         {
             //Player facing to the right.
-            Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x + spellDistance, playerPos.y), Color.black);
+            Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation);
+           /* if (hit.collider != null)
+            {
+                Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x + spellDistance, playerPos.y), Color.red);
+            }
+            else
+            {
+                Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x + spellDistance, playerPos.y), Color.black);
+            }*/
         }
         else
         {
             //player facing to the left.
-            Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x - spellDistance, playerPos.y), Color.black);
+            Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation * Quaternion.Euler(Vector3.up * 180));
+            /*if (hit.collider != null)
+            {
+                Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x - spellDistance, playerPos.y), Color.red);
+            }
+            else
+            {
+                Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x - spellDistance, playerPos.y), Color.black);
+            }*/
         }
     }
 }
