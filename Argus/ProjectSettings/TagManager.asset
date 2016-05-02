@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - game
+  - enemy
+  - indicator
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - 
   - Player
-  - 
-  - 
+  - Enemy
+  - background
   - 
   - 
   - 

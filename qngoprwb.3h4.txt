@@ -1,0 +1,670 @@
+﻿Basic Char.
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   Argus/Assets/Editor.meta
+#	new file:   Argus/Assets/Editor/CrossPlatformInput.meta
+#	new file:   Argus/Assets/Editor/CrossPlatformInput/CrossPlatformInputInitialize.cs
+#	new file:   Argus/Assets/Editor/CrossPlatformInput/CrossPlatformInputInitialize.cs.meta
+#	new file:   Argus/Assets/Spell.cs
+#	new file:   Argus/Assets/Spell.cs.meta
+#	new file:   Argus/Assets/Standard Assets.meta
+#	new file:   Argus/Assets/Standard Assets/2D.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyCrouch.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyCrouch.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyCrouchingWalk.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyCrouchingWalk.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyFalling.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyFalling.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyIdle.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyIdle.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump01.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump01.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump02.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump02.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump03.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump03.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump04.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump04.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump05.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump05.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump06.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump06.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump07.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump07.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump08.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump08.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump09.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump09.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump10.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump10.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump11.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyJump11.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyRun.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyRun.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyWalk.anim
+#	new file:   Argus/Assets/Standard Assets/2D/Animations/RobotBoyWalk.anim.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animator.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Animator/2dCharacterAnimator.controller
+#	new file:   Argus/Assets/Standard Assets/2D/Animator/2dCharacterAnimator.controller.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Materials.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Materials/SpriteLit.mat
+#	new file:   Argus/Assets/Standard Assets/2D/Materials/SpriteLit.mat.meta
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials.meta
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials/BouncyBox.physicsMaterial2D
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials/BouncyBox.physicsMaterial2D.meta
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials/Slippery.physicsMaterial2D
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials/Slippery.physicsMaterial2D.meta
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials/Sticky.physicsMaterial2D
+#	new file:   Argus/Assets/Standard Assets/2D/PhysicsMaterials/Sticky.physicsMaterial2D.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/CharacterRobotBoy.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/CharacterRobotBoy.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/CollisionSlider.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/CollisionSlider.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/CratePink.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/CratePink.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/ExtentsLeft.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/ExtentsLeft.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/ExtentsRight.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/ExtentsRight.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Killzone.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Killzone.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform04x01.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform04x01.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform08x01.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform08x01.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform12x01.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform12x01.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform16x01.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform16x01.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform36x01.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/Platform36x01.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/PlatformRamp.prefab
+#	new file:   Argus/Assets/Standard Assets/2D/Prefabs/PlatformRamp.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/Camera2DFollow.cs
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/Camera2DFollow.cs.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/CameraFollow.cs
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/CameraFollow.cs.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/Platformer2DUserControl.cs
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/Platformer2DUserControl.cs.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/PlatformerCharacter2D.cs
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/PlatformerCharacter2D.cs.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/Restarter.cs
+#	new file:   Argus/Assets/Standard Assets/2D/Scripts/Restarter.cs.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/BackgroundGreyGridSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/BackgroundGreyGridSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/BackgroundNavyGridSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/BackgroundNavyGridSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/CratePinkGridSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/CratePinkGridSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/PlatformWhiteSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/PlatformWhiteSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyCrouchSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyCrouchSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyDeathSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyDeathSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyIdleSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyIdleSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyJumpSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyJumpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyRollSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyRollSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyRunSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyRunSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyWalkSprite.png
+#	new file:   Argus/Assets/Standard Assets/2D/Sprites/RobotBoyWalkSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/CrossPlatformInputGuidelines.txt
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/CrossPlatformInputGuidelines.txt.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/CarTiltControls.prefab
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/CarTiltControls.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/DualTouchControls.prefab
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/DualTouchControls.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileAircraftControls.prefab
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileAircraftControls.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileSingleStickControl.prefab
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileSingleStickControl.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileTiltControlRig.prefab
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Prefabs/MobileTiltControlRig.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/ButtonHandler.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/ButtonHandler.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/CrossPlatformInputManager.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/CrossPlatformInputManager.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/InputAxisScrollbar.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/InputAxisScrollbar.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/Joystick.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/Joystick.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/MobileInput.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/MobileInput.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/StandaloneInput.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/PlatformSpecific/StandaloneInput.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/TiltInput.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/TiltInput.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/TouchPad.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/TouchPad.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/VirtualInput.cs
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Scripts/VirtualInput.cs.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorOverSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorOverSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowOverSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowOverSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeOverSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeOverSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonCameraCycleUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonCameraCycleUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonResetSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonResetSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonSpacebarSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonSpacebarSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickOverSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickOverSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleFullUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleFullUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleSlowUpSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleSlowUpSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/SliderBackgroundSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/SliderBackgroundSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/SliderHandleSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/SliderHandleSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/TouchpadSprite.png
+#	new file:   Argus/Assets/Standard Assets/CrossPlatformInput/Sprites/TouchpadSprite.png.meta
+#	new file:   Argus/Assets/Standard Assets/Utility.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/ActivateTrigger.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/ActivateTrigger.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/AutoMobileShaderSwitch.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/AutoMobileShaderSwitch.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/AutoMoveAndRotate.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/AutoMoveAndRotate.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/CameraRefocus.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/CameraRefocus.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/CurveControlledBob.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/CurveControlledBob.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/DragRigidbody.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/DragRigidbody.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/DynamicShadowSettings.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/DynamicShadowSettings.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/EventSystemChecker.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/EventSystemChecker.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/FOVKick.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/FOVKick.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/FPSCounter.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/FPSCounter.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/FollowTarget.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/FollowTarget.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/ForcedReset.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/ForcedReset.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/LerpControlledBob.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/LerpControlledBob.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/ObjectResetter.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/ObjectResetter.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/ParticleSystemDestroyer.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/ParticleSystemDestroyer.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/PlatformSpecificContent.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/PlatformSpecificContent.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/Prefabs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/Prefabs/FramerateCounter.prefab
+#	new file:   Argus/Assets/Standard Assets/Utility/Prefabs/FramerateCounter.prefab.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/SimpleActivatorMenu.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/SimpleActivatorMenu.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/SimpleMouseRotator.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/SimpleMouseRotator.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/SmoothFollow.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/SmoothFollow.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/TimedObjectActivator.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/TimedObjectActivator.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/TimedObjectDestructor.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/TimedObjectDestructor.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/WaypointCircuit.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/WaypointCircuit.cs.meta
+#	new file:   Argus/Assets/Standard Assets/Utility/WaypointProgressTracker.cs
+#	new file:   Argus/Assets/Standard Assets/Utility/WaypointProgressTracker.cs.meta
+#	new file:   Argus/Library/AnnotationManager
+#	new file:   Argus/Library/AssetImportState
+#	new file:   Argus/Library/AssetServerCacheV3
+#	new file:   Argus/Library/BuildPlayer.prefs
+#	new file:   Argus/Library/BuildSettings.asset
+#	new file:   Argus/Library/CurrentLayout.dwlt
+#	new file:   Argus/Library/EditorUserBuildSettings.asset
+#	new file:   Argus/Library/EditorUserSettings.asset
+#	new file:   Argus/Library/InspectorExpandedItems.asset
+#	new file:   Argus/Library/LibraryFormatVersion.txt
+#	new file:   Argus/Library/MonoManager.asset
+#	new file:   Argus/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+#	new file:   Argus/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
+#	new file:   Argus/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll
+#	new file:   Argus/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll.mdb
+#	new file:   Argus/Library/ScriptAssemblies/Assembly-CSharp.dll
+#	new file:   Argus/Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+#	new file:   Argus/Library/ScriptAssemblies/BuiltinAssemblies.stamp
+#	new file:   Argus/Library/ScriptMapper
+#	new file:   Argus/Library/ShaderCache/1/1a2b7fe560e488a838d8954e1442eda6.bin
+#	new file:   Argus/Library/ShaderCache/3/38aa91f9394c92c966b576bdb9f86a62.bin
+#	new file:   Argus/Library/ShaderCache/3/3be32702634463e1bcd71308db163fa1.bin
+#	new file:   Argus/Library/ShaderCache/4/487a05413647b4cd81dfc4dfa74ce02c.bin
+#	new file:   Argus/Library/ShaderCache/5/57859c5db5c39a3294d1c710d2047d28.bin
+#	new file:   Argus/Library/ShaderCache/5/5b7ea82ed062366b0d8ed100480103ce.bin
+#	new file:   Argus/Library/assetDatabase3
+#	new file:   Argus/Library/metadata/00/00000000000000001000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000001000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000002000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000002000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000003000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000003000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000004000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000004000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000004100000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000004100000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000005000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000005000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000005100000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000005100000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000006000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000006000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000006100000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000006100000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000007000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000007000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000007100000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000007100000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000008000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000008000000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000008100000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000008100000000000000.info
+#	new file:   Argus/Library/metadata/00/00000000000000009000000000000000
+#	new file:   Argus/Library/metadata/00/00000000000000009000000000000000.info
+#	new file:   Argus/Library/metadata/00/0000000000000000a000000000000000
+#	new file:   Argus/Library/metadata/00/0000000000000000a000000000000000.info
+#	new file:   Argus/Library/metadata/00/0000000000000000a100000000000000
+#	new file:   Argus/Library/metadata/00/0000000000000000a100000000000000.info
+#	new file:   Argus/Library/metadata/00/0000000000000000b000000000000000
+#	new file:   Argus/Library/metadata/00/0000000000000000b000000000000000.info
+#	new file:   Argus/Library/metadata/00/0000000000000000c000000000000000
+#	new file:   Argus/Library/metadata/00/0000000000000000c000000000000000.info
+#	new file:   Argus/Library/metadata/00/00c3c865782347f41b6358d9fba14b48
+#	new file:   Argus/Library/metadata/00/00c3c865782347f41b6358d9fba14b48.info
+#	new file:   Argus/Library/metadata/01/018119012bd4d014daf775b5c28fdc9b
+#	new file:   Argus/Library/metadata/01/018119012bd4d014daf775b5c28fdc9b.info
+#	new file:   Argus/Library/metadata/03/03bedf7094c479549beb9434f2033c2e
+#	new file:   Argus/Library/metadata/03/03bedf7094c479549beb9434f2033c2e.info
+#	new file:   Argus/Library/metadata/04/04c2ee985bb1a9849b5a6e8bee482aed
+#	new file:   Argus/Library/metadata/04/04c2ee985bb1a9849b5a6e8bee482aed.info
+#	new file:   Argus/Library/metadata/06/0626b924325d1c34cafa6b22297f4e4f
+#	new file:   Argus/Library/metadata/06/0626b924325d1c34cafa6b22297f4e4f.info
+#	new file:   Argus/Library/metadata/07/078bf204f06fcac44978d49dd094b43e
+#	new file:   Argus/Library/metadata/07/078bf204f06fcac44978d49dd094b43e.info
+#	new file:   Argus/Library/metadata/0b/0b5eea877d52b3445a3533f2e5f19052
+#	new file:   Argus/Library/metadata/0b/0b5eea877d52b3445a3533f2e5f19052.info
+#	new file:   Argus/Library/metadata/0c/0c6271a290ef75b4c97d58746c86c5b8
+#	new file:   Argus/Library/metadata/0c/0c6271a290ef75b4c97d58746c86c5b8.info
+#	new file:   Argus/Library/metadata/0c/0cb77231a430b454fb792ff7ffcc3943
+#	new file:   Argus/Library/metadata/0c/0cb77231a430b454fb792ff7ffcc3943.info
+#	new file:   Argus/Library/metadata/0c/0ce4cbc241d3aca4da0b94a0ffa0d51f
+#	new file:   Argus/Library/metadata/0c/0ce4cbc241d3aca4da0b94a0ffa0d51f.info
+#	new file:   Argus/Library/metadata/0e/0eb16b4b3e362ef4f97494dd0e686c46
+#	new file:   Argus/Library/metadata/0e/0eb16b4b3e362ef4f97494dd0e686c46.info
+#	new file:   Argus/Library/metadata/0f/0f57aeb1b8dce3342bea5c28ac17db24
+#	new file:   Argus/Library/metadata/0f/0f57aeb1b8dce3342bea5c28ac17db24.info
+#	new file:   Argus/Library/metadata/12/12ef7cbdfe0e143fa858a324456c8979
+#	new file:   Argus/Library/metadata/12/12ef7cbdfe0e143fa858a324456c8979.info
+#	new file:   Argus/Library/metadata/17/174090ae7f9eff84abe76f0ff062efac
+#	new file:   Argus/Library/metadata/17/174090ae7f9eff84abe76f0ff062efac.info
+#	new file:   Argus/Library/metadata/18/1829b8c50e4108f4b936e37f91181337
+#	new file:   Argus/Library/metadata/18/1829b8c50e4108f4b936e37f91181337.info
+#	new file:   Argus/Library/metadata/18/18fcd494ab71841d695135246693eb3a
+#	new file:   Argus/Library/metadata/18/18fcd494ab71841d695135246693eb3a.info
+#	new file:   Argus/Library/metadata/19/19bf9c5d4c01a864baffb3ac0dc54a9b
+#	new file:   Argus/Library/metadata/19/19bf9c5d4c01a864baffb3ac0dc54a9b.info
+#	new file:   Argus/Library/metadata/1c/1c4aa503092e12040ac412fec79b5d67
+#	new file:   Argus/Library/metadata/1c/1c4aa503092e12040ac412fec79b5d67.info
+#	new file:   Argus/Library/metadata/1c/1caf40fc8bebb6b43b2550c05ca791d6
+#	new file:   Argus/Library/metadata/1c/1caf40fc8bebb6b43b2550c05ca791d6.info
+#	new file:   Argus/Library/metadata/1d/1d0c184845252df44a655359de388cb8
+#	new file:   Argus/Library/metadata/1d/1d0c184845252df44a655359de388cb8.info
+#	new file:   Argus/Library/metadata/1d/1d8bb7944760b84429768013f749b102
+#	new file:   Argus/Library/metadata/1d/1d8bb7944760b84429768013f749b102.info
+#	new file:   Argus/Library/metadata/21/2169821f0567671499a5c10104c69c24
+#	new file:   Argus/Library/metadata/21/2169821f0567671499a5c10104c69c24.info
+#	new file:   Argus/Library/metadata/22/22bbf57ec543cee42a5aa0ec2dd9e457
+#	new file:   Argus/Library/metadata/22/22bbf57ec543cee42a5aa0ec2dd9e457.info
+#	new file:   Argus/Library/metadata/24/246cc59c7a84ea44f87f6b70acfe30c5
+#	new file:   Argus/Library/metadata/24/246cc59c7a84ea44f87f6b70acfe30c5.info
+#	new file:   Argus/Library/metadata/27/272ba847f100d4251bb8260575189042
+#	new file:   Argus/Library/metadata/27/272ba847f100d4251bb8260575189042.info
+#	new file:   Argus/Library/metadata/29/29014cd42b6d273408e0ceefd336c0b3
+#	new file:   Argus/Library/metadata/29/29014cd42b6d273408e0ceefd336c0b3.info
+#	new file:   Argus/Library/metadata/2a/2a71c12ae885e4f80b5144a4652bbeb4
+#	new file:   Argus/Library/metadata/2a/2a71c12ae885e4f80b5144a4652bbeb4.info
+#	new file:   Argus/Library/metadata/33/3369231b1ed7ad34e84d9240a571db81
+#	new file:   Argus/Library/metadata/33/3369231b1ed7ad34e84d9240a571db81.info
+#	new file:   Argus/Library/metadata/36/3626fe8e008014f6bbd19bb72937b311
+#	new file:   Argus/Library/metadata/36/3626fe8e008014f6bbd19bb72937b311.info
+#	new file:   Argus/Library/metadata/37/37fac21d1f093d344816942d1abce94e
+#	new file:   Argus/Library/metadata/37/37fac21d1f093d344816942d1abce94e.info
+#	new file:   Argus/Library/metadata/3a/3a7cedf246fca744f90cbdc9dbe41166
+#	new file:   Argus/Library/metadata/3a/3a7cedf246fca744f90cbdc9dbe41166.info
+#	new file:   Argus/Library/metadata/3b/3b13f8086bd574145892fced4e227c30
+#	new file:   Argus/Library/metadata/3b/3b13f8086bd574145892fced4e227c30.info
+#	new file:   Argus/Library/metadata/3c/3c0ad459c1534645b5d603b7cc258f97
+#	new file:   Argus/Library/metadata/3c/3c0ad459c1534645b5d603b7cc258f97.info
+#	new file:   Argus/Library/metadata/3d/3d8675433a508ec47b8f895201eacf20
+#	new file:   Argus/Library/metadata/3d/3d8675433a508ec47b8f895201eacf20.info
+#	new file:   Argus/Library/metadata/41/41e4f29e5dee9ec48a2538955ef1de71
+#	new file:   Argus/Library/metadata/41/41e4f29e5dee9ec48a2538955ef1de71.info
+#	new file:   Argus/Library/metadata/47/47d3e747b2e87de4c8358aaa436365ea
+#	new file:   Argus/Library/metadata/47/47d3e747b2e87de4c8358aaa436365ea.info
+#	new file:   Argus/Library/metadata/49/492f54f4accf00440828ffcb9e4fcc19
+#	new file:   Argus/Library/metadata/49/492f54f4accf00440828ffcb9e4fcc19.info
+#	new file:   Argus/Library/metadata/49/49b611e658efbf443b686a4036f74fe3
+#	new file:   Argus/Library/metadata/49/49b611e658efbf443b686a4036f74fe3.info
+#	new file:   Argus/Library/metadata/4c/4c4bc148459cd764dbb1d4e94e49299b
+#	new file:   Argus/Library/metadata/4c/4c4bc148459cd764dbb1d4e94e49299b.info
+#	new file:   Argus/Library/metadata/4d/4db017495c69e8140a56a0e2b669e3f8
+#	new file:   Argus/Library/metadata/4d/4db017495c69e8140a56a0e2b669e3f8.info
+#	new file:   Argus/Library/metadata/54/5485e2f56028a3c4cb54f5caa167377e
+#	new file:   Argus/Library/metadata/54/5485e2f56028a3c4cb54f5caa167377e.info
+#	new file:   Argus/Library/metadata/57/57977547c59abb546bbb1501e3c417db
+#	new file:   Argus/Library/metadata/57/57977547c59abb546bbb1501e3c417db.info
+#	new file:   Argus/Library/metadata/57/57f38812aafe77142bf0c4ec50ff9c3a
+#	new file:   Argus/Library/metadata/57/57f38812aafe77142bf0c4ec50ff9c3a.info
+#	new file:   Argus/Library/metadata/58/58650e15a2607e44daa0f150e0061d89
+#	new file:   Argus/Library/metadata/58/58650e15a2607e44daa0f150e0061d89.info
+#	new file:   Argus/Library/metadata/5b/5b1a64ea234fb2343b8d0686c51280de
+#	new file:   Argus/Library/metadata/5b/5b1a64ea234fb2343b8d0686c51280de.info
+#	new file:   Argus/Library/metadata/5c/5c2d84226fbbaf94e9c1451f1c39b06a
+#	new file:   Argus/Library/metadata/5c/5c2d84226fbbaf94e9c1451f1c39b06a.info
+#	new file:   Argus/Library/metadata/5d/5d8238cc53530b64fbb7828c3d3bb591
+#	new file:   Argus/Library/metadata/5d/5d8238cc53530b64fbb7828c3d3bb591.info
+#	new file:   Argus/Library/metadata/5d/5d8caf2b5dcc5414c8d319d27f73828e
+#	new file:   Argus/Library/metadata/5d/5d8caf2b5dcc5414c8d319d27f73828e.info
+#	new file:   Argus/Library/metadata/5f/5f32cd94baa94578a686d4b9d6b660f7
+#	new file:   Argus/Library/metadata/5f/5f32cd94baa94578a686d4b9d6b660f7.info
+#	new file:   Argus/Library/metadata/5f/5f88bded061933e41a9ed57ae1d07946
+#	new file:   Argus/Library/metadata/5f/5f88bded061933e41a9ed57ae1d07946.info
+#	new file:   Argus/Library/metadata/5f/5fc43f0c4b413534ba12c51c0e5e5f6f
+#	new file:   Argus/Library/metadata/5f/5fc43f0c4b413534ba12c51c0e5e5f6f.info
+#	new file:   Argus/Library/metadata/60/6045a93fb05b9c74884821030da2c46c
+#	new file:   Argus/Library/metadata/60/6045a93fb05b9c74884821030da2c46c.info
+#	new file:   Argus/Library/metadata/64/643c971818f68d3439e84b5d8bdafe07
+#	new file:   Argus/Library/metadata/64/643c971818f68d3439e84b5d8bdafe07.info
+#	new file:   Argus/Library/metadata/67/674c23718320e9d498cdad2a5bcd576a
+#	new file:   Argus/Library/metadata/67/674c23718320e9d498cdad2a5bcd576a.info
+#	new file:   Argus/Library/metadata/69/69b69a5b0e0a85b4aa97a7edc40c37d1
+#	new file:   Argus/Library/metadata/69/69b69a5b0e0a85b4aa97a7edc40c37d1.info
+#	new file:   Argus/Library/metadata/6a/6ac1ce5a5adfd9f46adbf5b6f752a47c
+#	new file:   Argus/Library/metadata/6a/6ac1ce5a5adfd9f46adbf5b6f752a47c.info
+#	new file:   Argus/Library/metadata/6e/6e0c47d6f0bab234794fcdf9b91e10ca
+#	new file:   Argus/Library/metadata/6e/6e0c47d6f0bab234794fcdf9b91e10ca.info
+#	new file:   Argus/Library/metadata/70/70852dc981465ea48bb527b9e33a87fd
+#	new file:   Argus/Library/metadata/70/70852dc981465ea48bb527b9e33a87fd.info
+#	new file:   Argus/Library/metadata/71/71398ce7fbc3a5b4fa50b50bd54317a7
+#	new file:   Argus/Library/metadata/71/71398ce7fbc3a5b4fa50b50bd54317a7.info
+#	new file:   Argus/Library/metadata/73/739bbd9f364b4268874f9fd86ab3beef
+#	new file:   Argus/Library/metadata/73/739bbd9f364b4268874f9fd86ab3beef.info
+#	new file:   Argus/Library/metadata/7c/7cbab2be89b54486bbd23a6fe637d30e
+#	new file:   Argus/Library/metadata/7c/7cbab2be89b54486bbd23a6fe637d30e.info
+#	new file:   Argus/Library/metadata/7d/7d3269566d48b8447bb48d2259e28f8b
+#	new file:   Argus/Library/metadata/7d/7d3269566d48b8447bb48d2259e28f8b.info
+#	new file:   Argus/Library/metadata/80/803baf1ea73913f46b25e07d0a79df22
+#	new file:   Argus/Library/metadata/80/803baf1ea73913f46b25e07d0a79df22.info
+#	new file:   Argus/Library/metadata/80/80a3616ca19596e4da0f10f14d241e9f
+#	new file:   Argus/Library/metadata/80/80a3616ca19596e4da0f10f14d241e9f.info
+#	new file:   Argus/Library/metadata/81/81154777d5417884981849c5243f6c01
+#	new file:   Argus/Library/metadata/81/81154777d5417884981849c5243f6c01.info
+#	new file:   Argus/Library/metadata/82/827c9cd4a3943534f909ac6473e17288
+#	new file:   Argus/Library/metadata/82/827c9cd4a3943534f909ac6473e17288.info
+#	new file:   Argus/Library/metadata/85/852e56802eb941638acbb491814497b0
+#	new file:   Argus/Library/metadata/85/852e56802eb941638acbb491814497b0.info
+#	new file:   Argus/Library/metadata/85/8566902b50d5bfb4fb7f8b89f9cdbe8b
+#	new file:   Argus/Library/metadata/85/8566902b50d5bfb4fb7f8b89f9cdbe8b.info
+#	new file:   Argus/Library/metadata/85/85bf3be603548374ca46f521a3aa7fda
+#	new file:   Argus/Library/metadata/85/85bf3be603548374ca46f521a3aa7fda.info
+#	new file:   Argus/Library/metadata/87/870353891bb340e2b2a9c8707e7419ba
+#	new file:   Argus/Library/metadata/87/870353891bb340e2b2a9c8707e7419ba.info
+#	new file:   Argus/Library/metadata/87/87a2357765801c34292d6718d8b4d770
+#	new file:   Argus/Library/metadata/87/87a2357765801c34292d6718d8b4d770.info
+#	new file:   Argus/Library/metadata/87/87defe4543f47ef41b345453900fe949
+#	new file:   Argus/Library/metadata/87/87defe4543f47ef41b345453900fe949.info
+#	new file:   Argus/Library/metadata/8b/8be6341e1ce3f4cec9902bc34f72d20a
+#	new file:   Argus/Library/metadata/8b/8be6341e1ce3f4cec9902bc34f72d20a.info
+#	new file:   Argus/Library/metadata/8e/8e0cd8ed44d4412cbe0642067abc9e44
+#	new file:   Argus/Library/metadata/8e/8e0cd8ed44d4412cbe0642067abc9e44.info
+#	new file:   Argus/Library/metadata/8f/8fb26caddeedb41c9ae5c09a23c52942
+#	new file:   Argus/Library/metadata/8f/8fb26caddeedb41c9ae5c09a23c52942.info
+#	new file:   Argus/Library/metadata/8f/8fb98a6035269e64a998f9b56828fc4f
+#	new file:   Argus/Library/metadata/8f/8fb98a6035269e64a998f9b56828fc4f.info
+#	new file:   Argus/Library/metadata/95/9529ecc3d479da5499993355e6c2cb4f
+#	new file:   Argus/Library/metadata/95/9529ecc3d479da5499993355e6c2cb4f.info
+#	new file:   Argus/Library/metadata/97/9703d53e47195aa4190acd11369ccd1b
+#	new file:   Argus/Library/metadata/97/9703d53e47195aa4190acd11369ccd1b.info
+#	new file:   Argus/Library/metadata/97/97decbdab0634cdd991f8d23ddf0dead
+#	new file:   Argus/Library/metadata/97/97decbdab0634cdd991f8d23ddf0dead.info
+#	new file:   Argus/Library/metadata/98/9866a92691696b346901281f2b329034
+#	new file:   Argus/Library/metadata/98/9866a92691696b346901281f2b329034.info
+#	new file:   Argus/Library/metadata/99/9961032f4f02c4f41997c3ea399d2f22
+#	new file:   Argus/Library/metadata/99/9961032f4f02c4f41997c3ea399d2f22.info
+#	new file:   Argus/Library/metadata/99/999388b68bb99b44099461bfbed94358
+#	new file:   Argus/Library/metadata/99/999388b68bb99b44099461bfbed94358.info
+#	new file:   Argus/Library/metadata/9a/9ab98b66288df7b4fa182075f2f12bd6
+#	new file:   Argus/Library/metadata/9a/9ab98b66288df7b4fa182075f2f12bd6.info
+#	new file:   Argus/Library/metadata/9b/9b886447cba80f74e820adb3c9e70c76
+#	new file:   Argus/Library/metadata/9b/9b886447cba80f74e820adb3c9e70c76.info
+#	new file:   Argus/Library/metadata/9c/9c0578910bbe00d43919a92c7b9893fe
+#	new file:   Argus/Library/metadata/9c/9c0578910bbe00d43919a92c7b9893fe.info
+#	new file:   Argus/Library/metadata/9c/9c4978ff6447f9040b84acc89b0bbdc8
+#	new file:   Argus/Library/metadata/9c/9c4978ff6447f9040b84acc89b0bbdc8.info
+#	new file:   Argus/Library/metadata/9d/9d7c6e4896067aa4fa512a00f692ac1c
+#	new file:   Argus/Library/metadata/9d/9d7c6e4896067aa4fa512a00f692ac1c.info
+#	new file:   Argus/Library/metadata/9e/9e1a2edf6149977479db158e4fbf9671
+#	new file:   Argus/Library/metadata/9e/9e1a2edf6149977479db158e4fbf9671.info
+#	new file:   Argus/Library/metadata/a0/a038b284634e29f4aaf058814aa61a6f
+#	new file:   Argus/Library/metadata/a0/a038b284634e29f4aaf058814aa61a6f.info
+#	new file:   Argus/Library/metadata/a1/a1347817507220a4384f3ff6f7c24546
+#	new file:   Argus/Library/metadata/a1/a1347817507220a4384f3ff6f7c24546.info
+#	new file:   Argus/Library/metadata/a3/a3983c59ebf804b4abba687bd7c9e92f
+#	new file:   Argus/Library/metadata/a3/a3983c59ebf804b4abba687bd7c9e92f.info
+#	new file:   Argus/Library/metadata/a3/a3b997593a4f12c4c991490593f3b513
+#	new file:   Argus/Library/metadata/a3/a3b997593a4f12c4c991490593f3b513.info
+#	new file:   Argus/Library/metadata/a8/a8360d6cbb0b24d30ad943985708a039
+#	new file:   Argus/Library/metadata/a8/a8360d6cbb0b24d30ad943985708a039.info
+#	new file:   Argus/Library/metadata/a9/a94c9a7eb94ceec4a8d67a1890e22e51
+#	new file:   Argus/Library/metadata/a9/a94c9a7eb94ceec4a8d67a1890e22e51.info
+#	new file:   Argus/Library/metadata/a9/a9dfad760b6e9455593192a6d869f7ed
+#	new file:   Argus/Library/metadata/a9/a9dfad760b6e9455593192a6d869f7ed.info
+#	new file:   Argus/Library/metadata/ac/acf5e119c54034bd8bfbd5f21cc246db
+#	new file:   Argus/Library/metadata/ac/acf5e119c54034bd8bfbd5f21cc246db.info
+#	new file:   Argus/Library/metadata/ad/adebbd281f1a4ef3a30be7f21937e02f
+#	new file:   Argus/Library/metadata/ad/adebbd281f1a4ef3a30be7f21937e02f.info
+#	new file:   Argus/Library/metadata/b2/b241b59d6a89aff4fbf0bce77e644761
+#	new file:   Argus/Library/metadata/b2/b241b59d6a89aff4fbf0bce77e644761.info
+#	new file:   Argus/Library/metadata/b2/b27507c5d0efbbd47ac8c1de9a1a0a35
+#	new file:   Argus/Library/metadata/b2/b27507c5d0efbbd47ac8c1de9a1a0a35.info
+#	new file:   Argus/Library/metadata/b3/b30e865cc63356b429f60dfd436dbafe
+#	new file:   Argus/Library/metadata/b3/b30e865cc63356b429f60dfd436dbafe.info
+#	new file:   Argus/Library/metadata/b4/b43a4ef15621158419a2b639f7a98245
+#	new file:   Argus/Library/metadata/b4/b43a4ef15621158419a2b639f7a98245.info
+#	new file:   Argus/Library/metadata/b6/b656cca21e797074a84563027a508ce1
+#	new file:   Argus/Library/metadata/b6/b656cca21e797074a84563027a508ce1.info
+#	new file:   Argus/Library/metadata/b6/b6fac374594252145b045395449bc9b2
+#	new file:   Argus/Library/metadata/b6/b6fac374594252145b045395449bc9b2.info
+#	new file:   Argus/Library/metadata/ba/ba4eef1c1bb56b444b143beb8d3e30d5
+#	new file:   Argus/Library/metadata/ba/ba4eef1c1bb56b444b143beb8d3e30d5.info
+#	new file:   Argus/Library/metadata/bf/bffb643e1be1ea84387be9145bc4e150
+#	new file:   Argus/Library/metadata/bf/bffb643e1be1ea84387be9145bc4e150.info
+#	new file:   Argus/Library/metadata/c0/c0a32aa5206b400428f52a44b234c97f
+#	new file:   Argus/Library/metadata/c0/c0a32aa5206b400428f52a44b234c97f.info
+#	new file:   Argus/Library/metadata/c1/c1bbfafbde15c854681023b9e01e12dd
+#	new file:   Argus/Library/metadata/c1/c1bbfafbde15c854681023b9e01e12dd.info
+#	new file:   Argus/Library/metadata/c3/c3d7b34a3bb2d4e4b926e7e729d3d410
+#	new file:   Argus/Library/metadata/c3/c3d7b34a3bb2d4e4b926e7e729d3d410.info
+#	new file:   Argus/Library/metadata/c5/c5944ac50c6dc9442844cef438bb36fe
+#	new file:   Argus/Library/metadata/c5/c5944ac50c6dc9442844cef438bb36fe.info
+#	new file:   Argus/Library/metadata/c5/c5cb22d331ef7d64796f917c6a455a32
+#	new file:   Argus/Library/metadata/c5/c5cb22d331ef7d64796f917c6a455a32.info
+#	new file:   Argus/Library/metadata/c8/c8634e062924929664361c08745211fb
+#	new file:   Argus/Library/metadata/c8/c8634e062924929664361c08745211fb.info
+#	new file:   Argus/Library/metadata/ca/cadd54e4832aeef4b9359f44cbe335cd
+#	new file:   Argus/Library/metadata/ca/cadd54e4832aeef4b9359f44cbe335cd.info
+#	new file:   Argus/Library/metadata/cb/cbbabe9e292f5604897926494bb38fef
+#	new file:   Argus/Library/metadata/cb/cbbabe9e292f5604897926494bb38fef.info
+#	new file:   Argus/Library/metadata/d0/d024aaa09f4080d448d16f62d1a97b0b
+#	new file:   Argus/Library/metadata/d0/d024aaa09f4080d448d16f62d1a97b0b.info
+#	new file:   Argus/Library/metadata/d0/d08f91df3bd212f429df17f53ce2f364
+#	new file:   Argus/Library/metadata/d0/d08f91df3bd212f429df17f53ce2f364.info
+#	new file:   Argus/Library/metadata/d1/d139426e5e4404f31a1a8d663355003e
+#	new file:   Argus/Library/metadata/d1/d139426e5e4404f31a1a8d663355003e.info
+#	new file:   Argus/Library/metadata/d1/d1e2e7a54dcc8694ab1eca46d072f264
+#	new file:   Argus/Library/metadata/d1/d1e2e7a54dcc8694ab1eca46d072f264.info
+#	new file:   Argus/Library/metadata/d4/d40c191aa46654db7a426d6a1fa3aa30
+#	new file:   Argus/Library/metadata/d4/d40c191aa46654db7a426d6a1fa3aa30.info
+#	new file:   Argus/Library/metadata/d7/d73a8b77a39f57843b3a434596ae2bc7
+#	new file:   Argus/Library/metadata/d7/d73a8b77a39f57843b3a434596ae2bc7.info
+#	new file:   Argus/Library/metadata/d8/d8134e4dd9a11c6468abfb1683315eab
+#	new file:   Argus/Library/metadata/d8/d8134e4dd9a11c6468abfb1683315eab.info
+#	new file:   Argus/Library/metadata/d8/d88a0b7dd92c5524aaf2d65e569a6213
+#	new file:   Argus/Library/metadata/d8/d88a0b7dd92c5524aaf2d65e569a6213.info
+#	new file:   Argus/Library/metadata/d9/d90a8faf6fb9540b084ef2825cc3a5dc
+#	new file:   Argus/Library/metadata/d9/d90a8faf6fb9540b084ef2825cc3a5dc.info
+#	new file:   Argus/Library/metadata/db/db7667203062c644ea1877077e30ebd6
+#	new file:   Argus/Library/metadata/db/db7667203062c644ea1877077e30ebd6.info
+#	new file:   Argus/Library/metadata/e0/e053b0a94752146e79954ce4df1b5565
+#	new file:   Argus/Library/metadata/e0/e053b0a94752146e79954ce4df1b5565.info
+#	new file:   Argus/Library/metadata/e2/e21ceef391a4b284a9ac47a7961c0c1a
+#	new file:   Argus/Library/metadata/e2/e21ceef391a4b284a9ac47a7961c0c1a.info
+#	new file:   Argus/Library/metadata/e4/e4f1fee3de32377429fd1348fae62b10
+#	new file:   Argus/Library/metadata/e4/e4f1fee3de32377429fd1348fae62b10.info
+#	new file:   Argus/Library/metadata/e6/e6569085fafaa4cd1b747c51376fa329
+#	new file:   Argus/Library/metadata/e6/e6569085fafaa4cd1b747c51376fa329.info
+#	new file:   Argus/Library/metadata/ea/ea5873cfd9158664f89459f0c9e1d853
+#	new file:   Argus/Library/metadata/ea/ea5873cfd9158664f89459f0c9e1d853.info
+#	new file:   Argus/Library/metadata/eb/eb5f6e2757c821940b69cf1456f7865a
+#	new file:   Argus/Library/metadata/eb/eb5f6e2757c821940b69cf1456f7865a.info
+#	new file:   Argus/Library/metadata/eb/eb6d0d11aa24844488ea026462c8b6aa
+#	new file:   Argus/Library/metadata/eb/eb6d0d11aa24844488ea026462c8b6aa.info
+#	new file:   Argus/Library/metadata/f0/f030ca9293dfc164c8bc07b982e19f38
+#	new file:   Argus/Library/metadata/f0/f030ca9293dfc164c8bc07b982e19f38.info
+#	new file:   Argus/Library/metadata/f3/f3f33f034733d9f4f9d439d80e26bdce
+#	new file:   Argus/Library/metadata/f3/f3f33f034733d9f4f9d439d80e26bdce.info
+#	new file:   Argus/Library/metadata/f4/f45a39483cf4f914a816af821c9262bb
+#	new file:   Argus/Library/metadata/f4/f45a39483cf4f914a816af821c9262bb.info
+#	new file:   Argus/Library/metadata/f5/f588d850485d0ae479d73cf3bd0b7b00
+#	new file:   Argus/Library/metadata/f5/f588d850485d0ae479d73cf3bd0b7b00.info
+#	new file:   Argus/Library/metadata/f5/f5f67c52d1564df4a8936ccd202a3bd8
+#	new file:   Argus/Library/metadata/f5/f5f67c52d1564df4a8936ccd202a3bd8.info
+#	new file:   Argus/Library/metadata/f7/f76806479d916a64aa03f8e3eba7912f
+#	new file:   Argus/Library/metadata/f7/f76806479d916a64aa03f8e3eba7912f.info
+#	new file:   Argus/Library/metadata/fc/fc67a9002ed4034419f91d0d85bd6b24
+#	new file:   Argus/Library/metadata/fc/fc67a9002ed4034419f91d0d85bd6b24.info
+#	new file:   Argus/Library/metadata/fe/feda0c18015b3284cabbc0da85254f9a
+#	new file:   Argus/Library/metadata/fe/feda0c18015b3284cabbc0da85254f9a.info
+#	new file:   Argus/Library/shadercompiler-UnityShaderCompiler.exe0.log
+#	new file:   Argus/ProjectSettings/AudioManager.asset
+#	new file:   Argus/ProjectSettings/ClusterInputManager.asset
+#	new file:   Argus/ProjectSettings/DynamicsManager.asset
+#	new file:   Argus/ProjectSettings/EditorBuildSettings.asset
+#	new file:   Argus/ProjectSettings/EditorSettings.asset
+#	new file:   Argus/ProjectSettings/GraphicsSettings.asset
+#	new file:   Argus/ProjectSettings/InputManager.asset
+#	new file:   Argus/ProjectSettings/NavMeshAreas.asset
+#	new file:   Argus/ProjectSettings/NetworkManager.asset
+#	new file:   Argus/ProjectSettings/Physics2DSettings.asset
+#	new file:   Argus/ProjectSettings/ProjectSettings.asset
+#	new file:   Argus/ProjectSettings/ProjectVersion.txt
+#	new file:   Argus/ProjectSettings/QualitySettings.asset
+#	new file:   Argus/ProjectSettings/TagManager.asset
+#	new file:   Argus/ProjectSettings/TimeManager.asset
+#	new file:   Argus/ProjectSettings/UnityAdsSettings.asset
+#	new file:   Argus/ProjectSettings/UnityConnectSettings.asset
+#	new file:   Argus/Temp/TarGZ/archtemp.tar
+#	new file:   Argus/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#
+# Untracked files:
+#	14i34qqk.mj1.txt
+#	Argus/Temp/UnityLockfile
+#	Argus/Temp/UnityTempFile-03127fabc9e2eed46a8718563257e617
+#	Argus/Temp/UnityTempFile-040936ff2a0506447b70eae26460ab63
+#	Argus/Temp/UnityTempFile-097210e404f485b40990d6894df8fb7b
+#	Argus/Temp/UnityTempFile-09bba12865221be42a94b6890daad3a2
+#	Argus/Temp/UnityTempFile-0a379248c1216604f88f2be233129c6c
+#	Argus/Temp/UnityTempFile-0afa61d1cc0d92d449a53427ba2f72af
+#	Argus/Temp/UnityTempFile-116d84a40a2af67409edf6a22cfc08cd
+#	Argus/Temp/UnityTempFile-11d398b4fedcf9641883a209ecb873e3
+#	Argus/Temp/UnityTempFile-13d7020928ae4634290b1c120f83338b
+#	Argus/Temp/UnityTempFile-18426418ecbd60d478a5efc0158acc91
+#	Argus/Temp/UnityTempFile-1a4991fcc57fc6c4ca418f191644968e
+#	Argus/Temp/UnityTempFile-20699c81d12b27a4f8c83e17bb527d74
+#	Argus/Temp/UnityTempFile-20cb12409d8ae354e96cce21bab11eb9
+#	Argus/Temp/UnityTempFile-23b1aecc3d62b9745a8d5ccbe12131c8
+#	Argus/Temp/UnityTempFile-2508090aafd89c140b8aa87553b6898d
+#	Argus/Temp/UnityTempFile-2eab737f1c2c03748bb0fa09f0e77353
+#	Argus/Temp/UnityTempFile-2eae54d61662e6b4eabdad88ecaf5179
+#	Argus/Temp/UnityTempFile-358c26b058aa9ac41bfa03bdbd3634d1
+#	Argus/Temp/UnityTempFile-3a0220087c8685440ad65319bef66825
+#	Argus/Temp/UnityTempFile-421ba49a10023ea49a8e775a8dd623f9
+#	Argus/Temp/UnityTempFile-4949287541abb324d888b8507ee455c9
+#	Argus/Temp/UnityTempFile-49c6fcfc45d87cf4cb4376917b548fd1
+#	Argus/Temp/UnityTempFile-4dc42ce269349664baa9094153146d0b
+#	Argus/Temp/UnityTempFile-4f24c15388e002a409d1903ec6d947d0
+#	Argus/Temp/UnityTempFile-4f55e4f7f2329db4bbff26be37e4374c
+#	Argus/Temp/UnityTempFile-51b2475be2a862448aedd8ab67271f22
+#	Argus/Temp/UnityTempFile-52c976d64d3c71147bc0cb5fbb55dadd
+#	Argus/Temp/UnityTempFile-53b562ed5d042b24d9a22379bda1556a
+#	Argus/Temp/UnityTempFile-5a200bbf33ecad04ca666a566748247e
+#	Argus/Temp/UnityTempFile-5de4eea06fa46cc49acfb7f1c3bcc82d
+#	Argus/Temp/UnityTempFile-6fe252a3336ba054e970f614bcf04435
+#	Argus/Temp/UnityTempFile-705026fdab3ae094397abad5300c92f4
+#	Argus/Temp/UnityTempFile-7add376d4a1328243a473433de4d7a47
+#	Argus/Temp/UnityTempFile-87c4e590427f7b2498570ea790ff221a
+#	Argus/Temp/UnityTempFile-90df2afbbd40a0c40838be6ffb2ddf6c
+#	Argus/Temp/UnityTempFile-9560fd140ae55d047a61b117f1429ca7
+#	Argus/Temp/UnityTempFile-9808f81114daa6b4a99560d0e13cc40b
+#	Argus/Temp/UnityTempFile-99c16a7c20d251743ac8b5320ba4bc43
+#	Argus/Temp/UnityTempFile-a2d1a3d60a74a2842877e9473022e7d9
+#	Argus/Temp/UnityTempFile-a516c5face8d78649a8a2facd5a4c37d
+#	Argus/Temp/UnityTempFile-ad86b24adbbfe83489f39371204fe6f4
+#	Argus/Temp/UnityTempFile-ae99cd5f3abf8cd4ea5477ec9f0c3241
+#	Argus/Temp/UnityTempFile-b1cf8ae46c664a74a83e8d21b6067ffa
+#	Argus/Temp/UnityTempFile-b34802f1a770e4e4ebb81db05a0994e2
+#	Argus/Temp/UnityTempFile-b4f9a9c9dfb7a5b46a1cc2042c9f3b55
+#	Argus/Temp/UnityTempFile-b57dbd6ec9013374b8ee8d7c1f5f419c
+#	Argus/Temp/UnityTempFile-bb3ae3fea08104846b983097fbe88aa3
+#	Argus/Temp/UnityTempFile-bb6696af0a2551b46929ee7cf4dea9b8
+#	Argus/Temp/UnityTempFile-be67857e8e1529747a5a1f2355516082
+#	Argus/Temp/UnityTempFile-dc320ce9b3a2b7949854ef1c4f2b601b
+#	Argus/Temp/UnityTempFile-dd4e0652bdc414f499dcdcb9b1c53537
+#	Argus/Temp/UnityTempFile-de850862839e1ff4bbfc2e1e0f24c873
+#	Argus/Temp/UnityTempFile-df807d78e95ee3a4c8d9fda4aef31a67
+#	Argus/Temp/UnityTempFile-e53f05666fcbeb745959b5b1b4f4e935
+#	Argus/Temp/UnityTempFile-e68095c8a6ec5fc44a3b2457a932533c
+#	Argus/Temp/UnityTempFile-e977f62429d3d2244a7c9dfd872021b8
+#	Argus/Temp/UnityTempFile-edcf448c95ef9cf49ad71aa42da81043
+#	Argus/Temp/UnityTempFile-ee7494665c11e194dbaafe08421a1554
+#	Argus/Temp/UnityTempFile-f4ccd4de946090840b4d56c063cc9ac7
+#	Argus/Temp/UnityTempFile-f571692af1357194aac73be0bc263089
+#	Argus/Temp/UnityTempFile-f9e49bd870473614ca064e1dc49e76d1
+#	Argus/Temp/UnityTempFile-fd926eef1c5cc8a40b4aabf0a4ce0f6d
+#	Argus/Temp/__Backupscenes/
+#
+
