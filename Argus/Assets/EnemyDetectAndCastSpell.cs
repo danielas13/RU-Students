@@ -6,10 +6,15 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 	public float spellDistance = 1000;
 	GameObject character;
 	private float cooldown = 3;
-	// Use this for initialization
-	void Start () {
+
+    private Transform cleric;
+    private Animator clericAnim;
+    // Use this for initialization
+    void Awake () {
 		character = GameObject.FindGameObjectWithTag("Player");
-	}
+        cleric = transform.parent.FindChild("Cleric");
+        clericAnim = cleric.GetComponent<Animator>();
+    }
 	// Update is called once per frame
 	void Update()
 	{
@@ -23,9 +28,8 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 		{
 			//Debug.Log(hit.transform.tag + " detected");
 			if (hit.transform.tag == "Player") {
-				//Debug.Log("SJDAKLDJALSKDJALSKDJALKSD");
-				//Debug.DrawLine(transform.position, new Vector2(transform.position.x - spellDistance, character.transform.position.y), Color.red);
-				CastFireBall();
+                clericAnim.SetBool("cast", true);
+                CastFireBall();
 				cooldown = 3;
 			}
 		}
