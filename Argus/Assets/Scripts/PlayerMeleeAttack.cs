@@ -10,9 +10,17 @@ public class PlayerMeleeAttack : MonoBehaviour
     float attackCooldown = 0.3f;
     public Collider2D attackCollider;
 
+	private Transform skeleton;
+	private Animator skelAnim; 
+	//private Transform skeletonBody;
+
     void Awake()
     {
         attackCollider.enabled = false;
+		skeleton = transform.FindChild("Skeleton");
+		//skeletonBody = skeleton.FindChild ("Body");
+		skelAnim = skeleton.GetComponent<Animator> ();
+		//GetAnimationClips(skeleton)
     }
 
     void Update()
@@ -22,6 +30,8 @@ public class PlayerMeleeAttack : MonoBehaviour
             attacking = true;
             attackTimer = attackCooldown;
             attackCollider.enabled = true;
+			//skelAnim["attack"].AddMixingTransform(skeletonBody);
+			skelAnim.SetBool("attack", true);
         }
 
         if (attacking)
@@ -35,6 +45,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                 attacking = false;
                 attackCollider.enabled = false;
             }
+
         }
     }
 }

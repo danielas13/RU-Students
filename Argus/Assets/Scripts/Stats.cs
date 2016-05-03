@@ -18,8 +18,13 @@ public class Stats : MonoBehaviour {
     //indicator for the health/mana bar.
     public StatusIndicator indicator;
 
+	private Transform skeleton;
+	private Animator skelAnim; 
+
     // Use this for initialization
     void Start () {
+		skeleton = transform.FindChild("Skeleton");
+		skelAnim = skeleton.GetComponent<Animator> ();
         //restarting the current health/mana.
         restart();
 	}
@@ -62,6 +67,8 @@ public class Stats : MonoBehaviour {
 
     public void damagePlayer(int damage)
     {
+		skelAnim.SetBool ("hit", true);
+		
         //Reducing the player´s health.
         this.status.currentHealth -= damage;
 
@@ -108,6 +115,20 @@ public class Stats : MonoBehaviour {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
         }
     }
+
+	//increasing the player´s max mana.
+	public void increaseMaxMana(int mana)
+	{
+		this.status.maxMana += mana;
+
+		//indicator.
+		if (this.indicator != null)
+		{
+			indicator.SetMana(status.currentMana, status.maxMana);
+		}
+	}
+
+
 
     //Spend someof the player's mana.
     public void spendMana(int cost)

@@ -17,8 +17,10 @@ namespace UnityStandardAssets._2D
         private Transform m_CeilingCheck;   // A position marking where to check for ceilings
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
+		private Animator skelAnim; 
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+		private Transform skeleton;
 
         private void Awake()
         {
@@ -27,6 +29,8 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+			skeleton = transform.FindChild("Skeleton");
+			skelAnim = skeleton.GetComponent<Animator> ();
         }
 
 
@@ -72,6 +76,16 @@ namespace UnityStandardAssets._2D
 
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
+
+				if(Math.Abs(move)  > 0.1f && m_Grounded == true) {
+					//skelAnim.SetFloat("Speed", Mathf.Abs(move));
+					skelAnim.SetBool ("walk", true);
+				}
+				else{
+					skelAnim.SetBool ("walk", false);
+
+				}
+
 
                 // Move the character
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);

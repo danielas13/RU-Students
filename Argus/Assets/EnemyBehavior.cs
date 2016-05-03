@@ -18,7 +18,7 @@ public class EnemyBehavior : MonoBehaviour
     public LayerMask aggroLayers;
     GameObject player;
     private bool chase = false;
-    public float chasingVelocity = 2f;
+    public float chasingVelocity = 6f;
 
     // Use this for initialization
     void Start()
@@ -85,7 +85,7 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
             //The player is to the right.
-            if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.0f){
+            if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.5f){
                 if(playerPos.x > enemyPos.x)
                 {
                     if (direction != 1)

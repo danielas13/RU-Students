@@ -1,64 +1,68 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 public class EnemyAttack : MonoBehaviour
 {
 
-    public int damage = 2;    //damage of an attack.
-    //public GameObject target;
-    public int range = 1;
-    private float attackTimer = 0;
-    public GameObject target;
-    public int attackCd = 1;
+	Transform attackTrigger;
+	float attackDelay = 0.5f;
+	float attackTimer = 0;
+	float attackCooldown = 1;
 
-    void Start()
-    {
-        target = GameObject.FindGameObjectWithTag("Player");
-    }
+	public Animator knightAnim; // Animator for Enemy 
+	private Transform knight;
+
+	void Start()
+	{
+		knight = transform.FindChild("Knight");
+		knightAnim = knight.GetComponent<Animator> ();
+	}
+	void Update()
+	{
+		if (attackTrigger == null)
+		{
+			attackTrigger = transform.FindChild("EnemyMeleeAttackTrigger");
+		}
+
+		EnemyMeleeAttackTriggerScript AttackTriggerComponent = attackTrigger.gameObject.GetComponent<EnemyMeleeAttackTriggerScript>(); // Fetch AttackTriggerScript and store as EnemyMeleeAttackTriggerScript variable
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (attackTimer > 0)
-        {
-            attackTimer -= Time.deltaTime;
-        }
+		if (AttackTriggerComponent.withinAttackRange == true && AttackTriggerComponent.attacking == false) // no attack active and player is within attack range, commence new attack
+		{
+			AttackTriggerComponent.attacking = true;
+			attackTimer = attackCooldown;
+			knightAnim.SetBool("attack", AttackTriggerComponent.attacking);
+		}
 
-        if (attackTimer <= 0)
-        {
-            Swing();
-            attackTimer = attackCd;
-        }
-    }
+		if (AttackTriggerComponent.attacking) 	// If we are already attacking
+		{
+			if (attackTimer > 0)				// we are mid attack, decrement timer
+			{
+				attackTimer -= Time.deltaTime;
+			}
+			else 								// attack has finished
+			{
+				AttackTriggerComponent.attacking = false;
+		
+			}
 
-    void Swing()
-    {
-        if (target != null)
-        {
-            if (Vector2.Distance(target.transform.position, transform.position) < range)
-            {
-                Stats player = target.GetComponent<Stats>();
-                if (player != null)
-                {
-                    Debug.Log("ATTACKED Player WITH : " + player.status.currentHealth + " Health");
-                    player.damagePlayer(damage);
-                }
-            }
-        }
-        else
-        {
-            GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
-            if (tempPlayer == null)
-            {
-                return;
-            }
-            else
-            {
-                target = tempPlayer;
-            }
-            return;
-        }
-        return;
-    }
+			if(AttackTriggerComponent.withinAttackRange == true && attackTimer < attackDelay)  // after a delay during the attack, we decide to dish out the D
+			{
+				AttackTriggerComponent.playerTakesDamage = true;
+				AttackTriggerComponent.attacking = false;
+			}
+
+
+		}
+	}
+
+
+//	void PlayerWithinRange(Collider2D col){
+//		Debug.Log ("zup homie from " +  col.name);
+//	}
+//
+//	void PlayerExitedRange(Collider2D col){ 
+//		Debug.Log ("bye homie from "  +  col.name);
+//	}
+
 }
+

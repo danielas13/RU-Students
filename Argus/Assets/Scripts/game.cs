@@ -14,6 +14,10 @@ public class game : MonoBehaviour {
 
     public static void KillPlayer(Stats player)
     {
+		//BoxCollider2D collisionbBox = player.GetComponent<BoxCollider2D>();
+		//collisionbBox.transform.Translate (new Vector2 (100.0f,100.0f));
+		//Debug.Log (collisionbBox.transform.position);
+
         Destroy(player.gameObject);
         gm.playerRespawn();
     }
