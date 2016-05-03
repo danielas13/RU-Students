@@ -12,6 +12,8 @@ public class Stats : MonoBehaviour {
 
         public int currentMana = 10;
         public int currentHealth = 10;
+
+        public int armor = 0;
     }
     //The global status object.
     public PlayerStats status = new PlayerStats();
@@ -38,8 +40,8 @@ public class Stats : MonoBehaviour {
         {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
             indicator.SetMana(status.currentMana, status.maxMana);
+            indicator.SetArmor(status.armor);
         }
-
     }
 	
 	// Update is called once per frame
@@ -61,6 +63,7 @@ public class Stats : MonoBehaviour {
                 indicator = tempIndicator.GetComponent<StatusIndicator>(); ;
                 indicator.SetHealth(status.currentHealth, status.maxHealth);
                 indicator.SetMana(status.currentMana, status.maxMana);
+                indicator.SetArmor(status.armor);
             }
         }
     }
@@ -68,14 +71,24 @@ public class Stats : MonoBehaviour {
     public void damagePlayer(int damage)
     {
 		skelAnim.SetBool ("hit", true);
-		
+
         //Reducing the player´s health.
-        this.status.currentHealth -= damage;
+        //If there is no armor. Damage the players health directly.
+        if (this.status.armor == 0 )
+        {
+            this.status.currentHealth -= damage;
+        }
+        else
+        {
+            //damage the armor value instead.
+            this.status.armor -= 1;
+        }
 
         //updating the indicator.
         if (this.indicator != null)
         {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
+            indicator.SetArmor(status.armor);
         }
 
         //Checking if the player is dead.
@@ -85,6 +98,17 @@ public class Stats : MonoBehaviour {
         }
     }
 
+    //Increments the players armor by 1
+    public void addArmor()
+    {
+        this.status.armor += 1;
+        if (this.indicator != null)
+        {
+            indicator.SetArmor(status.armor);
+        }
+    }
+
+    //increases the player's health.
     public void healPlayer(int heal)
     {
         //Increasing the player´s health. Checking for overheal.
@@ -134,7 +158,6 @@ public class Stats : MonoBehaviour {
     public void spendMana(int cost)
     {
         this.status.currentMana -= cost;
-        Debug.Log("LeftOver Mana :" + this.status.currentMana);
 
         //Mana indicator.
         if (this.indicator != null)

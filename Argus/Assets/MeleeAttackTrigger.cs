@@ -11,7 +11,11 @@ public class MeleeAttackTrigger : MonoBehaviour
         if (col.isTrigger != true && col.CompareTag("enemy"))
         {
             col.SendMessageUpwards("damageEnemy", damage);
-            Debug.Log("Attack msg sent to enemy");
+            //Debug.Log("Attack msg sent to enemy");
+        }
+        else if(col.isTrigger != true && col.CompareTag("Chest"))
+        {
+            col.SendMessageUpwards("destroyChest");
         }
     }
 }

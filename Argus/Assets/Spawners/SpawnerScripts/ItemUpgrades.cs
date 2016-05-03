@@ -3,11 +3,12 @@ using System.Collections;
 
 public class ItemUpgrades : MonoBehaviour {
 
-    public bool RandomSpawn = false;    //Tells us if the player wants an item to drop specifically.
+    public bool RandomSpawn = true;    //Tells us if the player wants an item to drop specifically.
     public Transform SpawnObject;       //Object that will be spawned if RandomSpawn is set to True.
 
     public Transform ArmorPrefab;
     public int Chances = 6;             //the higher this integer is. The less chance there is of upgrade spawn.
+    public float heightOfSpawn = 1f;
 
     // Use this for initialization
     void Awake () {
@@ -18,17 +19,17 @@ public class ItemUpgrades : MonoBehaviour {
         }
     }
 
-    //checking on collition with objects.
-    void OnCollisionStay2D(Collision2D collision)
+    public void destroyChest()
     {
-
-        //Check if the collition is with a player.
-        if (collision.gameObject.name == "Player")
+        if (RandomSpawn)
         {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                Debug.Log("Hello");
-            }
+            Instantiate(SpawnObject, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+            Destroy(this.gameObject);
         }
     }
 

@@ -43,7 +43,7 @@ public class Spell : MonoBehaviour {
             //Player facing to the right.
 
             Stats player = character.GetComponent<Stats>();
-            if (player.status.currentMana > 2)
+            if (player.status.currentMana >= 2)
             {
                 Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation);
                 player.spendMana(2);

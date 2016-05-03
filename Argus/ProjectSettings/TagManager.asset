@@ -10,6 +10,7 @@ TagManager:
   - New Tag
   - background
   - Ground
+  - Chest
   layers:
   - Default
   - TransparentFX
