@@ -9,6 +9,7 @@ TagManager:
   - indicator
   - New Tag
   - background
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Player
   - Enemy
-  - background
+  - Ground
   - 
   - 
   - 
@@ -46,12 +47,15 @@ TagManager:
   - name: background
     uniqueID: 3982708159
     locked: 0
+  - name: Ground
+    uniqueID: 3513628021
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 1587043571
     locked: 0
-  - name: Ground
-    uniqueID: 3513628021
+  - name: UI
+    uniqueID: 2686470267
     locked: 0
