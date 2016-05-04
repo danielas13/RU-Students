@@ -9,7 +9,8 @@ public class PathScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.UpArrow) && other.gameObject.tag == "Player")
         {
             GameObject player = GameObject.Find("Player");
-            player.transform.position = transform.FindChild("ChildDoor").transform.position;
+			Vector3 door = transform.FindChild ("ChildDoor").transform.position;
+			player.transform.position = new Vector3(door.x, door.y, player.transform.position.z);
             GameObject camera = GameObject.Find("MainCamera");
             camera.transform.position = player.transform.position;
         }
