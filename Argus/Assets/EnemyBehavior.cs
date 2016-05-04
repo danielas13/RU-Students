@@ -47,12 +47,12 @@ public class EnemyBehavior : MonoBehaviour
         {
             if(rayToPlayer.collider.gameObject.layer == 10)
             {
-                //Debug.DrawLine(transform.position, player.transform.position, Color.red);
+                Debug.DrawLine(transform.position, player.transform.position, Color.red);
             }
             else if(rayToPlayer.collider.gameObject.layer == 8)
             {
                 this.chase = true;
-                //Debug.DrawLine(transform.position, player.transform.position, Color.blue);
+                Debug.DrawLine(transform.position, player.transform.position, Color.blue);
             }
             else
             {
