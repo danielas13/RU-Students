@@ -23,7 +23,7 @@ public class EnemyBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         trackPoint = transform.FindChild("trackPoint");
 
     }
@@ -31,13 +31,8 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
         Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+
         Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 calculateAngle = playerPos - enemyPos;
 
@@ -52,12 +47,12 @@ public class EnemyBehavior : MonoBehaviour
         {
             if(rayToPlayer.collider.gameObject.layer == 10)
             {
-                Debug.DrawLine(transform.position, player.transform.position, Color.red);
+                //Debug.DrawLine(transform.position, player.transform.position, Color.red);
             }
             else if(rayToPlayer.collider.gameObject.layer == 8)
             {
                 this.chase = true;
-                Debug.DrawLine(transform.position, player.transform.position, Color.blue);
+                //Debug.DrawLine(transform.position, player.transform.position, Color.blue);
             }
             else
             {
@@ -69,6 +64,11 @@ public class EnemyBehavior : MonoBehaviour
             this.chase = false;
         }
 
+        if (game.gm.isPlayerDead)
+        {
+            chase = false;
+            transform.FindChild("EnemyMeleeAttackTrigger").GetComponent<EnemyMeleeAttackTriggerScript>().withinAttackRange = false;
+        }
         if (!this.chase)
         {
             if (hitDown.collider != null && hitForwards.collider == null)

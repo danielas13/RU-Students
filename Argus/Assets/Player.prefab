@@ -136,6 +136,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &132560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427646}
+  m_Layer: 0
+  m_Name: DeadState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &139710
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +320,7 @@ Transform:
   - {fileID: 483976}
   - {fileID: 407024}
   - {fileID: 413196}
+  - {fileID: 427646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &407024
@@ -358,6 +374,18 @@ Transform:
   - {fileID: 445696}
   m_Father: {fileID: 483970}
   m_RootOrder: 1
+--- !u!4 &427646
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3063286, y: 0.9471723, z: -0.2734375}
+  m_LocalScale: {x: 0.56448287, y: 0.5644837, z: 1}
+  m_Children: []
+  m_Father: {fileID: 405352}
+  m_RootOrder: 5
 --- !u!4 &428728
 Transform:
   m_ObjectHideFlags: 1
@@ -614,7 +642,7 @@ MonoBehaviour:
     damage: 3
     spellpower: 4
     armor: 0
-  indicator: {fileID: 0}
+  indicator: {fileID: 11442762, guid: 1022f9df6a09d10489e027637c5339e1, type: 2}
 --- !u!114 &11432748
 MonoBehaviour:
   m_ObjectHideFlags: 1

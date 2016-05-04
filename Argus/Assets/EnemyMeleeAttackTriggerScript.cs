@@ -15,8 +15,6 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 			withinAttackRange = true;
 			//transform.SendMessageUpwards("PlayerWithinRange", col);
 		}
-
-
 	}
 
 	void OnTriggerExit2D(Collider2D col)
@@ -24,7 +22,7 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 		collide = null;
 		if (col.isTrigger != true && col.CompareTag("Player"))
 		{
-			Debug.Log("Player Exited");
+			//Debug.Log("Player Exited");
 			withinAttackRange = false;
 			//transform.SendMessageUpwards("PlayerExitedRange", col);
 		}
@@ -45,12 +43,14 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 			withinAttackRange = false;
 		}
 
-		if (playerTakesDamage && collide != null && collide.CompareTag("Player"))
-		{
-			collide.SendMessageUpwards("damagePlayer", damage);
-			playerTakesDamage = false;
-		}
-			
+        if (!game.gm.isPlayerDead)
+        {
+            if (playerTakesDamage && collide != null && collide.CompareTag("Player"))
+            {
+                collide.SendMessageUpwards("damagePlayer", damage);
+                playerTakesDamage = false;
+            }
+        }
 	}
 }
 

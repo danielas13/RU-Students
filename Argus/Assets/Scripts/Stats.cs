@@ -10,7 +10,7 @@ public class Stats : MonoBehaviour {
         public int maxHealth = 10;
         public int maxMana = 10;
 
-        public int currentMana =10;
+        public int currentMana = 10;
         public int currentHealth = 10;
 
         [HideInInspector]
@@ -46,12 +46,12 @@ public class Stats : MonoBehaviour {
     //reseting the current health mana and setting the indicator.
     public void restart()
     {
-        status.currentHealth = status.maxHealth;
+        /*status.currentHealth = status.maxHealth;
         status.currentMana = status.maxMana;
         status.gainedDamage = 0;
         status.gainedHealth = 0;
         status.gainedDamage = 0;
-        status.gainedSpellpower = 0;
+        status.gainedSpellpower = 0;*/
         if (this.indicator != null)
         {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
@@ -86,15 +86,24 @@ public class Stats : MonoBehaviour {
 
         //Reducing the player´s health.
         //If there is no armor. Damage the players health directly.
-        if (this.status.armor == 0 )
+
+        if(this.status.armor > 0)
         {
-            this.status.currentHealth -= damage;
+            this.status.armor -= 1;
+
         }
         else
         {
-            //damage the armor value instead.
-            this.status.armor -= 1;
+            if((this.status.currentHealth - damage) > 0)
+            {
+                this.status.currentHealth -= damage;
+            }
+            else
+            {
+                this.status.currentHealth = 0;
+            }
         }
+
 
         //updating the indicator.
         if (this.indicator != null)
@@ -106,7 +115,7 @@ public class Stats : MonoBehaviour {
         //Checking if the player is dead.
         if (this.status.currentHealth <= 0)
         {
-            game.KillPlayer(this);
+            game.KillPlayer();
         }
     }
 
@@ -176,6 +185,7 @@ public class Stats : MonoBehaviour {
 	//increasing the player´s max mana.
 	public void increaseMaxMana(int mana)
 	{
+        Debug.Log("Went inside here");
 		this.status.maxMana += mana;
         this.status.gainedMana += mana;
 
@@ -212,5 +222,13 @@ public class Stats : MonoBehaviour {
         {
             indicator.SetMana(status.currentMana, status.maxMana);
         }
+    }
+
+    public void resetGained()
+    {
+        this.status.gainedHealth = 0;
+        this.status.gainedMana = 0;
+        this.status.gainedDamage = 0;
+        this.status.gainedSpellpower = 0;
     }
 }

@@ -22,7 +22,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
         trackPoint = transform.FindChild("trackPoint");
 
     }
@@ -30,12 +30,6 @@ public class EnemyCasterBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
         Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
         Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 calculateAngle = playerPos - enemyPos;
