@@ -60,7 +60,7 @@ public class EnemyBehavior : MonoBehaviour
             else if(rayToPlayer.collider.gameObject.layer == 8)
             {
                 this.chase = true;
-               Debug.DrawLine(transform.position, player.transform.position, Color.blue);
+                Debug.DrawLine(transform.position, player.transform.position, Color.blue);
             }
             else
             {
