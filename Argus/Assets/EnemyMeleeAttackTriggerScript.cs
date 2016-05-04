@@ -47,7 +47,9 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
         {
             if (playerTakesDamage && collide != null && collide.CompareTag("Player"))
             {
+                collide.SendMessageUpwards("knockBackPlayer", transform.position);
                 collide.SendMessageUpwards("damagePlayer", damage);
+                
                 playerTakesDamage = false;
             }
         }

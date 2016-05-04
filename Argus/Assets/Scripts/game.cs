@@ -21,9 +21,11 @@ public class game : MonoBehaviour {
 
     public static void KillPlayer()
     {
+        Vector2 pos = gm.player.transform.position;
         gm.player.SetActive(false);
         gm.isPlayerDead = true;
         gm.DeadState.SetActive(true);
+        gm.DeadState.transform.position = new Vector2(pos.x,pos.y+2);
     }
     public static void KillEnemy(EnemyStats enemy)
     {

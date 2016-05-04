@@ -22,7 +22,8 @@ public class FloatingEnemyScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
 
     }
 
@@ -30,12 +31,17 @@ public class FloatingEnemyScript : MonoBehaviour {
     void Update()
     {
 
-        if (player == null)
+        Vector2 playerPos;
+        if (!game.gm.isPlayerDead)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.Find("Player");
+            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
         }
-
-        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        else
+        {
+            playerPos = new Vector2(game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
+        }
+        //Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
         Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 calculateAngle = playerPos - enemyPos;
 

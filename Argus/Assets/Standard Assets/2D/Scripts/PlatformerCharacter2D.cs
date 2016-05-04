@@ -21,6 +21,9 @@ namespace UnityStandardAssets._2D
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 		private Transform skeleton;
+        private bool knockback = false;
+        private float xDiff;
+        private float timer = 1;
 
         private void Awake()
         {
@@ -33,9 +36,45 @@ namespace UnityStandardAssets._2D
 			skelAnim = skeleton.GetComponent<Animator> ();
         }
 
+        void knockBackPlayer(Vector3 pos)
+        {
+            knockback = true;
+            xDiff = transform.position.x - pos.x;
+            if (xDiff < 0)
+            {
+                xDiff = -10;
+            }
+            else
+            {
+                xDiff = 10;
+            }
 
+            transform.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.GetComponent<Rigidbody2D>().velocity.x, 10);
+        }
         private void FixedUpdate()
         {
+            if (knockback == true && timer > 0)
+            {
+                Vector2 force = new Vector2(xDiff, transform.GetComponent<Rigidbody2D>().velocity.y);
+                if (timer > 0.5f)
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = force;
+                }
+                else
+                {
+                    // transform.GetComponent<Rigidbody2D>().AddForce(, ForceMode2D.Impulse);
+                }
+
+                timer -= Time.deltaTime;
+                m_AirControl = false;
+
+            }
+            if (timer < 0.1f)
+            {
+                knockback = false;
+                timer = 1;
+                m_AirControl = true;
+            }
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground

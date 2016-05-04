@@ -30,7 +30,17 @@ public class EnemyCasterBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        Vector2 playerPos;
+        if (!game.gm.isPlayerDead)
+        {
+            player = GameObject.Find("Player");
+            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        }
+        else
+        {
+            playerPos = new Vector2(game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
+        }
+        //Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
         Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 calculateAngle = playerPos - enemyPos;
 

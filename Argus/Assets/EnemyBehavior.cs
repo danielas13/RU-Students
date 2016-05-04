@@ -31,8 +31,16 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
 
+        Vector2 playerPos;
+        if (!game.gm.isPlayerDead) {
+            player = GameObject.Find("Player");
+            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        }
+        else
+        {
+            playerPos = new Vector2(game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
+        }
         Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 calculateAngle = playerPos - enemyPos;
 
@@ -47,12 +55,12 @@ public class EnemyBehavior : MonoBehaviour
         {
             if(rayToPlayer.collider.gameObject.layer == 10)
             {
-                //Debug.DrawLine(transform.position, player.transform.position, Color.red);
+                Debug.DrawLine(transform.position, player.transform.position, Color.red);
             }
             else if(rayToPlayer.collider.gameObject.layer == 8)
             {
                 this.chase = true;
-                //Debug.DrawLine(transform.position, player.transform.position, Color.blue);
+               Debug.DrawLine(transform.position, player.transform.position, Color.blue);
             }
             else
             {
