@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.356512, y: 2.0506194, z: 0}
+  m_LocalPosition: {x: -27.738386, y: 0.7762115, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,8 +56,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RandomSpawn: 0
   SpawnObject: {fileID: 0}
-  ArmorPrefab: {fileID: 0}
-  Chances: 6
+  ArmorPrefab: {fileID: 448068, guid: 4d6eda8394355b54cb4e6e1612908b8d, type: 2}
+  Chances: 4
   heightOfSpawn: 1
 --- !u!1001 &100100000
 Prefab:

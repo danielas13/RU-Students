@@ -742,6 +742,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status:
     currentHealth: 2
+    damage: 3
+    spellpower: 5
+  restoreSpawnChance: 10
+  manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
+  healthPrefab: {fileID: 444032, guid: 2419eb9aa25f1664b9288a916ab5be2e, type: 2}
 --- !u!114 &11430878
 MonoBehaviour:
   m_ObjectHideFlags: 1

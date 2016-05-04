@@ -13,12 +13,15 @@ public class UpgradeStatus : MonoBehaviour {
     public int Chances = 4;             //the higher this integer is. The less chance there is of upgrade spawn.
     public float heightOfSpawn = 1f;    //The height that the object will spawn above 
 
+    //this variable is static readonly to ensure that the number is random between objects ( uses a unique seed).
+    private static readonly System.Random random = new System.Random();     //Create a read only random variable.
+    
     // Use this for initialization
     void Awake () {
         if (!RandomSpawn)
         {
-            System.Random rnd = new System.Random();        //Create a Random object.
-            int calculate = rnd.Next(1, Chances);           //randomise a number between 1 add the chances variable.
+           // System.Random rnd = new System.Random();        //Create a Random object.
+           int calculate = random.Next(1, Chances+1);           //randomise a number between 1 add the chances variable.
 
             //check if the randomised number represents a mana upgrade or player upgrade.
             if (calculate < 3)

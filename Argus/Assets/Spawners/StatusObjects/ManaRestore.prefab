@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 402380}
   - 114: {fileID: 11404820}
+  - 212: {fileID: 21291672}
+  - 61: {fileID: 6152582}
   m_Layer: 0
   m_Name: ManaRestore
   m_TagString: Untagged
@@ -28,6 +30,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6152582
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194722}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.099910736, y: 0.8103118}
+  serializedVersion: 2
+  m_Size: {x: 1.01, y: 3.23}
 --- !u!114 &11404820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,6 +55,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544d149c3affb584ea08ff464a8ef874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealPerObject: 2
+--- !u!212 &21291672
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194722}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 32b065c767100478c9fdbe19d33105b0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

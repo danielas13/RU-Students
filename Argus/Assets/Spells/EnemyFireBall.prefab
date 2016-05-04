@@ -42,7 +42,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   duration: 2
-  damage: 1
+  damage: 5
   range: 2
 --- !u!120 &12000836
 LineRenderer:

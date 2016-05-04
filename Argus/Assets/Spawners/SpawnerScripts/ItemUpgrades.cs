@@ -10,13 +10,14 @@ public class ItemUpgrades : MonoBehaviour {
     public int Chances = 6;             //the higher this integer is. The less chance there is of upgrade spawn.
     public float heightOfSpawn = 1f;
 
+    private int calculate = 0;
+
+    //this variable is static readonly to ensure that the number is random between objects ( uses a unique seed).
+    private static readonly System.Random random = new System.Random();     //Create a read only random variable.
+
     // Use this for initialization
     void Awake () {
-        if (!RandomSpawn)
-        {
-            System.Random rnd = new System.Random();        //Create a Random object.
-            int calculate = rnd.Next(1, Chances);           //randomise a number between 1 add the chances variable.
-        }
+
     }
 
     public void destroyChest()
@@ -28,7 +29,14 @@ public class ItemUpgrades : MonoBehaviour {
         }
         else
         {
-            Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+            calculate = random.Next(1, Chances + 1);           //randomise a number between 1 add the chances variable.
+
+            //Debug.Log(calculate);
+            if(calculate == 1)
+            {
+                Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+                Destroy(this.gameObject);
+            }
             Destroy(this.gameObject);
         }
     }

@@ -61,11 +61,11 @@ public class EnemySpawn : MonoBehaviour {
         else
         {
             //iterate through the list of objects and remove objects that have been destroyed from the list.
-            foreach (Object enemy in this.lis)
+            for(int i = 0; i < this.lis.Count;i++)
             {
-                if(enemy == null)
+                if(this.lis[i] == null)
                 {
-                    this.lis.Remove(enemy);
+                    this.lis.Remove(this.lis[i]);
                 }
             }
         }

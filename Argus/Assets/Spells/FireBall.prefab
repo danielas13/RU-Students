@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 450344}
   - 120: {fileID: 12069834}
   - 114: {fileID: 11477182}
+  - 61: {fileID: 6110658}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -29,6 +30,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6110658
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171178}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 4.5, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 11, y: 0.0001}
 --- !u!114 &11477182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42,6 +57,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   duration: 2
+  range: 2
+  targets: []
 --- !u!120 &12069834
 LineRenderer:
   m_ObjectHideFlags: 1

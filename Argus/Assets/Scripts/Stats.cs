@@ -10,8 +10,20 @@ public class Stats : MonoBehaviour {
         public int maxHealth = 10;
         public int maxMana = 10;
 
-        public int currentMana = 10;
+        public int currentMana =10;
         public int currentHealth = 10;
+
+        [HideInInspector]
+        public int gainedHealth = 0;
+        [HideInInspector]
+        public int gainedMana = 0;
+        [HideInInspector]
+        public int gainedDamage = 0;
+        [HideInInspector]
+        public int gainedSpellpower = 0;
+
+        public int damage = 3;
+        public int spellpower = 4;
 
         public int armor = 0;
     }
@@ -28,14 +40,18 @@ public class Stats : MonoBehaviour {
 		skeleton = transform.FindChild("Skeleton");
 		skelAnim = skeleton.GetComponent<Animator> ();
         //restarting the current health/mana.
-        restart();
+        //restart();
 	}
 
     //reseting the current health mana and setting the indicator.
-    void restart()
+    public void restart()
     {
         status.currentHealth = status.maxHealth;
         status.currentMana = status.maxMana;
+        status.gainedDamage = 0;
+        status.gainedHealth = 0;
+        status.gainedDamage = 0;
+        status.gainedSpellpower = 0;
         if (this.indicator != null)
         {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
@@ -46,10 +62,6 @@ public class Stats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(transform.position.y <= -20)
-        {
-            damagePlayer(100);
-        }
         //Finding a indicator if none is found.
         if (indicator == null)
         {
@@ -109,7 +121,7 @@ public class Stats : MonoBehaviour {
     }
 
     //increases the player's health.
-    public void healPlayer(int heal)
+    public void restoreHealth(int heal)
     {
         //Increasing the player´s health. Checking for overheal.
         if((this.status.currentHealth+heal) > this.status.maxHealth)
@@ -128,10 +140,31 @@ public class Stats : MonoBehaviour {
         }
     }
 
+    //increases the player's health.
+    public void restoreMana(int heal)
+    {
+        //Increasing the player´s health. Checking for overheal.
+        if ((this.status.currentMana + heal) > this.status.maxMana)
+        {
+            this.status.currentMana = this.status.maxMana;
+        }
+        else
+        {
+            this.status.currentMana += heal;
+        }
+
+        //indicator.
+        if (this.indicator != null)
+        {
+            indicator.SetMana(status.currentMana, status.maxMana);
+        }
+    }
+
     //increasing the player´s max health.
     public void increaseMaxHealth(int health)
     {
         this.status.maxHealth += health;
+        this.status.gainedHealth += health;
 
         //indicator.
         if (this.indicator != null)
@@ -144,13 +177,28 @@ public class Stats : MonoBehaviour {
 	public void increaseMaxMana(int mana)
 	{
 		this.status.maxMana += mana;
+        this.status.gainedMana += mana;
 
-		//indicator.
-		if (this.indicator != null)
+        //indicator.
+        if (this.indicator != null)
 		{
 			indicator.SetMana(status.currentMana, status.maxMana);
 		}
 	}
+
+    //increasing the player´s spellpower.
+    public void increaseSpellpower(int power)
+    {
+        this.status.spellpower += power;
+        this.status.gainedSpellpower += power;
+    }
+
+    //increasing the player´s damage.
+    public void increaseDamage(int damage)
+    {
+        this.status.damage += damage;
+        this.status.gainedDamage += damage;
+    }
 
 
 

@@ -607,6 +607,13 @@ MonoBehaviour:
     maxMana: 10
     currentMana: 10
     currentHealth: 10
+    gainedHealth: 0
+    gainedMana: 0
+    gainedDamage: 0
+    gainedSpellpower: 0
+    damage: 3
+    spellpower: 4
+    armor: 0
   indicator: {fileID: 0}
 --- !u!114 &11432748
 MonoBehaviour:
@@ -619,7 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad63d0ffcea240419529118d9635cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
 --- !u!114 &11437276
 MonoBehaviour:
   m_ObjectHideFlags: 1

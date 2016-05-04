@@ -14,12 +14,28 @@ public class game : MonoBehaviour {
 
     public static void KillPlayer(Stats player)
     {
-		//BoxCollider2D collisionbBox = player.GetComponent<BoxCollider2D>();
-		//collisionbBox.transform.Translate (new Vector2 (100.0f,100.0f));
-		//Debug.Log (collisionbBox.transform.position);
+        int h, m, s, d;
+        h = player.status.gainedHealth;
+
+        m = player.status.gainedMana;
+
+        s = player.status.gainedSpellpower;
+
+        d = player.status.gainedDamage;
 
         Destroy(player.gameObject);
         gm.playerRespawn();
+
+        Stats newStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
+        newStatus.status.maxHealth = h;
+        newStatus.status.maxMana = m;
+        newStatus.increaseSpellpower(s);
+        newStatus.increaseDamage(d);
+        Debug.Log("health " + h);
+        Debug.Log("mana " + m);
+        Debug.Log("damage " + d);
+        Debug.Log("power " + s);
+        //newStatus.restart();
     }
     public static void KillEnemy(EnemyStats enemy)
     {

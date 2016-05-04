@@ -43,7 +43,7 @@ MonoBehaviour:
   ManaOrHealth: 0
   ManaPrefab: {fileID: 415200, guid: 84b8fc9584bfdad45b38ba6cc46a410c, type: 2}
   HealthPrefab: {fileID: 441080, guid: 2f562b6815740a6458cbdd70a22b0850, type: 2}
-  Chances: 5
+  Chances: 3
   heightOfSpawn: 1.5
 --- !u!1001 &100100000
 Prefab:

@@ -51,15 +51,6 @@ public class Spell : MonoBehaviour {
             else{
                 Debug.Log("Not Enough Mana!");
             }
-            
-            /* if (hit.collider != null)
-             {
-                 Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x + spellDistance, playerPos.y), Color.red);
-             }
-             else
-             {
-                 Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x + spellDistance, playerPos.y), Color.black);
-             }*/
         }
         else
         {
@@ -73,19 +64,6 @@ public class Spell : MonoBehaviour {
             {
                 Debug.Log("Not Enough Mana!");
             }
-
-            //player facing to the left.
-            
-            
-            
-            /*if (hit.collider != null)
-            {
-                Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x - spellDistance, playerPos.y), Color.red);
-            }
-            else
-            {
-                Debug.DrawLine(SpellPosition, new Vector2(SpellPosition.x - spellDistance, playerPos.y), Color.black);
-            }*/
         }
     }
 }

@@ -4,7 +4,7 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 	public bool withinAttackRange = false;
 	public bool attacking = false;
 	public bool playerTakesDamage = false;
-	public int damage = 5;
+	private int damage = 5;
 	private Collider2D collide;
 
 	void OnTriggerEnter2D(Collider2D col)
@@ -31,6 +31,11 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 
 	}
 
+    void Start()
+    {
+        EnemyStats character = this.gameObject.transform.parent.gameObject.GetComponent<EnemyStats>();
+        damage = character.status.damage;
+    }
 
 		
 	void Update()
@@ -43,7 +48,6 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 		if (playerTakesDamage && collide != null && collide.CompareTag("Player"))
 		{
 			collide.SendMessageUpwards("damagePlayer", damage);
-			//Debug.Log("Attack msg sent to Player");
 			playerTakesDamage = false;
 		}
 			

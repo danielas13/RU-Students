@@ -6,12 +6,18 @@ public class MoveFireBall : MonoBehaviour {
 
     public int speed = 20;
     public int duration = 2;
-    public int damage = 1;    //damage of an attack.
     public int range = 2;
     public List<GameObject> targets = new List<GameObject>();
 
+    private int damage = 2;
+
+
     // Use this for initialization
     void Start () {
+        GameObject character = GameObject.FindGameObjectWithTag("Player");
+        Stats player = character.GetComponent<Stats>();
+        damage = player.status.spellpower;
+
         GameObject[] totalTargets = GameObject.FindGameObjectsWithTag("enemy");
         if (totalTargets != null)
         {
@@ -36,7 +42,7 @@ public class MoveFireBall : MonoBehaviour {
                         EnemyStats enemy = targets[i].GetComponent<EnemyStats>();
                         if (enemy != null)
                         {
-                            Debug.Log("ATTACKED AN ENEMY WITH SPELL");
+                            Debug.Log("Spell did : " + damage + " damage.");
                             enemy.damageEnemy(damage);
                             Destroy(this.gameObject);
                         }
