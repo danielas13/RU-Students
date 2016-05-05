@@ -11,6 +11,10 @@ TagManager:
   - background
   - Ground
   - Chest
+  - MovingTrap
+  - TimedTrap
+  - StatusSpawn
+  - Loot
   layers:
   - Default
   - TransparentFX

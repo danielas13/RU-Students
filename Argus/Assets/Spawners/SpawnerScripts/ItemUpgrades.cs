@@ -7,6 +7,8 @@ public class ItemUpgrades : MonoBehaviour {
     public Transform SpawnObject;       //Object that will be spawned if RandomSpawn is set to True.
 
     public Transform ArmorPrefab;
+    public Transform manaRestorePrefab;
+    public Transform healthRestorePrefab;
     public int Chances = 6;             //the higher this integer is. The less chance there is of upgrade spawn.
     public float heightOfSpawn = 1f;
 
@@ -25,7 +27,7 @@ public class ItemUpgrades : MonoBehaviour {
         if (RandomSpawn)
         {
             Instantiate(SpawnObject, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);//Destroy(this.gameObject);
         }
         else
         {
@@ -35,9 +37,19 @@ public class ItemUpgrades : MonoBehaviour {
             if(calculate == 1)
             {
                 Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
+            if (calculate == 2)
+            {
+                Instantiate(manaRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+                this.gameObject.SetActive(false);//Destroy(this.gameObject);
+            }
+            if (calculate == 3)
+            {
+                Instantiate(healthRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+                this.gameObject.SetActive(false);//Destroy(this.gameObject);
+            }
+            this.gameObject.SetActive(false);//Destroy(this.gameObject);
         }
     }
 

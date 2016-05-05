@@ -37,7 +37,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 100034}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -57,7 +57,9 @@ MonoBehaviour:
   RandomSpawn: 0
   SpawnObject: {fileID: 0}
   ArmorPrefab: {fileID: 448068, guid: 4d6eda8394355b54cb4e6e1612908b8d, type: 2}
-  Chances: 4
+  manaRestorePrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
+  healthRestorePrefab: {fileID: 441080, guid: 2f562b6815740a6458cbdd70a22b0850, type: 2}
+  Chances: 6
   heightOfSpawn: 1
 --- !u!1001 &100100000
 Prefab:

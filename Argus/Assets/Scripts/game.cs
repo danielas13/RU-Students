@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class game : MonoBehaviour {
     public static game gm;
     public GameObject DeadState = null;
     public bool isPlayerDead = false;
     private GameObject player = null;
+    public List<GameObject> ItemSpawners = new List<GameObject>();
+
 
     void Start()
     {
@@ -16,6 +19,16 @@ public class game : MonoBehaviour {
         if(gm == null)
         {
             gm = GameObject.FindGameObjectWithTag("game").GetComponent<game>();
+        }
+
+
+        GameObject[] ItemSpawns = GameObject.FindGameObjectsWithTag("Chest");
+        if (ItemSpawns != null)
+        {
+            for (int i = 0; i < ItemSpawns.Length; i++)
+            {
+                ItemSpawners.Add(ItemSpawns[i]);
+            }
         }
     }
 
@@ -69,5 +82,50 @@ public class game : MonoBehaviour {
         x.indicator.SetHealth(x.status.currentHealth, x.status.maxHealth);
         x.indicator.SetMana(x.status.currentMana, x.status.maxMana);
         x.indicator.SetArmor(x.status.armor);
+
+        //Restarting the moving traps.
+        GameObject[] totalMoving = GameObject.FindGameObjectsWithTag("MovingTrap");
+        if (totalMoving != null)
+        {
+            for (int i = 0; i < totalMoving.Length; i++)
+            {
+                totalMoving[i].GetComponent<restartMovingTrap>().restart();
+            }
+        }
+        
+
+       //Restarting the Timed traps
+       GameObject[] totalTimed = GameObject.FindGameObjectsWithTag("TimedTrap");
+        if (totalTimed != null)
+        {
+            for (int i = 0; i < totalTimed.Length; i++)
+            {
+                totalTimed[i].GetComponent<TimedSpikeTrapScript>().restart();
+            }
+        }
+        //Destroying all upgrades/items on the map.
+        GameObject[] totalItems = GameObject.FindGameObjectsWithTag("Loot");
+        if (totalItems != null)
+        {
+            for (int i = 0; i < totalItems.Length; i++)
+            {
+                Destroy(totalItems[i].gameObject);
+            }
+        }
+        //REseting all Status upgrade spawns.
+        GameObject[] totalUpgrades = GameObject.FindGameObjectsWithTag("StatusSpawn");
+        if (totalUpgrades != null)
+        {
+            for (int i = 0; i < totalUpgrades.Length; i++)
+            {
+                totalUpgrades[i].GetComponent<UpgradeStatus>().Spawn();
+            }
+        }
+
+        
+        for (int i = 0; i < ItemSpawners.Count; i++)
+        {
+            ItemSpawners[i].SetActive(true);
+        }
     }
 }
