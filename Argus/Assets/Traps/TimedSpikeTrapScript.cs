@@ -9,6 +9,8 @@ public class TimedSpikeTrapScript : MonoBehaviour {
     private bool reachedTop = false;
     public bool endlessTrap = false;
     public int trapHealth = 1;
+    public float delay = 2;
+    private float DelayVar = 0;
 
     void Start()
     {
@@ -21,32 +23,44 @@ public class TimedSpikeTrapScript : MonoBehaviour {
 
     void Update()
     {
+
         if(isMoving == true)
         {
-            if(reachedTop == false)
+            if (DelayVar >= delay)
             {
-                if(moved < distance)
+                if (reachedTop == false)
                 {
-                    transform.FindChild("Spikes").transform.Translate(Vector2.up * Time.deltaTime * speed);
-                    moved += Time.deltaTime * speed;
+                    if(moved < distance)
+                    {
+                        transform.FindChild("Spikes").transform.Translate(Vector2.up * Time.deltaTime * speed);
+                        moved += Time.deltaTime * speed;
+                    }
+                    if(moved >= distance)
+                    {
+                        reachedTop = true;
+                    }
                 }
-                if(moved >= distance)
+                if(reachedTop == true)
                 {
-                    reachedTop = true;
-                }
-            }
-            if(reachedTop == true)
-            {
-                transform.FindChild("Spikes").transform.Translate(Vector2.down * Time.deltaTime * speed);
-                moved -= Time.deltaTime * speed;
+                    transform.FindChild("Spikes").transform.Translate(Vector2.down * Time.deltaTime * speed);
+                    moved -= Time.deltaTime * speed;
 
-                if(moved <= 0)
-                {
-                    moved = 0;
-                    reachedTop = false;
-                    isMoving = false;
+                    if(moved <= 0)
+                    {
+                        moved = 0;
+                        reachedTop = false;
+                        isMoving = false;
+                    }
                 }
             }
+            else
+            {
+                DelayVar += Time.deltaTime;
+            }  
+        }
+        else
+        {
+            DelayVar = 0;
         }
     }
 

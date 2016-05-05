@@ -20,17 +20,19 @@ public class MoveFireBall : MonoBehaviour {
 
     }
 
-    void OnCollisonEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
+        
         Debug.Log("Collison " + col.name);
         if (col.isTrigger != true && col.gameObject.CompareTag("enemy"))
         {
-            Debug.Log("git deddd");
+           // Debug.Log("git deddd");
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
+            Destroy(this.gameObject);
         }
         if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Wall Collision");
+            //Debug.Log("Wall Collision");
             Destroy(this.gameObject);
         }
 
