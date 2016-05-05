@@ -127,7 +127,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 5.6297493, y: -0.6093788}
   serializedVersion: 2
@@ -146,7 +146,6 @@ MonoBehaviour:
   speed: 20
   duration: 2
   damage: 5
-  range: 2
 --- !u!120 &12000836
 LineRenderer:
   m_ObjectHideFlags: 1
