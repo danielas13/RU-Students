@@ -52,8 +52,8 @@ public class CastMultipleSpells : MonoBehaviour {
     }
     void CastFireBall()
     {
-        Vector2 SpellPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 playerPos = player.transform.position;
+        //Vector2 SpellPosition = new Vector2(transform.position.x, transform.position.y);
+        //Vector2 playerPos = player.transform.position;
         //RaycastHit2D hit = Physics2D.Raycast(SpellPosition, new Vector2(SpellPosition.x - playerPos.x, SpellPosition.y - playerPos.y), spellDistance, NotHit
         
         Instantiate(FirePrefab, transform.position, transform.rotation );

@@ -48,8 +48,8 @@ public class FloatingEnemyScript : MonoBehaviour {
         RaycastHit2D rayToPlayer = Physics2D.Raycast(enemyPos, calculateAngle, aggroRange, aggroLayers);
 
         Vector2 trackPosition = new Vector2(transform.position.x, transform.position.y);
-        RaycastHit2D hitDown = Physics2D.Raycast(trackPosition, new Vector2(0, -1), fallDistance, NotHit);
-        RaycastHit2D hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
+        //RaycastHit2D hitDown = Physics2D.Raycast(trackPosition, new Vector2(0, -1), fallDistance, NotHit);
+        //RaycastHit2D hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
 
         //Check if the unit should enter chase mode.
         if (rayToPlayer.collider != null)
