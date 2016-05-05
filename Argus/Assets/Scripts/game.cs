@@ -7,6 +7,7 @@ public class game : MonoBehaviour {
     public GameObject DeadState = null;
     public bool isPlayerDead = false;
     private GameObject player = null;
+    private float deadTimer = 2;
     public List<GameObject> ItemSpawners = new List<GameObject>();
 
 
@@ -54,10 +55,20 @@ public class game : MonoBehaviour {
     void Update()
     {
         //manual respawn for the player.
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
             respawn();
+        }*/
+        if (isPlayerDead)
+        {
+            deadTimer -= Time.deltaTime;
+            if (deadTimer <= 0)
+            {
+                respawn();
+                deadTimer = 2;
+            }
         }
+
     }
     void respawn()
     {
