@@ -729,7 +729,6 @@ MonoBehaviour:
     m_Bits: 1280
   FirePrefab: {fileID: 477560, guid: cfcc22532540a7c42ad588a0bfacd08a, type: 2}
   spellDistance: 15
---- !u!114 &11430738
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

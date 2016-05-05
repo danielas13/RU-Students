@@ -13,6 +13,7 @@ GameObject:
   - 61: {fileID: 6145338}
   - 95: {fileID: 9509860}
   - 114: {fileID: 11472200}
+  - 50: {fileID: 5060144}
   m_Layer: 9
   m_Name: FloatingEnemy
   m_TagString: enemy
@@ -210,7 +211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &194698
 GameObject:
   m_ObjectHideFlags: 1
@@ -246,7 +247,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.311544, y: 3.535494, z: 0}
+  m_LocalPosition: {x: -9.33, y: 5.22, z: 0.53}
   m_LocalScale: {x: 0.59, y: 0.59, z: 1}
   m_Children:
   - {fileID: 484464}
@@ -408,6 +409,23 @@ Transform:
   - {fileID: 444818}
   m_Father: {fileID: 430832}
   m_RootOrder: 0
+--- !u!50 &5060144
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101912}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6145338
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -513,8 +531,8 @@ MonoBehaviour:
   NotHit:
     serializedVersion: 2
     m_Bits: 1280
-  FirePrefab: {fileID: 493620, guid: 480c1c59d193bb34297602381c9d67a6, type: 2}
-  spellDistance: 1000
+  FirePrefab: {fileID: 440642, guid: ca5a093e3ad23804e9a036772b533577, type: 2}
+  spellDistance: 10
 --- !u!212 &21219558
 SpriteRenderer:
   m_ObjectHideFlags: 1
