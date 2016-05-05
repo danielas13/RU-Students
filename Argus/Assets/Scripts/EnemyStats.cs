@@ -17,6 +17,7 @@ public class EnemyStats : MonoBehaviour {
     //function that damages the current enemy.
     public void damageEnemy(int damage)
     {
+        
         this.status.currentHealth -= damage;                    //add the damage.
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {

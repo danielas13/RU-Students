@@ -26,7 +26,6 @@ public class MoveFireBall : MonoBehaviour {
         Debug.Log("Collison " + col.name);
         if (col.isTrigger != true && col.gameObject.CompareTag("enemy"))
         {
-           // Debug.Log("git deddd");
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
             Destroy(this.gameObject);
         }
