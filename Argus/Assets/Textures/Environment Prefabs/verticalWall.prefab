@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 443756}
   - 212: {fileID: 21277132}
   - 61: {fileID: 6105254}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: verticalWall
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.199936, y: 3.611897, z: -3.1365626}
+  m_LocalPosition: {x: -28.19, y: 3.64, z: -3.21}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}

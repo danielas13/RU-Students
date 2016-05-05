@@ -7,7 +7,7 @@ public class MoveFireBall : MonoBehaviour {
     public int speed = 20;
     public int duration = 2;
     public int range = 2;
-    public List<GameObject> targets = new List<GameObject>();
+    
 
     private int damage = 2;
 
@@ -18,40 +18,53 @@ public class MoveFireBall : MonoBehaviour {
         Stats player = character.GetComponent<Stats>();
         damage = player.status.spellpower;
 
-        GameObject[] totalTargets = GameObject.FindGameObjectsWithTag("enemy");
-        if (totalTargets != null)
+    }
+
+    void OnCollisonEnter2D(Collider2D col)
+    {
+        Debug.Log("Collison " + col.name);
+        if (col.isTrigger != true && col.gameObject.CompareTag("enemy"))
         {
-            for (int i = 0; i < totalTargets.Length; i++)
-            {
-                targets.Add(totalTargets[i]);
-            }
+            Debug.Log("git deddd");
+            col.gameObject.SendMessageUpwards("damageEnemy", damage);
+        }
+        if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Wall Collision");
+            Destroy(this.gameObject);
         }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (targets != null)
-        {
-            for (int i = 0; i < targets.Count; i++)
-            {
-                if (targets[i] != null)
-                {
-                    if (Vector2.Distance(targets[i].transform.position, transform.position) < range)
-                    {
-                        EnemyStats enemy = targets[i].GetComponent<EnemyStats>();
-                        if (enemy != null)
-                        {
-                            Debug.Log("Spell did : " + damage + " damage.");
-                            enemy.damageEnemy(damage);
-                            Destroy(this.gameObject);
-                        }
-                    }
-                }
-            }
-        }
+    // Update is called once per frame
+    void Update () {
+
+
+
 
         transform.Translate(Vector3.right * Time.deltaTime * speed);
-        Destroy(this.gameObject,duration);
+        Destroy(this.gameObject, duration);
+
+
+        /*if (targets != null)
+          {
+              for (int i = 0; i < targets.Count; i++)
+              {
+                  if (targets[i] != null)
+                  {
+                      if (Vector2.Distance(targets[i].transform.position, transform.position) < range)
+                      {
+                          EnemyStats enemy = targets[i].GetComponent<EnemyStats>();
+                          if (enemy != null)
+                          {
+                              Debug.Log("Spell did : " + damage + " damage.");
+                              enemy.damageEnemy(damage);
+                              Destroy(this.gameObject);
+                          }
+                      }
+                  }
+              }
+          }*/
+
+
     }
 }
