@@ -764,7 +764,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966526
   fallDistance: 1
-  collideDistance: 0.5
+  collideDistance: 1.5
   direction: -1
   aggroRange: 5
   aggroLayers:
