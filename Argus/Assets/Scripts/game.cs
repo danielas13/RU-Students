@@ -89,7 +89,7 @@ public class game : MonoBehaviour {
         {
             for (int i = 0; i < totalMoving.Length; i++)
             {
-                totalMoving[i].GetComponent<restartMovingTrap>().restart();
+                totalMoving[i].GetComponent<MoveTrap>().restart();
             }
         }
         

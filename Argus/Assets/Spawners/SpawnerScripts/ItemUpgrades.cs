@@ -26,7 +26,7 @@ public class ItemUpgrades : MonoBehaviour {
     {
         if (RandomSpawn)
         {
-            Instantiate(SpawnObject, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, -1f), transform.rotation);
+			Instantiate(SpawnObject, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
             this.gameObject.SetActive(false);//Destroy(this.gameObject);
         }
         else
@@ -36,17 +36,17 @@ public class ItemUpgrades : MonoBehaviour {
             //Debug.Log(calculate);
             if(calculate == 1)
             {
-                Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, -1f), transform.rotation);
+				Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
                 this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
             if (calculate == 2)
             {
-                Instantiate(manaRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn,-1f), transform.rotation);
+				Instantiate(manaRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn,transform.position.z-3f), transform.rotation);
                 this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
             if (calculate == 3)
             {
-                Instantiate(healthRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, -1f), transform.rotation);
+				Instantiate(healthRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
                 this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
             this.gameObject.SetActive(false);//Destroy(this.gameObject);
