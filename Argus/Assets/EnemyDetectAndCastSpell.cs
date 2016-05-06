@@ -3,7 +3,7 @@ using System.Collections;
 public class EnemyDetectAndCastSpell : MonoBehaviour {
 	public LayerMask NotHit;
 	public Transform FirePrefab;
-	public float spellDistance = 1000;
+	public float spellDistance = 15;
 	GameObject character;
 	private float cooldown = 3;
 
@@ -22,7 +22,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 		{
 			character = GameObject.FindGameObjectWithTag("Player");
 		}
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(character.transform.position.x - transform.position.x, 0), Mathf.Infinity, NotHit);
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(character.transform.position.x - transform.position.x, 0), spellDistance, NotHit);
 		//Debug.DrawLine(transform.position, new Vector2(transform.position.x - spellDistance, character.transform.position.y), Color.red);
 		if (hit.collider != null && cooldown < 0)
 		{
