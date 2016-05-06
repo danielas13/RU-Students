@@ -639,8 +639,8 @@ MonoBehaviour:
     gainedMana: 0
     gainedDamage: 0
     gainedSpellpower: 0
-    damage: 3
-    spellpower: 4
+    damage: 2
+    spellpower: 3
     armor: 0
   indicator: {fileID: 11442762, guid: 1022f9df6a09d10489e027637c5339e1, type: 2}
 --- !u!114 &11432748

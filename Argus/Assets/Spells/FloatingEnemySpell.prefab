@@ -205,10 +205,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee68eb65e9d555d41b203c3a04153801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  duration: 2
-  damage: 1
-  range: 2
+  speed: 15
+  duration: 3
+  damage: 3
+  range: 3
 --- !u!198 &19804884
 ParticleSystem:
   m_ObjectHideFlags: 1
