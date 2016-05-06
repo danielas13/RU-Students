@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    currentHealth: 2
+    currentHealth: 3
     damage: 3
     spellpower: 3
   restoreSpawnChance: 10

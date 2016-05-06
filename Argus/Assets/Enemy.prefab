@@ -739,8 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    currentHealth: 4
-    damage: 2
+    currentHealth: 6
+    damage: 3
     spellpower: 3
   restoreSpawnChance: 10
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}

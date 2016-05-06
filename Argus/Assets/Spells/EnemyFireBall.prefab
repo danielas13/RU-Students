@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   duration: 2
-  damage: 3
+  damage: 4
 --- !u!120 &12000836
 LineRenderer:
   m_ObjectHideFlags: 1
