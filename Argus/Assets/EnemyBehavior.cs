@@ -25,7 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         player = GameObject.Find("Player");
         trackPoint = transform.FindChild("trackPoint");
-
+        Physics2D.IgnoreLayerCollision(8, 9, true);
     }
 
     // Update is called once per frame
