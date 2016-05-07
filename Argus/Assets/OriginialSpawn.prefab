@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462290}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OriginialSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
