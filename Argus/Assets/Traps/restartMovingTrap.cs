@@ -3,11 +3,11 @@ using System.Collections;
 
 public class restartMovingTrap : MonoBehaviour {
 
-    private Vector2 originalPos;
+    //private Vector2 originalPos;
     // Use this for initialization
     void Start()
     {
-        originalPos = transform.position;
+        //originalPos = transform.position;
     }
 
     public void restart()

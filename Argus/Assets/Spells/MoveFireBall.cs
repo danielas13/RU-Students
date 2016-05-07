@@ -18,6 +18,8 @@ public class MoveFireBall : MonoBehaviour {
         Stats player = character.GetComponent<Stats>();
         damage = player.status.spellpower;
 
+        Physics2D.IgnoreLayerCollision(10, 12, false);
+
     }
 
     void OnTriggerEnter2D(Collider2D col)
