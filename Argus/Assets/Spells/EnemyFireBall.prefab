@@ -11,9 +11,9 @@ GameObject:
   - 120: {fileID: 12000836}
   - 114: {fileID: 11400708}
   - 61: {fileID: 6133736}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: EnemyFireBall
-  m_TagString: AttackColliders
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 446690}
   - 198: {fileID: 19810530}
   - 199: {fileID: 19998734}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445428}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: SCFX_Burn_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 491960}
   - 108: {fileID: 10821976}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - 4: {fileID: 420666}
   - 198: {fileID: 19802496}
   - 199: {fileID: 19955084}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Fire (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

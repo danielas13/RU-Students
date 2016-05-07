@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class Stats : MonoBehaviour {
 
@@ -8,7 +7,6 @@ public class Stats : MonoBehaviour {
     [System.Serializable]
     public class PlayerStats
     {
-        
         public int maxHealth = 10;
         public int maxMana = 10;
 
@@ -30,11 +28,6 @@ public class Stats : MonoBehaviour {
         public int armor = 0;
     }
     //The global status object.
-    public GameObject combatText;
-    public Color HealColor;
-    public Color DamageColor;
-    public Color ManaSpendColor;
-    public Color ManaRegainColor;
     public PlayerStats status = new PlayerStats();
     //indicator for the health/mana bar.
     public StatusIndicator indicator;
@@ -89,15 +82,12 @@ public class Stats : MonoBehaviour {
 
     public void damagePlayer(int damage)
     {
-        skelAnim.SetBool("hit", true);
-        combatText.GetComponent<Text>().text = "-" + damage.ToString();
-        combatText.GetComponent<Text>().color = DamageColor;
-        Instantiate(combatText, transform.position, transform.rotation);
+		skelAnim.SetBool ("hit", true);
 
         //Reducing the player´s health.
         //If there is no armor. Damage the players health directly.
 
-        if (this.status.armor > 0)
+        if(this.status.armor > 0)
         {
             this.status.armor -= 1;
 
@@ -142,11 +132,8 @@ public class Stats : MonoBehaviour {
     //increases the player's health.
     public void restoreHealth(int heal)
     {
-        combatText.GetComponent<Text>().text = "+" + heal.ToString();
-        combatText.GetComponent<Text>().color = HealColor;
-        Instantiate(combatText, transform.position, transform.rotation);
         //Increasing the player´s health. Checking for overheal.
-        if ((this.status.currentHealth+heal) > this.status.maxHealth)
+        if((this.status.currentHealth+heal) > this.status.maxHealth)
         {
             this.status.currentHealth = this.status.maxHealth;
         }
@@ -165,10 +152,6 @@ public class Stats : MonoBehaviour {
     //increases the player's health.
     public void restoreMana(int heal)
     {
-        combatText.GetComponent<Text>().text = "+" + heal.ToString();
-        combatText.GetComponent<Text>().color = ManaRegainColor;
-
-        Instantiate(combatText, transform.position, transform.rotation);
         //Increasing the player´s health. Checking for overheal.
         if ((this.status.currentMana + heal) > this.status.maxMana)
         {
@@ -201,7 +184,8 @@ public class Stats : MonoBehaviour {
 
 	//increasing the player´s max mana.
 	public void increaseMaxMana(int mana)
-    { 
+	{
+        Debug.Log("Went inside here");
 		this.status.maxMana += mana;
         this.status.gainedMana += mana;
 
@@ -231,10 +215,6 @@ public class Stats : MonoBehaviour {
     //Spend someof the player's mana.
     public void spendMana(int cost)
     {
-        combatText.GetComponent<Text>().text = "-" + cost.ToString();
-        combatText.GetComponent<Text>().color = ManaSpendColor;
-
-        Instantiate(combatText, transform.position, transform.rotation);
         this.status.currentMana -= cost;
 
         //Mana indicator.

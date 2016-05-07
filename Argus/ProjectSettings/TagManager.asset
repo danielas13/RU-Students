@@ -15,8 +15,6 @@ TagManager:
   - TimedTrap
   - StatusSpawn
   - Loot
-  - AttackColliders
-  - Door
   layers:
   - Default
   - TransparentFX
@@ -31,9 +29,9 @@ TagManager:
   - Ground
   - Ladder
   - Spell
-  - Door
-  - Visuals
-  - Logic
+  - 
+  - 
+  - 
   - 
   - 
   - 

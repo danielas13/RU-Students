@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 413404}
   - 61: {fileID: 6161068}
   - 114: {fileID: 11423286}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: TextOnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11497638}
   - 222: {fileID: 22262116}
   - 114: {fileID: 11414206}
-  m_Layer: 15
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 487538}
   - 114: {fileID: 11461348}
   - 61: {fileID: 6147568}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: TargetDoor
-  m_TagString: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ GameObject:
   - 33: {fileID: 3303768}
   - 23: {fileID: 2316588}
   - 65: {fileID: 6518792}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: fi_vil_door04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - 33: {fileID: 3339666}
   - 23: {fileID: 2371550}
   - 65: {fileID: 6585982}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: fi_vil_door04
   m_TagString: Untagged
   m_Icon: {fileID: 0}

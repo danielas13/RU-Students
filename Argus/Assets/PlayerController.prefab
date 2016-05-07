@@ -1158,7 +1158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045340360c1bfcd44855afa7f25e20a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatText: {fileID: 0}
   status:
     maxHealth: 10
     maxMana: 10
