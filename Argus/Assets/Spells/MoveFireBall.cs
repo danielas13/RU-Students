@@ -31,7 +31,7 @@ public class MoveFireBall : MonoBehaviour {
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
             Destroy(this.gameObject);
         }
-        if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
+        if (col.gameObject.CompareTag("Ground"))
         {
             //Debug.Log("Wall Collision");
             Destroy(this.gameObject);
