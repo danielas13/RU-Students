@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 447216}
   - 198: {fileID: 19804884}
   - 199: {fileID: 19995106}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fire (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445594}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SCFX_Burn_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 487406}
   - 198: {fileID: 19865356}
   - 199: {fileID: 19972026}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 473524}
   - 108: {fileID: 10884056}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,9 +76,9 @@ GameObject:
   - 212: {fileID: 21211632}
   - 114: {fileID: 11424590}
   - 61: {fileID: 6113414}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FloatingEnemySpell
-  m_TagString: Untagged
+  m_TagString: AttackColliders
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
