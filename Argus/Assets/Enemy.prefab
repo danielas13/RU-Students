@@ -823,8 +823,12 @@ MonoBehaviour:
     damage: 3
     spellpower: 3
   restoreSpawnChance: 10
+  scoreSpawnChance: 5
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
   healthPrefab: {fileID: 444032, guid: 2419eb9aa25f1664b9288a916ab5be2e, type: 2}
+  scorePrefab: {fileID: 440172, guid: d32e1293ad2038043936ed3e31082c6d, type: 2}
+  MaxScore: 20
+  MinScore: 10
 --- !u!114 &11460772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,14 +865,14 @@ MonoBehaviour:
   movementVelocity: 1
   NotHit:
     serializedVersion: 2
-    m_Bits: 4294966526
+    m_Bits: 4294956286
   fallDistance: 1.5
   collideDistance: 0.5
   direction: 1
   aggroRange: 8
   aggroLayers:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 34048
   chasingVelocity: 6
 --- !u!114 &11479818
 MonoBehaviour:

@@ -18,7 +18,12 @@ public class EnemyStats : MonoBehaviour {
     private static readonly System.Random random = new System.Random();     //Create a read only random variable.
     public enemyStats status = new enemyStats();
     public int restoreSpawnChance = 10;
-    public Transform manaPrefab, healthPrefab;//mana and health prefabs.
+    public int scoreSpawnChance = 5;
+    public Transform manaPrefab, healthPrefab, scorePrefab;//mana and health prefabs.
+
+    public int MaxScore = 20;
+    public int MinScore = 10;
+
     //function that damages the current enemy.
     void Start()
     {
@@ -35,7 +40,7 @@ public class EnemyStats : MonoBehaviour {
 
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
-            int chance = random.Next(1, restoreSpawnChance + 1);//Generate a random number in order to calculate if a restore item drops.
+            int chance = random.Next(1, restoreSpawnChance + 3);//Generate a random number in order to calculate if a restore item drops.
             if(chance < 3)                                      //checks if an item spawns.
             {
                 if(chance == 1)                                 //the restore item spawned is a health increase item.
@@ -47,6 +52,21 @@ public class EnemyStats : MonoBehaviour {
                     Instantiate(manaPrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
                 }
             }
+            chance = random.Next(1, scoreSpawnChance + 1);
+            if(chance < 3)
+            {
+                if(chance == 1 || chance == 2)
+                {
+                    Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x+0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+                    GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
+                }
+            }
+            /*
+            else if (chance == 3)
+            {
+                GameObject newObj = (GameObject)Instantiate(scorePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+                newObj.
+           }*/
             game.KillEnemy(this);
         }
     }

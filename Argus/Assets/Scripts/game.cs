@@ -43,8 +43,8 @@ public class game : MonoBehaviour {
     }
     public static void KillEnemy(EnemyStats enemy)
     {
-        Stats playerStatus = gm.player.GetComponent<Stats>();
-        playerStatus.increaseScore(1);
+        //Stats playerStatus = gm.player.GetComponent<Stats>();
+        //playerStatus.increaseScore(1);
         Destroy(enemy.gameObject);
     }
 
