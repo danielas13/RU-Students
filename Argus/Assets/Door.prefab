@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 478478}
   - 114: {fileID: 11439662}
   - 61: {fileID: 6167748}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 435390}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - 33: {fileID: 3327000}
   - 23: {fileID: 2304974}
   - 65: {fileID: 6569960}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: fi_vil_door04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 33: {fileID: 3329158}
   - 23: {fileID: 2308552}
   - 65: {fileID: 6508034}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: fi_vil_door04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 405796}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DoorParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - 33: {fileID: 3326992}
   - 23: {fileID: 2331270}
   - 65: {fileID: 6552480}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: fi_vil_door04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - 33: {fileID: 3301180}
   - 23: {fileID: 2324702}
   - 65: {fileID: 6563958}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: fi_vil_door04 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - 4: {fileID: 474936}
   - 114: {fileID: 11439436}
   - 61: {fileID: 6141000}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ChildDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
