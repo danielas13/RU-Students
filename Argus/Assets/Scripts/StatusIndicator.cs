@@ -40,7 +40,7 @@ public class StatusIndicator : MonoBehaviour {
     }
     public void SetScore(int score)
     {
-        scoreText.text = "Score " + score;
+        scoreText.text = "Soul Essences " + score;
     }
 
     public void SetArmor(int armor)

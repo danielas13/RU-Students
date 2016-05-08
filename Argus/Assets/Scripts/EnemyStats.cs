@@ -17,7 +17,7 @@ public class EnemyStats : MonoBehaviour {
     public Color DamageColor;     //The color of the floating combat text that will be created when damage is taken.
     private static readonly System.Random random = new System.Random();     //Create a read only random variable.
     public enemyStats status = new enemyStats();
-    public int restoreSpawnChance = 10;
+    public int restoreSpawnChance = 8;
     public int scoreSpawnChance = 5;
     public Transform manaPrefab, healthPrefab, scorePrefab;//mana and health prefabs.
 
@@ -52,7 +52,7 @@ public class EnemyStats : MonoBehaviour {
                     Instantiate(manaPrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
                 }
             }
-            chance = random.Next(1, scoreSpawnChance + 1);
+            chance = random.Next(1, scoreSpawnChance + 2);
             if(chance < 3)
             {
                 if(chance == 1 || chance == 2)

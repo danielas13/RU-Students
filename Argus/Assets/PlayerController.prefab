@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294903039
 --- !u!114 &11446794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1174,6 +1174,7 @@ MonoBehaviour:
     gainedSpellpower: 0
     damage: 3
     spellpower: 4
+    score: 0
     armor: 0
   indicator: {fileID: 0}
 --- !u!114 &11491818

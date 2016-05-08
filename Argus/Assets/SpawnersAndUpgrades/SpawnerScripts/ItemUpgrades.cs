@@ -9,8 +9,13 @@ public class ItemUpgrades : MonoBehaviour {
     public Transform ArmorPrefab;
     public Transform manaRestorePrefab;
     public Transform healthRestorePrefab;
+    public Transform scorePrefab;
     public int Chances = 6;             //the higher this integer is. The less chance there is of upgrade spawn.
+    public int scoreChances = 3;
     public float heightOfSpawn = 1f;
+
+    public int MaxScore = 5;
+    public int MinScore = 2;
 
     private int calculate = 0;
 
@@ -31,24 +36,30 @@ public class ItemUpgrades : MonoBehaviour {
         }
         else
         {
-            calculate = random.Next(1, Chances + 1);           //randomise a number between 1 add the chances variable.
+            calculate = random.Next(1, Chances + 3);           //randomise a number between 1 add the chances variable.
 
             //Debug.Log(calculate);
             if(calculate == 1)
             {
 				Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
-                this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
-            if (calculate == 2)
+            else if (calculate == 2)
             {
 				Instantiate(manaRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn,transform.position.z-3f), transform.rotation);
-                this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
-            if (calculate == 3)
+            else if (calculate == 3)
             {
 				Instantiate(healthRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
-                this.gameObject.SetActive(false);//Destroy(this.gameObject);
             }
+            calculate = random.Next(1, scoreChances + 1);
+            {
+                if(calculate == 2 || calculate == 1)
+                {
+                    Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+                    GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
+                }
+            }
+
             this.gameObject.SetActive(false);//Destroy(this.gameObject);
         }
     }
