@@ -373,6 +373,7 @@ GameObject:
   - 95: {fileID: 9553138}
   - 114: {fileID: 11430878}
   - 114: {fileID: 11492702}
+  - 114: {fileID: 11466456}
   m_Layer: 9
   m_Name: EnemyCaster
   m_TagString: enemy
@@ -805,6 +806,30 @@ MonoBehaviour:
   aggroLayers:
     serializedVersion: 2
     m_Bits: 1280
+  chasingVelocity: 6
+--- !u!114 &11466456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74da391571975f64780618fe53e8c4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDirection: 1
+  movementVelocity: 1
+  NotHit:
+    serializedVersion: 2
+    m_Bits: 0
+  fallDistance: 1
+  collideDistance: 0.5
+  direction: -1
+  aggroRange: 5
+  aggroLayers:
+    serializedVersion: 2
+    m_Bits: 0
   chasingVelocity: 6
 --- !u!114 &11469858
 MonoBehaviour:
