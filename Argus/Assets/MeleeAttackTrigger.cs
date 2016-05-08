@@ -10,7 +10,6 @@ public class MeleeAttackTrigger : MonoBehaviour
 
             GameObject character = GameObject.FindGameObjectWithTag("Player");
             Stats player = character.GetComponent<Stats>();
-            Debug.Log("Spell did : " + player.status.damage + " damage.");
             col.SendMessageUpwards("damageEnemy", player.status.damage);
             //Debug.Log("Attack msg sent to enemy");
         }

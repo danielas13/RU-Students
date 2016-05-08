@@ -14,7 +14,6 @@ public class EnemyStatusIndicator : MonoBehaviour {
     {
         float value = (float)currentHealth / maxHealth;         //calculate the current health status.
         healthBar.localScale = new Vector3(value, 1f, 1f);      //Change the scale of the healthbar.
-        Debug.Log("CUUR: " + currentHealth + "max: " + maxHealth);
         //healthText.text = currentHealth + "/" + maxHealth;
     }
 }
