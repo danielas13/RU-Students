@@ -630,6 +630,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045340360c1bfcd44855afa7f25e20a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatText: {fileID: 102658, guid: 3bd2703969c08fa4385dc3b8645a6aa6, type: 2}
+  HealColor: {r: 0, g: 0, b: 0, a: 0}
+  DamageColor: {r: 0, g: 0, b: 0, a: 0}
+  ManaSpendColor: {r: 0, g: 0, b: 0, a: 0}
+  ManaRegainColor: {r: 0, g: 0, b: 0, a: 0}
   status:
     maxHealth: 10
     maxMana: 10
@@ -641,6 +646,7 @@ MonoBehaviour:
     gainedSpellpower: 0
     damage: 2
     spellpower: 3
+    score: 0
     armor: 0
   indicator: {fileID: 11442762, guid: 1022f9df6a09d10489e027637c5339e1, type: 2}
 --- !u!114 &11432748
