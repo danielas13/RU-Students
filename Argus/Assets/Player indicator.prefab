@@ -170,7 +170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 'Soul Essence: 0'
 --- !u!114 &11409248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +263,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5
+  m_Text: 0
 --- !u!114 &11432776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -565,8 +565,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.3, y: -127.4}
-  m_SizeDelta: {x: 52, y: 16.3}
+  m_AnchoredPosition: {x: 124.1, y: -119.54}
+  m_SizeDelta: {x: 100, y: 16.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22474712
 RectTransform:

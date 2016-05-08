@@ -17,6 +17,8 @@ TagManager:
   - Loot
   - AttackColliders
   - Door
+  - Ladder
+  - Store
   layers:
   - Default
   - TransparentFX

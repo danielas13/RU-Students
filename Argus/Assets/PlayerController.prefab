@@ -1172,8 +1172,8 @@ MonoBehaviour:
     gainedMana: 0
     gainedDamage: 0
     gainedSpellpower: 0
-    damage: 3
-    spellpower: 4
+    damage: 2
+    spellpower: 3
     score: 0
     armor: 0
   indicator: {fileID: 0}

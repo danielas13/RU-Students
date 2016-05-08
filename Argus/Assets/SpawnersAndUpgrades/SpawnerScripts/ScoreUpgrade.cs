@@ -12,7 +12,7 @@ public class ScoreUpgrade : MonoBehaviour {
         {
             GameObject character = GameObject.FindGameObjectWithTag("Player");          //find the player object.
             Stats st = character.gameObject.GetComponent<Stats>();                      //Access the player stats.
-            st.increaseScore(10);                                                       //increase the player Health.
+            st.increaseScore(150);                                                       //increase the player Health.
             Destroy(this.gameObject);                                                   //Destroy this object.
         }
     }

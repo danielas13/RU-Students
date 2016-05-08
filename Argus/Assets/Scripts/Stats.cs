@@ -64,6 +64,7 @@ public class Stats : MonoBehaviour {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
             indicator.SetMana(status.currentMana, status.maxMana);
             indicator.SetArmor(status.armor);
+            indicator.SetScore(status.score);
         }
     }
 	
@@ -189,7 +190,7 @@ public class Stats : MonoBehaviour {
     //increasing the player´s max health.
     public void increaseMaxHealth(int health)
     {
-        this.status.maxHealth += health;
+        //this.status.maxHealth += health;
         this.status.gainedHealth += health;
 
         //indicator.
@@ -202,7 +203,7 @@ public class Stats : MonoBehaviour {
 	//increasing the player´s max mana.
 	public void increaseMaxMana(int mana)
 	{
-		this.status.maxMana += mana;
+		//this.status.maxMana += mana;
         this.status.gainedMana += mana;
 
         //indicator.
@@ -215,14 +216,14 @@ public class Stats : MonoBehaviour {
     //increasing the player´s spellpower.
     public void increaseSpellpower(int power)
     {
-        this.status.spellpower += power;
+     //   this.status.spellpower += power;
         this.status.gainedSpellpower += power;
     }
 
     //increasing the player´s damage.
     public void increaseDamage(int damage)
     {
-        this.status.damage += damage;
+       // this.status.damage += damage;
         this.status.gainedDamage += damage;
     }
 

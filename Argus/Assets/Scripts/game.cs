@@ -90,6 +90,7 @@ public class game : MonoBehaviour {
         playerStatus.indicator.SetHealth(playerStatus.status.currentHealth, playerStatus.status.maxHealth);
         playerStatus.indicator.SetMana(playerStatus.status.currentMana, playerStatus.status.maxMana);
         playerStatus.indicator.SetArmor(playerStatus.status.armor);
+        playerStatus.indicator.SetScore(0);
 
         //Restarting the moving traps.
         GameObject[] totalMoving = GameObject.FindGameObjectsWithTag("MovingTrap");
