@@ -10,10 +10,16 @@ namespace UnityStandardAssets._2D
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 
+		private Animator skelAnim2; 
+		private Transform skeleton2;
 
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
+			skeleton2 = transform.FindChild("Skeleton_warlord");
+			skelAnim2 = skeleton2.GetComponent<Animator> ();
+			skelAnim2.SetLayerWeight (0,1);
+			skelAnim2.SetLayerWeight (1,0);
         }
 
 
@@ -32,9 +38,20 @@ namespace UnityStandardAssets._2D
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            // Pass all parameters to the character control script.
+			if(h != 0){
+			//	if(skelAnim2.GetLayerWeight(0) != 0 ){
+				skelAnim2.SetLayerWeight (0,0);
+            	skelAnim2.SetLayerWeight (1,1);
+
+			}
+			else{
+				skelAnim2.SetLayerWeight (0,1f);
+				skelAnim2.SetLayerWeight (1,0f);
+			}
+			// Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
             m_Jump = false;
+
         }
     }
 }
