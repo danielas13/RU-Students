@@ -40,9 +40,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RandomSpawn: 0
-  ManaOrHealth: 0
+  MHDS: 0
   ManaPrefab: {fileID: 415200, guid: 84b8fc9584bfdad45b38ba6cc46a410c, type: 2}
   HealthPrefab: {fileID: 441080, guid: 2f562b6815740a6458cbdd70a22b0850, type: 2}
+  DamagePrefab: {fileID: 422278, guid: 7fe89b7b11275a742a3d28b9ed768a7b, type: 2}
+  SpellpowerPrefab: {fileID: 405180, guid: 86481ed24b387c04db42ada7084284be, type: 2}
   Chances: 3
   heightOfSpawn: 1.5
   calculate: 0
