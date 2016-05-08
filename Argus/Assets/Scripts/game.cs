@@ -17,7 +17,7 @@ public class game : MonoBehaviour {
         player = GameObject.Find("Player");
         DeadState.SetActive(false);
 
-        if(gm == null)
+        if (gm == null)
         {
             gm = GameObject.FindGameObjectWithTag("game").GetComponent<game>();
         }
@@ -43,13 +43,9 @@ public class game : MonoBehaviour {
     }
     public static void KillEnemy(EnemyStats enemy)
     {
+        Stats playerStatus = gm.player.GetComponent<Stats>();
+        playerStatus.increaseScore(1);
         Destroy(enemy.gameObject);
-    }
-
-    public Transform playerPrefab, spawn;
-    public void playerRespawn()
-    {
-        //Instantiate(playerPrefab, spawn.position, spawn.rotation);
     }
 
     void Update()
@@ -76,23 +72,24 @@ public class game : MonoBehaviour {
         gm.DeadState.SetActive(false);                                                          //Seting DeadState as active.
         gm.isPlayerDead = false;                                                                //Taging the player as dead.
         gm.player.transform.position = GameObject.Find("OriginialSpawn").transform.position;    //locating the player to the same position as the spawnpoint.
-        Stats x = gm.player.GetComponent<Stats>();                                  
+        Stats playerStatus = gm.player.GetComponent<Stats>();
+        playerStatus.status.score = 0;                                                                     //Reseting the player's score.              
 
         //Assigning the new stats as previous max stats minus half the gained points of damage,health,mana and spellpower.
-        x.status.maxHealth = x.status.maxHealth - (int)Mathf.Floor(x.status.gainedHealth / 2);          
-        x.status.maxMana = x.status.maxMana - (int)Mathf.Floor(x.status.gainedMana / 2);
-        x.status.damage = x.status.damage - (int)Mathf.Floor(x.status.gainedDamage / 2);
-        x.status.spellpower = x.status.spellpower - (int)Mathf.Floor(x.status.gainedSpellpower / 2);
+        playerStatus.status.maxHealth = playerStatus.status.maxHealth - (int)Mathf.Floor(playerStatus.status.gainedHealth / 2);
+        playerStatus.status.maxMana = playerStatus.status.maxMana - (int)Mathf.Floor(playerStatus.status.gainedMana / 2);
+        playerStatus.status.damage = playerStatus.status.damage - (int)Mathf.Floor(playerStatus.status.gainedDamage / 2);
+        playerStatus.status.spellpower = playerStatus.status.spellpower - (int)Mathf.Floor(playerStatus.status.gainedSpellpower / 2);
 
         //Setting the current health and mana values.
-        x.status.currentHealth = x.status.maxHealth;
-        x.status.currentMana = x.status.maxMana;
+        playerStatus.status.currentHealth = playerStatus.status.maxHealth;
+        playerStatus.status.currentMana = playerStatus.status.maxMana;
         //Resets the Gained stats inside the status object.
-        x.resetGained();
+        playerStatus.resetGained();
         //reseting the status indicator.
-        x.indicator.SetHealth(x.status.currentHealth, x.status.maxHealth);
-        x.indicator.SetMana(x.status.currentMana, x.status.maxMana);
-        x.indicator.SetArmor(x.status.armor);
+        playerStatus.indicator.SetHealth(playerStatus.status.currentHealth, playerStatus.status.maxHealth);
+        playerStatus.indicator.SetMana(playerStatus.status.currentMana, playerStatus.status.maxMana);
+        playerStatus.indicator.SetArmor(playerStatus.status.armor);
 
         //Restarting the moving traps.
         GameObject[] totalMoving = GameObject.FindGameObjectsWithTag("MovingTrap");
@@ -133,7 +130,6 @@ public class game : MonoBehaviour {
             }
         }
 
-        
         for (int i = 0; i < ItemSpawners.Count; i++)
         {
             ItemSpawners[i].SetActive(true);

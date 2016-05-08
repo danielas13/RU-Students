@@ -13,6 +13,8 @@ public class StatusIndicator : MonoBehaviour {
     private Text manaText;
     [SerializeField]
     private Text armorText;
+    [SerializeField]
+    private Text scoreText;
 
     // Use this for initialization
     void Start () {
@@ -35,6 +37,10 @@ public class StatusIndicator : MonoBehaviour {
         float value = (float)currentMana / maxMana;             //calculate the current mana status.
         manaBar.localScale = new Vector3(value, 1f, 1f);        //Change the scale of the manabar.
         manaText.text = currentMana + "/" + maxMana;
+    }
+    public void SetScore(int score)
+    {
+        scoreText.text = "Score " + score;
     }
 
     public void SetArmor(int armor)

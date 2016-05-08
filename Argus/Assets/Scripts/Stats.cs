@@ -8,26 +8,26 @@ public class Stats : MonoBehaviour {
     [System.Serializable]
     public class PlayerStats
     {
-        
-        public int maxHealth = 10;
-        public int maxMana = 10;
 
-        public int currentMana = 10;
-        public int currentHealth = 10;
+        public int maxHealth = 10;          //The player's maximum health pool.
+        public int maxMana = 10;            //The player's maximum mana pool.
+
+        public int currentMana = 10;        //The player's current mana.
+        public int currentHealth = 10;      //The player's current health.
 
         [HideInInspector]
-        public int gainedHealth = 0;
+        public int gainedHealth = 0;        //the health gained in the current run.
         [HideInInspector]
-        public int gainedMana = 0;
+        public int gainedMana = 0;          //The mana gained in the current run.
         [HideInInspector]
-        public int gainedDamage = 0;
+        public int gainedDamage = 0;        //The damage gained in the current run.
         [HideInInspector]
-        public int gainedSpellpower = 0;
+        public int gainedSpellpower = 0;    //the spellpower gianed in the current run.
 
-        public int damage = 3;
-        public int spellpower = 4;
-
-        public int armor = 0;
+        public int damage = 3;              //melee damage of the character.
+        public int spellpower = 4;          //Damage done with spells.
+        public int score = 0;               //Player score.
+        public int armor = 0;               //One hit protection count.
     }
     //The global status object.
     public GameObject combatText;
@@ -201,7 +201,7 @@ public class Stats : MonoBehaviour {
 
 	//increasing the player´s max mana.
 	public void increaseMaxMana(int mana)
-    { 
+	{
 		this.status.maxMana += mana;
         this.status.gainedMana += mana;
 
@@ -224,6 +224,17 @@ public class Stats : MonoBehaviour {
     {
         this.status.damage += damage;
         this.status.gainedDamage += damage;
+    }
+
+    //increasing the player's score.
+    public void increaseScore(int amount)
+    {
+        this.status.score += amount;
+        //indicator.
+        if (this.indicator != null)
+        {
+            indicator.SetScore(status.score);
+        }
     }
 
 

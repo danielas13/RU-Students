@@ -6,7 +6,7 @@ public class FloatText : MonoBehaviour {
     public int speed = 20;
     public int duration = 2;
     public int range = 2;
-    private int damage = 2;
+    //private int damage = 2;
     // Use this for initialization
     void Start () {
 	

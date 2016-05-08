@@ -7,11 +7,11 @@ public class MoveFloatingSpell : MonoBehaviour {
     public int duration = 2;
     public int damage = 1;    //damage of an attack.
     public int range = 2;
-    private GameObject player;
+    //private GameObject player;
     // Update is called once per frame
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void OnTriggerEnter2D(Collider2D col)
