@@ -4,7 +4,7 @@ public class MoveEnemySpell : MonoBehaviour {
 	public int speed = 20;
 	public int duration = 2;
 	public int damage = 5;    //damage of an attack
-	private GameObject player;
+	//private GameObject player;
     // Update is called once per frame
 
 
@@ -27,7 +27,7 @@ public class MoveEnemySpell : MonoBehaviour {
     }
     void Start()
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
+		//player = GameObject.FindGameObjectWithTag("Player");
 	}
 	void Update () {
 		/*if (player == null)

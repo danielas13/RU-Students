@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnableText : MonoBehaviour {
     Transform Canvas;
-    float counter = 0;
+    //float counter = 0;
     bool FirstEnter = true;
     public float Lifetime = 3;
     bool isAlive = true;
