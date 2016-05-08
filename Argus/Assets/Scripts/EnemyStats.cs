@@ -29,10 +29,8 @@ public class EnemyStats : MonoBehaviour {
         
         combatText.GetComponent<Text>().text = "-" + damage.ToString();
         combatText.GetComponent<Text>().color = DamageColor;
-        Debug.Log("The damage: " + damage + "The health: " + this.status.currentHealth);
         Instantiate(combatText, transform.position, transform.rotation);
         this.status.currentHealth -= damage;                    //add the damage.
-        Debug.Log("The health: " + this.status.currentHealth);
         indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
 
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.

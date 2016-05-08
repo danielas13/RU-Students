@@ -25,7 +25,7 @@ public class MoveFireBall : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         
-        Debug.Log("Collison " + col.name);
+
         if (col.isTrigger != true && col.gameObject.CompareTag("enemy"))
         {
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
