@@ -11,6 +11,7 @@ public class UpgradeStatus : MonoBehaviour {
     public Transform HealthPrefab;
     public Transform DamagePrefab;
     public Transform SpellpowerPrefab;
+    public Transform ScorePrefab;
 
     public int Chances = 4;             //the higher this integer is. The less chance there is of upgrade spawn.
     public float heightOfSpawn = 1f;    //The height that the object will spawn above 
@@ -29,10 +30,10 @@ public class UpgradeStatus : MonoBehaviour {
         if (!RandomSpawn)
         {
             // System.Random rnd = new System.Random();        //Create a Random object.
-            calculate = random.Next(1, Chances + 4);           //randomise a number between 1 add the chances variable.
+            calculate = random.Next(1, Chances + 10);           //randomise a number between 1 add the chances variable.
 
             //check if the randomised number represents a mana upgrade or player upgrade.
-            if (calculate < 7)
+            if (calculate < 10)
             {
                 if (calculate == 1 || calculate == 3)                         //The upgrade is a health upgrade.
                 {
@@ -53,6 +54,11 @@ public class UpgradeStatus : MonoBehaviour {
                 {
                     //Create a new spellpowerUpgrade using the spawner's position plus the height of heightofSpawn variable.
                     Instantiate(SpellpowerPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
+                }
+                else if (calculate == 7 || calculate == 8 || calculate == 9)                    //the upgrade is a spellpower upgrade.
+                {
+                    //Create a new spellpowerUpgrade using the spawner's position plus the height of heightofSpawn variable.
+                    Instantiate(ScorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z), transform.rotation);
                 }
             }
         }
