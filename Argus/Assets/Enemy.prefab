@@ -3177,7 +3177,7 @@ MonoBehaviour:
   movementVelocity: 1.85
   NotHit:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 48384
   fallDistance: 1.5
   collideDistance: 0.5
   direction: 1

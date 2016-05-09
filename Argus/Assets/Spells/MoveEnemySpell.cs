@@ -4,6 +4,7 @@ public class MoveEnemySpell : MonoBehaviour {
 	public int speed = 20;
 	public int duration = 2;
 	public int damage = 5;    //damage of an attack
+	public float initDelay = 1.6f;
 	//private GameObject player;
     // Update is called once per frame
 
@@ -40,7 +41,11 @@ public class MoveEnemySpell : MonoBehaviour {
 			playerStat.damagePlayer(damage);
 			Destroy(this.gameObject);
 		}*/
+
+		initDelay = initDelay - Time.deltaTime;
+		if(initDelay < 0){
 		transform.Translate(Vector3.right * Time.deltaTime * speed);
 		Destroy(this.gameObject, duration);
+		}
 	}
 }
