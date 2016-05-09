@@ -36,7 +36,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 			skelAnim2.SetBool ("MidSwing", true);
 			skelAnim2.SetTrigger("Swing1");
 			int attackID = randomAttackIDGenerator.Next (0, 4);      
-			Debug.Log (attackID);
+			//Debug.Log (attackID);
 			skelAnim2.SetInteger ("AttackID", attackID);
         }
 
