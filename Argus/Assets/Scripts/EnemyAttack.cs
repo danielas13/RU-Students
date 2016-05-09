@@ -10,10 +10,11 @@ public class EnemyAttack : MonoBehaviour
 
 	public Animator knightAnim; // Animator for Enemy 
 	private Transform knight;
+	private static readonly System.Random randomAttackIDGenerator = new System.Random();   
 
 	void Start()
 	{
-		knight = transform.FindChild("Knight");
+		knight = transform.FindChild("Dismounted_Knight");
 		knightAnim = knight.GetComponent<Animator> ();
 	}
 	void Update()
@@ -30,7 +31,13 @@ public class EnemyAttack : MonoBehaviour
 		{
 			AttackTriggerComponent.attacking = true;
 			attackTimer = attackCooldown;
-			//knightAnim.SetBool("attack", AttackTriggerComponent.attacking);
+
+			// Make running attack animation happen
+			int KnightAttackID = randomAttackIDGenerator.Next (0, 9); 
+			Debug.Log (KnightAttackID);
+			knightAnim.SetInteger ("KnightAttackID", KnightAttackID); //must happen inorder
+			//knightAnim.SetInteger ("KnightAttackID", 0);
+			knightAnim.SetTrigger ("Swing");
 		}
 
 		if (AttackTriggerComponent.attacking) 	// If we are already attacking
