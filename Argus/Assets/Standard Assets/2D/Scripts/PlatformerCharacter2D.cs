@@ -18,9 +18,12 @@ namespace UnityStandardAssets._2D
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
 		private Animator skelAnim; 
+		private Animator skelAnim2; 
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 		private Transform skeleton;
+		private Transform skeleton2;
+		private Transform lights;
         private bool knockback = false;
         private float xDiff;
         private float timer = 1;
@@ -32,8 +35,18 @@ namespace UnityStandardAssets._2D
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+
+
+			// old skelebro
 			skeleton = transform.FindChild("Skeleton");
 			skelAnim = skeleton.GetComponent<Animator> ();
+
+			//new skelebro
+			skeleton2 = transform.FindChild("Skeleton_warlord");
+			skelAnim2 = skeleton2.GetComponent<Animator> ();
+
+			lights = transform.FindChild ("FrontLight");
+
         }
 
         void knockBackPlayer(Vector3 pos)
@@ -87,13 +100,26 @@ namespace UnityStandardAssets._2D
             }
             m_Anim.SetBool("Ground", m_Grounded);
 
-            // Set the vertical animation
+            // Set the vertical animation++++++
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
+		void Update(){ // per frame updates
+//			if (m_FacingRight){
+//				skeleton2.transform.rotation = Quaternion.Euler(0,90,0);
+//
+//			}
+//			else{
+//				skeleton2.transform.rotation = Quaternion.Euler(0,-90,0);
+//
+//			}
+		}
 
         public void Move(float move, bool crouch, bool jump)
         {
+
+
+
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
             {
@@ -116,15 +142,27 @@ namespace UnityStandardAssets._2D
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
+				if(m_Grounded == true)
+				{
+					skelAnim2.SetFloat ("Movementspeed", Mathf.Abs(move));
+				}
+
+				/*
 				if(Math.Abs(move)  > 0.1f && m_Grounded == true) {
 					//skelAnim.SetFloat("Speed", Mathf.Abs(move));
 					skelAnim.SetBool ("walk", true);
+					skelAnim2.SetBool ("Running", true);
+					//skelAnim2.SetFloat ("XMovement", move);
+					//skelAnim2.Play("Skeleton_Run", -1);
+					//skelAnim2.SetBool ("Skeleton_Run", true);
+
 				}
 				else{
-					skelAnim.SetBool ("walk", false);
+					//skelAnim2.SetFloat ("XMovement", move);
+					skelAnim2.SetBool ("Running", false);
 
 				}
-
+			*/
 
                 // Move the character
                 m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
@@ -149,19 +187,50 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				skelAnim2.SetTrigger("Jump");
             }
+
+			if(m_Grounded){
+				skelAnim2.SetBool ("IsJumping", false);
+			}
+			else{
+				skelAnim2.SetBool ("IsJumping", true);
+			}
+			
         }
 
 
         private void Flip()
         {
+
+//			else
+//				transform.rotation = Vector3.left;
             // Switch the way the player is labelled as facing.
+
+
+
+
             m_FacingRight = !m_FacingRight;
 
-            // Multiply the player's x local scale by -1.
+//			if (m_FacingRight){
+//				skeleton2.transform.rotation = Quaternion.Euler(0,90,0);
+//
+//			}
+//			else{+
+//				skeleton2.transform.rotation = Quaternion.Euler(0,-90,0);
+//
+//			}
+
+             //Multiply the player's x local scale by -1.
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+
+			//lights.transform.rotation = Quaternion.Euler(0,180,0);
+			if (m_FacingRight)	lights.transform.localEulerAngles = new Vector3(15,270,0);
+			else lights.transform.localEulerAngles = new Vector3(15,-270,0);
+
+
         }
     }
 }

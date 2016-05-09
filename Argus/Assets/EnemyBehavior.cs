@@ -20,12 +20,21 @@ public class EnemyBehavior : MonoBehaviour
     private bool chase = false;
     public float chasingVelocity = 6f;
 
+
+	private Animator KnightAnimator; 
+	private Transform Knight;
+
     // Use this for initialization
     void Start()
     {
         player = GameObject.Find("Player");
         trackPoint = transform.FindChild("trackPoint");
         Physics2D.IgnoreLayerCollision(8, 9, true);
+
+		Knight = transform.FindChild("Dismounted_Knight");
+		KnightAnimator = Knight.GetComponent<Animator> ();
+
+
     }
 
     // Update is called once per frame
@@ -77,8 +86,10 @@ public class EnemyBehavior : MonoBehaviour
             chase = false;
             transform.FindChild("EnemyMeleeAttackTrigger").GetComponent<EnemyMeleeAttackTriggerScript>().withinAttackRange = false;
         }
-        if (!this.chase)
+		if (!this.chase) // NOT CHASING
         {
+			KnightAnimator.SetBool("Patrolling", true);
+
             if (hitDown.collider != null && hitForwards.collider == null)
             {
 
@@ -90,7 +101,7 @@ public class EnemyBehavior : MonoBehaviour
              }
             transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction);
         }
-        else
+        else 
         {
             //The player is to the right.
             if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.5f){

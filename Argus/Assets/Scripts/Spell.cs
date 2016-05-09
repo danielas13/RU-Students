@@ -7,6 +7,9 @@ public class Spell : MonoBehaviour {
     public LayerMask NotHit;
     //private float spellDistance = 5;
     Transform spellPoint;
+	private Transform skeleton2;
+	private Animator skelAnim2; 
+
 
     public Transform FirePrefab;
 
@@ -16,6 +19,8 @@ public class Spell : MonoBehaviour {
         {
             Debug.LogError("No FirePoint?");
         }
+		skeleton2 = transform.FindChild("Skeleton_warlord");
+		skelAnim2 = skeleton2.GetComponent<Animator> ();
     }
 
 	// Use this for initialization
@@ -28,6 +33,7 @@ public class Spell : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             CastFireBall();
+			skelAnim2.SetTrigger("CastSpell");
         }
 	}
 
