@@ -91,6 +91,7 @@ public class Stats : MonoBehaviour {
 
     public void damagePlayer(int damage)
     {
+
         skelAnim.SetBool("hit", true);
         combatText.GetComponent<Text>().text = "-" + damage.ToString();
         combatText.GetComponent<Text>().color = DamageColor;

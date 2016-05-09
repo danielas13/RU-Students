@@ -38,17 +38,6 @@ namespace UnityStandardAssets._2D
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
-//			if(h != 0){
-//				skelAnim2.SetLayerWeight (0,0);
-//            	skelAnim2.SetLayerWeight (1,1);
-//
-//			}
-//			else{
-//				if (!(skelAnim2.GetCurrentAnimatorStateInfo(1).IsName("2H_skeleton_swing_mid_right"))) { //allow the animation to finish before devalue-ing the layer
-//					skelAnim2.SetLayerWeight (0, 1f);
-//					skelAnim2.SetLayerWeight (1, 0f);
-//				}
-//			}
 			// Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump);
             m_Jump = false;

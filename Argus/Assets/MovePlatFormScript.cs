@@ -72,14 +72,6 @@ public class MovePlatFormScript : MonoBehaviour {
             {
                 player.transform.Translate(Vector2.left * Time.deltaTime * speed);
             }
-            /*else if (dir == 2)
-            {
-                player.transform.Translate(Vector2.up * Time.deltaTime * speed);
-            }
-           /* else if (dir == 3)
-            {
-                player.transform.Translate(Vector2.down * Time.deltaTime * speed);
-            }*/
 
         }
 

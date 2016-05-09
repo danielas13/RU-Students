@@ -76,6 +76,7 @@ GameObject:
   - 120: {fileID: 12069834}
   - 114: {fileID: 11477182}
   - 61: {fileID: 6110658}
+  - 50: {fileID: 5009882}
   m_Layer: 12
   m_Name: FireBall
   m_TagString: AttackColliders
@@ -129,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.199627, y: 3.2189207, z: -6.3}
+  m_LocalPosition: {x: -76.479576, y: -0.18882461, z: -6.3}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 439962}
@@ -147,6 +148,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 439962}
   m_RootOrder: 2
+--- !u!50 &5009882
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171178}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6110658
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -158,9 +176,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 6.595001, y: 1.7442226}
+  m_Offset: {x: 0.104522705, y: -0.16477332}
   serializedVersion: 2
-  m_Size: {x: 3.2158704, y: 2.3128223}
+  m_Size: {x: 3.6401367, y: 2.7370405}
 --- !u!108 &10835334
 Light:
   m_ObjectHideFlags: 1
