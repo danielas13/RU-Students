@@ -2631,10 +2631,10 @@ MonoBehaviour:
   ManaSpendColor: {r: 0, g: 0.5034485, b: 1, a: 1}
   ManaRegainColor: {r: 0, g: 1, b: 1, a: 1}
   status:
-    maxHealth: 100
+    maxHealth: 10000
     maxMana: 10
     currentMana: 10
-    currentHealth: 100
+    currentHealth: 10000
     gainedHealth: 0
     gainedMana: 0
     gainedDamage: 0
