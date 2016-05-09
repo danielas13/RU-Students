@@ -30,7 +30,7 @@ public class EnemyAttack : MonoBehaviour
 		{
 			AttackTriggerComponent.attacking = true;
 			attackTimer = attackCooldown;
-			knightAnim.SetBool("attack", AttackTriggerComponent.attacking);
+			//knightAnim.SetBool("attack", AttackTriggerComponent.attacking);
 		}
 
 		if (AttackTriggerComponent.attacking) 	// If we are already attacking
