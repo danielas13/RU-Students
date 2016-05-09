@@ -13,7 +13,6 @@ public class MainStoreSpawner : MonoBehaviour {
             {
                 if (EnteredStore == false)
                 {
-                    Debug.Log("WEnt in here");
                     Instantiate(store, transform.position, transform.rotation);
                     EnteredStore = true;
                 }

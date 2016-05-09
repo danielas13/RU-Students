@@ -3115,14 +3115,14 @@ MonoBehaviour:
   movementVelocity: 1
   NotHit:
     serializedVersion: 2
-    m_Bits: 4294956286
+    m_Bits: 4294923518
   fallDistance: 1.5
   collideDistance: 0.5
   direction: 1
   aggroRange: 8
   aggroLayers:
     serializedVersion: 2
-    m_Bits: 34048
+    m_Bits: 1280
   chasingVelocity: 6
 --- !u!114 &11479818
 MonoBehaviour:

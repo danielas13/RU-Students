@@ -48,7 +48,7 @@ public class StoreController : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             buttons[SelectedButton].GetComponent<Button>().image.color = Color.cyan;
-            if (SelectedButton == 4)
+            if (SelectedButton == buttons.Length-1)
             {
                 SelectedButton = 0;
                 buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
@@ -65,7 +65,7 @@ public class StoreController : MonoBehaviour {
             buttons[SelectedButton].GetComponent<Button>().image.color = Color.cyan;
             if (SelectedButton == 0)
             {
-                SelectedButton = 4;
+                SelectedButton = buttons.Length - 1;
                 buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
             }
             else
@@ -110,7 +110,6 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > healthcost)
             {
                 playerStatus.status.score -= healthcost;
-                playerStatus.status.maxHealth += 1;
                playerStatus.status.gainedHealth -= 1;
                 RestartText();
                playerStatus.restart();
@@ -130,7 +129,6 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > manaCost)
             {
                 playerStatus.status.score -= manaCost;
-                playerStatus.status.maxMana += 1;
                 playerStatus.status.gainedMana -= 1;
                 RestartText();
                 playerStatus.restart();
@@ -149,7 +147,6 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > damageCost)
             {
                 playerStatus.status.score -= damageCost;
-                playerStatus.status.damage += 1;
                 playerStatus.status.gainedDamage -= 1;
                 RestartText();
                 playerStatus.restart();
@@ -168,7 +165,6 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > spellpowerCost)
             {
                 playerStatus.status.score -= spellpowerCost;
-                playerStatus.status.spellpower += 1;
                 playerStatus.status.gainedSpellpower -= 1;
                 RestartText();
                 playerStatus.restart();
@@ -189,9 +185,9 @@ public class StoreController : MonoBehaviour {
         AvailablePower.text = "Available Spellpower " + playerStatus.status.gainedSpellpower;
         AvailableDamage.text = "Available Damage " + playerStatus.status.gainedDamage;
 
-        HealthCost.text = "Cost  " + (100 + (playerStatus.status.maxHealth-10)*15);
-        ManaCost.text = "Cost  " + (150 + (playerStatus.status.maxMana-10) * 20);
-        DamageCost.text = "Cost  " + (400 + (playerStatus.status.damage-2) * 40);
-        SpellpowerCost.text = "Cost  " + (300 + (playerStatus.status.spellpower-3) * 40);
+        HealthCost.text = "Cost  " + (100 + (playerStatus.status.maxHealth-10 - playerStatus.status.gainedHealth) *15);
+        ManaCost.text = "Cost  " + (150 + (playerStatus.status.maxMana-10 - playerStatus.status.gainedMana) * 20);
+        DamageCost.text = "Cost  " + (400 + (playerStatus.status.damage-2 - playerStatus.status.gainedDamage) * 40);
+        SpellpowerCost.text = "Cost  " + (300 + (playerStatus.status.spellpower-3 - playerStatus.status.gainedSpellpower) * 40);
     }
 }

@@ -726,6 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShopCanvas: {fileID: 107664}
   buttons:
+  - {fileID: 180104}
   - {fileID: 181718}
   - {fileID: 172780}
   - {fileID: 164554}

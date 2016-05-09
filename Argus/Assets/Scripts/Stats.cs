@@ -28,6 +28,7 @@ public class Stats : MonoBehaviour {
         public int spellpower = 4;          //Damage done with spells.
         public int score = 0;               //Player score.
         public int armor = 0;               //One hit protection count.
+        public int deathCount = 0;
     }
     //The global status object.
     public GameObject combatText;
@@ -126,6 +127,7 @@ public class Stats : MonoBehaviour {
         //Checking if the player is dead.
         if (this.status.currentHealth <= 0)
         {
+            status.deathCount += 1;
             game.KillPlayer();
         }
     }
@@ -190,7 +192,7 @@ public class Stats : MonoBehaviour {
     //increasing the player´s max health.
     public void increaseMaxHealth(int health)
     {
-        //this.status.maxHealth += health;
+        this.status.maxHealth += health;
         this.status.gainedHealth += health;
 
         //indicator.
@@ -203,7 +205,7 @@ public class Stats : MonoBehaviour {
 	//increasing the player´s max mana.
 	public void increaseMaxMana(int mana)
 	{
-		//this.status.maxMana += mana;
+		this.status.maxMana += mana;
         this.status.gainedMana += mana;
 
         //indicator.
@@ -216,14 +218,14 @@ public class Stats : MonoBehaviour {
     //increasing the player´s spellpower.
     public void increaseSpellpower(int power)
     {
-     //   this.status.spellpower += power;
+        this.status.spellpower += power;
         this.status.gainedSpellpower += power;
     }
 
     //increasing the player´s damage.
     public void increaseDamage(int damage)
     {
-       // this.status.damage += damage;
+        this.status.damage += damage;
         this.status.gainedDamage += damage;
     }
 

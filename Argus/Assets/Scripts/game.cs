@@ -10,9 +10,17 @@ public class game : MonoBehaviour {
     private float deadTimer = 2;
     public List<GameObject> ItemSpawners = new List<GameObject>();
 
+    public GameObject playerStatsScreenObj;                 //The player status screens.
+    private GameObject playerStatsScreen;
+    private bool statScreenUp = false;
+
 
     void Start()
     {
+
+        playerStatsScreen = GameObject.Find(Instantiate(playerStatsScreenObj, transform.position, transform.rotation).name);
+        playerStatsScreen.SetActive(false);
+
         DeadState = GameObject.Find("DeadState");
         player = GameObject.Find("Player");
         DeadState.SetActive(false);
@@ -65,6 +73,22 @@ public class game : MonoBehaviour {
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (statScreenUp)
+            {
+                
+                playerStatsScreen.SetActive(false);
+                statScreenUp = false;
+            }
+            else
+            {
+                playerStatsScreen.SetActive(true);
+                gm.playerStatsScreen.GetComponent<PlayerStatScreenController>().RestartText();
+                statScreenUp = true;
+            }
+        }
+
     }
     void respawn()
     {
@@ -76,10 +100,10 @@ public class game : MonoBehaviour {
         playerStatus.status.score = 0;                                                                     //Reseting the player's score.              
 
         //Assigning the new stats as previous max stats minus half the gained points of damage,health,mana and spellpower.
-        playerStatus.status.maxHealth = playerStatus.status.maxHealth - (int)Mathf.Floor(playerStatus.status.gainedHealth / 2);
-        playerStatus.status.maxMana = playerStatus.status.maxMana - (int)Mathf.Floor(playerStatus.status.gainedMana / 2);
-        playerStatus.status.damage = playerStatus.status.damage - (int)Mathf.Floor(playerStatus.status.gainedDamage / 2);
-        playerStatus.status.spellpower = playerStatus.status.spellpower - (int)Mathf.Floor(playerStatus.status.gainedSpellpower / 2);
+        playerStatus.status.maxHealth = playerStatus.status.maxHealth - playerStatus.status.gainedHealth;
+        playerStatus.status.maxMana = playerStatus.status.maxMana - playerStatus.status.gainedMana;
+        playerStatus.status.damage = playerStatus.status.damage - playerStatus.status.gainedDamage;
+        playerStatus.status.spellpower = playerStatus.status.spellpower - playerStatus.status.gainedSpellpower;
 
         //Setting the current health and mana values.
         playerStatus.status.currentHealth = playerStatus.status.maxHealth;
@@ -101,7 +125,6 @@ public class game : MonoBehaviour {
 				totalMoving[i].GetComponent<restartMovingTrap>().restart();
             }
         }
-        
 
        //Restarting the Timed traps
        GameObject[] totalTimed = GameObject.FindGameObjectsWithTag("TimedTrap");
