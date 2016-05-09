@@ -41,6 +41,7 @@ public class StoreController : MonoBehaviour {
         }*/
         playerStatus = GameObject.Find("Player").GetComponent<Stats>();
         RestartText();
+        buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
     }
 
     void Update()
