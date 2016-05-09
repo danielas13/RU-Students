@@ -88,7 +88,9 @@ public class EnemyBehavior : MonoBehaviour
         }
 		if (!this.chase) // NOT CHASING
         {
+			KnightAnimator.SetBool("Chasing", false);
 			KnightAnimator.SetBool("Patrolling", true);
+
 
             if (hitDown.collider != null && hitForwards.collider == null)
             {
@@ -103,6 +105,9 @@ public class EnemyBehavior : MonoBehaviour
         }
         else 
         {
+			KnightAnimator.SetBool("Chasing", true);
+			KnightAnimator.SetBool("Patrolling", false);
+
             //The player is to the right.
             if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.5f){
                 if(playerPos.x > enemyPos.x)
