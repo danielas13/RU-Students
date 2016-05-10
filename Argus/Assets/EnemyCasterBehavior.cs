@@ -18,6 +18,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
     GameObject player;
     private bool chase = false;
     public float chasingVelocity = 6f;
+	public bool castingSpell = false;
 
     // Use this for initialization
     void Start()
@@ -50,88 +51,109 @@ public class EnemyCasterBehavior : MonoBehaviour {
         RaycastHit2D hitDown = Physics2D.Raycast(trackPosition, new Vector2(0, -1), fallDistance, NotHit);
         RaycastHit2D hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
 
-        //Check if the unit should enter chase mode.
-        if (rayToPlayer.collider != null)
-        {
-            if (rayToPlayer.collider.gameObject.layer == 10)
-            {
-                //Debug.DrawLine(transform.position, player.transform.position, Color.red);
-            }
-            else if (rayToPlayer.collider.gameObject.layer == 8)
-            {
-                this.chase = true;
-                //Debug.DrawLine(transform.position, player.transform.position, Color.blue);
-            }
-            else
-            {
-                this.chase = false;
-            }
-        }
-        else
-        {
-            this.chase = false;
-        }
+		if(castingSpell){
+			if (playerPos.x > enemyPos.x)   //The player is to the right
+			{
+				if (direction != 1)
+				{
+					direction = -direction;
+					transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+				}
+			}
+			else if (playerPos.x < enemyPos.x)
+			{
+				if (direction == 1)
+				{
+					direction = -direction;
+					transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+				}
+			}
+		} 
+		else {
+			//Check if the unit should enter chase mode.
+			if (rayToPlayer.collider != null)
+			{
+				if (rayToPlayer.collider.gameObject.layer == 10)
+				{
+					//Debug.DrawLine(transform.position, player.transform.position, Color.red);
+				}
+				else if (rayToPlayer.collider.gameObject.layer == 8)
+				{
+					this.chase = true;
+					//Debug.DrawLine(transform.position, player.transform.position, Color.blue);
+				}
+				else
+				{
+					this.chase = false;
+				}
+			}
+			else
+			{
+				this.chase = false;
+			}
 
-        if (!this.chase)
-        {
-            if (hitDown.collider != null && hitForwards.collider == null)
-            {
+			if (!this.chase)
+			{
+				if (hitDown.collider != null && hitForwards.collider == null)
+				{
 
-            }
-            else
-            {
-                direction = -direction;
-                transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-            }
-            transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction);
-        }
-        else
-        {
-            //The player is to the right.
-            if ((Mathf.Abs(playerPos.x - enemyPos.x)) < 0.1f)
-            {
-                if (playerPos.x > enemyPos.x)
-                {
-                    if (direction != 1)
-                    {
-                        direction = -direction;
-                        transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-                    }
-                }
-                else if (playerPos.x < enemyPos.x)
-                {
-                    if (direction == 1)
-                    {
-                        direction = -direction;
-                        transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-                    }
-                }
+				}
+				else
+				{
+					direction = -direction;
+					transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+				}
+				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction);
+			}
+			else
+			{
+				//The player is to the right.
+				if ((Mathf.Abs(playerPos.x - enemyPos.x)) < 0.1f)
+				{
+					if (playerPos.x > enemyPos.x)
+					{
+						if (direction != 1)
+						{
+							direction = -direction;
+							transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+						}
+					}
+					else if (playerPos.x < enemyPos.x)
+					{
+						if (direction == 1)
+						{
+							direction = -direction;
+							transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+						}
+					}
 
-            }
-            else if (playerPos.x < enemyPos.x)
-            {
-                if (direction != 1)
-                {
-                    direction = -direction;
-                    transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-                }
-                if (hitDown.collider != null && hitForwards.collider == null)
-                {
-                    transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
-                }
-            }
-            else if (playerPos.x > enemyPos.x)
-            {
-                if (direction == 1)
-                {
-                    direction = -direction;
-                    transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-                }
-                if (hitDown.collider != null && hitForwards.collider == null)
-                {
-                    transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
-                }
-            }
-        }
+				}
+				else if (playerPos.x < enemyPos.x)
+				{
+					if (direction != 1)
+					{
+						direction = -direction;
+						transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+					}
+					if (hitDown.collider != null && hitForwards.collider == null)
+					{
+						transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
+					}
+				}
+				else if (playerPos.x > enemyPos.x)
+				{
+					if (direction == 1)
+					{
+						direction = -direction;
+						transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+					}
+					if (hitDown.collider != null && hitForwards.collider == null)
+					{
+						transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
+					}
+				}
+			}
+		}
+
     }
 }
