@@ -4,7 +4,7 @@ public class MoveEnemySpell : MonoBehaviour {
 	public int speed = 20;
 	public int duration = 2;
 	public int damage = 5;    //damage of an attack
-	public float initDelay = 1.6f;
+	public float initDelay = 0f;
 	//private GameObject player;
     // Update is called once per frame
 

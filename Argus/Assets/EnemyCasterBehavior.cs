@@ -52,6 +52,9 @@ public class EnemyCasterBehavior : MonoBehaviour {
         RaycastHit2D hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
 
 		if(castingSpell){
+			Quaternion preCastingQuaternion = transform.rotation;
+			Vector3 preCastingPosition = transform.position;
+			//Tell to be idle
 			if (playerPos.x > enemyPos.x)   //The player is to the right
 			{
 				if (direction != 1)
