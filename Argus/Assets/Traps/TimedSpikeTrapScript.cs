@@ -6,62 +6,82 @@ public class TimedSpikeTrapScript : MonoBehaviour {
     public float distance = 1.5f;
     public float speed = 2f;
     private float moved = 0f;
-    private bool reachedTop = false;
-    public bool endlessTrap = false;
-    public int trapHealth = 1;
-    public float delay = 2;
+    private bool reachedTop = false;            //The spikes will start flowing down.
+    public bool endlessTrap = false;            //The trap has endless iterations. Will NOT work by itself.
+    public bool SelfRepeat = false;             //The Trap will start as soon as it finished by itself.
+    public float StartingDelay = 0;             //The delay at the begining of the trap.
+    public int trapHealth = 1;                  //Iterations for the trap if endless is false.
+    public float delay = 2;                     //Delay between each iteration.
     private float DelayVar = 0;
 
     void Start()
     {
-        if (endlessTrap)
+        if (endlessTrap || SelfRepeat)      //Make the spikes endless if that is the case. plus set their health to the trap's
         {
             transform.FindChild("TimedSpikeTrapTrigger").GetComponent<TimedSpikeTrapTrigger>().Endless = true;
+        }
+        if (SelfRepeat)
+        {
+            isMoving = true;
         }
         transform.FindChild("TimedSpikeTrapTrigger").GetComponent<TimedSpikeTrapTrigger>().TimeAlive = trapHealth;
     }
 
     void Update()
     {
-
-        if(isMoving == true)
+        if (StartingDelay <= 0)
         {
-            if (DelayVar >= delay)
+            if (isMoving == true)            //The trap is active
             {
-                if (reachedTop == false)
+                if (DelayVar >= delay)      //Delay counter
                 {
-                    if(moved < distance)
+                    if (reachedTop == false)    //Direction False = going up.
                     {
-                        transform.FindChild("Spikes").transform.Translate(Vector2.up * Time.deltaTime * speed);
-                        moved += Time.deltaTime * speed;
+                        if (moved < distance)        //checking for the distance mvoed.
+                        {
+                            transform.FindChild("Spikes").transform.Translate(Vector2.up * Time.deltaTime * speed);
+                            moved += Time.deltaTime * speed;
+                        }
+                        if (moved >= distance)
+                        {
+                            reachedTop = true;
+                        }
                     }
-                    if(moved >= distance)
+                    if (reachedTop == true)          //The trap is going down.
                     {
-                        reachedTop = true;
+                        transform.FindChild("Spikes").transform.Translate(Vector2.down * Time.deltaTime * speed);
+                        moved -= Time.deltaTime * speed;
+
+                        if (moved <= 0)
+                        {
+                            moved = 0;
+                            reachedTop = false;
+                            if (!SelfRepeat)
+                            {
+                                isMoving = false;
+                            }
+                            else
+                            {
+                                DelayVar = 0;
+                            }
+                        }
                     }
                 }
-                if(reachedTop == true)
+                else
                 {
-                    transform.FindChild("Spikes").transform.Translate(Vector2.down * Time.deltaTime * speed);
-                    moved -= Time.deltaTime * speed;
-
-                    if(moved <= 0)
-                    {
-                        moved = 0;
-                        reachedTop = false;
-                        isMoving = false;
-                    }
+                    DelayVar += Time.deltaTime;
                 }
             }
             else
             {
-                DelayVar += Time.deltaTime;
-            }  
+                DelayVar = 0;
+            }
         }
         else
         {
-            DelayVar = 0;
+            StartingDelay -= Time.deltaTime;
         }
+       
     }
 
     public void restart()

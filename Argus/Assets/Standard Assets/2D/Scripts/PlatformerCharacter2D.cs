@@ -129,9 +129,10 @@ namespace UnityStandardAssets._2D
 
                     if (m_Grounded == true)
                     {
-                        skelAnim2.SetFloat("Movementspeed", Mathf.Abs(move));
+                       // Debug.Log("Grounded");
+                       // skelAnim2.SetFloat("Movementspeed", Mathf.Abs(move));
                     }
-
+                    skelAnim2.SetFloat("Movementspeed", Mathf.Abs(move));
                     // Move the character
                     m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
@@ -151,7 +152,7 @@ namespace UnityStandardAssets._2D
 
                 }
                 // If the player should jump...
-                if (m_Grounded && jump && m_Anim.GetBool("Ground"))
+                if (m_Grounded && jump)
                 {
                     // Add a vertical force to the player.
                     m_Grounded = false;

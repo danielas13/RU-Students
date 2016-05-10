@@ -46,7 +46,7 @@ MonoBehaviour:
   DamagePrefab: {fileID: 422278, guid: 7fe89b7b11275a742a3d28b9ed768a7b, type: 2}
   SpellpowerPrefab: {fileID: 405180, guid: 86481ed24b387c04db42ada7084284be, type: 2}
   ScorePrefab: {fileID: 415668, guid: 4cbb6ada0d121ad4598f057835d314d9, type: 2}
-  Chances: 3
+  Chances: 5
   heightOfSpawn: 1.5
   calculate: 0
 --- !u!1001 &100100000

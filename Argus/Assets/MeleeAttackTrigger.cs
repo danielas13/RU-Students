@@ -5,8 +5,6 @@ public class MeleeAttackTrigger : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D col)
     {
-
-
         if (col.isTrigger != true && col.CompareTag("enemy"))
         {
 
@@ -14,7 +12,7 @@ public class MeleeAttackTrigger : MonoBehaviour
             Stats player = character.GetComponent<Stats>();
             col.SendMessageUpwards("damageEnemy", player.status.damage);
         }
-        else if(col.isTrigger != true && col.CompareTag("Chest"))
+        else if(col.CompareTag("Chest"))
         {
             col.SendMessageUpwards("destroyChest");
         }

@@ -72,8 +72,6 @@ public class MovePlatFormScript : MonoBehaviour {
             {
                 player.transform.Translate(Vector2.left * Time.deltaTime * speed);
             }
-
         }
-
     }
 }
