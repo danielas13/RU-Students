@@ -2367,17 +2367,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11430878, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
-      propertyPath: fallDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11430878, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
-      propertyPath: NotHit.m_Bits
-      value: 15616
-      objectReference: {fileID: 0}
-    - target: {fileID: 22448318, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.28
+    - target: {fileID: 9501680, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
