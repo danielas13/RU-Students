@@ -5937,6 +5937,22 @@ Prefab:
       propertyPath: NotHit.m_Bits
       value: 64768
       objectReference: {fileID: 0}
+    - target: {fileID: 6141282, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
+      propertyPath: m_Offset.x
+      value: 0.15421975
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141282, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
+      propertyPath: m_Offset.y
+      value: 0.09356688
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141282, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
+      propertyPath: m_Size.x
+      value: 1.3084304
+      objectReference: {fileID: 0}
+    - target: {fileID: 6141282, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
+      propertyPath: m_Size.y
+      value: 1.1871338
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
   m_IsPrefabParent: 0
