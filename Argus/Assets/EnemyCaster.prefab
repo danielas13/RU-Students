@@ -1806,7 +1806,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.64, y: -0.28, z: -1.604}
+  m_LocalPosition: {x: -26.28, y: 0.587, z: -1.604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22448318}
@@ -3122,7 +3122,7 @@ MonoBehaviour:
   movementVelocity: 1.85
   NotHit:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 15616
   fallDistance: 1.5
   collideDistance: 1.5
   direction: -1
@@ -3131,6 +3131,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   chasingVelocity: 6
+  castingSpell: 0
 --- !u!114 &11469858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4226,7 +4227,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.05, y: -0.17}
+  m_AnchoredPosition: {x: -1.05, y: -1.28}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
