@@ -99,7 +99,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 
 		/* HORIZONTAL Raycast that attempts to detect the player */
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(character.transform.position.x - transform.position.x, 0), spellDistance, NotHit);
-		//Debug.DrawLine(transform.position, new Vector2(transform.position.x - spellDistance, character.transform.position.y), Color.red);
+		Debug.DrawLine(transform.position, new Vector2(transform.position.x - spellDistance, character.transform.position.y), Color.red);
 
 
 		/* If a player is detected, attempt to cast spell and play the spellcast animation*/

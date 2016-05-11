@@ -45,20 +45,20 @@ namespace UnityStandardAssets._2D
 
         }
 
-        void knockBackPlayer(Vector3 pos)//We need to change this....it is fucked up
+        public void knockBackPlayer(Vector3 pos)//We need to change this....it is fucked up
         {
             knockback = true;
             xDiff = transform.position.x - pos.x;
             if (xDiff < 0)
             {
-                xDiff = -10;
+               	xDiff = -10;
             }
             else
             {
                 xDiff = 10;
             }
 
-         //   transform.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.GetComponent<Rigidbody2D>().velocity.x, 10);
+           transform.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.GetComponent<Rigidbody2D>().velocity.x, 10);
         }
         private void FixedUpdate()
         {
@@ -67,7 +67,7 @@ namespace UnityStandardAssets._2D
                 Vector2 force = new Vector2(xDiff, transform.GetComponent<Rigidbody2D>().velocity.y);
                 if (timer > 0.5f)
                 {
-                    //transform.GetComponent<Rigidbody2D>().velocity = force;
+                    transform.GetComponent<Rigidbody2D>().velocity = force;
                 }
 
                 timer -= Time.deltaTime;
