@@ -15405,6 +15405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  cooldown: 1
 --- !u!114 &11499824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15417,6 +15418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  cooldown: 1
 --- !u!198 &19825932
 ParticleSystem:
   m_ObjectHideFlags: 1

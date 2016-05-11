@@ -8,6 +8,7 @@ public class EnableText : MonoBehaviour {
     public float Lifetime = 3;
     bool isAlive = true;
     private bool moved = false;
+    public bool OnStay = false;
 
     void Awake()
     {
@@ -15,31 +16,55 @@ public class EnableText : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.isTrigger != true && col.CompareTag("Player") && FirstEnter)
+        if (!OnStay)
         {
-            FirstEnter = false;
-            //Vector3 pos = Canvas.position
-            Canvas.Translate(new Vector3(0, 0, -5));
+            if (col.isTrigger != true && col.CompareTag("Player") && FirstEnter)
+            {
+                FirstEnter = false;
+                //Vector3 pos = Canvas.position
+                Canvas.Translate(new Vector3(0, 0, -5));
+            }
         }
-            
+        if (OnStay)
+        {
+            if (col.CompareTag("Player"))
+            {
+                Canvas.Translate(new Vector3(0, 0, -5));
+            }
+        }
+    }
+
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (OnStay)
+        {
+            if (col.CompareTag("Player"))
+            {
+                Canvas.Translate(new Vector3(0, 0, 5));
+            }
+        }
     }
 
     void Update()
     {
-        if(FirstEnter == false){
-            Lifetime -= Time.deltaTime;
-            if (Lifetime < 0)
+        if (!OnStay)
+        {
+            if (FirstEnter == false)
             {
-                isAlive = false;
+                Lifetime -= Time.deltaTime;
+                if (Lifetime < 0)
+                {
+                    isAlive = false;
+                }
+                if (isAlive == false && moved == false)
+                {
+                    Canvas.parent.gameObject.SetActive(false);
+                    //Canvas.Translate(new Vector3(0, 0, 5));
+                    //moved = true;
+                }
             }
-            if (isAlive == false && moved == false)
-            {
-                Canvas.parent.gameObject.SetActive(false);
-                //Canvas.Translate(new Vector3(0, 0, 5));
-                //moved = true;
-            }
-        }
-        
+        } 
     }
 }
 /*
