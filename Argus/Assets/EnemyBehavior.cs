@@ -203,7 +203,7 @@ namespace  UnityStandardAssets._2D
 
 			int KnightAttackID = randomAttackIDGenerator.Next (0, 10); 
 
-			if((Mathf.Abs(playerPos.x - enemyPos.x)) < 5f){ 				//if the player is super close, prioritize knocking him back 
+			if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.5f){ 				//if the player is super close, prioritize knocking him back 
 				shieldAttackPicked = true;
 				KnightAnimator.SetBool ("ShieldAttack", true);
 				player.GetComponent <Stats>().damagePlayer (2);
