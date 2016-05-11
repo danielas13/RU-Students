@@ -2,14 +2,9 @@
 using System.Collections;
 public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 	public bool withinAttackRange = false;
-	public bool attacking = false;
-	public bool playerTakesDamage = false;
-	private int damage = 5;
-	private Collider2D collide;
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		collide = col;
 		if (col.isTrigger != true && col.CompareTag("Player"))
 		{
 			withinAttackRange = true;
@@ -19,7 +14,6 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D col)
 	{
-		collide = null;
 		if (col.isTrigger != true && col.CompareTag("Player"))
 		{
 			//Debug.Log("Player Exited");
@@ -27,32 +21,6 @@ public class EnemyMeleeAttackTriggerScript : MonoBehaviour {
 			//transform.SendMessageUpwards("PlayerExitedRange", col);
 		}
 
-	}
-
-    void Start()
-    {
-        EnemyStats character = this.gameObject.transform.parent.gameObject.GetComponent<EnemyStats>();
-        damage = character.status.damage;
-    }
-
-		
-	void Update()
-	{
-
-		if(collide == null){ //when player instance is deleted
-			withinAttackRange = false;
-		}
-
-        if (!game.gm.isPlayerDead)
-        {
-            if (playerTakesDamage && collide != null && collide.CompareTag("Player"))
-            {
-                collide.SendMessageUpwards("knockBackPlayer", transform.position);
-                collide.SendMessageUpwards("damagePlayer", damage);
-                
-                playerTakesDamage = false;
-            }
-        }
 	}
 }
 
