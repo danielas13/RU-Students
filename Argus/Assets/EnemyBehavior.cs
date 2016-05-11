@@ -340,7 +340,6 @@ namespace  UnityStandardAssets._2D
 			Debug.Log ("CombatMode");
 			attackCooldown -= Time.deltaTime;
 			if(attackCooldown < 0){
-				Debug.Log ("SHOULD LEAVE COMBAT MODE <------------------------------------------------------");
 				attackCooldown = 1;
 				KnightAnimator.SetBool ("CombatMode",false);
 				CombatModePicked = false;

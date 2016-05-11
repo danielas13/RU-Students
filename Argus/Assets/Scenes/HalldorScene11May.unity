@@ -2388,7 +2388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415544, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9501680, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_ApplyRootMotion
@@ -6465,7 +6465,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495706, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5016672, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
       propertyPath: m_Constraints
@@ -6534,6 +6534,10 @@ Prefab:
     - target: {fileID: 474318, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.1041427
+      objectReference: {fileID: 0}
+    - target: {fileID: 462844, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.885737
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
@@ -8598,7 +8602,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415544, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 199186, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_Name
@@ -26145,7 +26149,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400078, guid: ffc9fcead443ede48a24a27f7f8f807b, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2043349000}
-  m_LocalRotation: {x: 0.6852463, y: 0.17446198, z: 0.70625097, w: -0.034789264}
+  m_LocalRotation: {x: 0.6852462, y: 0.17446196, z: 0.7062509, w: -0.03478926}
   m_LocalPosition: {x: 0.025690764, y: -0.005738821, z: -0.02317559}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
   m_Children:
