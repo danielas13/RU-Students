@@ -10,7 +10,7 @@ public class OneToOneDoor : MonoBehaviour {
     {
         if(TargetObject != null)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && other.gameObject.tag == "Player")
+            if (Input.GetKeyUp(KeyCode.UpArrow) && other.gameObject.tag == "Player")
             {
                 GameObject player = GameObject.Find("Player");
                 player.transform.position = new Vector3(TargetObject.position.x, TargetObject.position.y, TargetObject.position.z - 6f);

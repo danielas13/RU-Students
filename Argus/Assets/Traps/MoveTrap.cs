@@ -50,6 +50,6 @@ public class MoveTrap : MonoBehaviour {
     {
         isMoving = false;
         moved = 0;
-        transform.position = originalPos;
+        transform.position = new Vector3(originalPos.x,originalPos.y,0);
     }
 }
