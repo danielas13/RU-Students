@@ -41,7 +41,7 @@ public class PlayerMeleeAttack : MonoBehaviour
             attackCollider.enabled = true;
 
 			int attackID = randomAttackIDGenerator.Next (0, 2);      
-			Debug.Log (attackID);
+			//Debug.Log (attackID);
 			skeletonAnimator.SetInteger("AttackID", attackID);
 
 			skeletonAnimator.SetBool ("MidSwing", true);
