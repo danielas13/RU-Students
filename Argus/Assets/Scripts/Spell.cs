@@ -20,7 +20,7 @@ namespace UnityStandardAssets._2D
 
         void Awake()
         {
-            spellPoint = transform.FindChild("SpellCast");
+			spellPoint = transform.FindChild("ToFlip").FindChild("SpellCast");
             if (spellPoint == null)
             {
                 Debug.LogError("No FirePoint?");
@@ -94,7 +94,7 @@ namespace UnityStandardAssets._2D
                 Stats player = character.GetComponent<Stats>();
                 if (player.status.currentMana >= 2)
                 {
-                    Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation * Quaternion.Euler(Vector3.up * 180));
+                    Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation);
                     player.spendMana(2);
                 }
                 else

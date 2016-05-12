@@ -280,7 +280,7 @@ namespace  UnityStandardAssets._2D
 		}
 		void HeavyAttack(){
 
-			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_sword_swing_high_straight_down")) {
+			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_Heavy Smash")) {
 				SwordTrigger.gameObject.SetActive (true);
 				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage *2;
 				heavyAnimationPlayed = true;
@@ -334,7 +334,7 @@ namespace  UnityStandardAssets._2D
 
 			if (hitDown.collider != null && hitForwards.collider == null) 								// There is ground to move on, but no wall to collide on we translate the enemy
 			{
-				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2); 	//Translate our character
+				transform.Translate(Vector3.right * Time.deltaTime * (float)movementVelocity / 1.5f); 	//Translate our character
 				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 			}
 			else 																						//There is no ground in this direction or we hit a wall, we turn the enemy around and walk in that direction
@@ -342,7 +342,7 @@ namespace  UnityStandardAssets._2D
 				direction = -direction;
 				transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 				//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2);  	//Translate our character after turning
+				transform.Translate(Vector3.right * Time.deltaTime * (float)movementVelocity / 1.5f);  	//Translate our character after turning
 				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 
 			}

@@ -13,6 +13,9 @@ public class PlayerMeleeAttack : MonoBehaviour
 	private Animator skelAnim2; 
 	private Transform skeleton2;
 
+	private Animator skeletonAnimator;
+	private Transform skeletonFootman;
+
 	private static readonly System.Random randomAttackIDGenerator = new System.Random();   
 
     void Awake()
@@ -20,8 +23,12 @@ public class PlayerMeleeAttack : MonoBehaviour
         attackCollider.enabled = false;
 
 
-		skeleton2 = transform.FindChild("Skeleton_warlord");
-		skelAnim2 = skeleton2.GetComponent<Animator> ();
+		//skeleton2 = transform.FindChild("Skeleton_warlord");
+		//skelAnim2 = skeleton2.GetComponent<Animator> ();
+
+		//Skeleton Footman
+		skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
+		skeletonAnimator = skeletonFootman.GetComponent <Animator> ();
 
     }
 
@@ -33,11 +40,16 @@ public class PlayerMeleeAttack : MonoBehaviour
             attackTimer = attackCooldown;
             attackCollider.enabled = true;
 
-			skelAnim2.SetBool ("MidSwing", true);
-			skelAnim2.SetTrigger("Swing1");
-			int attackID = randomAttackIDGenerator.Next (0, 4);      
-			//Debug.Log (attackID);
-			skelAnim2.SetInteger ("AttackID", attackID);
+			int attackID = randomAttackIDGenerator.Next (0, 2);      
+			Debug.Log (attackID);
+			skeletonAnimator.SetInteger("AttackID", attackID);
+
+			skeletonAnimator.SetBool ("MidSwing", true);
+			skeletonAnimator.SetTrigger ("Swing");
+			//skelAnim2.SetBool ("MidSwing", true);
+			//skelAnim2.SetTrigger("Swing1");
+
+			//skelAnim2.SetInteger ("AttackID", attackID);
         }
 
         if (attacking)
@@ -50,7 +62,8 @@ public class PlayerMeleeAttack : MonoBehaviour
             {
                 attacking = false;
                 attackCollider.enabled = false;
-				skelAnim2.SetBool ("MidSwing", false);
+				skeletonAnimator.SetBool ("MidSwing", false);
+				//skelAnim2.SetBool ("MidSwing", false);
             }
 
         }

@@ -18,8 +18,8 @@ namespace UnityStandardAssets._2D
             m_Character = GetComponent<PlatformerCharacter2D>();
 			skeleton2 = transform.FindChild("Skeleton_warlord");
 			skelAnim2 = skeleton2.GetComponent<Animator> ();
-			skelAnim2.SetLayerWeight (0,1);
-			skelAnim2.SetLayerWeight (1,1);
+//			skelAnim2.SetLayerWeight (0,1);
+//			skelAnim2.SetLayerWeight (1,1);
         }
 
 
