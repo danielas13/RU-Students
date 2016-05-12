@@ -334,14 +334,15 @@ namespace  UnityStandardAssets._2D
 
 			if (hitDown.collider != null && hitForwards.collider == null) 								// There is ground to move on, but no wall to collide on we translate the enemy
 			{
-				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2 * direction); 	//Translate our character
+				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2); 	//Translate our character
 				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 			}
 			else 																						//There is no ground in this direction or we hit a wall, we turn the enemy around and walk in that direction
 			{
 				direction = -direction;
-				transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2 * direction);  	//Translate our character after turning
+				transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+				//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2);  	//Translate our character after turning
 				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 
 			}
@@ -365,7 +366,8 @@ namespace  UnityStandardAssets._2D
 						if (direction != 1)
 						{
 							direction = -direction;
-							transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+							//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+							transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 						}
 					}
 					else if(playerPos.x < enemyPos.x)
@@ -373,7 +375,8 @@ namespace  UnityStandardAssets._2D
 						if (direction == 1)
 						{
 							direction = -direction;
-							transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+							//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+							transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 						}
 					}
 					//KnightAnimator.SetFloat ("CombatMovementSpeed", 0);
@@ -384,11 +387,12 @@ namespace  UnityStandardAssets._2D
 					if (direction != 1)
 					{
 						direction = -direction;
-						transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+						//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+						transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 					}
 					if (hitDown.collider != null && hitForwards.collider == null) 
 					{
-						transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
+						transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
 					}
 				}
 				else if(playerPos.x < enemyPos.x)
@@ -396,11 +400,12 @@ namespace  UnityStandardAssets._2D
 					if (direction == 1)
 					{
 						direction = -direction;
-						transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+						//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+						transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 					}
 					if (hitDown.collider != null && hitForwards.collider == null)
 					{
-						transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
+						transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
 					}      
 				}
 			}
@@ -478,14 +483,15 @@ namespace  UnityStandardAssets._2D
 			KnightAnimator.SetBool ("Patrolling", true);
 			if (hitDown.collider != null && hitForwards.collider == null) 								// There is ground to move on, but no wall to collide on we translate the enemy
 			{
-				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction); 	//Translate our character
+				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity); 	//Translate our character
 				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 			}
 			else 																						//There is no ground in this direction or we hit a wall, we turn the enemy around and walk in that direction
 			{
 				direction = -direction;
-				transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction);  	//Translate our character after turning
+				//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+				transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity);  	//Translate our character after turning
 				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 
 			}
