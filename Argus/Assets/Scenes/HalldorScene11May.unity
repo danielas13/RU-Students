@@ -2887,7 +2887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415544, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9501680, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_ApplyRootMotion
@@ -7791,7 +7791,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495706, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5016672, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
       propertyPath: m_Constraints
@@ -10155,7 +10155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415544, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 199186, guid: 338ae63fcda553b40a285c69ad5f719d, type: 2}
       propertyPath: m_Name
@@ -11829,7 +11829,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495256, guid: 35b177d2319bc384eb18f8ea82b8ab18, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 481694, guid: 35b177d2319bc384eb18f8ea82b8ab18, type: 2}
       propertyPath: m_RootOrder
@@ -15662,7 +15662,7 @@ Transform:
   - {fileID: 263066536}
   - {fileID: 100358200}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &954150836
 GameObject:
   m_ObjectHideFlags: 0
@@ -20030,7 +20030,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 478882, guid: a875ddbef1a47804f940e4c863dff70d, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11496970, guid: a875ddbef1a47804f940e4c863dff70d, type: 2}
       propertyPath: EnemyPrefab
@@ -28058,6 +28058,37 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a875ddbef1a47804f940e4c863dff70d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1828195430 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100080, guid: f1a9a077a6f638446a31f5a0ed489124, type: 3}
+  m_PrefabInternal: {fileID: 83212187}
+--- !u!114 &1828195431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1828195430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc1db87478e94a42875321f75d0c7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectType: 0
+  ColliderRadius: 0.2
+  EffectRadius: 0
+  UseMoveVector: 0
+  Target: {fileID: 1828195430}
+  MoveVector: {x: 0, y: 0, z: 1}
+  MoveSpeed: 1
+  IsHomingMove: 0
+  MoveDistance: 20
+  IsVisible: 1
+  InstanceBehaviour: 3
+  DeactivateTimeDelay: 4
+  DestroyTimeDelay: 10
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!4 &1829168024 stripped
 Transform:
   m_PrefabParentObject: {fileID: 443756, guid: 7c6531a1fb5d94c4aa68a99d87b93a9d, type: 2}
