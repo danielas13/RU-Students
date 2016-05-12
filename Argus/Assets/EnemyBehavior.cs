@@ -97,7 +97,7 @@ namespace  UnityStandardAssets._2D
 			hitDown = Physics2D.Raycast (trackPosition, new Vector2 (0, -1), fallDistance, NotHit);
 			hitForwards = Physics2D.Raycast (trackPosition, new Vector2 (1, 0), collideDistance, NotHit);
 
-			Debug.Log ("Heavy: " + HeavyAttackPicked + "             Combo: " +ComboAttackPicked + "             Normal: " + NormalAttackPicked + "             block: " + BlockingPicked + "             combatmode: " + CombatModePicked);
+			//Debug.Log ("Heavy: " + HeavyAttackPicked + "             Combo: " +ComboAttackPicked + "             Normal: " + NormalAttackPicked + "             block: " + BlockingPicked + "             combatmode: " + CombatModePicked);
 
 			if(HeavyAttackPicked == true){ //Currently doing Heavy Attack, allow nothing else to happen meanwhile
 				//set anim to true
@@ -111,7 +111,6 @@ namespace  UnityStandardAssets._2D
 			}
 			else if(NormalAttackPicked == true){  //Currently doing Normal Attack, allow nothing else to happen meanwhile
 				//set anim to true
-				Debug.Log ("Normal Attack each frame yo ");
 				NormalAttack ();
 
 			}
@@ -151,10 +150,8 @@ namespace  UnityStandardAssets._2D
 			}*/
 
 				/* Depending in state, call the relevant state function */
-				Debug.Log ("State of player: " + CurrentState);
 				switch (CurrentState) {
 				case (int)KnightState.Calm:
-					Debug.Log ("Calm??");	
 					Calm ();
 
 					break;
@@ -183,13 +180,11 @@ namespace  UnityStandardAssets._2D
 
 			if (withinRangeTrigger.GetComponent <EnemyMeleeAttackTriggerScript>().withinAttackRange){ 	/* If the player is within attack range and not blocking or in combat*/ 
 				CurrentState = (int)KnightState.Attacking;
-				Debug.Log ("Attacking");
 				Attacking ();
 
 			}
 			else if (!midAnimation){																			/* If the player is out of attack range */
 				CurrentState = (int)KnightState.Chasing;
-				Debug.Log ("Chasing");
 				Chasing ();
 			}
 		}
@@ -211,7 +206,6 @@ namespace  UnityStandardAssets._2D
 			}
 			else{															//else, pick an attack
 
-				Debug.Log ("PICKING NEW ATTACK");
 				if (KnightAttackID == 0 || KnightAttackID == 1) { 		// 20% chance for a heavy attack
 					HeavyAttackPicked = true; 
 					KnightAnimator.SetBool ("HeavyAttack", true);
@@ -243,7 +237,6 @@ namespace  UnityStandardAssets._2D
 
 
 			if(KnightAnimator.GetCurrentAnimatorStateInfo(0).IsName("MKnght_1H_sword_swing_high_right")){
-				Debug.Log ("NORMAL");
 				SwordTrigger.gameObject.SetActive (true);
 				normalAnimationPlayed = true;
 				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage;
@@ -266,7 +259,6 @@ namespace  UnityStandardAssets._2D
 
 		void ShieldAttack(){
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_shield_blow")) {
-				Debug.Log ("ShieldAttack");
 				//SwordTrigger.gameObject.SetActive (true);
 				//SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage *2;
 
@@ -289,7 +281,6 @@ namespace  UnityStandardAssets._2D
 		void HeavyAttack(){
 
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_sword_swing_high_straight_down")) {
-				Debug.Log ("HEAVY");
 				SwordTrigger.gameObject.SetActive (true);
 				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage *2;
 				heavyAnimationPlayed = true;
@@ -310,7 +301,6 @@ namespace  UnityStandardAssets._2D
 		void ComboAttack(){
 
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_5X_Combo_move_forward")) {
-				Debug.Log ("COMBO");
 				SwordTrigger.gameObject.SetActive (true);
 				comboAnimationPlayed = true;
 				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage;
@@ -331,13 +321,10 @@ namespace  UnityStandardAssets._2D
 
 		private void Block(){
 			//TODO blocking
-			Debug.Log ("Blocking");
 			BlockingPicked = false;
 		}
 		private void CombatMode(){
-			//TODO blocking
 
-			Debug.Log ("CombatMode");
 			attackCooldown -= Time.deltaTime;
 			if(attackCooldown < 0){
 				attackCooldown = 1;
@@ -363,7 +350,6 @@ namespace  UnityStandardAssets._2D
 		}
 
 		private void Chasing(){
-			Debug.Log ("Chasing");
 			KnightAnimator.SetBool ("Chasing", true);
 			KnightAnimator.SetBool ("Attacking", false);
 			KnightAnimator.SetBool ("Searching", false);
@@ -431,7 +417,6 @@ namespace  UnityStandardAssets._2D
 			KnightAnimator.SetBool ("Chasing", false);
 			KnightAnimator.SetBool ("Attacking", false);
 
-			Debug.Log ("Searching");
 			KnightAnimator.SetBool ("Searching", true);
 
 			alertTimer -= Time.deltaTime;
@@ -462,7 +447,6 @@ namespace  UnityStandardAssets._2D
 		}
 
 		private void Calm(){
-			//Debug.Log ("Calm" + calmTimer);
 			KnightAnimator.SetBool ("Calm",true);
 			calmTimer -= Time.deltaTime;
 
@@ -492,7 +476,6 @@ namespace  UnityStandardAssets._2D
 		private void Patrol(){
 			KnightAnimator.SetBool ("Idle", false);
 			KnightAnimator.SetBool ("Patrolling", true);
-			Debug.Log ("Patrolling");
 			if (hitDown.collider != null && hitForwards.collider == null) 								// There is ground to move on, but no wall to collide on we translate the enemy
 			{
 				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction); 	//Translate our character
@@ -513,7 +496,6 @@ namespace  UnityStandardAssets._2D
 			KnightAnimator.SetBool ("Idle", true);
 
 
-			Debug.Log ("Idle");
 
 		}
 

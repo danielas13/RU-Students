@@ -98,8 +98,8 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 			
 
 		/* HORIZONTAL Raycast that attempts to detect the player */
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(character.transform.position.x - transform.position.x, 0), spellDistance, NotHit);
-		Debug.DrawLine(transform.position, new Vector2(transform.position.x - spellDistance, character.transform.position.y), Color.red);
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(character.transform.position.x - transform.position.x, 0, character.transform.position.z - transform.position.z), spellDistance, NotHit);
+		//Debug.DrawLine(transform.position, new Vector3(transform.position.x - spellDistance, character.transform.position.y), Color.red);
 
 
 		/* If a player is detected, attempt to cast spell and play the spellcast animation*/
@@ -116,7 +116,6 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 				WizardAnimator.applyRootMotion = true;
 				cooldown = 3;
 			
-
 			}
 		}
 		cooldown -= Time.deltaTime;
@@ -133,11 +132,11 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 
 		if (SpellPosition.x < playerPos.x)
 		{
-			Instantiate(FirePrefab, new Vector2 (transform.parent.transform.position.x,transform.parent.transform.position.y+0.5f), transform.rotation);
+			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation);
 		}
 		else
 		{
-			Instantiate(FirePrefab, new Vector2 (transform.parent.transform.position.x,transform.parent.transform.position.y+0.5f), transform.rotation * Quaternion.Euler(Vector3.up * 180));
+			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation * Quaternion.Euler(Vector3.up * 180));
 		}
 	}
 }

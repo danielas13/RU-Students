@@ -18,7 +18,6 @@ public class LadderScript : MonoBehaviour {
         {
             isClimbing = false;         //The player is not climbing anymoreþ
         }
-        //Debug.Log("Exited Collision");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -31,12 +30,6 @@ public class LadderScript : MonoBehaviour {
 
     void Update()
     {
-        /*
-        if (player.transform.GetComponent<Rigidbody2D>().velocity.y < (Vector2.up.y * 4))
-        {
-            player.transform.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 0.8f, ForceMode2D.Impulse);
-        }
-        */
         if (isClimbing)     //is the player climbing?
         {
             if (Input.GetKey(KeyCode.UpArrow))  //Player is going up.
@@ -55,19 +48,4 @@ public class LadderScript : MonoBehaviour {
             }
         }
     } 
-        /*
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (Input.GetKey(KeyCode.UpArrow) && other.gameObject.tag == "Player")
-        {
-            //player.transform.GetComponent<Rigidbody2D>().gravityScale = 0;
-            //player.transform.Translate(Vector3.up * Time.deltaTime*5);
-            if(player.transform.GetComponent<Rigidbody2D>().velocity.y < (Vector2.up.y * 4))
-            {
-                player.transform.GetComponent<Rigidbody2D>().AddRelativeForce(Vector2.up * 0.8f, ForceMode2D.Impulse);
-            }
-           
-        }
-    }
-    */
 }
