@@ -19,15 +19,19 @@ namespace UnityStandardAssets._2D
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
 		private Animator skelAnim2; 
+		private Animator skeletonAnimator; 
+
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 		private Transform skeleton2;
+		private Transform skeletonFootman;
 		private Transform lights;
         private bool knockback = false;
         private float xDiff;
         private float timer = 1;
         [NonSerialized]
         public bool isChanneling = false;
+		Transform toFlip;
 
         private void Awake()
         {
@@ -42,6 +46,11 @@ namespace UnityStandardAssets._2D
 			skelAnim2 = skeleton2.GetComponent<Animator> ();
 
 			lights = transform.FindChild ("FrontLight");
+			toFlip = transform.FindChild ("ToFlip");
+
+			//Skeleton Footman
+			skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
+			skeletonAnimator = skeletonFootman.GetComponent <Animator> ();
 
         }
 
@@ -90,14 +99,21 @@ namespace UnityStandardAssets._2D
                 if (colliders[i].gameObject != gameObject)
                     m_Grounded = true;
             }
-            m_Anim.SetBool("Ground", m_Grounded);
+            //m_Anim.SetBool("Ground", m_Grounded);
 
             // Set the vertical animation
-            m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+            //m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
 		void Update(){ 
-
+			if (!m_FacingRight)
+			{
+				toFlip.rotation = Quaternion.Euler(Vector3.up * 180);
+			}
+			else
+			{
+				toFlip.rotation = Quaternion.Euler(Vector3.up * 0);
+			}
 		}
 
         public void Move(float move, bool crouch, bool jump)
@@ -105,7 +121,7 @@ namespace UnityStandardAssets._2D
             if (!isChanneling) // if the player is channeling then he can not move
             {
                 // If crouching, check to see if the character can stand up
-                if (!crouch && m_Anim.GetBool("Crouch"))
+				if (!crouch) // if (!crouch && m_Anim.GetBool("Crouch"))
                 {
                     // If the character has a ceiling preventing them from standing up, keep them crouching
                     if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
@@ -115,7 +131,7 @@ namespace UnityStandardAssets._2D
                 }
 
                 // Set whether or not the character is crouching in the animator
-                m_Anim.SetBool("Crouch", crouch);
+                //m_Anim.SetBool("Crouch", crouch);
 
                 //only control the player if grounded or airControl is turned on
                 if (m_Grounded || m_AirControl)
@@ -125,14 +141,17 @@ namespace UnityStandardAssets._2D
                     move = (crouch ? move * m_CrouchSpeed : move);
 
                     // The Speed animator parameter is set to the absolute value of the horizontal input.
-                    m_Anim.SetFloat("Speed", Mathf.Abs(move));
+                   // m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                     if (m_Grounded == true)
                     {
                        // Debug.Log("Grounded");
                        // skelAnim2.SetFloat("Movementspeed", Mathf.Abs(move));
+						skeletonAnimator.SetFloat ("MovementSpeed", Math.Abs (move));
                     }
-                    skelAnim2.SetFloat("Movementspeed", Mathf.Abs(move));
+					skeletonAnimator.SetFloat ("MovementSpeed", Math.Abs (move));
+
+                    //skelAnim2.SetFloat("Movementspeed", Mathf.Abs(move));
                     // Move the character
                     m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
 
@@ -151,29 +170,35 @@ namespace UnityStandardAssets._2D
 
 
                 }
+			//	Debug.Log ("Grounded" + m_Grounded + " , jump " + jump);
                 // If the player should jump...
                 if (m_Grounded && jump)
                 {
+
                     // Add a vertical force to the player.
                     m_Grounded = false;
-                    m_Anim.SetBool("Ground", false);
+                   // m_Anim.SetBool("Ground", false);
                     m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-                    skelAnim2.SetTrigger("Jump");
+                    //skelAnim2.SetTrigger("Jump");
+					skeletonAnimator.SetTrigger ("Jump");
                 }
 
                 if (m_Grounded)
                 {
-                    skelAnim2.SetBool("IsJumping", false);
+                    //skelAnim2.SetBool("IsJumping", false);
+					skeletonAnimator.SetBool ("IsJumping", false);
                 }
                 else
                 {
-                    skelAnim2.SetBool("IsJumping", true);
+                    //skelAnim2.SetBool("IsJumping", true);
+					skeletonAnimator.SetBool ("IsJumping", true);
+
                 }
             }
             else
             {
                 m_Rigidbody2D.velocity = new Vector2(0, 0);
-                Debug.Log("PLAYER IS CHANNELING ADD A ANIMATION HERE!!!!!!!!!!!");
+             //   Debug.Log("PLAYER IS CHANNELING ADD A ANIMATION HERE!!!!!!!!!!!");
             }
         }
 
@@ -181,12 +206,8 @@ namespace UnityStandardAssets._2D
         {
             m_FacingRight = !m_FacingRight;
 
-             //Multiply the player's x local scale by -1.
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-
-			//lights.transform.rotation = Quaternion.Euler(0,180,0);
+		
+			lights.transform.rotation = Quaternion.Euler(0,180,0);
 			if (m_FacingRight)	lights.transform.localEulerAngles = new Vector3(15,270,0);
 			else lights.transform.localEulerAngles = new Vector3(15,-270,0);
         }
