@@ -65,20 +65,12 @@ Material:
         second: 1
       data:
         first:
-          name: _ColorStrength
-        second: 1
-      data:
-        first:
           name: _BumpAmt
         second: 30
       data:
         first:
-          name: _FPOW
-        second: 2
-      data:
-        first:
-          name: _R0
-        second: -1
+          name: _ColorStrength
+        second: 1
       data:
         first:
           name: _ReflectionStrength
@@ -87,6 +79,14 @@ Material:
         first:
           name: _Opacity
         second: 0.67857146
+      data:
+        first:
+          name: _FPOW
+        second: 2
+      data:
+        first:
+          name: _R0
+        second: -1
       data:
         first:
           name: _LightStr

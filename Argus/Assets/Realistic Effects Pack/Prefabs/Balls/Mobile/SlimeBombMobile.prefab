@@ -306,7 +306,9 @@ MonoBehaviour:
   InstanceBehaviour: 0
   DeactivateTimeDelay: 9
   DestroyTimeDelay: 10
-  LayerMask: {}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -65,20 +65,12 @@ Material:
         second: 7
       data:
         first:
-          name: _ColorStrength
-        second: 4.09
-      data:
-        first:
           name: _BumpAmt
         second: 10.714286
       data:
         first:
-          name: _FPOW
-        second: 1
-      data:
-        first:
-          name: _R0
-        second: -1
+          name: _ColorStrength
+        second: 4.09
       data:
         first:
           name: _TintStrength
@@ -99,6 +91,14 @@ Material:
         first:
           name: _Opacity
         second: 1
+      data:
+        first:
+          name: _FPOW
+        second: 1
+      data:
+        first:
+          name: _R0
+        second: -1
       data:
         first:
           name: _LightStr

@@ -265,7 +265,9 @@ MonoBehaviour:
   InstanceBehaviour: 3
   DeactivateTimeDelay: 4
   DestroyTimeDelay: 10
-  LayerMask: {}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 2
 --- !u!114 &11412306
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -142,10 +142,12 @@ MonoBehaviour:
   IsHomingMove: 0
   MoveDistance: 20
   IsVisible: 1
-  BehaviourAfterCollision: 2
+  InstanceBehaviour: 3
   DeactivateTimeDelay: 4
   DestroyTimeDelay: 10
-  LayerMask: {}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -36,12 +36,12 @@ Material:
         second: 1.8253572
       data:
         first:
-          name: _ColorStrength
-        second: 1
-      data:
-        first:
           name: _BumpAmt
         second: 10
+      data:
+        first:
+          name: _ColorStrength
+        second: 1
       data:
         first:
           name: _TintStrength

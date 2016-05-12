@@ -50,12 +50,12 @@ Material:
         second: 0.7
       data:
         first:
-          name: _ColorStrength
-        second: 1
-      data:
-        first:
           name: _BumpAmt
         second: 30
+      data:
+        first:
+          name: _ColorStrength
+        second: 1
       data:
         first:
           name: _DistortIllum

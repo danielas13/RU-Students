@@ -62,18 +62,6 @@ Material:
         second: 339.2857
       data:
         first:
-          name: _FPOW
-        second: 5
-      data:
-        first:
-          name: _R0
-        second: 0.2
-      data:
-        first:
-          name: _RefractiveStrength
-        second: 0
-      data:
-        first:
           name: _ReflectionStrength
         second: 11.517858
       data:
@@ -82,8 +70,20 @@ Material:
         second: 1
       data:
         first:
+          name: _FPOW
+        second: 5
+      data:
+        first:
+          name: _R0
+        second: 0.2
+      data:
+        first:
           name: _LightStr
         second: 0.64285713
+      data:
+        first:
+          name: _RefractiveStrength
+        second: 0
     m_Colors:
       data:
         first:

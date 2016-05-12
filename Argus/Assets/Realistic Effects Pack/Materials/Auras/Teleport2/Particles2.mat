@@ -43,11 +43,11 @@ Material:
         second: 1
       data:
         first:
-          name: _ColorStrength
+          name: _BumpAmt
         second: 1
       data:
         first:
-          name: _BumpAmt
+          name: _ColorStrength
         second: 1
       data:
         first:

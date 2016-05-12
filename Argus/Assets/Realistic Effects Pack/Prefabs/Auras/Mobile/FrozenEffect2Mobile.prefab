@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f8ee2e15161e6438ae903bc4455f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PropertyName: 5f486569676874
+  PropertyName: _Height
   MaxFloat: 0.2
   StartDelay: 0
   FadeInSpeed: 3
@@ -135,7 +135,9 @@ MonoBehaviour:
   InstanceBehaviour: 3
   DeactivateTimeDelay: 4
   DestroyTimeDelay: 10
-  LayerMask: {}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

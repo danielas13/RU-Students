@@ -62,13 +62,13 @@ Material:
         second: {r: 0, g: 0, b: 0, a: 0}
       data:
         first:
+          name: _TintColorB
+        second: {r: 0.6137934, g: 0, b: 1, a: 0}
+      data:
+        first:
           name: _TintColorR
         second: {r: 0.45476675, g: 0.38235295, b: 1, a: 0.47058824}
       data:
         first:
           name: _TintColorG
         second: {r: 0.7484788, g: 0.41176468, b: 1, a: 0}
-      data:
-        first:
-          name: _TintColorB
-        second: {r: 0.6137934, g: 0, b: 1, a: 0}

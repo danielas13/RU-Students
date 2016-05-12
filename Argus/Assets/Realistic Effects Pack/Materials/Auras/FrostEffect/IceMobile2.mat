@@ -98,16 +98,12 @@ Material:
         second: 60
       data:
         first:
-          name: _Height
-        second: 0.3
+          name: _ReflectionStrength
+        second: 1
       data:
         first:
-          name: _OffsetXHeightMap
-        second: 0
-      data:
-        first:
-          name: _OffsetYHeightMap
-        second: 0
+          name: _Opacity
+        second: 0.96428573
       data:
         first:
           name: _FPOW
@@ -118,23 +114,19 @@ Material:
         second: 0.1
       data:
         first:
-          name: _MainTexAlpha
-        second: 1.0714285
-      data:
-        first:
-          name: _RefractiveStrength
+          name: _LightStr
         second: 0
       data:
         first:
-          name: _ReflectionStrength
-        second: 1
+          name: _Height
+        second: 0.3
       data:
         first:
-          name: _Opacity
-        second: 0.96428573
+          name: _OffsetXHeightMap
+        second: 0
       data:
         first:
-          name: _LightStr
+          name: _OffsetYHeightMap
         second: 0
       data:
         first:
@@ -148,6 +140,14 @@ Material:
         first:
           name: _Displacement
         second: 0.3
+      data:
+        first:
+          name: _MainTexAlpha
+        second: 1.0714285
+      data:
+        first:
+          name: _RefractiveStrength
+        second: 0
     m_Colors:
       data:
         first:

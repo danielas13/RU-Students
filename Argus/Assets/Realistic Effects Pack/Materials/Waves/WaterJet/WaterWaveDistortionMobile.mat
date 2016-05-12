@@ -58,12 +58,20 @@ Material:
         second: 0
       data:
         first:
+          name: _BumpAmt
+        second: 100
+      data:
+        first:
           name: _ColorStrength
         second: 0.3
       data:
         first:
-          name: _BumpAmt
-        second: 100
+          name: _FPOW
+        second: 5
+      data:
+        first:
+          name: _R0
+        second: 0.1
       data:
         first:
           name: _Height
@@ -76,14 +84,6 @@ Material:
         first:
           name: _OffsetYHeightMap
         second: 0
-      data:
-        first:
-          name: _FPOW
-        second: 5
-      data:
-        first:
-          name: _R0
-        second: 0.1
     m_Colors:
       data:
         first:

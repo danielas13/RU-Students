@@ -75,12 +75,28 @@ Material:
         second: 0.48243016
       data:
         first:
-          name: _RimPower
-        second: 8
-      data:
-        first:
           name: _BumpAmt
         second: 10
+      data:
+        first:
+          name: _ReflectionStrength
+        second: 20
+      data:
+        first:
+          name: _Opacity
+        second: 0.6785714
+      data:
+        first:
+          name: _FPOW
+        second: 2
+      data:
+        first:
+          name: _R0
+        second: -0.2
+      data:
+        first:
+          name: _LightStr
+        second: 0.41071427
       data:
         first:
           name: _Height
@@ -95,28 +111,8 @@ Material:
         second: 0
       data:
         first:
-          name: _FPOW
-        second: 2
-      data:
-        first:
-          name: _R0
-        second: -0.2
-      data:
-        first:
           name: _RefractiveStrength
         second: 1
-      data:
-        first:
-          name: _ReflectionStrength
-        second: 20
-      data:
-        first:
-          name: _Opacity
-        second: 0.6785714
-      data:
-        first:
-          name: _LightStr
-        second: 0.41071427
       data:
         first:
           name: _OffsetHeightMap
@@ -125,6 +121,10 @@ Material:
         first:
           name: _CubeMapOpacity
         second: 0.14285715
+      data:
+        first:
+          name: _RimPower
+        second: 8
       data:
         first:
           name: _ColorIntensity

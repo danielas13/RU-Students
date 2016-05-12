@@ -62,20 +62,20 @@ Material:
         second: 500
       data:
         first:
-          name: _FPOW
-        second: 10
-      data:
-        first:
-          name: _R0
-        second: 0.3
-      data:
-        first:
           name: _ReflectionStrength
         second: 20
       data:
         first:
           name: _Opacity
         second: 1
+      data:
+        first:
+          name: _FPOW
+        second: 10
+      data:
+        first:
+          name: _R0
+        second: 0.3
       data:
         first:
           name: _LightStr

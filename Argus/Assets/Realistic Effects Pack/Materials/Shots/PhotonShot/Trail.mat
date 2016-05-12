@@ -70,13 +70,13 @@ Material:
         second: {r: 0.24056837, g: 0.1397059, b: 1, a: 1}
       data:
         first:
+          name: _TintColorB
+        second: {r: 0.53062886, g: 0.3455882, b: 1, a: 1}
+      data:
+        first:
           name: _TintColorR
         second: {r: 1, g: 0, b: 0, a: 1}
       data:
         first:
           name: _TintColorG
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _TintColorB
-        second: {r: 0.53062886, g: 0.3455882, b: 1, a: 1}

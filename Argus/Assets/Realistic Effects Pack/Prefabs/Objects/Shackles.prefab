@@ -4058,7 +4058,9 @@ MonoBehaviour:
   InstanceBehaviour: 0
   DeactivateTimeDelay: 6
   DestroyTimeDelay: 10
-  LayerMask: {}
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4194,9 +4196,11 @@ MonoBehaviour:
   EffectOnHitObject: {fileID: 0}
   GoLight: {fileID: 0}
   Acceleration:
+    serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   AcceleraionTime: 1
   IsCenterLightPosition: 0
   IsLookAt: 0

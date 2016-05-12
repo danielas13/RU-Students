@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f436f6c6f72
+  ShaderColorName: _Color
   StartDelay: 0.25
   FadeInSpeed: 0.2
   FadeOutDelay: 4
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f8ee2e15161e6438ae903bc4455f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PropertyName: 5f486569676874
+  PropertyName: _Height
   MaxFloat: 0.1
   StartDelay: 0.25
   FadeInSpeed: 0.2
@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimationSpeenOnTime:
+    serializedVersion: 2
     m_Curve:
     - time: 0
       value: 1
@@ -133,6 +134,7 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   MaxTime: 11
 --- !u!1001 &100100000
 Prefab:

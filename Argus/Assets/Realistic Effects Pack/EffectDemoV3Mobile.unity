@@ -1252,7 +1252,9 @@ MonoBehaviour:
   TextureScale: 1
   RenderTextureFormat: 0
   FilterMode: 0
-  CullingMask: {}
+  CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
   RenderingPath: -1
   FPSWhenMoveCamera: 60
   FPSWhenStaticCamera: 60

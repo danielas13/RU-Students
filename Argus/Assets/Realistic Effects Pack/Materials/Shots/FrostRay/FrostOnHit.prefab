@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2194caa8a026284d975848a1238e90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderColorName: 5f436f6c6f72
+  ShaderColorName: _Color
   StartDelay: 0
   FadeInSpeed: 1.5
   FadeOutDelay: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f8ee2e15161e6438ae903bc4455f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PropertyName: 5f486569676874
+  PropertyName: _Height
   MaxFloat: 0.1
   StartDelay: 0
   FadeInSpeed: 1.5
@@ -151,16 +151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc1db87478e94a42875321f75d0c7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EffectType: 0
   ColliderRadius: 0
   EffectRadius: 0
+  UseMoveVector: 0
   Target: {fileID: 0}
+  MoveVector: {x: 0, y: 0, z: 1}
   MoveSpeed: 0
-  MoveDistance: 0
   IsHomingMove: 0
+  MoveDistance: 0
   IsVisible: 1
-  DeactivateAfterCollision: 0
+  InstanceBehaviour: 3
   DeactivateTimeDelay: 0
-  LayerMask: {}
+  DestroyTimeDelay: 10
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

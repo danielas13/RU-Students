@@ -79,12 +79,12 @@ Material:
         second: 1
       data:
         first:
-          name: _ColorStrength
-        second: 12
-      data:
-        first:
           name: _BumpAmt
         second: 100
+      data:
+        first:
+          name: _ColorStrength
+        second: 12
       data:
         first:
           name: _ColorStrR
@@ -112,13 +112,13 @@ Material:
         second: {r: 0.39705884, g: 0.16953528, b: 0.067149654, a: 1}
       data:
         first:
+          name: _TintColorB
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
           name: _TintColorR
         second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       data:
         first:
           name: _TintColorG
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      data:
-        first:
-          name: _TintColorB
         second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
