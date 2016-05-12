@@ -96,6 +96,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &107462
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 422564}
+  - 61: {fileID: 6124072}
+  - 114: {fileID: 11494894}
+  m_Layer: 15
+  m_Name: SwordTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &107552
 GameObject:
   m_ObjectHideFlags: 1
@@ -1692,6 +1709,18 @@ Transform:
   - {fileID: 446100}
   m_Father: {fileID: 400140}
   m_RootOrder: 0
+--- !u!4 &422564
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 474318}
+  m_RootOrder: 0
 --- !u!4 &424208
 Transform:
   m_ObjectHideFlags: 1
@@ -1874,8 +1903,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.372, y: 0.27, z: 0}
-  m_LocalScale: {x: 1.4164252, y: 2.562327, z: 1.0967702}
+  m_LocalPosition: {x: 0.73, y: 0.47, z: 0}
+  m_LocalScale: {x: 2.5284007, y: 3.0748923, z: 1.316167}
   m_Children: []
   m_Father: {fileID: 495706}
   m_RootOrder: 3
@@ -2295,7 +2324,8 @@ Transform:
   m_LocalRotation: {x: 0.4999814, y: -0.5000186, z: 0.4999814, w: 0.5000186}
   m_LocalPosition: {x: -0.084044725, y: 0.019918595, z: -0.0026898193}
   m_LocalScale: {x: 1.0000002, y: 0.9999999, z: 1.0000004}
-  m_Children: []
+  m_Children:
+  - {fileID: 422564}
   m_Father: {fileID: 481538}
   m_RootOrder: 5
 --- !u!4 &474996
@@ -2542,7 +2572,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.35, y: 2.76, z: -1.77}
+  m_LocalPosition: {x: -13.35, y: 1.2, z: -1.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462844}
@@ -2940,6 +2970,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 2.1}
+--- !u!61 &6124072
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107462}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.3812739, y: 0.0024344078}
+  serializedVersion: 2
+  m_Size: {x: 0.9580371, y: 0.26097393}
 --- !u!61 &6141282
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -2992,7 +3036,7 @@ Animator:
   m_GameObject: {fileID: 116244}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e7a7d5f84beeb3a42a650d6cc6421589, type: 3}
-  m_Controller: {fileID: 9100000, guid: afcff7c9e9658a54e9e1644ee94fda39, type: 2}
+  m_Controller: {fileID: 9100000, guid: eacb75044560c465fbe8b99f543c60e4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3074,8 +3118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   withinAttackRange: 0
-  attacking: 0
-  playerTakesDamage: 0
 --- !u!114 &11426698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3177,7 +3219,7 @@ MonoBehaviour:
   movementVelocity: 1.85
   NotHit:
     serializedVersion: 2
-    m_Bits: 48384
+    m_Bits: 13568
   fallDistance: 1.5
   collideDistance: 0.5
   direction: 1
@@ -3186,6 +3228,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   chasingVelocity: 7.5
+  SwordTrigger: {fileID: 422564}
 --- !u!114 &11479818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3232,6 +3275,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86db82deba088204ebff57ae2e1c6feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11494894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0897d58f98e2c4a5cbf2c4e4f1d5cc2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
 --- !u!137 &13729424
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

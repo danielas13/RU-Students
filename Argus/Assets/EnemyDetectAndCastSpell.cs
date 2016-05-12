@@ -130,7 +130,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 		Vector2 playerPos = character.transform.position;
 		//RaycastHit2D hit = Physics2D.Raycast(SpellPosition, new Vector2(SpellPosition.x - playerPos.x, SpellPosition.y - playerPos.y), spellDistance, NotHit);
 
-		Debug.Log ("Created ball");
+
 		if (SpellPosition.x < playerPos.x)
 		{
 			Instantiate(FirePrefab, new Vector2 (transform.parent.transform.position.x,transform.parent.transform.position.y+0.5f), transform.rotation);

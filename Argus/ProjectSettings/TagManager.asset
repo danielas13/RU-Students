@@ -21,6 +21,7 @@ TagManager:
   - Store
   - LeftHandFireTrail
   - RightHandFireTrail
+  - StoreDoor
   layers:
   - Default
   - TransparentFX

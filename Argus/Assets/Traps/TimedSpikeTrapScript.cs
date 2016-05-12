@@ -87,9 +87,12 @@ public class TimedSpikeTrapScript : MonoBehaviour {
     public void restart()
     {
         transform.FindChild("TimedSpikeTrapTrigger").GetComponent<TimedSpikeTrapTrigger>().triggers = 0;
-        if(isMoving == true)
+        if (!SelfRepeat)
         {
-            reachedTop = true;
+            if (isMoving == true)
+            {
+                reachedTop = true;
+            }
         }
     }
 }

@@ -25,9 +25,9 @@ GameObject:
   - 4: {fileID: 415460}
   - 212: {fileID: 21251068}
   - 61: {fileID: 6112098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WalkableGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -66.27, y: -5, z: -0.099999994}
+  m_LocalPosition: {x: 27.07137, y: -1.23757, z: 4.395138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479092}

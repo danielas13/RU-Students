@@ -26,6 +26,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
         player = GameObject.Find("Player");
         trackPoint = transform.FindChild("trackPoint");
 
+
     }
 
     // Update is called once per frame
