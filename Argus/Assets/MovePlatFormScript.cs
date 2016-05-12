@@ -61,7 +61,7 @@ public class MovePlatFormScript : MonoBehaviour {
     }
     void OnCollisionStay2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.CompareTag("Player"))
         {
             if (dir==0)
             {
