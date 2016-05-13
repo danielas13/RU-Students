@@ -4,6 +4,7 @@ using System.Collections;
 public class OneToOneDoor : MonoBehaviour {
 
     public Transform TargetObject;
+    public bool reciever = false;
     public float cooldown = 1;
 
     //Will trigger if the player is withing the door boundaries and pressesthe up key.
@@ -23,7 +24,17 @@ public class OneToOneDoor : MonoBehaviour {
                     }
                     else
                     {
-                        TargetObject.GetComponent<OneToOneDoor>().cooldown = 1;
+                        OneToOneDoor Door = TargetObject.GetComponent<OneToOneDoor>();
+                        if (Door.reciever)
+                        {
+                            Door.cooldown = 1;
+                            Door.TargetObject = this.transform;
+
+                        }
+                        else
+                        {
+                           Door.cooldown = 1;
+                        }
                     }
                     camera.transform.position = player.transform.position;
                 }
