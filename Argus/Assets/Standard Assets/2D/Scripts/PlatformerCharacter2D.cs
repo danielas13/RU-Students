@@ -204,7 +204,9 @@ namespace UnityStandardAssets._2D
 
         private void Flip()
         {
-            m_FacingRight = !m_FacingRight;
+			if(!skeletonAnimator.GetBool ("MidSwing")){
+				m_FacingRight = !m_FacingRight;
+			}
 
 		
 			lights.transform.rotation = Quaternion.Euler(0,180,0);
