@@ -107,6 +107,7 @@ public class EffectSettings : MonoBehaviour
   void Start()
   {
     if (InstanceBehaviour == DeactivationEnum.DestroyAfterTime) Destroy(gameObject, DestroyTimeDelay);
+        //Target = GameObject.Find("TargetForEnemySpells");
   }
 
   public void OnCollisionHandler(CollisionInfo e)

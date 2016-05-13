@@ -29,7 +29,7 @@ public class CastMultipleSpells : MonoBehaviour {
         
 
 
-        Vector2 calculateAngle = new Vector2(playerPos.x - enemyPos.x, playerPos.y - enemyPos.y);
+        Vector2 calculateAngle = new Vector2(playerPos.x - enemyPos.x, (playerPos.y + 1) - enemyPos.y);
         calculateAngle.Normalize();
         angle = Mathf.Atan2(calculateAngle.y, calculateAngle.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
