@@ -13,6 +13,7 @@ namespace UnityStandardAssets._2D
         public float Speed;//Speed of the AOE expansion
         private float rateOfExpansion;
         private bool stoppedChannel = false;//Check to make sure that the player can not rechannel the already in effect spell
+        private static readonly System.Random randomSpellAttackGenerator = new System.Random();
 
         void OnTriggerEnter2D(Collider2D col)
         {
@@ -26,8 +27,9 @@ namespace UnityStandardAssets._2D
 
         // Use this for initialization
         void Start() {
-
-            damage = GameObject.Find("Player").GetComponent<Stats>().status.spellpower / 2;
+            Stats pl = GameObject.Find("Player").GetComponent<Stats>();
+            int amount = randomSpellAttackGenerator.Next(pl.status.minSpellPower, pl.status.maxSpellPower);
+            damage = amount / 2;
             currAOESize = 1;
         }
 

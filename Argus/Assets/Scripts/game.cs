@@ -102,8 +102,11 @@ public class game : MonoBehaviour {
         //Assigning the new stats as previous max stats minus half the gained points of damage,health,mana and spellpower.
         playerStatus.status.maxHealth = playerStatus.status.maxHealth - playerStatus.status.gainedHealth;
         playerStatus.status.maxMana = playerStatus.status.maxMana - playerStatus.status.gainedMana;
-        playerStatus.status.damage = playerStatus.status.damage - playerStatus.status.gainedDamage;
-        playerStatus.status.spellpower = playerStatus.status.spellpower - playerStatus.status.gainedSpellpower;
+        playerStatus.status.minDamage = playerStatus.status.minDamage - playerStatus.status.gainedDamage;
+        playerStatus.status.maxDamage = playerStatus.status.maxDamage - playerStatus.status.gainedDamage;
+        playerStatus.status.minSpellPower = playerStatus.status.minSpellPower - playerStatus.status.gainedSpellpower;
+
+        playerStatus.status.maxSpellPower = playerStatus.status.maxSpellPower - playerStatus.status.gainedSpellpower;
 
         //Setting the current health and mana values.
         playerStatus.status.currentHealth = playerStatus.status.maxHealth;

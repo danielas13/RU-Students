@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MoveFireBall : MonoBehaviour {
-
+    private static readonly System.Random randomSpellPowerGenerator = new System.Random();
     public int speed = 20;
     public int duration = 2;
     public int range = 2;
@@ -16,7 +16,7 @@ public class MoveFireBall : MonoBehaviour {
     void Start () {
         GameObject character = GameObject.FindGameObjectWithTag("Player");
         Stats player = character.GetComponent<Stats>();
-        damage = player.status.spellpower;
+        damage = randomSpellPowerGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
 
         Physics2D.IgnoreLayerCollision(10, 12, false);
 

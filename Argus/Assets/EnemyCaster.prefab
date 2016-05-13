@@ -3259,10 +3259,11 @@ MonoBehaviour:
   combatText: {fileID: 102658, guid: 3bd2703969c08fa4385dc3b8645a6aa6, type: 2}
   DamageColor: {r: 1, g: 0, b: 0, a: 1}
   status:
-    maxHealth: 4
-    currentHealth: 4
-    damage: 5
-    spellpower: 4
+    maxHealth: 40
+    currentHealth: 40
+    minDamage: 35
+    maxDamage: 45
+    spellpower: 30
   restoreSpawnChance: 10
   scoreSpawnChance: 5
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}

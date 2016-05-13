@@ -7,10 +7,11 @@ public class EnemyStats : MonoBehaviour {
     public class enemyStats
     {
 
-        public int maxHealth = 4;           //Maximum health of enemies
-        public int currentHealth = 4;       //Current health of enemies.
-        public int damage =5;               //The damage of the enemy.
-        public int spellpower = 5;          //TODO: Make this work with spells.
+        public int maxHealth = 40;          //Maximum health of enemies
+        public int currentHealth = 40;      //Current health of enemies.
+        public int minDamage = 35;          //The min damage of the enemy.
+        public int maxDamage = 45;          //The max damage of the enemy.
+        public int spellpower = 40;          //TODO: Make this work with spells.
     }
     public EnemyStatusIndicator indicator;
     public GameObject combatText; //Add the canvas prefab to create a floating combat text

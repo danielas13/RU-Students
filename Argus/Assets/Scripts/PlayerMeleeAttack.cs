@@ -16,7 +16,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 	private Animator skeletonAnimator;
 	private Transform skeletonFootman;
 
-	private static readonly System.Random randomAttackIDGenerator = new System.Random();   
+	private static readonly System.Random randomSpellPowerGenerator = new System.Random();   
 
     void Awake()
     {
@@ -40,7 +40,7 @@ public class PlayerMeleeAttack : MonoBehaviour
             attackTimer = attackCooldown;
             attackCollider.enabled = true;
 
-			int attackID = randomAttackIDGenerator.Next (0, 3);      
+			int attackID = randomSpellPowerGenerator.Next (0, 3);      
 			//Debug.Log (attackID);
 			skeletonAnimator.SetInteger("AttackID", attackID);
 			skeletonAnimator.SetBool ("MidSwing", true);

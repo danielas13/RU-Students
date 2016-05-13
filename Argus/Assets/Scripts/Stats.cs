@@ -24,11 +24,17 @@ public class Stats : MonoBehaviour {
         [HideInInspector]
         public int gainedSpellpower = 0;    //the spellpower gianed in the current run.
 
-        public int damage = 3;              //melee damage of the character.
-        public int spellpower = 4;          //Damage done with spells.
+        public int minDamage = 15;              //min melee damage of the character.
+        public int maxDamage = 25;              //max melee damage of the character.
+        public int minSpellPower = 4;          //Min damage done with spells.
+        public int maxSpellPower = 4;          //Max damage done with spells.
         public int score = 0;               //Player score.
         public int armor = 0;               //One hit protection count.
         public int deathCount = 0;
+        public int DamageReduction = 0;
+
+        public bool ManaBlade = false;
+        public bool ShadowBlade = false;
     }
     //The global status object.
     public GameObject combatText;
@@ -54,12 +60,6 @@ public class Stats : MonoBehaviour {
     //reseting the current health mana and setting the indicator.
     public void restart()
     {
-        /*status.currentHealth = status.maxHealth;
-        status.currentMana = status.maxMana;
-        status.gainedDamage = 0;
-        status.gainedHealth = 0;
-        status.gainedDamage = 0;
-        status.gainedSpellpower = 0;*/
         if (this.indicator != null)
         {
             indicator.SetHealth(status.currentHealth, status.maxHealth);
@@ -93,7 +93,15 @@ public class Stats : MonoBehaviour {
     {
 
         skelAnim.SetBool("hit", true);
-        combatText.GetComponent<Text>().text = "-" + damage.ToString();
+        if(damage - status.DamageReduction > 0)
+        {
+            combatText.GetComponent<Text>().text = "-" + (damage - status.DamageReduction).ToString();
+        }
+        else
+        {
+            combatText.GetComponent<Text>().text = "-" + 0.ToString();
+        }
+
         combatText.GetComponent<Text>().color = DamageColor;
         Instantiate(combatText, transform.position, transform.rotation);
 
@@ -107,9 +115,12 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            if((this.status.currentHealth - damage) > 0)
+            if((this.status.currentHealth - (damage-status.DamageReduction)) > 0)
             {
-                this.status.currentHealth -= damage;
+                if((damage - status.DamageReduction) > 0)
+                {
+                    this.status.currentHealth -= (damage - status.DamageReduction);
+                }
             }
             else
             {
@@ -142,6 +153,40 @@ public class Stats : MonoBehaviour {
             indicator.SetArmor(status.armor);
         }
     }
+    //Increments the players damage reduction by 2
+    public void AddShadowBlade()
+    {
+        status.ShadowBlade = true;
+        this.status.minDamage += 4;
+        this.status.maxDamage += 4;
+        if (status.ManaBlade)
+        {
+            this.status.minSpellPower -= 4;
+            this.status.maxSpellPower -= 4;
+            status.ManaBlade = false;
+        }
+    }
+
+    //Increments the players damage reduction by 2
+    public void addDamageReduction(int amount)
+    {
+        this.status.DamageReduction += amount;
+    }
+
+    //Increments the players damage reduction by 2
+    public void AddManaBlade()
+    {
+        status.ManaBlade = true;
+        this.status.minSpellPower += 4;
+        this.status.maxSpellPower += 4;
+        if (status.ShadowBlade)
+        {
+            this.status.minDamage -= 4;
+            this.status.maxDamage -= 4;
+            status.ShadowBlade = false;
+        }
+    }
+
 
     //increases the player's health.
     public void restoreHealth(int heal)
@@ -219,14 +264,16 @@ public class Stats : MonoBehaviour {
     //increasing the player´s spellpower.
     public void increaseSpellpower(int power)
     {
-        this.status.spellpower += power;
+        this.status.minSpellPower += power;
+        this.status.maxSpellPower += power;
         this.status.gainedSpellpower += power;
     }
 
     //increasing the player´s damage.
     public void increaseDamage(int damage)
     {
-        this.status.damage += damage;
+        this.status.minDamage += damage;
+        this.status.maxDamage += damage;
         this.status.gainedDamage += damage;
     }
 

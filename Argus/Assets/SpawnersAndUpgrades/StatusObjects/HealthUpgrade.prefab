@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710c1ddc3c885ef4f9d598c05ac25b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPerObject: 2
+  maxHealthPerObject: 10
 --- !u!198 &19818628
 ParticleSystem:
   m_ObjectHideFlags: 1

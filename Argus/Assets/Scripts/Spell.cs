@@ -11,6 +11,7 @@ namespace UnityStandardAssets._2D
         //private float spellDistance = 5;
         Transform spellPoint;
         public Transform HealAOEPrefab;
+        private static readonly System.Random randomAttackGenerator = new System.Random();
 
         private Transform skeleton2;
         private Animator skelAnim2;
@@ -57,7 +58,9 @@ namespace UnityStandardAssets._2D
             Stats player = character.GetComponent<Stats>();
             if (player.status.currentMana >= 4)
             {
-                player.restoreHealth(player.status.spellpower);
+
+                int randomDmg = randomAttackGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
+                player.restoreHealth(randomDmg);
                 Instantiate(HealAOEPrefab, transform.position, transform.rotation);//The aoe Spell script is called HealAreaOfEffectScript and is located under the Spells folder
                 player.spendMana(4);
             }

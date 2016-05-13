@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AddMana : MonoBehaviour
 {
-    public int maxManaPerObject = 2; //The amount of mana that will be gained by this object.
+    public int maxManaPerObject = 20; //The amount of mana that will be gained by this object.
     private int AmountIncrease = 0;
 
     private static readonly System.Random random = new System.Random();     //Create a read only random variable.

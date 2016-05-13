@@ -47,10 +47,10 @@ public class PlayerStatScreenController : MonoBehaviour {
         PlayerMana.text = "Your Mana " + playerStatus.status.currentMana + " / " + playerStatus.status.maxMana;
         PlayerGainedMana.text = "Gained mana This run " + playerStatus.status.gainedMana;
 
-        playerDamage.text = "Your damage " + playerStatus.status.damage;
+        playerDamage.text = "Your min damage " + playerStatus.status.minDamage;
         playerGainedDamage.text = "Gained damage This run " + playerStatus.status.gainedDamage;
 
-        playerSpellpower.text = "Your Spellpower " + playerStatus.status.spellpower;
+        playerSpellpower.text = "Your min Spellpower " + playerStatus.status.minSpellPower;
         playerGainedSpellpower.text = "Gained spellpower This run " + playerStatus.status.gainedSpellpower;
 
         Node.text = "Spend currency at the nearest shop to purchase gained attributes in the following runs.";

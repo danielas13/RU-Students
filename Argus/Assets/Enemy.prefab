@@ -3105,7 +3105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf78e6a9d4c3b3459c7dc54a53a574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knightAnim: {fileID: 0}
 --- !u!114 &11423260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3172,10 +3171,11 @@ MonoBehaviour:
   combatText: {fileID: 102658, guid: 3bd2703969c08fa4385dc3b8645a6aa6, type: 2}
   DamageColor: {r: 1, g: 0, b: 0, a: 1}
   status:
-    maxHealth: 6
-    currentHealth: 6
-    damage: 3
-    spellpower: 3
+    maxHealth: 70
+    currentHealth: 70
+    minDamage: 35
+    maxDamage: 45
+    spellpower: 30
   restoreSpawnChance: 10
   scoreSpawnChance: 5
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
