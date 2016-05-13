@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class MoveFloatingSpell : MonoBehaviour {
-
+    private static readonly System.Random randomSpellPowerGenerator = new System.Random();
     public int speed = 20;
     public int duration = 2;
-    public int damage = 1;    //damage of an attack.
+    public int minDamage = 35;    //damage of an attack.
+    public int maxDamage = 45;
     public int range = 2;
     private bool Stop = false;
     //private GameObject player;
@@ -21,13 +22,13 @@ public class MoveFloatingSpell : MonoBehaviour {
         //Debug.Log("Collison " + col.name);
         if (col.isTrigger != true && col.gameObject.CompareTag("Player"))
         {
-            // Debug.Log("git deddd");
-            col.gameObject.SendMessageUpwards("damagePlayer", damage);
-            transform.FindChild("Trail").FindChild("Impact").gameObject.SetActive(true);
-           // transform.GetComponent<CircleCollider2D>().gameObject.SetActive(false);
-            Stop = true;
             
             //Destroy(this.gameObject);
+
+            col.gameObject.SendMessageUpwards("damagePlayer", randomSpellPowerGenerator.Next(minDamage, maxDamage));
+            transform.FindChild("Trail").FindChild("Impact").gameObject.SetActive(true);
+            // transform.GetComponent<CircleCollider2D>().gameObject.SetActive(false);
+            Stop = true;
         }
         /*if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
         {

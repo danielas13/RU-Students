@@ -3,7 +3,9 @@ using System.Collections;
 public class MoveEnemySpell : MonoBehaviour {
 	public int speed = 20;
 	public int duration = 2;
-	public int damage = 5;    //damage of an attack
+    private static readonly System.Random randomSpellPowerGenerator = new System.Random();
+    public int minDamage = 35;      //damage of an attack
+    public int maxDamage = 45;      
 	public float initDelay = 0f;
 	//private GameObject player;
     // Update is called once per frame
@@ -16,7 +18,8 @@ public class MoveEnemySpell : MonoBehaviour {
         if (col.isTrigger != true && col.gameObject.CompareTag("Player"))
         {
             // Debug.Log("git deddd");
-            col.gameObject.SendMessageUpwards("damagePlayer", damage);
+            
+            col.gameObject.SendMessageUpwards("damagePlayer", randomSpellPowerGenerator.Next(minDamage, maxDamage));
             Destroy(this.gameObject);
         }
         /*if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))

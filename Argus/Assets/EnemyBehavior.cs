@@ -5,8 +5,8 @@ namespace  UnityStandardAssets._2D
 {
 	public class EnemyBehavior : MonoBehaviour
 	{
-
-		public bool movementDirection = true;
+        private static readonly System.Random randomDamageGenerator = new System.Random();     //Create a read only random variable.
+        public bool movementDirection = true;
 		public float movementVelocity = 1f;
 		Transform trackPoint;
 		//enemy patrol/pathfinding variables.
@@ -48,6 +48,8 @@ namespace  UnityStandardAssets._2D
 		private float alertTimer = 2;
 		private float calmTimer = -1;
 		private bool Patrolling = true;
+        private EnemyStats enemyStat;
+        private int currentDmg = 30;
 
 		private bool HeavyAttackPicked = false, ComboAttackPicked = false, NormalAttackPicked = false, BlockingPicked = false, CombatModePicked = false, shieldAttackPicked = false; 	/* make sure we do nothing else when we commit to one of these actions by flagging their designated bool while performing them */
 
@@ -58,11 +60,11 @@ namespace  UnityStandardAssets._2D
 		// Use this for initialization
 		void Start()
 		{
+            enemyStat = transform.GetComponent<EnemyStats>();
+            //Time.timeScale = 0.4F;
 
-			//Time.timeScale = 0.4F;
 
-
-			player = GameObject.Find("Player");
+            player = GameObject.Find("Player");
 			trackPoint = transform.FindChild("trackPoint");
 			Physics2D.IgnoreLayerCollision(8, 9, true);
 			Physics2D.IgnoreLayerCollision(8, 8, true);
@@ -201,7 +203,9 @@ namespace  UnityStandardAssets._2D
 			if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.5f){ 				//if the player is super close, prioritize knocking him back 
 				shieldAttackPicked = true;
 				KnightAnimator.SetBool ("ShieldAttack", true);
-				player.GetComponent <Stats>().damagePlayer (2);
+                currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage-5, enemyStat.status.maxDamage-5);
+
+                player.GetComponent <Stats>().damagePlayer (currentDmg);
 				player.GetComponent <PlatformerCharacter2D> ().knockBackPlayer(transform.position);
 			}
 			else{															//else, pick an attack
@@ -239,7 +243,10 @@ namespace  UnityStandardAssets._2D
 			if(KnightAnimator.GetCurrentAnimatorStateInfo(0).IsName("MKnght_1H_sword_swing_high_right")){
 				SwordTrigger.gameObject.SetActive (true);
 				normalAnimationPlayed = true;
-				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage;
+
+                currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage,enemyStat.status.maxDamage);
+
+                SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = currentDmg;
 			}
 			else if (normalAnimationPlayed == true){
 				NormalAttackPicked = false;
@@ -282,7 +289,8 @@ namespace  UnityStandardAssets._2D
 
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_Heavy Smash")) {
 				SwordTrigger.gameObject.SetActive (true);
-				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage *2;
+                currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage, enemyStat.status.maxDamage);
+                SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = currentDmg * 2;
 				heavyAnimationPlayed = true;
 			} 
 			else if (heavyAnimationPlayed == true){
@@ -303,7 +311,9 @@ namespace  UnityStandardAssets._2D
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_5X_Combo_move_forward")) {
 				SwordTrigger.gameObject.SetActive (true);
 				comboAnimationPlayed = true;
-				SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = transform.GetComponent <EnemyStats>().status.damage;
+                currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage, enemyStat.status.maxDamage);
+
+                SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = currentDmg;
 
 			} 
 			else if (comboAnimationPlayed == true){

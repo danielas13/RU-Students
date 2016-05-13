@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508194b4654b2c749ac07281294a52e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxManaPerObject: 2
+  maxManaPerObject: 20
 --- !u!212 &21288184
 SpriteRenderer:
   m_ObjectHideFlags: 1
