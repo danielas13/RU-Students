@@ -34,7 +34,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !attacking)
+        if (Input.GetKeyDown(KeyCode.F) && !attacking) 				//light attack
         {
             attacking = true;
             attackTimer = attackCooldown;
@@ -43,7 +43,6 @@ public class PlayerMeleeAttack : MonoBehaviour
 			int attackID = randomAttackIDGenerator.Next (0, 2);      
 			//Debug.Log (attackID);
 			skeletonAnimator.SetInteger("AttackID", attackID);
-
 			skeletonAnimator.SetBool ("MidSwing", true);
 			skeletonAnimator.SetTrigger ("Swing");
 			//skelAnim2.SetBool ("MidSwing", true);
@@ -51,6 +50,26 @@ public class PlayerMeleeAttack : MonoBehaviour
 
 			//skelAnim2.SetInteger ("AttackID", attackID);
         }
+
+		if(Input.GetKeyDown (KeyCode.Q) && !attacking){		 		//	heavy attack, change binding +later
+
+			// 	!!!!  
+			//		TODO Check if grounded 
+			//	!!!!
+			attacking = true;
+			attackCollider.enabled = true;
+			attackTimer = attackCooldown + 0.5f; 					//	longer attacks required, if this is removed you can fast attack too soon
+
+
+			skeletonAnimator.SetInteger("AttackID", 3);				// 	3 = heavy attack animation
+			skeletonAnimator.SetBool ("MidSwing", true); 			//	can do no other attack animation while this is true
+			skeletonAnimator.SetTrigger ("Swing"); 			//	specific trigger for heavy attack
+
+			//	TODO, disable ALL input for player while this attack is used. Essentially just busy loop the controls or functions handling 
+			// 	player movement
+
+			// NOTE: Should only be able to perform when GROUNDED +
+		}
 
         if (attacking)
         {
