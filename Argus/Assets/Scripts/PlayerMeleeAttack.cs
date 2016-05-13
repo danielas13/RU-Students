@@ -40,7 +40,7 @@ public class PlayerMeleeAttack : MonoBehaviour
             attackTimer = attackCooldown;
             attackCollider.enabled = true;
 
-			int attackID = randomAttackIDGenerator.Next (0, 2);      
+			int attackID = randomAttackIDGenerator.Next (0, 3);      
 			//Debug.Log (attackID);
 			skeletonAnimator.SetInteger("AttackID", attackID);
 			skeletonAnimator.SetBool ("MidSwing", true);
@@ -61,7 +61,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 			attackTimer = attackCooldown + 0.5f; 					//	longer attacks required, if this is removed you can fast attack too soon
 
 
-			skeletonAnimator.SetInteger("AttackID", 3);				// 	3 = heavy attack animation
+			skeletonAnimator.SetInteger("AttackID", 4);				// 	id of heavy attack animation
 			skeletonAnimator.SetBool ("MidSwing", true); 			//	can do no other attack animation while this is true
 			skeletonAnimator.SetTrigger ("Swing"); 			//	specific trigger for heavy attack
 
