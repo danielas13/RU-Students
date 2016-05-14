@@ -18,10 +18,11 @@ namespace UnityStandardAssets._2D
 
         private Stats player;
         private GameObject character;
-
-
+		private Transform skeletonFootman;
+		private Animator skeletonAnimator; 
         public Transform FirePrefab;
         public Transform FrostRay;
+		private float channelDelay = 0.5f;
 
         void Awake()
         {
@@ -37,6 +38,9 @@ namespace UnityStandardAssets._2D
             player = character.GetComponent<Stats>();
             //FrostRay = spellPoint.FindChild("FrostRay");
 
+			skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
+			skeletonAnimator = skeletonFootman.GetComponent <Animator> ();
+
         }
 
         // Use this for initialization
@@ -50,21 +54,33 @@ namespace UnityStandardAssets._2D
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+				skeletonAnimator.SetTrigger ("CastProjectileSpell");
                 CastFireBall();
-                skelAnim2.SetTrigger("CastSpell");
+                //skelAnim2.SetTrigger("CastSpell");
             }
             if (Input.GetKeyDown(KeyCode.R) && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded) //Cast a heal spell when player is on the ground and presses r.
             {
+				skeletonAnimator.SetTrigger ("CastHealingSpell");
                 CastHeal();
-                skelAnim2.SetTrigger("CastSpell");
+                //skelAnim2.SetTrigger("CastSpell");
             }
             if (Input.GetKeyDown(KeyCode.T) && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
             {
+				channelDelay = 0.5f;
+				skeletonAnimator.SetBool ("isChanneling", true);
                 ChannelFrostRay();
                 //skelAnim2.SetTrigger("CastSpell");
-                
             }
+			//Debug.Log (transform.GetComponent<PlatformerCharacter2D> ().isChanneling );
+			channelDelay -= Time.deltaTime;
+			if(transform.GetComponent<PlatformerCharacter2D> ().isChanneling == false && channelDelay < 0){ //this currently always triggers --> channeling wont work
+				skeletonAnimator.SetBool ("isChanneling", false);
+			}
         }
+
+		void LateUpdate(){
+			
+		}
         void ChannelFrostRay()
         {
             //FrostRay.gameObject.SetActive(true);
@@ -86,7 +102,7 @@ namespace UnityStandardAssets._2D
             }
             else
             {
-                Debug.Log("Not Enough Mana!"); //Give player feedback istead of this!
+                //Debug.Log("Not Enough Mana!"); //Give player feedback istead of this!
             }
         }
 
@@ -109,7 +125,7 @@ namespace UnityStandardAssets._2D
                 }
                 else
                 {
-                    Debug.Log("Not Enough Mana!");
+                   // Debug.Log("Not Enough Mana!");
                 }
             }
             else
@@ -122,7 +138,7 @@ namespace UnityStandardAssets._2D
                 }
                 else
                 {
-                    Debug.Log("Not Enough Mana!");
+                    //Debug.Log("Not Enough Mana!");
                 }
             }
         }
