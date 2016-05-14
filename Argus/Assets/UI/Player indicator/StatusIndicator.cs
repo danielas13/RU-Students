@@ -3,7 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class StatusIndicator : MonoBehaviour {
-    [SerializeField]
+	[SerializeField]
+	private Image healthStatus;
+	[SerializeField]
+	private Image manaStatus;
+	[SerializeField]
     private RectTransform healthBar;
     [SerializeField]
     private RectTransform manaBar;
@@ -29,18 +33,18 @@ public class StatusIndicator : MonoBehaviour {
     public void SetHealth(int currentHealth, int maxHealth)
     {
         float value = (float)currentHealth / maxHealth;         //calculate the current health status.
-        healthBar.localScale = new Vector3(value, 1f, 1f);      //Change the scale of the healthbar.
-        healthText.text = currentHealth + "/" + maxHealth;
+		healthStatus.fillAmount = 1 - value;
+       // healthBar.localScale = new Vector3(value, 1f, 1f);      //Change the scale of the healthbar.
+      //  healthText.text = currentHealth + "/" + maxHealth;
     }
     public void SetMana(int currentMana, int maxMana)
     {
         float value = (float)currentMana / maxMana;             //calculate the current mana status.
-        manaBar.localScale = new Vector3(value, 1f, 1f);        //Change the scale of the manabar.
-        manaText.text = currentMana + "/" + maxMana;
+		manaStatus.fillAmount = 1 - value;
     }
     public void SetScore(int score)
     {
-        scoreText.text = "Soul Essences " + score;
+        scoreText.text = "x " + score;
     }
 
     public void SetArmor(int armor)
