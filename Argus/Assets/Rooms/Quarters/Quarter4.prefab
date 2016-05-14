@@ -371,7 +371,7 @@ GameObject:
   - 114: {fileID: 11493014}
   - 61: {fileID: 6123652}
   m_Layer: 13
-  m_Name: TargetDoor (2)
+  m_Name: C
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -789,7 +789,7 @@ GameObject:
   - 114: {fileID: 11450848}
   - 61: {fileID: 6158794}
   m_Layer: 13
-  m_Name: TargetDoor (1)
+  m_Name: B
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4662,7 +4662,7 @@ GameObject:
   - 114: {fileID: 11485856}
   - 61: {fileID: 6132894}
   m_Layer: 13
-  m_Name: TargetDoor
+  m_Name: A
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7586,7 +7586,7 @@ GameObject:
   - 114: {fileID: 11440316}
   - 61: {fileID: 6126700}
   m_Layer: 13
-  m_Name: TargetDoor (1)
+  m_Name: B
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9682,7 +9682,7 @@ GameObject:
   - 114: {fileID: 11424184}
   - 61: {fileID: 6110370}
   m_Layer: 13
-  m_Name: TargetDoor
+  m_Name: A
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9856,7 +9856,7 @@ GameObject:
   - 114: {fileID: 11425880}
   - 61: {fileID: 6191662}
   m_Layer: 13
-  m_Name: TargetDoor (2)
+  m_Name: C
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11057,7 +11057,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -210.1, y: 225.9, z: 0}
+  m_LocalPosition: {x: -228, y: 225.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463616}
@@ -11657,7 +11657,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.62000275, y: -10.11, z: 0.99}
+  m_LocalPosition: {x: -0.62000275, y: -9.98, z: 0.99}
   m_LocalScale: {x: 3.949059, y: 4.6562767, z: 1}
   m_Children:
   - {fileID: 431236}
@@ -36164,6 +36164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11425568
 MonoBehaviour:
@@ -36190,6 +36191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11428916
 MonoBehaviour:
@@ -36340,6 +36342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11441080
 MonoBehaviour:
@@ -36461,6 +36464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11453460
 MonoBehaviour:
@@ -36945,6 +36949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11487348
 MonoBehaviour:
@@ -37040,6 +37045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11496300
 MonoBehaviour:

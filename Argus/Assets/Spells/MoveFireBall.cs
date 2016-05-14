@@ -7,17 +7,15 @@ public class MoveFireBall : MonoBehaviour {
     public int speed = 20;
     public int duration = 2;
     public int range = 2;
-    
 
     private int damage = 2;
 
+    private Stats player;
 
     // Use this for initialization
     void Start () {
         GameObject character = GameObject.FindGameObjectWithTag("Player");
-        Stats player = character.GetComponent<Stats>();
-        damage = randomSpellPowerGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
-
+        player = character.GetComponent<Stats>();
         Physics2D.IgnoreLayerCollision(10, 12, false);
 
     }
@@ -28,6 +26,7 @@ public class MoveFireBall : MonoBehaviour {
 
         if (col.isTrigger != true && col.gameObject.CompareTag("enemy"))
         {
+            damage = randomSpellPowerGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
             Destroy(this.gameObject);
         }
