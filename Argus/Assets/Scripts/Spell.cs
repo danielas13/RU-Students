@@ -10,14 +10,19 @@ namespace UnityStandardAssets._2D
         public LayerMask NotHit;
         //private float spellDistance = 5;
         Transform spellPoint;
-        public Transform HealAOEPrefab;
+        //public Transform HealParticle;
         private static readonly System.Random randomAttackGenerator = new System.Random();
 
         private Transform skeleton2;
         private Animator skelAnim2;
 
-
+        private Stats player;
+        private GameObject character;
+		private Transform skeletonFootman;
+		private Animator skeletonAnimator; 
         public Transform FirePrefab;
+        public Transform FrostRay;
+		private float channelDelay = 0.5f;
 
         void Awake()
         {
@@ -28,6 +33,14 @@ namespace UnityStandardAssets._2D
             }
             skeleton2 = transform.FindChild("Skeleton_warlord");
             skelAnim2 = skeleton2.GetComponent<Animator>();
+
+            character = GameObject.FindGameObjectWithTag("Player");
+            player = character.GetComponent<Stats>();
+            //FrostRay = spellPoint.FindChild("FrostRay");
+
+			skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
+			skeletonAnimator = skeletonFootman.GetComponent <Animator> ();
+
         }
 
         // Use this for initialization
@@ -41,17 +54,39 @@ namespace UnityStandardAssets._2D
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+				skeletonAnimator.SetTrigger ("CastProjectileSpell");
                 CastFireBall();
-                skelAnim2.SetTrigger("CastSpell");
+                //skelAnim2.SetTrigger("CastSpell");
             }
             if (Input.GetKeyDown(KeyCode.R) && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded) //Cast a heal spell when player is on the ground and presses r.
             {
+				skeletonAnimator.SetTrigger ("CastHealingSpell");
                 CastHeal();
-                skelAnim2.SetTrigger("CastSpell");
+                //skelAnim2.SetTrigger("CastSpell");
             }
-
+            if (Input.GetKeyDown(KeyCode.T) && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
+            {
+				channelDelay = 0.5f;
+				skeletonAnimator.SetBool ("isChanneling", true);
+                ChannelFrostRay();
+                //skelAnim2.SetTrigger("CastSpell");
+            }
+			//Debug.Log (transform.GetComponent<PlatformerCharacter2D> ().isChanneling );
+			channelDelay -= Time.deltaTime;
+			if(transform.GetComponent<PlatformerCharacter2D> ().isChanneling == false && channelDelay < 0){ //this currently always triggers --> channeling wont work
+				skeletonAnimator.SetBool ("isChanneling", false);
+			}
         }
 
+		void LateUpdate(){
+			
+		}
+        void ChannelFrostRay()
+        {
+            //FrostRay.gameObject.SetActive(true);
+            Instantiate(FrostRay, spellPoint.position, spellPoint.rotation);
+            
+        }
         void CastHeal()
         {
             GameObject character = GameObject.FindGameObjectWithTag("Player");
@@ -61,12 +96,13 @@ namespace UnityStandardAssets._2D
 
                 int randomDmg = randomAttackGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
                 player.restoreHealth(randomDmg);
-                Instantiate(HealAOEPrefab, transform.position, transform.rotation);//The aoe Spell script is called HealAreaOfEffectScript and is located under the Spells folder
+                //Instantiate(HealParticle, transform.position, transform.rotation);//The aoe Spell script is called HealAreaOfEffectScript and is located under the Spells folder
+                transform.FindChild("SpellParticles").FindChild("HealParticles").gameObject.SetActive(true);
                 player.spendMana(4);
             }
             else
             {
-                Debug.Log("Not Enough Mana!");
+                //Debug.Log("Not Enough Mana!"); //Give player feedback istead of this!
             }
         }
 
@@ -89,7 +125,7 @@ namespace UnityStandardAssets._2D
                 }
                 else
                 {
-                    Debug.Log("Not Enough Mana!");
+                   // Debug.Log("Not Enough Mana!");
                 }
             }
             else
@@ -102,7 +138,7 @@ namespace UnityStandardAssets._2D
                 }
                 else
                 {
-                    Debug.Log("Not Enough Mana!");
+                    //Debug.Log("Not Enough Mana!");
                 }
             }
         }

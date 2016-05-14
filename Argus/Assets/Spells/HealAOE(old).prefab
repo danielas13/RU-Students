@@ -1133,7 +1133,7 @@ GameObject:
   - 58: {fileID: 5855058}
   - 114: {fileID: 11481504}
   m_Layer: 0
-  m_Name: HealAOE
+  m_Name: HealAOE(old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

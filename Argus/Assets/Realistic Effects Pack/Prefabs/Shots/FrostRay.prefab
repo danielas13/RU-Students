@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400296}
   - 114: {fileID: 11400020}
+  - 114: {fileID: 11499404}
   m_Layer: 0
   m_Name: FrostRay
   m_TagString: Untagged
@@ -428,9 +429,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.49, y: 2.1, z: -10.06}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.008726536, w: 0.9999619}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5644838}
   m_Children:
   - {fileID: 400290}
   - {fileID: 400288}
@@ -811,6 +812,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddQueue: 1
+--- !u!114 &11499404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8592e3866ab8a564f96b2a5fa5bc7a66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1
