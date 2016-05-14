@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11456508}
   m_Layer: 0
   m_Name: PhotonShot
   m_TagString: Untagged
@@ -762,7 +763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectType: 0
-  ColliderRadius: 0.2
+  ColliderRadius: 8.8
   EffectRadius: 0
   UseMoveVector: 0
   Target: {fileID: 0}
@@ -842,6 +843,22 @@ MonoBehaviour:
   FadeOutSpeed: 0.1
   FadeOutAfterCollision: 1
   UseHideStatus: 0
+--- !u!114 &11456508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1624a60ddf0e1a46be1c20b9f701897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NotHit:
+    serializedVersion: 2
+    m_Bits: 0
+  FirePrefab: {fileID: 400004}
+  spellDistance: 1000
 --- !u!114 &11475088
 MonoBehaviour:
   m_ObjectHideFlags: 1
