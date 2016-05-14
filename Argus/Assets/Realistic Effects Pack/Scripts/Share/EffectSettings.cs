@@ -139,6 +139,7 @@ public class EffectSettings : MonoBehaviour
 
   public void Deactivate()
   {
+        
     OnEffectDeactivatedHandler();
     gameObject.SetActive(false);
   }

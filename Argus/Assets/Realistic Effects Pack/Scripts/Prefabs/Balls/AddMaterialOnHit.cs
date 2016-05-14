@@ -134,4 +134,12 @@ public class AddMaterialOnHit : MonoBehaviour
     materials.Remove(instanceMat);
     renderParent.sharedMaterials = materials.ToArray();
   }
+    void OnDisable()
+    {
+        if (renderParent == null)
+            return;
+        var materials = renderParent.sharedMaterials.ToList();
+        materials.Remove(instanceMat);
+        renderParent.sharedMaterials = materials.ToArray();
+    }
 }
