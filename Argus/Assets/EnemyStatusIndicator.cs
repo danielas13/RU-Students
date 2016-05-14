@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-
 public class EnemyStatusIndicator : MonoBehaviour {
     public RectTransform healthBar;
+	public Image enemyHealthBar;
     // Use this for initialization
     
 	
@@ -13,7 +14,7 @@ public class EnemyStatusIndicator : MonoBehaviour {
     public void SetHealth(int currentHealth, int maxHealth)
     {
         float value = (float)currentHealth / maxHealth;         //calculate the current health status.
-        healthBar.localScale = new Vector3(value, 1f, 1f);      //Change the scale of the healthbar.
+		enemyHealthBar.fillAmount = value;      //Change the scale of the healthbar.
         //healthText.text = currentHealth + "/" + maxHealth;
     }
 }
