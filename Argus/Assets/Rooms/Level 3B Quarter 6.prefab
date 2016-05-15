@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11481518}
   - 61: {fileID: 6125336}
   m_Layer: 13
-  m_Name: TargetDoor
+  m_Name: A
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1922,7 +1922,7 @@ GameObject:
   - 114: {fileID: 11457986}
   - 61: {fileID: 6109018}
   m_Layer: 13
-  m_Name: TargetDoor (1)
+  m_Name: B
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13226,6 +13226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11465586
 MonoBehaviour:
@@ -13388,6 +13389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 0}
+  reciever: 0
   cooldown: 1
 --- !u!114 &11485456
 MonoBehaviour:

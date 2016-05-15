@@ -30,6 +30,7 @@ using UnityEngine;
         private float timer = 1;
         [NonSerialized]
         public bool isChanneling = false;
+
 		Transform toFlip;
 
         private void Awake()
