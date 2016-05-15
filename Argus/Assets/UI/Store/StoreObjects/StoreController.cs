@@ -22,8 +22,11 @@ public class StoreController : MonoBehaviour {
     private Text AvailableDamage;
     [SerializeField]
     private Text HealthCost, ManaCost, DamageCost, SpellpowerCost;
-
+	private Color highlightedColor; 
+	private Color defaultColor;
+	private Color darkColor; 
     public Transform canvasPrefab;
+	Text textcolor;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,6 +37,10 @@ public class StoreController : MonoBehaviour {
     }
     void Start()
     {
+		darkColor = new Color (0f, 0f, 0f, 1f);
+		highlightedColor = new Color(244/255f, 244/255f, 244/255f, 244/255f); 
+		defaultColor = new Color(0F, 0F, 0F, 0F);
+
         /*
         if (sc == null)
         {
@@ -41,38 +48,42 @@ public class StoreController : MonoBehaviour {
         }*/
         playerStatus = GameObject.Find("Player").GetComponent<Stats>();
         RestartText();
-        buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
+        buttons[SelectedButton].GetComponent<Button>().image.color = highlightedColor;
     }
 
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            buttons[SelectedButton].GetComponent<Button>().image.color = Color.cyan;
+            buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
+			textcolor = buttons [SelectedButton].GetComponent<Button> ().GetComponentInChildren<Text> ();
+			textcolor.color = highlightedColor;
             if (SelectedButton == buttons.Length-1)
             {
                 SelectedButton = 0;
-                buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
+                buttons[SelectedButton].GetComponent<Button>().image.color = highlightedColor;
+
+
             }
             else
             {
                SelectedButton = SelectedButton + 1;
-               buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
+               buttons[SelectedButton].GetComponent<Button>().image.color = highlightedColor;
             }
         }
 
         else if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            buttons[SelectedButton].GetComponent<Button>().image.color = Color.cyan;
+            buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
             if (SelectedButton == 0)
             {
                 SelectedButton = buttons.Length - 1;
-                buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
+                buttons[SelectedButton].GetComponent<Button>().image.color = highlightedColor;
             }
             else
             {
                 SelectedButton = SelectedButton-1;
-                buttons[SelectedButton].GetComponent<Button>().image.color = Color.red;
+                buttons[SelectedButton].GetComponent<Button>().image.color = highlightedColor;
             }
         }
         else if (Input.GetKeyUp(KeyCode.Space))
@@ -180,15 +191,15 @@ public class StoreController : MonoBehaviour {
     }
     void RestartText()
     {
-        scoreText.text = "Soul Essences " + playerStatus.status.score;
-        AvailableHealth.text = "Available Health " + playerStatus.status.gainedHealth;
-        AvailableMana.text = "Available Mana " + playerStatus.status.gainedMana;
-        AvailablePower.text = "Available Spellpower " + playerStatus.status.gainedSpellpower;
-        AvailableDamage.text = "Available Damage " + playerStatus.status.gainedDamage;
+		scoreText.text = "Soul Essences " + playerStatus.status.score;
+        AvailableHealth.text = "Available Upgrade \n+" + playerStatus.status.gainedHealth;
+		AvailableMana.text = "Available Upgrade \n+" + playerStatus.status.gainedMana;
+		AvailablePower.text = "Available Upgrade \n+" + playerStatus.status.gainedSpellpower;
+		AvailableDamage.text = "Available Upgrade \n+" + playerStatus.status.gainedDamage;
 
-        HealthCost.text = "Cost  " + (100 + (playerStatus.status.maxHealth-100 - playerStatus.status.gainedHealth) *2);
-        ManaCost.text = "Cost  " + (150 + (playerStatus.status.maxMana-100 - playerStatus.status.gainedMana) * 2);
-        DamageCost.text = "Cost  " + (400 + (playerStatus.status.minDamage-15 - playerStatus.status.gainedDamage) * 4);
-        SpellpowerCost.text = "Cost  " + (300 + (playerStatus.status.minSpellPower-25 - playerStatus.status.gainedSpellpower) * 4);
+		HealthCost.text = (100 + (playerStatus.status.maxHealth-100 - playerStatus.status.gainedHealth) *2).ToString ();
+		ManaCost.text = (150 + (playerStatus.status.maxMana-100 - playerStatus.status.gainedMana) * 2).ToString ();
+		DamageCost.text = (400 + (playerStatus.status.minDamage-15 - playerStatus.status.gainedDamage) * 4).ToString ();
+		SpellpowerCost.text = (300 + (playerStatus.status.minSpellPower-25 - playerStatus.status.gainedSpellpower) * 4).ToString ();
     }
 }
