@@ -29,6 +29,7 @@ public class MoveFloatingSpell : MonoBehaviour {
             transform.FindChild("Trail").FindChild("Impact").gameObject.SetActive(true);
             // transform.GetComponent<CircleCollider2D>().gameObject.SetActive(false);
             Stop = true;
+            transform.GetComponent<Collider2D>().enabled = false;
         }
         /*if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
         {

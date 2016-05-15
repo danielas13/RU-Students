@@ -30,6 +30,7 @@ public class InstantDisable : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.right), 20, notHit);
         if(hit.transform != null)
         {
+            Debug.Log("Name: " + hit.transform.name);
             damageCooldown -= Time.deltaTime;
             if (damageCooldown < 0)
             {
@@ -41,8 +42,21 @@ public class InstantDisable : MonoBehaviour
             freezeTime -= Time.deltaTime;
             if (freezeTime < 0)
             {
-                hit.transform.GetComponent<EnemyBehavior>().frozen = true;
-                hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
+                if(hit.transform.name == "Enemy")
+                {
+                    hit.transform.GetComponent<EnemyBehavior>().frozen = true;
+                    hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
+                }
+                else if (hit.transform.name == "EnemyCaster")
+                {
+                    hit.transform.GetComponent<EnemyCasterBehavior>().frozen = true;
+                    hit.transform.GetComponent<EnemyCasterBehavior>().frozenTimer = 4f;
+                }
+                else if (hit.transform.name == "FloatingEnemy")
+                {
+                    hit.transform.GetComponent<EnemyBehavior>().frozen = true;
+                    hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
+                }
             }
             
         }
@@ -54,7 +68,7 @@ public class InstantDisable : MonoBehaviour
         if (spendMana < 0)
         {
 
-            stats.spendMana(1);
+            //stats.spendMana(1);
             spendMana = 1;
         }
         spendMana -= Time.deltaTime;
@@ -63,17 +77,17 @@ public class InstantDisable : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Rotate(new Vector3(0, 0, 10 * Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, 100 * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Rotate(new Vector3(0, 0, -10 *Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, -100 *Time.deltaTime));
         }
     }
     void Start()
     {
-        GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = true;//Disable movement for the player
+        //GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = true;//Disable movement for the player
         stats = GameObject.Find("Player").GetComponent<Stats>();
     }
 }
