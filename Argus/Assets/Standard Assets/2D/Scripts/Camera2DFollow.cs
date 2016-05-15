@@ -59,7 +59,7 @@ namespace UnityStandardAssets._2D
                 }
 
                 Vector3 aheadTargetPos = target.position + new Vector3(0, 3.5f, 0) + m_LookAheadPos + Vector3.forward * m_OffsetZ;
-                Vector3 newPos = Vector3.SmoothDamp(new Vector3(transform.position.x, target.position.y + 3, transform.position.z), new Vector3(aheadTargetPos.x, target.position.y + 3, aheadTargetPos.z), ref m_CurrentVelocity, damping);
+                Vector3 newPos = Vector3.SmoothDamp(new Vector3(transform.position.x, target.position.y + 3, -50), new Vector3(aheadTargetPos.x, target.position.y + 3, -50), ref m_CurrentVelocity, damping);
 
                 transform.position = newPos;
 

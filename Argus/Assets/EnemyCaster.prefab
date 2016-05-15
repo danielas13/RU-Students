@@ -445,6 +445,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 426544}
   - 95: {fileID: 9501680}
+  - 65: {fileID: 6583296}
   m_Layer: 0
   m_Name: Eva_Full_Animated
   m_TagString: Untagged
@@ -1840,7 +1841,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.28, y: 3.78, z: -1.604}
+  m_LocalPosition: {x: -24.222229, y: 0.8539958, z: -24.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22448318}
@@ -3057,7 +3058,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6166050
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -3084,6 +3085,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6583296
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 49.1565, y: 1.7792081, z: 1}
+  m_Center: {x: 0.7612932, y: 0.95350146, z: -0.00003857149}
 --- !u!95 &9501680
 Animator:
   serializedVersion: 3
@@ -3204,6 +3217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 22404836}
+  enemyHealthBar: {fileID: 0}
 --- !u!114 &11470904
 MonoBehaviour:
   m_ObjectHideFlags: 1

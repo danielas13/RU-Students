@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace  UnityStandardAssets._2D
-{
-	public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 	{
         private static readonly System.Random randomDamageGenerator = new System.Random();     //Create a read only random variable.
         public bool movementDirection = true;
@@ -52,10 +50,12 @@ namespace  UnityStandardAssets._2D
         private int currentDmg = 30;
 
 		private bool HeavyAttackPicked = false, ComboAttackPicked = false, NormalAttackPicked = false, BlockingPicked = false, CombatModePicked = false, shieldAttackPicked = false; 	/* make sure we do nothing else when we commit to one of these actions by flagging their designated bool while performing them */
+        public bool frozen = false;
+        public float frozenTimer = 2;
 
 
-		/* Update Variables made accessible */
-		private RaycastHit2D hitForwards, hitDown, rayToPlayer;
+        /* Update Variables made accessible */
+        private RaycastHit2D hitForwards, hitDown, rayToPlayer;
 
 		// Use this for initialization
 		void Start()
@@ -83,93 +83,128 @@ namespace  UnityStandardAssets._2D
 		// Update is called once per frame
 		void Update ()
 		{
-			/* Check if the player is visible to the enemy using rays*/
-			if (!game.gm.isPlayerDead) {
-				player = GameObject.Find ("Player");
-				playerPos = new Vector2 (player.transform.position.x, player.transform.position.y);
-			} else {
-				playerPos = new Vector2 (game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
-			}
-			enemyPos = new Vector2 (transform.position.x, transform.position.y);
-			Vector2 calculateAngle = playerPos - enemyPos;
+        //Debug.Log("frozen: " + frozen + " Timer: " + frozenTimer);
+        /*if (Input.GetKeyDown(KeyCode.P))
+        {
+            frozen = !frozen;
+        }*/
+        if (frozen)
+            {
+                KnightAnimator.speed = 0f;
+                frozenTimer -= Time.deltaTime;
+                if (frozenTimer < 0)
+                {
+                    frozen = false;
+                }
+            }
+            else
+            {
+                KnightAnimator.speed = 1;
+                /* Check if the player is visible to the enemy using rays*/
+                if (!game.gm.isPlayerDead)
+                {
+                    player = GameObject.Find("Player");
+                    playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+                }
+                else
+                {
+                    playerPos = new Vector2(game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
+                }
+                enemyPos = new Vector2(transform.position.x, transform.position.y);
+                Vector2 calculateAngle = playerPos - enemyPos;
 
-			rayToPlayer = Physics2D.Raycast (enemyPos, calculateAngle, aggroRange, aggroLayers);
+                rayToPlayer = Physics2D.Raycast(enemyPos, calculateAngle, aggroRange, aggroLayers);
 
-			Vector2 trackPosition = new Vector2 (trackPoint.position.x, trackPoint.position.y);
-			hitDown = Physics2D.Raycast (trackPosition, new Vector2 (0, -1), fallDistance, NotHit);
-			hitForwards = Physics2D.Raycast (trackPosition, new Vector2 (1, 0), collideDistance, NotHit);
+                Vector2 trackPosition = new Vector2(trackPoint.position.x, trackPoint.position.y);
+                hitDown = Physics2D.Raycast(trackPosition, new Vector2(0, -1), fallDistance, NotHit);
+                hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
 
-			//Debug.Log ("Heavy: " + HeavyAttackPicked + "             Combo: " +ComboAttackPicked + "             Normal: " + NormalAttackPicked + "             block: " + BlockingPicked + "             combatmode: " + CombatModePicked);
+                //Debug.Log ("Heavy: " + HeavyAttackPicked + "             Combo: " +ComboAttackPicked + "             Normal: " + NormalAttackPicked + "             block: " + BlockingPicked + "             combatmode: " + CombatModePicked);
 
-			if(HeavyAttackPicked == true){ //Currently doing Heavy Attack, allow nothing else to happen meanwhile
-				//set anim to true
-				HeavyAttack ();
-			}
-			else if(shieldAttackPicked == true){
-				ShieldAttack ();
-			}
-			else if(ComboAttackPicked == true){  //Currently doing Combo Attack, allow nothing else to happen meanwhile
-				ComboAttack ();
-			}
-			else if(NormalAttackPicked == true){  //Currently doing Normal Attack, allow nothing else to happen meanwhile
-				//set anim to true
-				NormalAttack ();
+                if (HeavyAttackPicked == true)
+                { //Currently doing Heavy Attack, allow nothing else to happen meanwhile
+                  //set anim to true
+                    HeavyAttack();
+                }
+                else if (shieldAttackPicked == true)
+                {
+                    ShieldAttack();
+                }
+                else if (ComboAttackPicked == true)
+                {  //Currently doing Combo Attack, allow nothing else to happen meanwhile
+                    ComboAttack();
+                }
+                else if (NormalAttackPicked == true)
+                {  //Currently doing Normal Attack, allow nothing else to happen meanwhile
+                   //set anim to true
+                    NormalAttack();
 
-			}
-			else if (BlockingPicked == true){ //Currently doing Blocking, allow nothing else to happen meanwhile
-				//set anim to true
-				Block();
-			}
-			else if (CombatModePicked == true){ //Currently doing Combat Mode, allow nothing else to happen meanwhile
-				//set anim to true
-				//KnightAnimator.SetBool ("CombatMode",CombatModePicked);
-				CombatMode ();
-			}
-			else{ 								// No current animation or action being performed, seek next action
+                }
+                else if (BlockingPicked == true)
+                { //Currently doing Blocking, allow nothing else to happen meanwhile
+                  //set anim to true
+                    Block();
+                }
+                else if (CombatModePicked == true)
+                { //Currently doing Combat Mode, allow nothing else to happen meanwhile
+                  //set anim to true
+                  //KnightAnimator.SetBool ("CombatMode",CombatModePicked);
+                    CombatMode();
+                }
+                else
+                {                               // No current animation or action being performed, seek next action
 
 
 
-				/* check if the ray collides with the player */
-				if (rayToPlayer.collider != null) {											// Ray has hit ANY object
-					if (rayToPlayer.collider.gameObject.layer == 10) { 						// If we hit ground, don't react
-						//Do NOTHING!
-					} 
-					else if (rayToPlayer.collider.gameObject.layer == 8) { 					// If we find player, switch to combat mode
-						CurrentState = (int)KnightState.Combat;
-					} 
+                    /* check if the ray collides with the player */
+                    if (rayToPlayer.collider != null)
+                    {                                           // Ray has hit ANY object
+                        if (rayToPlayer.collider.gameObject.layer == 10)
+                        {                       // If we hit ground, don't react
+                                                //Do NOTHING!
+                        }
+                        else if (rayToPlayer.collider.gameObject.layer == 8)
+                        {                   // If we find player, switch to combat mode
+                            CurrentState = (int)KnightState.Combat;
+                        }
 
-				} 
-				else{
-					if(CurrentState == (int)KnightState.Attacking || CurrentState == (int)KnightState.Combat || CurrentState == (int)KnightState.Chasing){
-						CurrentState = (int)KnightState.Searching;
-					}
-				}
-				/*else{
-				if (CurrentState != (int)KnightState.Searching){				// if not in combat and not searching, go to calm by default
-					CurrentState = (int)KnightState.Calm;
-				}
-				
-			}*/
+                    }
+                    else
+                    {
+                        if (CurrentState == (int)KnightState.Attacking || CurrentState == (int)KnightState.Combat || CurrentState == (int)KnightState.Chasing)
+                        {
+                            CurrentState = (int)KnightState.Searching;
+                        }
+                    }
+                    /*else{
+                    if (CurrentState != (int)KnightState.Searching){				// if not in combat and not searching, go to calm by default
+                        CurrentState = (int)KnightState.Calm;
+                    }
 
-				/* Depending in state, call the relevant state function */
-				switch (CurrentState) {
-				case (int)KnightState.Calm:
-					Calm ();
+                }*/
 
-					break;
-				case (int)KnightState.Combat:
-					Combat ();
-					break;
-				case (int)KnightState.Searching:
-					Searching ();
-					break;
-				default:
-					CurrentState = (int)KnightState.Searching;
-					Searching ();
-					break;
-				}
+                    /* Depending in state, call the relevant state function */
+                    switch (CurrentState)
+                    {
+                        case (int)KnightState.Calm:
+                            Calm();
 
-			}
+                            break;
+                        case (int)KnightState.Combat:
+                            Combat();
+                            break;
+                        case (int)KnightState.Searching:
+                            Searching();
+                            break;
+                        default:
+                            CurrentState = (int)KnightState.Searching;
+                            Searching();
+                            break;
+                    }
+
+                }
+            }
+			
 		} /* Update */
 
 		/* Either chose to attack or chase */
@@ -632,4 +667,4 @@ namespace  UnityStandardAssets._2D
 */
 
 
-}
+
