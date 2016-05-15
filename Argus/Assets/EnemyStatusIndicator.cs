@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 public class EnemyStatusIndicator : MonoBehaviour {
-    public RectTransform healthBar;
+    //public RectTransform healthBar;
 	public Image enemyHealthBar;
     // Use this for initialization
     

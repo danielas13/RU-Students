@@ -15,6 +15,7 @@ public class MeleeAttackTrigger : MonoBehaviour
         {
             int randomDmg = randomAttackGenerator.Next(player.status.minDamage, player.status.maxDamage);
             col.SendMessageUpwards("damageEnemy", randomDmg);
+            transform.GetComponent<Collider2D>().enabled = false;
         }
         else if(col.CompareTag("Chest"))
         {

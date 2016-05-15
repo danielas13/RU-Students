@@ -79,7 +79,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 0.14285715
+        second: 1
       data:
         first:
           name: _Shininess
@@ -143,7 +143,7 @@ Material:
       data:
         first:
           name: _MainTexAlpha
-        second: 0.71428573
+        second: 2
       data:
         first:
           name: _RefractiveStrength

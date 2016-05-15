@@ -74,10 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09710ac28833a6542b09f965ec93fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RemoveAfterTime: 20
+  RemoveAfterTime: 4
   RemoveWhenDisable: 1
   EffectSettings: {fileID: 11400010}
-  Material: {fileID: 2100000, guid: 83d5d51a4b445174c8ac865b096d797b, type: 2}
+  Material: {fileID: 2100000, guid: 3d18644303991b149ae81a051465c169, type: 2}
   UsePointMatrixTransform: 0
   TransformScale: {x: 1, y: 1, z: 1}
 --- !u!114 &11400002

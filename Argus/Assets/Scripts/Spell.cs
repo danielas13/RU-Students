@@ -84,7 +84,7 @@ namespace UnityStandardAssets._2D
         void ChannelFrostRay()
         {
             //FrostRay.gameObject.SetActive(true);
-            Instantiate(FrostRay, spellPoint.position, spellPoint.rotation);
+            Instantiate(FrostRay,spellPoint.position, spellPoint.rotation * Quaternion.Euler(new Vector3(0,0,1) * 1)); // instantate a straight ray
             
         }
         void CastHeal()

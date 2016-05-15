@@ -11,5 +11,6 @@ public class EnemySwordTriggerScript : MonoBehaviour {
 		{
 			col.SendMessageUpwards("damagePlayer", damage);
 		}
+        gameObject.SetActive(false);
 	}
 }
