@@ -6108,9 +6108,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.000000014901161}
+  m_Offset: {x: -0.31091675, y: -0.23431435}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6218325, y: 1.46863}
 --- !u!61 &6181224
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -6756,6 +6756,9 @@ MonoBehaviour:
   TargetObject: {fileID: 0}
   reciever: 1
   cooldown: 1
+  IsLocked: 0
+  SecondLock: 0
+  lockedBoard: {fileID: 0}
 --- !u!114 &11417768
 MonoBehaviour:
   m_ObjectHideFlags: 1

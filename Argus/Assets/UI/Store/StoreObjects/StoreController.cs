@@ -21,6 +21,18 @@ public class StoreController : MonoBehaviour {
     [SerializeField]
     private Text AvailableDamage;
     [SerializeField]
+	private Text CurrentMana;
+	[SerializeField]
+	private Text CurrentHealth;
+	[SerializeField]
+	private Text CurrentDamage;
+	[SerializeField]
+	private Text CurrentSpellpower;
+	[SerializeField]
+	private Text ErrorMessage;
+	[SerializeField]
+
+
     private Text HealthCost, ManaCost, DamageCost, SpellpowerCost;
 	private Color highlightedColor; 
 	private Color defaultColor;
@@ -55,6 +67,7 @@ public class StoreController : MonoBehaviour {
     {
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
+			ErrorMessage.text = "";
             buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
 			textcolor = buttons [SelectedButton].GetComponent<Button> ().GetComponentInChildren<Text> ();
 			textcolor.color = highlightedColor;
@@ -74,6 +87,7 @@ public class StoreController : MonoBehaviour {
 
         else if (Input.GetKeyUp(KeyCode.DownArrow))
         {
+			ErrorMessage.text = "";
             buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
             if (SelectedButton == 0)
             {
@@ -88,14 +102,11 @@ public class StoreController : MonoBehaviour {
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            callFunction();
+			buttons[SelectedButton].GetComponent<Button>().onClick.Invoke();
+			//ErrorMessage.text = "Purchase complete.";
         }
     }
-
-    private void callFunction()
-    {
-        buttons[SelectedButton].GetComponent<Button>().onClick.Invoke();
-    }
+		
 
     public void OpenShop()
     {
@@ -125,11 +136,16 @@ public class StoreController : MonoBehaviour {
                playerStatus.status.gainedHealth -= 10;
                 RestartText();
                playerStatus.restart();
+				ErrorMessage.text = "Purchase complete! ";
             }
+			else{
+				ErrorMessage.text = "You cannot purchase this upgrade. \n Insufficient Soul Essences.";
+			}
+
         }
         else
         {
-            Debug.Log("No health gained this Run");
+			ErrorMessage.text = "You cannot purchase this upgrade. \n No health gained this run. ";
         }
         
     }
@@ -144,11 +160,17 @@ public class StoreController : MonoBehaviour {
                 playerStatus.status.gainedMana -= 10;
                 RestartText();
                 playerStatus.restart();
+				ErrorMessage.text = "Purchase complete! ";
+
             }
+			else{
+				ErrorMessage.text = "You cannot purchase this upgrade. \n Insufficient Soul Essences.";
+			}
         }
         else
         {
-            Debug.Log("No Mana gained this Run");
+			ErrorMessage.text = "You cannot purchase this upgrade. \n No mana gained this run. ";
+
         }
     }
     public void IncreaseDamage()
@@ -162,11 +184,16 @@ public class StoreController : MonoBehaviour {
                 playerStatus.status.gainedDamage -= 1;
                 RestartText();
                 playerStatus.restart();
+				ErrorMessage.text = "Purchase complete! ";
+
             }
+			else{
+				ErrorMessage.text = "You cannot purchase this upgrade. \n Insufficient Soul Essences.";
+			}
         }
         else
         {
-            Debug.Log("No damage gained this Run");
+			ErrorMessage.text = "You cannot purchase this upgrade. \n No damage gained this run. ";
         }
     }
     public void IncreaseSpellpower()
@@ -180,8 +207,15 @@ public class StoreController : MonoBehaviour {
                 playerStatus.status.gainedSpellpower -= 1;
                 RestartText();
                 playerStatus.restart();
-            }
+				ErrorMessage.text = "Purchase complete! ";
+			}
+			else{
+				ErrorMessage.text = "You cannot purchase this upgrade. \n Insufficient Soul Essences.";
+			}
         }
+		else{
+			ErrorMessage.text = "You cannot purchase this upgrade. \n No spellpower gained this run. ";
+		}
     }
 
     public void UnlockSpell()
@@ -196,6 +230,12 @@ public class StoreController : MonoBehaviour {
 		AvailableMana.text = "Available Upgrade \n+" + playerStatus.status.gainedMana;
 		AvailablePower.text = "Available Upgrade \n+" + playerStatus.status.gainedSpellpower;
 		AvailableDamage.text = "Available Upgrade \n+" + playerStatus.status.gainedDamage;
+
+		CurrentHealth.text = "Base Health \n" + (playerStatus.status.maxHealth - playerStatus.status.gainedHealth);
+		CurrentMana.text = "Base Mana \n" + (playerStatus.status.maxMana - playerStatus.status.gainedMana);
+		CurrentDamage.text = "Base Damage \n" + (playerStatus.status.minDamage - playerStatus.status.gainedDamage) + " - " + (playerStatus.status.maxDamage - playerStatus.status.gainedDamage);
+		CurrentSpellpower.text = "Base Spellpower \n" + (playerStatus.status.minSpellPower - playerStatus.status.gainedSpellpower) + " - " + (playerStatus.status.maxSpellPower - playerStatus.status.gainedSpellpower);
+
 
 		HealthCost.text = (100 + (playerStatus.status.maxHealth-100 - playerStatus.status.gainedHealth) *2).ToString ();
 		ManaCost.text = (150 + (playerStatus.status.maxMana-100 - playerStatus.status.gainedMana) * 2).ToString ();

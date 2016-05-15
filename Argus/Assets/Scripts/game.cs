@@ -9,6 +9,7 @@ public class game : MonoBehaviour {
     private GameObject player = null;
     private float deadTimer = 2;
     public List<GameObject> ItemSpawners = new List<GameObject>();
+    public List<GameObject> ShopDoors = new List<GameObject>();
 
     public GameObject playerStatsScreenObj;                 //The player status screens.
     private GameObject playerStatsScreen;
@@ -37,6 +38,15 @@ public class game : MonoBehaviour {
             for (int i = 0; i < ItemSpawns.Length; i++)
             {
                 ItemSpawners.Add(ItemSpawns[i]);
+            }
+        }
+
+        GameObject[] storeDoors = GameObject.FindGameObjectsWithTag("StoreDoor");
+        if (storeDoors != null)
+        {
+            for (int i = 0; i < storeDoors.Length; i++)
+            {
+                ShopDoors.Add(storeDoors[i]);
             }
         }
     }
@@ -160,6 +170,14 @@ public class game : MonoBehaviour {
         for (int i = 0; i < ItemSpawners.Count; i++)
         {
             ItemSpawners[i].SetActive(true);
+        }
+
+        for (int i = 0; i < ShopDoors.Count; i++)
+        {
+            if (!ShopDoors[i].GetComponent<OneToStoreDoor>().Guaranteed)
+            {
+                ShopDoors[i].GetComponent<OneToStoreDoor>().restart();
+            }
         }
     }
 }

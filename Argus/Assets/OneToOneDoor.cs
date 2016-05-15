@@ -8,10 +8,18 @@ public class OneToOneDoor : MonoBehaviour {
     public bool reciever = false;
     public float cooldown = 1;
     public bool IsLocked = false;
+    public bool SecondLock = false;
     public Canvas lockedBoard;
 
     private float islockedTextCounter = 0;
 
+    void Start()
+    {
+        if (SecondLock)
+        {
+            IsLocked = true;
+        }
+    }
     //Will trigger if the player is withing the door boundaries and pressesthe up key.
     void OnTriggerStay2D(Collider2D other)
     {
@@ -79,9 +87,16 @@ public class OneToOneDoor : MonoBehaviour {
 
     public void unlock()
     {
-        islockedTextCounter = 0;
-        IsLocked = false;
-        lockedBoard.transform.Translate(new Vector3(0, 0, 5));
+        if (SecondLock)
+        {
+            SecondLock = false;
+        }
+        else
+        {
+            islockedTextCounter = 0;
+            IsLocked = false;
+            lockedBoard.transform.Translate(new Vector3(0, 0, 5));
+        }
     }
 }
 
