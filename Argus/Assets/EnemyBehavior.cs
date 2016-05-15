@@ -276,7 +276,10 @@ public class EnemyBehavior : MonoBehaviour
 
 
 			if(KnightAnimator.GetCurrentAnimatorStateInfo(0).IsName("MKnght_1H_sword_swing_high_right")){
-				SwordTrigger.gameObject.SetActive (true);
+            if (!normalAnimationPlayed)
+            {
+                SwordTrigger.gameObject.SetActive(true);
+            }
 				normalAnimationPlayed = true;
 
                 currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage,enemyStat.status.maxDamage);
@@ -323,7 +326,11 @@ public class EnemyBehavior : MonoBehaviour
 		void HeavyAttack(){
 
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_Heavy Smash")) {
-				SwordTrigger.gameObject.SetActive (true);
+                if (!heavyAnimationPlayed)
+                {
+                    SwordTrigger.gameObject.SetActive(true);
+
+                }
                 currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage, enemyStat.status.maxDamage);
                 SwordTrigger.GetComponent <EnemySwordTriggerScript>().damage = currentDmg * 2;
 				heavyAnimationPlayed = true;
@@ -384,11 +391,13 @@ public class EnemyBehavior : MonoBehaviour
 			}
 			else 																						//There is no ground in this direction or we hit a wall, we turn the enemy around and walk in that direction
 			{
-				direction = -direction;
+                Flip();
+                transform.Translate(Vector3.right * Time.deltaTime * movementVelocity);     //Translate our character after turning
+				/*direction = -direction;
 				transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 				//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
 				transform.Translate(Vector3.right * Time.deltaTime * (float)movementVelocity / 1.5f);  	//Translate our character after turning
-				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
+				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;*/
 
 			}
 
@@ -410,18 +419,20 @@ public class EnemyBehavior : MonoBehaviour
 					{
 						if (direction != 1)
 						{
-							direction = -direction;
+                            Flip();
+                            /*direction = -direction;
 							//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-							transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+							transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);*/
 						}
 					}
 					else if(playerPos.x < enemyPos.x)
 					{
 						if (direction == 1)
 						{
-							direction = -direction;
+                            Flip();
+							/*direction = -direction;
 							//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-							transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+							transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);*/
 						}
 					}
 					//KnightAnimator.SetFloat ("CombatMovementSpeed", 0);
@@ -431,9 +442,11 @@ public class EnemyBehavior : MonoBehaviour
 					//KnightAnimator.SetFloat ("CombatMovementSpeed", 1);
 					if (direction != 1)
 					{
+                        Flip();
+                    /*
 						direction = -direction;
 						//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-						transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+						transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);*/
 					}
 					if (hitDown.collider != null && hitForwards.collider == null) 
 					{
@@ -444,9 +457,10 @@ public class EnemyBehavior : MonoBehaviour
 				{
 					if (direction == 1)
 					{
-						direction = -direction;
+                        Flip();
+						/*direction = -direction;
 						//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-						transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+						transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);*/
 					}
 					if (hitDown.collider != null && hitForwards.collider == null)
 					{
@@ -486,8 +500,10 @@ public class EnemyBehavior : MonoBehaviour
 				}
 				else 																						//There is no ground in this direction or we hit a wall, we turn the enemy around and walk in that direction
 				{
-					direction = -direction;
-					transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+                    Flip();
+
+					//direction = -direction;
+					//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
 					transform.Translate(Vector3.right * Time.deltaTime * movementVelocity/2 * direction);  	//Translate our character after turning
 					//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
 
@@ -533,11 +549,13 @@ public class EnemyBehavior : MonoBehaviour
 			}
 			else 																						//There is no ground in this direction or we hit a wall, we turn the enemy around and walk in that direction
 			{
-				direction = -direction;
+            Flip();
+            transform.Translate(Vector3.right * Time.deltaTime * movementVelocity);     //Translate our character after turning
+				/*direction = -direction;
 				//transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
 				transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 				transform.Translate(Vector3.right * Time.deltaTime * movementVelocity);  	//Translate our character after turning
-				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;
+				//transform.GetComponent<Rigidbody2D>().velocity = Vector2.right * Time.deltaTime * movementVelocity * direction;*/
 
 			}
 		}
@@ -549,122 +567,14 @@ public class EnemyBehavior : MonoBehaviour
 
 
 		}
+    void Flip()
+    {
+        direction = -direction;
+        //transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
+        transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+        transform.FindChild("NotToFlip").transform.rotation = transform.FindChild("NotToFlip").transform.rotation * Quaternion.Euler(Vector3.up * 180);
+    }
 
-	} /* EnemyBehaviour */
-
-	/*Vector2 playerPos;
-	if (!game.gm.isPlayerDead) {
-		player = GameObject.Find("Player");
-		playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-	}
-	else
-	{
-		playerPos = new Vector2(game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
-	}
-	Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
-	Vector2 calculateAngle = playerPos - enemyPos;
-
-	RaycastHit2D rayToPlayer = Physics2D.Raycast(enemyPos, calculateAngle, aggroRange, aggroLayers);
-
-	Vector2 trackPosition = new Vector2(trackPoint.position.x, trackPoint.position.y);
-	RaycastHit2D hitDown = Physics2D.Raycast(trackPosition, new Vector2(0, -1), fallDistance, NotHit);
-	RaycastHit2D hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
-
-	//Check if the unit should enter chase mode.
-	if (rayToPlayer.collider != null)
-	{
-		if(rayToPlayer.collider.gameObject.layer == 10)
-		{
-			//Debug.DrawLine(transform.position, player.transform.position, Color.red);
-		}
-		else if(rayToPlayer.collider.gameObject.layer == 8)
-		{
-			this.chase = true;
-			//Debug.DrawLine(transform.position, player.transform.position, Color.blue);
-		}
-		else
-		{
-			this.chase = false;
-		}
-	}
-	else
-	{
-		this.chase = false;
-	}
-
-	if (game.gm.isPlayerDead)
-	{
-		chase = false;
-		transform.FindChild("EnemyMeleeAttackTrigger").GetComponent<EnemyMeleeAttackTriggerScript>().withinAttackRange = false;
-	}
-	if (!this.chase) // NOT CHASING
-	{
-		KnightAnimator.SetBool("Chasing", false);
-		KnightAnimator.SetBool("Patrolling", true);
-
-
-		if (hitDown.collider != null && hitForwards.collider == null)
-		{
-
-		}
-		else
-		{
-			direction = -direction;
-			transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-		}
-		transform.Translate(Vector3.right * Time.deltaTime * movementVelocity * direction);
-	}
-	else 
-	{
-		KnightAnimator.SetBool("Chasing", true);
-		KnightAnimator.SetBool("Patrolling", false);
-
-		//The player is to the right.
-		if((Mathf.Abs(playerPos.x - enemyPos.x)) < 1.5f){
-			if(playerPos.x > enemyPos.x)
-			{
-				if (direction != 1)
-				{
-					direction = -direction;
-					transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-				}
-			}
-			else if(playerPos.x < enemyPos.x)
-			{
-				if (direction == 1)
-				{
-					direction = -direction;
-					transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-				}
-			}
-		}
-		else  if(playerPos.x > enemyPos.x)
-		{
-			if (direction != 1)
-			{
-				direction = -direction;
-				transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-			}
-			if (hitDown.collider != null && hitForwards.collider == null) 
-			{
-				transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
-			}
-		}
-		else if(playerPos.x < enemyPos.x)
-		{
-			if (direction == 1)
-			{
-				direction = -direction;
-				transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
-			}
-			if (hitDown.collider != null && hitForwards.collider == null)
-			{
-				transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity * direction);
-			}      
-		}
-	}
 }
-*/
-
 
 
