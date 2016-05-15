@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 478882}
   - 114: {fileID: 11496970}
+  - 61: {fileID: 6187090}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -28,6 +29,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!61 &6187090
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109622}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &11496970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,13 +54,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf480cc630393349b40746a18b93e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalSpawns: 2
   EnemyPrefab: {fileID: 495706, guid: 9434e55407c95ba42a8ea2ebe0ddfb02, type: 2}
   coolDown: 10
   MaxRangeFromPlayer: 15
   spawnLayers:
     serializedVersion: 2
     m_Bits: 256
+  SingleSpawn: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
