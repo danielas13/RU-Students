@@ -43,7 +43,7 @@ GameObject:
   - 4: {fileID: 445420}
   - 114: {fileID: 11458486}
   m_Layer: 0
-  m_Name: RedPlasmaGun
+  m_Name: FelBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
