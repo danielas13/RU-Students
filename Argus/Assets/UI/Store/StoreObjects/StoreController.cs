@@ -40,6 +40,9 @@ public class StoreController : MonoBehaviour {
     public Transform canvasPrefab;
 	Text textcolor;
 
+    private bool VertDpadPressed = false;
+    private bool HorizDpadPressed = false;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -65,8 +68,9 @@ public class StoreController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("Up"))
+        if (Input.GetButtonDown("Up") || (Input.GetAxisRaw("DVert") >= 1 && !VertDpadPressed))
         {
+            VertDpadPressed = true;
 			ErrorMessage.text = "";
             buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
 			textcolor = buttons [SelectedButton].GetComponent<Button> ().GetComponentInChildren<Text> ();
@@ -85,9 +89,10 @@ public class StoreController : MonoBehaviour {
             }
         }
 
-        else if (Input.GetButtonDown("Down"))
+        else if (Input.GetButtonDown("Down") || (Input.GetAxisRaw("DVert") <= -1 && !VertDpadPressed))
         {
-			ErrorMessage.text = "";
+            VertDpadPressed = true;
+            ErrorMessage.text = "";
             buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
             if (SelectedButton == 0)
             {
@@ -104,6 +109,15 @@ public class StoreController : MonoBehaviour {
         {
 			buttons[SelectedButton].GetComponent<Button>().onClick.Invoke();
 			//ErrorMessage.text = "Purchase complete.";
+        }
+
+        if (Input.GetAxisRaw("DHoriz") == 0)
+        {
+            HorizDpadPressed = false;
+        }
+        if (Input.GetAxisRaw("DVert") == 0)
+        {
+            VertDpadPressed = false;
         }
     }
 		

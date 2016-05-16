@@ -26,12 +26,19 @@ public class SpecialStoreController : MonoBehaviour {
 
     private int CategorySelection = 0;
     private int CurrentSelection = 0;
+    private float counter = 1f;
 
     private Stats playerStats;
+    private Spell playerSpell;
+
+    private bool VertDpadPressed = false;
+    private bool HorizDpadPressed = false;
     // Use this for initialization
     void Start()
     {
+        Debug.Log("HelloWorld");
         playerStats = GameObject.Find("Player").GetComponent<Stats>();
+        playerSpell = GameObject.Find("Player").GetComponent<Spell>();
         Categories[CategorySelection].GetComponent<Button>().image.color = selectedColor;
         for (int i = 0; i < Categories.Length; i++)
         {
@@ -45,14 +52,16 @@ public class SpecialStoreController : MonoBehaviour {
         canvas.SetActive(true);
 		SetPrices(SpellPriceAmount);
 		ErrorMessage.text = " ";
+        Time.timeScale = 0;
     }
+
     void OnTriggerStay2D(Collider2D other)
     {
-        Time.timeScale = 0;
+        
         if (other.gameObject.CompareTag("Player"))
         {
             if (Input.GetButtonDown("Interact"))
-            {
+            {/*
                 if (!canvas.activeSelf)
                 {
                     canvas.SetActive(true);
@@ -60,13 +69,13 @@ public class SpecialStoreController : MonoBehaviour {
                 else
                 {
                     canvas.SetActive(false);
-                }
+                }*/
             }
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
         //canvas.SetActive(false);
     }
 
@@ -76,11 +85,19 @@ public class SpecialStoreController : MonoBehaviour {
     {
         if (Input.GetButtonDown("Interact"))
         {
-            Time.timeScale = 1;
-            Destroy(this.gameObject);
+            if(counter <= 0)
+            {
+                Time.timeScale = 1;
+                Destroy(this.gameObject);
+            }
         }
-        if (Input.GetButtonDown("Right"))         //Selecting Categories to the right.
+        if(counter >= 0)
         {
+            counter -= 0.01f;
+        }
+        if (Input.GetButtonDown("Right") || (Input.GetAxisRaw("DHoriz") >= 1 && !HorizDpadPressed))         //Selecting Categories to the right.
+        {
+            HorizDpadPressed = true;
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
             Categories[CategorySelection].GetComponent<Button>().image.color = basicColor;
@@ -107,8 +124,9 @@ public class SpecialStoreController : MonoBehaviour {
                 SetPrices(UpgradeAmount);
             }
         }
-        if (Input.GetButtonDown("Left"))         //Selecting Categories to the left.
+        if (Input.GetButtonDown("Left") || (Input.GetAxisRaw("DHoriz") <= -1 && !HorizDpadPressed))         //Selecting Categories to the left.
         {
+            HorizDpadPressed = true;
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
             Categories[CategorySelection].GetComponent<Button>().image.color = basicColor;
@@ -150,6 +168,16 @@ public class SpecialStoreController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             callFunction();
+        }
+
+
+        if (Input.GetAxisRaw("DHoriz") == 0)
+        {
+            HorizDpadPressed = false;
+        }
+        if (Input.GetAxisRaw("DVert") == 0)
+        {
+            VertDpadPressed = false;
         }
     }
 
@@ -193,8 +221,9 @@ public class SpecialStoreController : MonoBehaviour {
     }
     void useButtons(GameObject[] lis)                           //Use the down/up keys to navigate through catagory content.
     {
-        if (Input.GetButtonDown("Down"))
+        if (Input.GetButtonDown("Down") || (Input.GetAxisRaw("DVert") <= -1 && !VertDpadPressed))
         {
+            VertDpadPressed = true;
             lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
             if (CurrentSelection == lis.Length - 1)             //The counter is the last option.
             {
@@ -209,8 +238,9 @@ public class SpecialStoreController : MonoBehaviour {
             textArea.text = TextArray[CategorySelection, CurrentSelection];
             ErrorMessage.text = " ";
         }
-        if (Input.GetButtonDown("Up"))
+        if (Input.GetButtonDown("Up") || (Input.GetAxisRaw("DVert") >= 1 && !VertDpadPressed))
         {
+            VertDpadPressed = true;
             lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
             if (CurrentSelection == 0)     //The counter is at the bottom option.
             {
@@ -325,12 +355,12 @@ public class SpecialStoreController : MonoBehaviour {
 
     public void PurchaseArmorUpgrade()
     {
-        if(playerStats.status.score >= UpgradeAmount[2])
+        if(playerStats.status.score >= UpgradeAmount[3])
         {
             playerStats.addDamageReduction(2);
-            playerStats.status.score -= UpgradeAmount[2];
-            UpgradeAmount[2] = UpgradeAmount[2] * 2;
-            Prices[2].text = UpgradeAmount[2].ToString();
+            playerStats.status.score -= UpgradeAmount[3];
+            UpgradeAmount[3] = UpgradeAmount[3] * 2;
+            Prices[3].text = UpgradeAmount[3].ToString();
             CurrentEssence.text = "Current Essence " + playerStats.status.score;
         }
         else
@@ -341,9 +371,98 @@ public class SpecialStoreController : MonoBehaviour {
 
 	public void PurchaseFireBlade()
 	{
-		//TODO purchase fire
-	}
+        if (!playerStats.status.FireBlade)
+        {
+            if (playerStats.status.score >= UpgradeAmount[2])
+            {
+                if (playerStats.status.ShadowBlade)
+                {
+                    Prices[0].text = UpgradeAmount[1].ToString();
+                }
+                if (playerStats.status.ManaBlade)
+                {
+                    Prices[1].text = UpgradeAmount[1].ToString();
+                }
+                playerStats.AddFireBlade();
+                playerStats.status.score -= UpgradeAmount[2];
+                Prices[2].text = "Equipped";
+                CurrentEssence.text = "Current Essences " + playerStats.status.score;
+            }
+            else
+            {
+                ErrorMessage.text = "Not enough essences!";
+            }
+        }
+        else
+        {
+            ErrorMessage.text = "Already in use";
+        }
+    }
 
+
+    public void PurchaseHeal()
+    {
+        if (!playerSpell.LearnedHeal)
+        {
+            if (playerStats.status.score >= SpellPriceAmount[0])
+            {
+                playerSpell.LearnedHeal = true;
+                playerStats.status.score -= SpellPriceAmount[0];
+                Prices[2].text = "Purchased";
+                CurrentEssence.text = "Current Essences " + playerStats.status.score;
+            }
+            else
+            {
+                ErrorMessage.text = "Not enough essences!";
+            }
+        }
+        else
+        {
+            ErrorMessage.text = "Spell Already known.";
+        }
+    }
+    public void PurchaseFrostRay()
+    {
+        if (!playerSpell.LearnedFrost)
+        {
+            if (playerStats.status.score >= SpellPriceAmount[1])
+            {
+                playerSpell.LearnedFrost = true;
+                playerStats.status.score -= SpellPriceAmount[1];
+                Prices[1].text = "Purchased";
+                CurrentEssence.text = "Current Essences " + playerStats.status.score;
+            }
+            else
+            {
+                ErrorMessage.text = "Not enough essences!";
+            }
+        }
+        else
+        {
+            ErrorMessage.text = "Spell Already known.";
+        }
+    }
+    public void PurchaseFireRay()
+    {
+        if (!playerSpell.LearnedFire)
+        {
+            if (playerStats.status.score >= SpellPriceAmount[2])
+            {
+                playerSpell.LearnedFire = true;
+                playerStats.status.score -= SpellPriceAmount[2];
+                Prices[0].text = "Purchased";
+                CurrentEssence.text = "Current Essences " + playerStats.status.score;
+            }
+            else
+            {
+                ErrorMessage.text = "Not enough essences!";
+            }
+        }
+        else
+        {
+            ErrorMessage.text = "Spell Already known.";
+        }
+    }
 
 
     private void initiateArray()

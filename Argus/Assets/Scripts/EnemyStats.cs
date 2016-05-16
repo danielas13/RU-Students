@@ -35,7 +35,6 @@ public class EnemyStats : MonoBehaviour {
 
     public void Ignite(float timer)
     {
-        Debug.Log("BURN BABBY BURRRRRRRN");
         OnFire.gameObject.SetActive(true);
         OnFire.GetComponent<DamageOverTime>().Reset();
     }
