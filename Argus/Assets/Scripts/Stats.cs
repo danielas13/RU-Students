@@ -100,6 +100,7 @@ public class Stats : MonoBehaviour {
     public void damagePlayer(int damage)
     {
 
+        //transform.GetComponent<PlatformerCharacter2D>().isChanneling = false;
       //  skelAnim.SetBool("hit", true);
         if(damage - status.DamageReduction > 0)
         {

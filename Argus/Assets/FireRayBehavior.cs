@@ -4,7 +4,7 @@ using System.Collections;
 public class FireRayBehavior : MonoBehaviour {
 
     private Stats stats;
-    private float spendMana = 1;
+    private float spendMana = 0;
     private bool stoppedChannel = false;//Check to make sure that the player can not rechannel the already in effect spell
     public LayerMask notHit;
     private float damageCooldown = 1;
@@ -66,7 +66,7 @@ public class FireRayBehavior : MonoBehaviour {
         if (spendMana < 0)
         {
 
-            stats.spendMana(1);
+            stats.spendMana(15);
             spendMana = 1;
         }
         spendMana -= Time.deltaTime;
