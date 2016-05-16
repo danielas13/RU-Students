@@ -17,6 +17,7 @@ public class MoveFireBall : MonoBehaviour {
         GameObject character = GameObject.FindGameObjectWithTag("Player");
         player = character.GetComponent<Stats>();
         Physics2D.IgnoreLayerCollision(10, 12, false);
+        transform.FindChild("MovedTrail").FindChild("Trail").gameObject.SetActive(true);
 
     }
 
@@ -28,12 +29,13 @@ public class MoveFireBall : MonoBehaviour {
         {
             damage = randomSpellPowerGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
-            Destroy(this.gameObject);
+            transform.FindChild("MovedTrail").FindChild("Explosion").gameObject.SetActive(true);
+
         }
         if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
         {
             //Debug.Log("Wall Collision");
-            Destroy(this.gameObject);
+           // Destroy(this.gameObject);
         }
 
     }

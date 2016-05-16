@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Line5
-  m_Shader: {fileID: 4800000, guid: 49895ab10e5998b4db8eee81071536b6, type: 3}
+  m_Name: Particles 1
+  m_Shader: {fileID: 4800000, guid: 7682ab5e936afcb469d7fef4d5adf6eb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,30 +19,22 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 023cdc8a088c2264d86f8d57fe83b4d5, type: 3}
-          m_Scale: {x: 0.125, y: 0.0625}
-          m_Offset: {x: 0.625, y: 0.125}
+          m_Texture: {fileID: 2800000, guid: dd27607fe3bd52d4c84a5bd18e528fd5, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: 7
-      data:
-        first:
           name: _TintStrength
-        second: 2.232143
+        second: 1.7
       data:
         first:
           name: _CoreStrength
-        second: 4.5714283
+        second: 2
       data:
         first:
           name: _CutOutLightCore
-        second: 0
-      data:
-        first:
-          name: _ColorStrength
-        second: 0.5
+        second: 0.6964286
     m_Colors:
       data:
         first:
@@ -51,8 +43,8 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 0.45588237, g: 0.6968073, b: 1, a: 0.5019608}
+        second: {r: 0.9117647, g: 0.96713996, b: 1, a: 1}
       data:
         first:
           name: _CoreColor
-        second: {r: 0.5039553, g: 0.46323532, b: 1, a: 1}
+        second: {r: 0.12342808, g: 1, b: 0.051470578, a: 1}
