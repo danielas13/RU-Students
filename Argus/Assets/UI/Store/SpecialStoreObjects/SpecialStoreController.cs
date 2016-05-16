@@ -8,7 +8,7 @@ public class SpecialStoreController : MonoBehaviour {
     public GameObject[] SpellButtons;
     public GameObject[] UpgradeButtons;
 
-    private int[] SpellPriceAmount = new int[5];
+    private int[] SpellPriceAmount = new int[3];
     private int[] UpgradeAmount = new int[3];           //SET NEW PRICES HERE FOR EACH CATEGORY. Reset them in the InitiateArray func.
 
     public Text[] Prices;
@@ -16,11 +16,11 @@ public class SpecialStoreController : MonoBehaviour {
     public Text ErrorMessage;
 
 
-    private Color basicColor = new Color(199 / 255f, 157 / 255f,157/255f, 1);
-    private Color selectedColor = new Color(168/255f, 132/255f, 132 / 255f / 255f, 1);
+	private Color basicColor = new Color(0F, 0F, 0F, 1f);
+	private Color selectedColor = new Color(244/255f, 244/255f, 244/255f, 244/255f); 
 
     public Text textArea;
-    private string[,] TextArray = new string[6, 6];          //Array containing all the dialogs
+    private string[,] TextArray = new string[3, 3];          //Array containing all the dialogs
     public GameObject[] Pannels; //0 = Upgrades, 1 = enemies
     public GameObject canvas;           //The canvas object.
 
@@ -360,8 +360,7 @@ public class SpecialStoreController : MonoBehaviour {
         SpellPriceAmount[0] = 500;
         SpellPriceAmount[1] = 500;
         SpellPriceAmount[2] = 250;
-        SpellPriceAmount[3] = 250;
-        SpellPriceAmount[4] = 250;
+
 
 
         //Upgrade texts.
@@ -374,7 +373,6 @@ public class SpecialStoreController : MonoBehaviour {
         TextArray[0, 0] = " ";
         TextArray[0, 1] = " ";
         TextArray[0, 2] = " ";
-        TextArray[0, 3] = " ";
-        TextArray[0, 4] = " ";
+
     }
 }
