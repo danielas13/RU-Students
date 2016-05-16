@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 432910}
   - 114: {fileID: 11426844}
+  - 114: {fileID: 11437590}
   m_Layer: 0
   m_Name: FireRay
   m_TagString: Untagged
@@ -664,6 +665,20 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11437590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c8a469dd7eacb468c08111f5983ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notHit:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &11453738
 MonoBehaviour:
   m_ObjectHideFlags: 1

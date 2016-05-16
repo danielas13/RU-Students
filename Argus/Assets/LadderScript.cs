@@ -3,8 +3,6 @@ using System.Collections;
 
 public class LadderScript : MonoBehaviour {
     private GameObject player;      //player object
-    public float upSpeed = 3;
-    public float downSpeed = 2;
     private bool isClimbing = false;
 
     void Start()
@@ -34,12 +32,12 @@ public class LadderScript : MonoBehaviour {
         {
             if (Input.GetAxis("Vertical") >= 0.2f)  //Player is going up.
             {
-                player.transform.GetComponent<Rigidbody2D>().velocity = Vector2.up*upSpeed; 
+                player.transform.GetComponent<Rigidbody2D>().velocity = Vector2.up*3; 
 
             }
             else if (Input.GetAxis("Vertical") < -0.2f)   //Player is going down.
             {
-                player.transform.GetComponent<Rigidbody2D>().velocity = Vector2.down*downSpeed;
+                player.transform.GetComponent<Rigidbody2D>().velocity = Vector2.down*2;
 
             }
             else                                        //Player is staying still on the ladder.
