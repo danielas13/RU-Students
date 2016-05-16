@@ -77,17 +77,17 @@ public class InstantDisable : MonoBehaviour
 
         if (Input.GetAxis("Vertical") >= 0.2f)
         {
-            transform.Rotate(new Vector3(0, 0, 100 * Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, 10 * Time.deltaTime));
         }
 
         if (Input.GetAxis("Vertical") < -0.2f)
         {
-            transform.Rotate(new Vector3(0, 0, -100 *Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, -10 *Time.deltaTime));
         }
     }
     void Start()
     {
-        //GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = true;//Disable movement for the player
+        GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = true;//Disable movement for the player
         stats = GameObject.Find("Player").GetComponent<Stats>();
     }
 }
