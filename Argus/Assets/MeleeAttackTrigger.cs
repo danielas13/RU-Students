@@ -21,6 +21,11 @@ public class MeleeAttackTrigger : MonoBehaviour
         {
             col.SendMessageUpwards("destroyChest");
         }
+        else if (col.CompareTag("FloatBossPillar"))
+        {
+            col.gameObject.GetComponent<FloatingBossPillars>().DisablePillar();// 'col.SendMessageUpwards("DisablePillar");
+            transform.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
 

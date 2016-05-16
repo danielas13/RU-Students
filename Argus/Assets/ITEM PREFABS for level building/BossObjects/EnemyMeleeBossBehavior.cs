@@ -60,7 +60,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
     public float frozenTimer = 2;
 
     private float comboTimer = 0;
-    private bool CombatStarted = false;
+    public bool CombatStarted = false;
 
     /* Update Variables made accessible */
     private RaycastHit2D hitForwards, hitDown, rayToPlayer;

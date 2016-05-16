@@ -14,11 +14,15 @@ public class game : MonoBehaviour {
     public GameObject playerStatsScreenObj;                 //The player status screens.
     private GameObject playerStatsScreen;
     private bool statScreenUp = false;
+    private GameObject floatinBoss, MeleeBoss, MeleeBoss2;
+    private List<GameObject> floatingBossPillars = new List<GameObject>();
 
 
     void Start()
     {
-
+        MeleeBoss = GameObject.Find("EnemyBoss");
+        MeleeBoss2 = GameObject.Find("EnemyBossTwo");
+        floatinBoss = GameObject.Find("FloatingBoss");
         playerStatsScreen = GameObject.Find(Instantiate(playerStatsScreenObj, transform.position, transform.rotation).name);
         playerStatsScreen.SetActive(false);
 
@@ -38,6 +42,15 @@ public class game : MonoBehaviour {
             for (int i = 0; i < ItemSpawns.Length; i++)
             {
                 ItemSpawners.Add(ItemSpawns[i]);
+            }
+        }
+
+        GameObject[] pillars = GameObject.FindGameObjectsWithTag("FloatBossPillar");
+        if (pillars != null)
+        {
+            for (int i = 0; i < pillars.Length; i++)
+            {
+                floatingBossPillars.Add(pillars[i]);
             }
         }
 
@@ -181,6 +194,25 @@ public class game : MonoBehaviour {
                     ShopDoors[i].gameObject.transform.GetComponent<OneToStoreDoor>().restart();
                 }
             }*/
+        }
+        MeleeBoss.SetActive(true);
+        MeleeBoss.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
+        MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
+        MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
+
+        MeleeBoss2.SetActive(true);
+        MeleeBoss2.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
+        MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
+        MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
+
+
+        floatinBoss.SetActive(true);
+        floatinBoss.GetComponent<FloatingBossController>().CombatStarted = false;
+        floatinBoss.GetComponent<FloatingBossStats>().status.currentHealth = 80;
+
+        for (int i = 0; i < floatingBossPillars.Count; i++)
+        {
+            floatingBossPillars[i].GetComponent<FloatingBossPillars>().restart();
         }
     }
 }
