@@ -58,8 +58,10 @@ public class EnemyStats : MonoBehaviour {
             {
                 if(chance == 1 || chance == 2)
                 {
-                    Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x+0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
-                    GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
+                    //Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x+0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+                    Transform obj = Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z),transform.rotation) as Transform;
+                    //GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
+                    obj.gameObject.GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
                 }
             }
             /*
