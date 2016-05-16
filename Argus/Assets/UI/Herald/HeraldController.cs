@@ -47,7 +47,7 @@ public class HeraldController : MonoBehaviour {
 		}
    
         textArea.text = TextArray[CategorySelection, CurrentSelection];
-        canvas.SetActive(true);
+        canvas.SetActive(false);
     }
     void OnTriggerStay2D(Collider2D other)
     {

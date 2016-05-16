@@ -56,6 +56,8 @@ public class Stats : MonoBehaviour {
     public Transform ManaBladeTrans;
     public Transform ShadowBladeTrans;
     public Transform FireBladeTrans;
+    public Transform Bubble;
+
 
     // Use this for initialization
     void Start () {
@@ -80,6 +82,14 @@ public class Stats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Finding a indicator if none is found.
+        if(status.armor > 0 && !Bubble.gameObject.activeSelf)
+        {
+            Bubble.gameObject.SetActive(true);
+        }
+        else
+        {
+            Bubble.gameObject.SetActive(false);
+        }
         if (indicator == null)
         {
             GameObject tempIndicator = GameObject.FindGameObjectWithTag("indicator");
