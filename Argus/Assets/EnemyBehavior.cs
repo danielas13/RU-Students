@@ -55,6 +55,8 @@ public class EnemyBehavior : MonoBehaviour
 
         private float comboTimer = 0;
 
+        
+
 
         /* Update Variables made accessible */
         private RaycastHit2D hitForwards, hitDown, rayToPlayer;
@@ -586,6 +588,7 @@ public class EnemyBehavior : MonoBehaviour
         transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
         transform.FindChild("NotToFlip").transform.rotation = transform.FindChild("NotToFlip").transform.rotation * Quaternion.Euler(Vector3.up * 180);
     }
+    
 
 }
 

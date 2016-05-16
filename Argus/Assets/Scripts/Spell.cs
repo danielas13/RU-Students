@@ -22,10 +22,11 @@ namespace UnityStandardAssets._2D
 		private Animator skeletonAnimator; 
         public Transform FirePrefab;
         public Transform FrostRay;
-		private float channelDelay = 0.5f;
+        public Transform FireRay;
+        private float channelDelay = 0.5f;
 
 
-        int NumberOfSpells = 3;// Nuber of spells that the player has learned
+        int NumberOfSpells = 4;// Nuber of spells that the player has learned
         private int currentSpell = 1;
 
         void Awake()
@@ -85,6 +86,13 @@ namespace UnityStandardAssets._2D
                     ChannelFrostRay();
                     //skelAnim2.SetTrigger("CastSpell");
                 }
+                if (currentSpell == 4 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
+                {
+                    channelDelay = 0.5f;
+                    skeletonAnimator.SetBool("isChanneling", true);
+                    ChannelFireRay();
+                    //skelAnim2.SetTrigger("CastSpell");
+                }
             }
                 
 			//Debug.Log (transform.GetComponent<PlatformerCharacter2D> ().isChanneling );
@@ -97,6 +105,12 @@ namespace UnityStandardAssets._2D
 		void LateUpdate(){
 			
 		}
+        void ChannelFireRay()
+        {
+            //FrostRay.gameObject.SetActive(true);
+            Instantiate(FireRay, spellPoint.position, spellPoint.rotation * Quaternion.Euler(new Vector3(0, 0, 1) * 1)); // instantate a straight ray
+
+        }
         void ChannelFrostRay()
         {
             //FrostRay.gameObject.SetActive(true);

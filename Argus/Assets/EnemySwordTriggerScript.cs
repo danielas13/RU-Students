@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class EnemySwordTriggerScript : MonoBehaviour {
+public class EnemySwordTriggerScript : MonoBehaviour
+{
 
 	public int damage;
 	void OnTriggerEnter2D(Collider2D col)

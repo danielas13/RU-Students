@@ -8,19 +8,19 @@ public class SpecialStoreController : MonoBehaviour {
     public GameObject[] SpellButtons;
     public GameObject[] UpgradeButtons;
 
-    private int[] SpellPriceAmount = new int[5];
-    private int[] UpgradeAmount = new int[3];           //SET NEW PRICES HERE FOR EACH CATEGORY. Reset them in the InitiateArray func.
+    private int[] SpellPriceAmount = new int[3];
+    private int[] UpgradeAmount = new int[4];           //SET NEW PRICES HERE FOR EACH CATEGORY. Reset them in the InitiateArray func.
 
     public Text[] Prices;
     public Text CurrentEssence;
     public Text ErrorMessage;
 
 
-    private Color basicColor = new Color(199 / 255f, 157 / 255f,157/255f, 1);
-    private Color selectedColor = new Color(168/255f, 132/255f, 132 / 255f / 255f, 1);
+	private Color basicColor = new Color(0F, 0F, 0F, 1f);
+	private Color selectedColor = new Color(244/255f, 244/255f, 244/255f, 244/255f); 
 
     public Text textArea;
-    private string[,] TextArray = new string[6, 6];          //Array containing all the dialogs
+    private string[,] TextArray = new string[4, 4];          //Array containing all the dialogs
     public GameObject[] Pannels; //0 = Upgrades, 1 = enemies
     public GameObject canvas;           //The canvas object.
 
@@ -42,6 +42,8 @@ public class SpecialStoreController : MonoBehaviour {
         initiateArray();
         textArea.text = TextArray[CategorySelection, CurrentSelection];
         canvas.SetActive(true);
+		SetPrices(SpellPriceAmount);
+		ErrorMessage.text = " ";
     }
     void OnTriggerStay2D(Collider2D other)
     {
@@ -154,7 +156,7 @@ public class SpecialStoreController : MonoBehaviour {
     {
         for(int i = 0; i < lis.Length; i++)
         {
-            Prices[i].text = lis[i].ToString();
+            Prices[i].text = lis[i].ToString() + "x Soul Essences Required";
         }
 
         for (int i = lis.Length; i < Prices.Length; i++)        //reseting the rest of the price tags.
@@ -165,11 +167,11 @@ public class SpecialStoreController : MonoBehaviour {
         {
             if (playerStats.status.ShadowBlade)
             {
-                Prices[0].text = "Equiped";
+                Prices[0].text = "Equipped";
             }
             else if (playerStats.status.ManaBlade)
             {
-                Prices[1].text = "Equiped";
+                Prices[1].text = "Equipped";
             }
             
         }
@@ -276,12 +278,12 @@ public class SpecialStoreController : MonoBehaviour {
                 }
                 playerStats.AddShadowBlade();
                 playerStats.status.score -= UpgradeAmount[0];
-                Prices[0].text = "Equiped";
-                CurrentEssence.text = "Current Essence " + playerStats.status.score;
+                Prices[0].text = "Equipped";
+                CurrentEssence.text = "Current Essences " + playerStats.status.score;
             }
             else
             {
-                ErrorMessage.text = "Not enough essence!";
+                ErrorMessage.text = "Not enough essences!";
             }
         }
         else
@@ -302,14 +304,14 @@ public class SpecialStoreController : MonoBehaviour {
                 }
                 playerStats.AddManaBlade();
                 playerStats.status.score -= UpgradeAmount[1];
-                Prices[1].text = "Equiped";
-                CurrentEssence.text = "Current Essence " + playerStats.status.score;
+                Prices[1].text = "Equipped";
+                CurrentEssence.text = "Current Essences " + playerStats.status.score;
 
 
             }
             else
             {
-                ErrorMessage.text = "Not enough essence!";
+                ErrorMessage.text = "Not enough essences!";
             }
         }
         else
@@ -332,9 +334,14 @@ public class SpecialStoreController : MonoBehaviour {
         }
         else
         {
-            ErrorMessage.text = "Not enough essence!";
+			ErrorMessage.text = "Not enough essences!";
         }
     }
+
+	public void PurchaseFireBlade()
+	{
+		//TODO purchase fire
+	}
 
 
 
@@ -351,30 +358,30 @@ public class SpecialStoreController : MonoBehaviour {
         {
             UpgradeAmount[2] = 400;
         }
-        CurrentEssence.text = "Current Essence " + playerStats.status.score;
+        CurrentEssence.text = "Current Essences " + playerStats.status.score;
 
         UpgradeAmount[0] = 500;
         UpgradeAmount[1] = 500;
+		UpgradeAmount[3] = 500;
 
 
         SpellPriceAmount[0] = 500;
         SpellPriceAmount[1] = 500;
         SpellPriceAmount[2] = 250;
-        SpellPriceAmount[3] = 250;
-        SpellPriceAmount[4] = 250;
+
 
 
         //Upgrade texts.
-        TextArray[1, 0] = "Blade Upgrade: The Shadowblade upgrade will increase the damage of the player. Only one blade upgrade can be active at any given time.";
-        TextArray[1, 1] = "Blade Upgrade: The mana upgrade will increase the damage of the player's spells. Only one blade upgrade can be active at any given time.";
-        TextArray[1, 2] = "The armor upgrade will reduce damage taken by a small amount. Additive upgrade.";
-
+		TextArray[1, 0] = ""; // Blade Upgrade: The Shadowblade upgrade will increase the damage of the player. Only one blade upgrade can be active at any given time.
+		TextArray[1, 1] = ""; // Blade Upgrade: The mana upgrade will increase the damage of the player's spells. Only one blade upgrade can be active at any given time.
+		TextArray[1, 2] = ""; // The armor upgrade will reduce damage taken by a small amount. Additive upgrade.
+		TextArray[1, 3] = ""; 
 
         //Enemy Texts -knights-wizards-floaters(Revenants)-Spawns
-        TextArray[0, 0] = " ";
-        TextArray[0, 1] = " ";
-        TextArray[0, 2] = " ";
-        TextArray[0, 3] = " ";
-        TextArray[0, 4] = " ";
+        TextArray[0, 0] = "";
+        TextArray[0, 1] = "";
+        TextArray[0, 2] = "";
+
+
     }
 }

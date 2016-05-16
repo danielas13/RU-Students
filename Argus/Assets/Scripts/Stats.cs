@@ -241,6 +241,7 @@ public class Stats : MonoBehaviour {
     {
 
 		combatText.GetComponent<Text>().text = "Maxmimum health increased by " + health.ToString();
+		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
 		combatText.GetComponent<Text>().color = HealColor;
 		Instantiate(combatText, newPos(transform.position), transform.rotation);
 
@@ -300,7 +301,7 @@ public class Stats : MonoBehaviour {
     //increasing the player's score.
     public void increaseScore(int amount)
     {
-		combatText.GetComponent<Text>().text = "Soul Essence picked up ";
+		combatText.GetComponent<Text>().text = "Soul Essences picked up";
 		combatText.GetComponent<Text>().color = HealColor;
 		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
 
