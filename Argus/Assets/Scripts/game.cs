@@ -83,7 +83,7 @@ public class game : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetButtonDown("Cancel"))
         {
             if (statScreenUp)
             {

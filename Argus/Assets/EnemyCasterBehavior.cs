@@ -38,7 +38,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
     {
         direction = -direction;
 
-        Debug.Log("FLIPPP" + direction);
+
         //transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
         //transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 

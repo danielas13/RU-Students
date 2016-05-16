@@ -24,6 +24,10 @@ namespace UnityStandardAssets._2D
         public Transform FrostRay;
 		private float channelDelay = 0.5f;
 
+
+        int NumberOfSpells = 3;// Nuber of spells that the player has learned
+        private int currentSpell = 1;
+
         void Awake()
         {
 			spellPoint = transform.FindChild("ToFlip").FindChild("SpellCast");
@@ -52,25 +56,37 @@ namespace UnityStandardAssets._2D
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("SpellCycle"))
             {
-				skeletonAnimator.SetTrigger ("CastProjectileSpell");
-                CastFireBall();
-                //skelAnim2.SetTrigger("CastSpell");
+                currentSpell += 1;
+                if (currentSpell > NumberOfSpells)
+                {
+                    currentSpell = 1;
+                }
             }
-            if (Input.GetKeyDown(KeyCode.R) && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded) //Cast a heal spell when player is on the ground and presses r.
+            if (Input.GetButtonDown("UseSpell"))
             {
-				skeletonAnimator.SetTrigger ("CastHealingSpell");
-                CastHeal();
-                //skelAnim2.SetTrigger("CastSpell");
+                if (currentSpell == 1)
+                {
+                    skeletonAnimator.SetTrigger("CastProjectileSpell");
+                    CastFireBall();
+                    //skelAnim2.SetTrigger("CastSpell");
+                }
+                if (currentSpell == 2 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded) //Cast a heal spell when player is on the ground and presses r.
+                {
+                    skeletonAnimator.SetTrigger("CastHealingSpell");
+                    CastHeal();
+                    //skelAnim2.SetTrigger("CastSpell");
+                }
+                if (currentSpell == 3 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
+                {
+                    channelDelay = 0.5f;
+                    skeletonAnimator.SetBool("isChanneling", true);
+                    ChannelFrostRay();
+                    //skelAnim2.SetTrigger("CastSpell");
+                }
             }
-            if (Input.GetKeyDown(KeyCode.T) && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
-            {
-				channelDelay = 0.5f;
-				skeletonAnimator.SetBool ("isChanneling", true);
-                ChannelFrostRay();
-                //skelAnim2.SetTrigger("CastSpell");
-            }
+                
 			//Debug.Log (transform.GetComponent<PlatformerCharacter2D> ().isChanneling );
 			channelDelay -= Time.deltaTime;
 			if(transform.GetComponent<PlatformerCharacter2D> ().isChanneling == false && channelDelay < 0){ //this currently always triggers --> channeling wont work

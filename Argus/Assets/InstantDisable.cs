@@ -21,7 +21,7 @@ public class InstantDisable : MonoBehaviour
             outOfMana = true;
         }
 
-        if (!Input.GetKey(KeyCode.T) || outOfMana)
+        if (!Input.GetButton("UseSpell") || outOfMana)
         {
             GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = false;//Re-enable movement for the player
             Destroy(this.gameObject);
@@ -75,12 +75,12 @@ public class InstantDisable : MonoBehaviour
         
         
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetAxis("Vertical") >= 0.2f)
         {
             transform.Rotate(new Vector3(0, 0, 100 * Time.deltaTime));
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetAxis("Vertical") < -0.2f)
         {
             transform.Rotate(new Vector3(0, 0, -100 *Time.deltaTime));
         }

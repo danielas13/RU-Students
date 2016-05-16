@@ -9,7 +9,7 @@ public class SpecialStoreSpawner : MonoBehaviour {
         //Check if the collition is with a player.
         if (collision.gameObject.tag == "Player")
         {
-            if (Input.GetKeyUp(KeyCode.U))
+            if (Input.GetButtonDown("Interact"))
             {
                 if (EnteredStore == false)
                 {

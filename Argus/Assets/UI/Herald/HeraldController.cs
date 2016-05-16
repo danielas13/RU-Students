@@ -42,7 +42,7 @@ public class HeraldController : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetButtonDown("Interact"))
             {
                 if (!canvas.activeSelf)
                 {
@@ -63,7 +63,7 @@ public class HeraldController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.RightArrow))         //Selecting Categories to the right.
+        if (Input.GetButtonDown("Right"))         //Selecting Categories to the right.
         {
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
@@ -82,7 +82,7 @@ public class HeraldController : MonoBehaviour {
             Pannels[CategorySelection].SetActive(true);        //Enabling current selection
             textArea.text = TextArray[CategorySelection, CurrentSelection];
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))         //Selecting Categories to the left.
+        if (Input.GetButtonDown("Left"))         //Selecting Categories to the left.
         {
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
@@ -161,7 +161,7 @@ public class HeraldController : MonoBehaviour {
 
     void useButtons(GameObject[] lis)                           //Use the down/up keys to navigate through catagory content.
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetButtonDown("Down"))
         {
             lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
             if (CurrentSelection == lis.Length - 1)             //The counter is the last option.
@@ -176,7 +176,7 @@ public class HeraldController : MonoBehaviour {
             }
             textArea.text = TextArray[CategorySelection, CurrentSelection];
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))            
+        if (Input.GetButtonDown("Up"))            
         {
             lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
             if (CurrentSelection == 0)     //The counter is at the bottom option.
