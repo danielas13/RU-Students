@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Line2
-  m_Shader: {fileID: 4800000, guid: 49895ab10e5998b4db8eee81071536b6, type: 3}
+  m_Shader: {fileID: 4800000, guid: 587c8b5928179da46ac07b10b840199e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -21,7 +21,11 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 023cdc8a088c2264d86f8d57fe83b4d5, type: 3}
           m_Scale: {x: 0.125, y: 0.0625}
+<<<<<<< HEAD
           m_Offset: {x: 0.375, y: 0.1875}
+=======
+          m_Offset: {x: 0.125, y: 0.25}
+>>>>>>> 298e37c471e7a19a78b8bcca17696a2b473ef85c
     m_Floats:
       data:
         first:
@@ -51,7 +55,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 0.49264705, g: 0.70608515, b: 1, a: 0.5019608}
+        second: {r: 0.8161765, g: 0.087246425, b: 0.087246425, a: 0.5019608}
       data:
         first:
           name: _CoreColor

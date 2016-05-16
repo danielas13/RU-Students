@@ -21,7 +21,11 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 023cdc8a088c2264d86f8d57fe83b4d5, type: 3}
           m_Scale: {x: 0.125, y: 0.0625}
+<<<<<<< HEAD
           m_Offset: {x: 0.625, y: 0.125}
+=======
+          m_Offset: {x: 0, y: 0.125}
+>>>>>>> 298e37c471e7a19a78b8bcca17696a2b473ef85c
     m_Floats:
       data:
         first:
@@ -51,7 +55,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 0.45588237, g: 0.6968073, b: 1, a: 0.5019608}
+        second: {r: 0.31617647, g: 0.24280767, b: 0.14413927, a: 0.5019608}
       data:
         first:
           name: _CoreColor

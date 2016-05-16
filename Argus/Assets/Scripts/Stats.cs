@@ -35,6 +35,7 @@ public class Stats : MonoBehaviour {
 
         public bool ManaBlade = false;
         public bool ShadowBlade = false;
+
     }
     //The global status object.
     public GameObject combatText;
@@ -48,7 +49,7 @@ public class Stats : MonoBehaviour {
 
 	private Transform skeleton;
 	private Animator skelAnim; 
-
+	private int fontsizeForStuff = 10;
     // Use this for initialization
     void Start () {
 		skeleton = transform.FindChild("Skeleton");
@@ -92,7 +93,7 @@ public class Stats : MonoBehaviour {
     public void damagePlayer(int damage)
     {
 
-        skelAnim.SetBool("hit", true);
+      //  skelAnim.SetBool("hit", true);
         if(damage - status.DamageReduction > 0)
         {
             combatText.GetComponent<Text>().text = "-" + (damage - status.DamageReduction).ToString();
@@ -193,7 +194,7 @@ public class Stats : MonoBehaviour {
     {
         combatText.GetComponent<Text>().text = "+" + heal.ToString();
         combatText.GetComponent<Text>().color = HealColor;
-        Instantiate(combatText, transform.position, transform.rotation);
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
         //Increasing the player´s health. Checking for overheal.
         if ((this.status.currentHealth+heal) > this.status.maxHealth)
         {
@@ -217,7 +218,7 @@ public class Stats : MonoBehaviour {
         combatText.GetComponent<Text>().text = "+" + heal.ToString();
         combatText.GetComponent<Text>().color = ManaRegainColor;
 
-        Instantiate(combatText, transform.position, transform.rotation);
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
         //Increasing the player´s health. Checking for overheal.
         if ((this.status.currentMana + heal) > this.status.maxMana)
         {
@@ -238,6 +239,11 @@ public class Stats : MonoBehaviour {
     //increasing the player´s max health.
     public void increaseMaxHealth(int health)
     {
+
+		combatText.GetComponent<Text>().text = "Maxmimum health increased by " + health.ToString();
+		combatText.GetComponent<Text>().color = HealColor;
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
+
         this.status.maxHealth += health;
         this.status.gainedHealth += health;
 
@@ -251,6 +257,10 @@ public class Stats : MonoBehaviour {
 	//increasing the player´s max mana.
 	public void increaseMaxMana(int mana)
 	{
+		combatText.GetComponent<Text>().text = "Maxmimum mana increased by " + mana.ToString();
+		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
+		combatText.GetComponent<Text> ().color = HealColor;
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
 		this.status.maxMana += mana;
         this.status.gainedMana += mana;
 
@@ -264,6 +274,11 @@ public class Stats : MonoBehaviour {
     //increasing the player´s spellpower.
     public void increaseSpellpower(int power)
     {
+		combatText.GetComponent<Text>().text = "Maxmimum spellpower increased by " + power.ToString();
+		combatText.GetComponent<Text>().color = HealColor;
+		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
+
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
         this.status.minSpellPower += power;
         this.status.maxSpellPower += power;
         this.status.gainedSpellpower += power;
@@ -272,6 +287,11 @@ public class Stats : MonoBehaviour {
     //increasing the player´s damage.
     public void increaseDamage(int damage)
     {
+		combatText.GetComponent<Text>().text = "Maxmimum spellpower increased by " + damage.ToString();
+		combatText.GetComponent<Text>().color = HealColor;
+		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
+
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
         this.status.minDamage += damage;
         this.status.maxDamage += damage;
         this.status.gainedDamage += damage;
@@ -280,6 +300,11 @@ public class Stats : MonoBehaviour {
     //increasing the player's score.
     public void increaseScore(int amount)
     {
+		combatText.GetComponent<Text>().text = "Soul Essence picked up ";
+		combatText.GetComponent<Text>().color = HealColor;
+		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
+
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
         this.status.score += amount;
         //indicator.
         if (this.indicator != null)
@@ -295,8 +320,7 @@ public class Stats : MonoBehaviour {
     {
         combatText.GetComponent<Text>().text = "-" + cost.ToString();
         combatText.GetComponent<Text>().color = ManaSpendColor;
-
-        Instantiate(combatText, transform.position, transform.rotation);
+		Instantiate(combatText, newPos(transform.position), transform.rotation);
         this.status.currentMana -= cost;
 
         //Mana indicator.
@@ -306,6 +330,11 @@ public class Stats : MonoBehaviour {
         }
     }
 
+	public Vector3 newPos(Vector3 oldpos){
+		oldpos.z -= 5.0f;
+		return oldpos;
+		
+	}
     public void resetGained()
     {
         this.status.gainedHealth = 0;

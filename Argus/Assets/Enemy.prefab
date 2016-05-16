@@ -3203,7 +3203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65509eca54c8e51449ce49801385c867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 22427538}
   enemyHealthBar: {fileID: 11486872}
 --- !u!114 &11433232
 MonoBehaviour:
