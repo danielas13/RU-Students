@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemySwordTriggerScript : MonoBehaviour {
@@ -11,5 +11,4 @@ public class EnemySwordTriggerScript : MonoBehaviour {
 			col.SendMessageUpwards("damagePlayer", damage);
 			gameObject.SetActive(false);
 		}
-    }
 }
