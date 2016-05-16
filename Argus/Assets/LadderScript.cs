@@ -32,12 +32,12 @@ public class LadderScript : MonoBehaviour {
     {
         if (isClimbing)     //is the player climbing?
         {
-            if (Input.GetKey(KeyCode.UpArrow))  //Player is going up.
+            if (Input.GetAxis("Vertical") >= 0.2f)  //Player is going up.
             {
                 player.transform.GetComponent<Rigidbody2D>().velocity = Vector2.up*upSpeed; 
 
             }
-            else if (Input.GetKey(KeyCode.DownArrow))   //Player is going down.
+            else if (Input.GetAxis("Vertical") < -0.2f)   //Player is going down.
             {
                 player.transform.GetComponent<Rigidbody2D>().velocity = Vector2.down*downSpeed;
 

@@ -25,7 +25,7 @@ public class OneToOneDoor : MonoBehaviour {
     {
         if(TargetObject != null)
         {
-            if (Input.GetKeyUp(KeyCode.UpArrow) && other.gameObject.tag == "Player")
+            if (Input.GetButtonDown("Interact") && other.gameObject.tag == "Player")
             {
                 if (!IsLocked)
                 {

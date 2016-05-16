@@ -35,7 +35,7 @@ public class EnemyStats : MonoBehaviour {
         
         combatText.GetComponent<Text>().text = "-" + damage.ToString();
         combatText.GetComponent<Text>().color = DamageColor;
-        Instantiate(combatText, transform.position, transform.rotation);
+        Instantiate(combatText, transform.position, Quaternion.Euler(new Vector3(0, 0, 1)));
         this.status.currentHealth -= damage;                    //add the damage.
         indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
 

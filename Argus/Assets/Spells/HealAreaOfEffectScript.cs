@@ -3,6 +3,8 @@ using System.Collections;
 
 namespace UnityStandardAssets._2D
 {
+
+    //This Class is currently not in use but could be used for a AOE Spell!
     public class HealAreaOfEffectScript : MonoBehaviour {
 
         public float maxAOESize;//Maximum size of the AOE effect
