@@ -39,6 +39,7 @@ public class SpecialStoreController : MonoBehaviour {
             Categories[i].GetComponent<Button>().image.color = basicColor;
         }
         Pannels[1].SetActive(false);
+		Pannels[0].SetActive(true);
         initiateArray();
         textArea.text = TextArray[CategorySelection, CurrentSelection];
         canvas.SetActive(true);
