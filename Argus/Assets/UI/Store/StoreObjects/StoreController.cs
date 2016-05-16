@@ -65,7 +65,7 @@ public class StoreController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetButtonDown("Up"))
         {
 			ErrorMessage.text = "";
             buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
@@ -85,7 +85,7 @@ public class StoreController : MonoBehaviour {
             }
         }
 
-        else if (Input.GetKeyUp(KeyCode.DownArrow))
+        else if (Input.GetButtonDown("Down"))
         {
 			ErrorMessage.text = "";
             buttons[SelectedButton].GetComponent<Button>().image.color = defaultColor;
@@ -100,7 +100,7 @@ public class StoreController : MonoBehaviour {
                 buttons[SelectedButton].GetComponent<Button>().image.color = highlightedColor;
             }
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetButtonDown("Jump"))
         {
 			buttons[SelectedButton].GetComponent<Button>().onClick.Invoke();
 			//ErrorMessage.text = "Purchase complete.";

@@ -48,7 +48,7 @@ public class SpecialStoreController : MonoBehaviour {
         Time.timeScale = 0;
         if (other.gameObject.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetButtonDown("Interact"))
             {
                 if (!canvas.activeSelf)
                 {
@@ -71,12 +71,12 @@ public class SpecialStoreController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetButtonDown("Interact"))
         {
             Time.timeScale = 1;
             Destroy(this.gameObject);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))         //Selecting Categories to the right.
+        if (Input.GetButtonDown("Right"))         //Selecting Categories to the right.
         {
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
@@ -104,7 +104,7 @@ public class SpecialStoreController : MonoBehaviour {
                 SetPrices(UpgradeAmount);
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))         //Selecting Categories to the left.
+        if (Input.GetButtonDown("Left"))         //Selecting Categories to the left.
         {
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
@@ -144,7 +144,7 @@ public class SpecialStoreController : MonoBehaviour {
             useButtons(UpgradeButtons);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             callFunction();
         }
@@ -190,7 +190,7 @@ public class SpecialStoreController : MonoBehaviour {
     }
     void useButtons(GameObject[] lis)                           //Use the down/up keys to navigate through catagory content.
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetButtonDown("Down"))
         {
             lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
             if (CurrentSelection == lis.Length - 1)             //The counter is the last option.
@@ -206,7 +206,7 @@ public class SpecialStoreController : MonoBehaviour {
             textArea.text = TextArray[CategorySelection, CurrentSelection];
             ErrorMessage.text = " ";
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetButtonDown("Up"))
         {
             lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
             if (CurrentSelection == 0)     //The counter is at the bottom option.

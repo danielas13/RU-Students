@@ -10,7 +10,7 @@ public class ChangeSpawnScript : MonoBehaviour {
 	{
         if(TargetObject!= null)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && other.gameObject.tag == "Player")
+            if (Input.GetButtonDown("Interact") && other.gameObject.tag == "Player")
             {
 
                 GameObject startingDoor = GameObject.Find("StartingDoor");

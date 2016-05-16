@@ -56,69 +56,80 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 	void Update()
 	{
 
-		/* checking if spell has been cast, if so - cancel animation and disable root motion */
-		if(IsCasting == true){
-			LeftFireTrail.gameObject.SetActive (true);
-			RightFireTrail.gameObject.SetActive (true);
-			trailsActive = true;
+        /* checking if spell has been cast, if so - cancel animation and disable root motion */
+        if (!transform.parent.GetComponent<EnemyCasterBehavior>().frozen)
+        {
+            if (IsCasting == true)
+            {
+                WizardAnimator.SetTrigger("CastSpell");
+               //LeftFireTrail.gameObject.SetActive(true);
+                //RightFireTrail.gameObject.SetActive(true);
+                trailsActive = true;
 
-			castingTime = castingTime - Time.deltaTime;
-			if(castingTime < 0){ //finished channeling cast
-				IsCasting = false;
-				CastFireBall ();
-				this.transform.parent.GetComponent <EnemyCasterBehavior> ().castingSpell = false;
-				WizardAnimator.SetBool ("IsCasting",IsCasting);
-				castingTime = TotalCastingTime;
+                castingTime = castingTime - Time.deltaTime;
+                if (castingTime < 0)
+                { //finished channeling cast
+                    IsCasting = false;
+                    CastFireBall();
+                    this.transform.parent.GetComponent<EnemyCasterBehavior>().castingSpell = false;
+                    // WizardAnimator.SetBool("IsCasting", IsCasting);
+                  
+                    castingTime = TotalCastingTime;
 
-				/* This code handles root motion displacement during casting */
-				WizardAnimator.applyRootMotion = false;
-				transform.parent.FindChild ("Eva_Full_Animated").position = preCastingPosition;
-				transform.parent.FindChild ("Eva_Full_Animated").rotation = preCastingRotation;
+                    /* This code handles root motion displacement during casting */
+                    //WizardAnimator.applyRootMotion = false;
+                    transform.parent.FindChild("Eva_Full_Animated").position = preCastingPosition;
+                    transform.parent.FindChild("Eva_Full_Animated").rotation = preCastingRotation;
 
-			}
-		}
-		else{
-			if(trailsActive == true){
-				trailsActive = false;
-				LeftFireTrail.gameObject.SetActive (false);
-				RightFireTrail.gameObject.SetActive (false);
-	
-			}
-		}
+                }
+            }
+            else
+            {
+                if (trailsActive == true)
+                {
+                    trailsActive = false;
+                    LeftFireTrail.gameObject.SetActive(false);
+                    RightFireTrail.gameObject.SetActive(false);
 
-
-
-
-
-		/* Used for Raycast comparison */
-		if (character == null)
-		{
-			character = GameObject.FindGameObjectWithTag("Player");
-		}
-			
-
-		/* HORIZONTAL Raycast that attempts to detect the player */
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(character.transform.position.x - transform.position.x, 0, character.transform.position.z - transform.position.z), spellDistance, NotHit);
-		//Debug.DrawLine(transform.position, new Vector3(transform.position.x - spellDistance, character.transform.position.y), Color.red);
+                }
+            }
 
 
-		/* If a player is detected, attempt to cast spell and play the spellcast animation*/
-		if (hit.collider != null && cooldown < 0) 
-		{
-			if (hit.transform.tag == "Player") {
-				IsCasting = true;
-				this.transform.parent.GetComponent <EnemyCasterBehavior> ().castingSpell = true;
+
+
+
+            /* Used for Raycast comparison */
+            if (character == null)
+            {
+                character = GameObject.FindGameObjectWithTag("Player");
+            }
+
+
+            /* HORIZONTAL Raycast that attempts to detect the player */
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(character.transform.position.x - transform.position.x, 0, character.transform.position.z - transform.position.z), spellDistance, NotHit);
+            //Debug.DrawLine(transform.position, new Vector3(transform.position.x - spellDistance, character.transform.position.y), Color.red);
+
+
+            /* If a player is detected, attempt to cast spell and play the spellcast animation*/
+            if (hit.collider != null && cooldown < 0)
+            {
+                if (hit.transform.tag == "Player")
+                {
+                    IsCasting = true;
+                    this.transform.parent.GetComponent<EnemyCasterBehavior>().castingSpell = true;
+
+                    /* This code handles root motion displacement during casting */
+                    preCastingPosition = transform.parent.FindChild("Eva_Full_Animated").position;
+                    preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
+                 //   WizardAnimator.SetBool("IsCasting", IsCasting);
+                   // WizardAnimator.applyRootMotion = true;
+                    cooldown = 3;
+
+                }
+            }
+            cooldown -= Time.deltaTime;
+        }
 		
-				/* This code handles root motion displacement during casting */
-				preCastingPosition = transform.parent.FindChild ("Eva_Full_Animated").position;
-				preCastingRotation = transform.parent.FindChild ("Eva_Full_Animated").rotation;
-				WizardAnimator.SetBool ("IsCasting",IsCasting);
-				WizardAnimator.applyRootMotion = true;
-				cooldown = 3;
-			
-			}
-		}
-		cooldown -= Time.deltaTime;
 	}
 
 

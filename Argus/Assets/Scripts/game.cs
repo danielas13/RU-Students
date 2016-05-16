@@ -46,7 +46,7 @@ public class game : MonoBehaviour {
         {
             for (int i = 0; i < storeDoors.Length; i++)
             {
-                ShopDoors.Add(storeDoors[i]);
+                ShopDoors.Add(storeDoors[i].gameObject);
             }
         }
     }
@@ -83,7 +83,7 @@ public class game : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetButtonDown("Cancel"))
         {
             if (statScreenUp)
             {
@@ -174,10 +174,13 @@ public class game : MonoBehaviour {
 
         for (int i = 0; i < ShopDoors.Count; i++)
         {
-            if (!ShopDoors[i].GetComponent<OneToStoreDoor>().Guaranteed)
+      /*      if(ShopDoors != null)
             {
-                ShopDoors[i].GetComponent<OneToStoreDoor>().restart();
-            }
+                if (!ShopDoors[i].gameObject.transform.GetComponent<OneToStoreDoor>().Guaranteed)
+                {
+                    ShopDoors[i].gameObject.transform.GetComponent<OneToStoreDoor>().restart();
+                }
+            }*/
         }
     }
 }

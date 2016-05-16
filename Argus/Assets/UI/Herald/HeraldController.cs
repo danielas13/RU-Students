@@ -49,7 +49,7 @@ public class HeraldController : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetButtonDown("Interact"))
             {
                 if (!canvas.activeSelf)
                 {
@@ -70,7 +70,7 @@ public class HeraldController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.RightArrow))         //Selecting Categories to the right.
+        if (Input.GetButtonDown("Right"))         //Selecting Categories to the right.
         {
 			if(CategorySelection!=4){
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);	
@@ -96,7 +96,7 @@ public class HeraldController : MonoBehaviour {
 
             textArea.text = TextArray[CategorySelection, CurrentSelection];
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))         //Selecting Categories to the left.
+        if (Input.GetButtonDown("Left"))         //Selecting Categories to the left.
         {
 			if(CategorySelection!=4){
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);	
@@ -181,7 +181,7 @@ public class HeraldController : MonoBehaviour {
 
     void useButtons(GameObject[] lis)                           //Use the down/up keys to navigate through catagory content.
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetButtonDown("Down"))
         {
 			if(lis.Length > 0){
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);
@@ -202,7 +202,7 @@ public class HeraldController : MonoBehaviour {
 			}
 
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))            
+        if (Input.GetButtonDown("Up"))            
         {
 			if (lis.Length > 0) {
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);

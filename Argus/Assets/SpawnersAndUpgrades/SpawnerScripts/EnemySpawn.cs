@@ -7,12 +7,10 @@ public class EnemySpawn : MonoBehaviour {
 
     //public int TotalSpawns = 2;     //Max Spawns of this spawner.
     public Transform EnemyPrefab;   //The enemy prefab.
-    public float coolDown = 10;       //cooldown between spawns
 
     public float MaxRangeFromPlayer = 10f;  //Distance between the player in order to spawn new objects.
     public LayerMask spawnLayers;           //the layer filtering out the player.
 
-    private float currentCount = 0;   //The current counter for spawning enemies.
     private Object lis;               //The enemy object.
     GameObject player;                //The Player object.
 	public bool SingleSpawn = false;
@@ -67,8 +65,7 @@ public class EnemySpawn : MonoBehaviour {
                     {
                         if (lis == null)
                         {
-                            //Reset the timer.
-                            this.currentCount = this.coolDown;
+
                             //instantiate the new object ( create a new clone of the enemy prefab).
                             lis = Instantiate(EnemyPrefab, transform.position, transform.rotation);
                             if (SingleSpawn)
@@ -80,11 +77,6 @@ public class EnemySpawn : MonoBehaviour {
                     hasSpawned = true;
                 }
             }
-        }
-        //Updating the timer if it's on cooldown.
-        if (this.currentCount > 0)
-        {
-            currentCount -= Time.deltaTime;
         }
     }
 }

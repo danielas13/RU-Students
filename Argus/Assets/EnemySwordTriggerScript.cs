@@ -9,8 +9,14 @@ public class EnemySwordTriggerScript : MonoBehaviour {
 		if (col.isTrigger != true && col.CompareTag("Player"))
 		{
 			col.SendMessageUpwards("damagePlayer", damage);
+<<<<<<< HEAD
 			gameObject.SetActive(false);
 		}
 
+=======
+            gameObject.SetActive(false);
+        }
+        
+>>>>>>> origin/master
 	}
 }

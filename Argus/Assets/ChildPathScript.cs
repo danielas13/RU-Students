@@ -6,7 +6,7 @@ public class ChildPathScript : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other)
     {
         //Debug.Log("Eitthvað");
-        if (Input.GetKeyDown(KeyCode.UpArrow) && other.gameObject.tag == "Player")
+        if (Input.GetButtonDown("Interact") && other.gameObject.tag == "Player")
         {
             GameObject player = GameObject.Find("Player");
 			Vector3 door = transform.parent.transform.position;

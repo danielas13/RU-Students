@@ -34,7 +34,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !attacking) 				//light attack
+        if (Input.GetButtonDown("Attack") && !attacking) 				//light attack
         {
             attacking = true;
             attackTimer = attackCooldown;
@@ -51,7 +51,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 			//skelAnim2.SetInteger ("AttackID", attackID);
         }
 
-		if(Input.GetKeyDown (KeyCode.Q) && !attacking){		 		//	heavy attack, change binding +later
+		if(Input.GetButtonDown ("PowerAttack") && !attacking){		 		//	heavy attack, change binding +later
 
 			// 	!!!!  
 			//		TODO Check if grounded 

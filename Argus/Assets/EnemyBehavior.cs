@@ -53,6 +53,8 @@ public class EnemyBehavior : MonoBehaviour
         public bool frozen = false;
         public float frozenTimer = 2;
 
+        private float comboTimer = 0;
+
 
         /* Update Variables made accessible */
         private RaycastHit2D hitForwards, hitDown, rayToPlayer;
@@ -351,7 +353,17 @@ public class EnemyBehavior : MonoBehaviour
 		void ComboAttack(){
 
 			if (KnightAnimator.GetCurrentAnimatorStateInfo (0).IsName ("MKnght_1H_5X_Combo_move_forward")) {
-				SwordTrigger.gameObject.SetActive (true);
+                if (SwordTrigger.gameObject.activeSelf == false)
+                {
+                    comboTimer -= Time.deltaTime;
+                }
+                
+                if(comboTimer < 0)
+                {
+                    SwordTrigger.gameObject.SetActive(true);
+                    comboTimer = 0.5f;
+                }
+				
 				comboAnimationPlayed = true;
                 currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage, enemyStat.status.maxDamage);
 
