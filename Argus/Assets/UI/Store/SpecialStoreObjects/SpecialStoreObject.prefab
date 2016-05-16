@@ -1503,8 +1503,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseHeal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1801,8 +1801,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseFireRay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2285,9 +2285,9 @@ MonoBehaviour:
   - {fileID: 197176}
   - {fileID: 135690}
   Prices:
-  - {fileID: 11418382}
-  - {fileID: 11496840}
   - {fileID: 11447216}
+  - {fileID: 11496840}
+  - {fileID: 11418382}
   - {fileID: 11479238}
   CurrentEssence: {fileID: 11464116}
   ErrorMessage: {fileID: 11436126}
@@ -2784,8 +2784,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseFrostRay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3613,8 +3613,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 163144}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3894,8 +3894,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseManaBlade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4156,8 +4156,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseArmorUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4270,8 +4270,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseFireBlade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4343,8 +4343,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonClick
+      - m_Target: {fileID: 11425094}
+        m_MethodName: PurchaseShadowBlade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

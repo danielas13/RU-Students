@@ -22,6 +22,10 @@ public class HeraldController : MonoBehaviour {
 
     private int CategorySelection = 0;
     private int CurrentSelection = 0;
+
+    private bool VertDpadPressed = false;
+    private bool HorizDpadPressed = false;
+
     // Use this for initialization
     void Start () {
         Categories[CategorySelection].GetComponent<Button>().image.color = selectedColor;
@@ -70,8 +74,10 @@ public class HeraldController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetButtonDown("Right"))         //Selecting Categories to the right.
+        //Debug.Log("Vert : " + Input.GetAxisRaw("DVert") + "Horiz: " + Input.GetAxisRaw("DHoriz"));
+        if (Input.GetButtonDown("Right") || (Input.GetAxisRaw("DHoriz") >= 1 && !HorizDpadPressed))         //Selecting Categories to the right.
         {
+            HorizDpadPressed = true;
 			if(CategorySelection!=4){
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);	
 			}
@@ -96,8 +102,9 @@ public class HeraldController : MonoBehaviour {
 
             textArea.text = TextArray[CategorySelection, CurrentSelection];
         }
-        if (Input.GetButtonDown("Left"))         //Selecting Categories to the left.
+        if (Input.GetButtonDown("Left") || (Input.GetAxisRaw("DHoriz") <= -1 && !HorizDpadPressed))         //Selecting Categories to the left.
         {
+            HorizDpadPressed = true;
 			if(CategorySelection!=4){
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);	
 			}
@@ -148,7 +155,17 @@ public class HeraldController : MonoBehaviour {
             useButtons(MiscButtons);
         }
 
-        
+        if (Input.GetAxisRaw("DHoriz") == 0)
+        {
+            HorizDpadPressed = false;
+        }
+        if (Input.GetAxisRaw("DVert") ==  0)
+        {
+            VertDpadPressed = false;
+        }
+
+
+
     }
 
     private void callFunction()
@@ -181,8 +198,9 @@ public class HeraldController : MonoBehaviour {
 
     void useButtons(GameObject[] lis)                           //Use the down/up keys to navigate through catagory content.
     {
-        if (Input.GetButtonDown("Down"))
+        if (Input.GetButtonDown("Down") || (Input.GetAxisRaw("DVert") <= -1 && !VertDpadPressed))
         {
+            VertDpadPressed = true;
 			if(lis.Length > 0){
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);
 				lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
@@ -202,9 +220,10 @@ public class HeraldController : MonoBehaviour {
 			}
 
         }
-        if (Input.GetButtonDown("Up"))            
+        if (Input.GetButtonDown("Up") || (Input.GetAxisRaw("DVert") >= 1 && !VertDpadPressed))
         {
-			if (lis.Length > 0) {
+            VertDpadPressed = true;
+            if (lis.Length > 0) {
 				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);
 				lis [CurrentSelection].GetComponent<Button> ().image.color = basicColor;
 				if (CurrentSelection == 0) {     //The counter is at the bottom option.

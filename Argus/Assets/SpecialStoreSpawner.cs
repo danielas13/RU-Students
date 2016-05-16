@@ -6,11 +6,14 @@ public class SpecialStoreSpawner : MonoBehaviour {
     private bool EnteredStore = false;
     void OnTriggerStay2D(Collider2D collision)
     {
+        
         //Check if the collition is with a player.
-        if (collision.gameObject.tag == "Player")
+        if (collision.transform.name == "Player")
         {
+
             if (Input.GetButtonDown("Interact"))
             {
+
                 if (EnteredStore == false)
                 {
                     Instantiate(store, transform.position, transform.rotation);

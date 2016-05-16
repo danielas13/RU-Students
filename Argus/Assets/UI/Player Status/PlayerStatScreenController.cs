@@ -32,28 +32,37 @@ public class PlayerStatScreenController : MonoBehaviour {
 
     void Start()
     {
+		
         playerStatus = GameObject.Find("Player").GetComponent<Stats>();
         RestartText();
+
         //RestartText();
     }
+	void OnEnable(){
+		RestartText();
+		Time.timeScale = 0;
+	}
+	void OnDisable() {
+		Time.timeScale = 1;
+	}
 
     public void RestartText()
     {
         playerStatus = GameObject.Find("Player").GetComponent<Stats>();
-        playerCurrency.text = "Soul Essences " + playerStatus.status.score;
-        PlayerHealth.text = "Your Health " + playerStatus.status.currentHealth + " / " + playerStatus.status.maxHealth;
-        playerGainedHealth.text = "Gained health This run " + playerStatus.status.gainedHealth;
+        playerCurrency.text = "Soul Essences:  " + playerStatus.status.score;
+		PlayerHealth.text = "Health: \n " + playerStatus.status.currentHealth + " / " + playerStatus.status.maxHealth + " (+" + playerStatus.status.gainedHealth + " this run)";
+		//playerGainedHealth.text = " +" + playerStatus.status.gainedHealth + " this run.";
 
-        PlayerMana.text = "Your Mana " + playerStatus.status.currentMana + " / " + playerStatus.status.maxMana;
-        PlayerGainedMana.text = "Gained mana This run " + playerStatus.status.gainedMana;
+		PlayerMana.text = "Mana: \n" + playerStatus.status.currentMana + " / " + playerStatus.status.maxMana + " (+" + playerStatus.status.gainedMana + " this run)";
+		//PlayerGainedMana.text = " +" + playerStatus.status.gainedMana + " this run.";
 
-        playerDamage.text = "Your min damage " + playerStatus.status.minDamage;
-        playerGainedDamage.text = "Gained damage This run " + playerStatus.status.gainedDamage;
+		playerDamage.text = "Damage:  \n" + playerStatus.status.minDamage + " - " + playerStatus.status.maxDamage + " (+" + playerStatus.status.gainedDamage + " this run)";
+       	//playerGainedDamage.text = " +" + playerStatus.status.gainedDamage + " this run.";
+		 
+		playerSpellpower.text = "Spellpower: \n " + playerStatus.status.minSpellPower + " - " +playerStatus.status.minSpellPower + " (+" + playerStatus.status.gainedSpellpower + " this run)";
+		//playerGainedSpellpower.text = " +" + playerStatus.status.gainedSpellpower + " this run.";
 
-        playerSpellpower.text = "Your min Spellpower " + playerStatus.status.minSpellPower;
-        playerGainedSpellpower.text = "Gained spellpower This run " + playerStatus.status.gainedSpellpower;
-
-        Node.text = "Spend currency at the nearest shop to purchase gained attributes in the following runs.";
-        Deaths.text = "You have been resurrected " + playerStatus.status.deathCount + " Times";
+        Node.text = "Use your Soul Essances at an enchanter or an enhancer to improve your attributes or gain special spells and enchants. ";
+        Deaths.text = "You have been resurrected " + playerStatus.status.deathCount + " times.";
     }
 }

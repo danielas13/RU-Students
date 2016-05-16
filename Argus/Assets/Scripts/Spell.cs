@@ -24,6 +24,11 @@ using System.Collections;
         private float channelDelay = 0.5f;
 
 
+        public bool LearnedHeal = false;
+        public bool LearnedFrost = false;
+        public bool LearnedFire = false;
+
+
         int NumberOfSpells = 4;// Nuber of spells that the player has learned
         public int currentSpell = 1;
 
@@ -51,17 +56,72 @@ using System.Collections;
         {
 
         }
+        void incrementSpell()
+        {
+            if(currentSpell == 1) // FIRE
+            {
+                if (LearnedHeal)
+                {
+                    currentSpell = 2;
+                    return;
+                }
+                else if (LearnedFrost)
+                {
+                    currentSpell = 3;
+                    return;
+                }
+                else if (LearnedFire)
+                {
+                    currentSpell = 4;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (currentSpell == 2)//HEAL
+            {
+                if (LearnedFrost)
+                {
+                    currentSpell = 3;
+                    return;
+                }
+                else if (LearnedFire)
+                {
+                    currentSpell = 4;
+                    return;
+                }
+                else
+                {
+                    currentSpell = 1;
+                    return;
+                }
+            }
+            else if(currentSpell == 3)//FROST
+            {
+                if (LearnedFire)
+                {
+                    currentSpell = 4;
+                    return;
+                }
+                else
+                {
+                    currentSpell = 1;
+                    return;
+                }
+            }
+            else                       //FIRERAY
+            {
+                currentSpell = 1;
+            }
+        }
 
         // Update is called once per frame
         void Update()
         {
             if (Input.GetButtonDown("SpellCycle"))
             {
-                currentSpell += 1;
-                if (currentSpell > NumberOfSpells)
-                {
-                    currentSpell = 1;
-                }
+                incrementSpell();
             }
             if (Input.GetButtonDown("UseSpell"))
             {

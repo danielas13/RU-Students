@@ -35,6 +35,8 @@ public class Stats : MonoBehaviour {
 
         public bool ManaBlade = false;
         public bool ShadowBlade = false;
+        public bool FireBlade = false;
+
 
     }
     //The global status object.
@@ -50,6 +52,11 @@ public class Stats : MonoBehaviour {
 	private Transform skeleton;
 	private Animator skelAnim; 
 	private int fontsizeForStuff = 10;
+
+    public Transform ManaBladeTrans;
+    public Transform ShadowBladeTrans;
+    public Transform FireBladeTrans;
+
     // Use this for initialization
     void Start () {
 		skeleton = transform.FindChild("Skeleton");
@@ -158,6 +165,7 @@ public class Stats : MonoBehaviour {
     public void AddShadowBlade()
     {
         status.ShadowBlade = true;
+        ShadowBladeTrans.gameObject.SetActive(true);
         this.status.minDamage += 4;
         this.status.maxDamage += 4;
         if (status.ManaBlade)
@@ -165,7 +173,15 @@ public class Stats : MonoBehaviour {
             this.status.minSpellPower -= 4;
             this.status.maxSpellPower -= 4;
             status.ManaBlade = false;
+            ManaBladeTrans.gameObject.SetActive(false);
         }
+        if (status.FireBlade)
+        {
+            status.FireBlade = false;
+            FireBladeTrans.gameObject.SetActive(false);
+        }
+
+        //ShadowBladeTrans.gameObject.SetActive(true);
     }
 
     //Increments the players damage reduction by 2
@@ -180,11 +196,37 @@ public class Stats : MonoBehaviour {
         status.ManaBlade = true;
         this.status.minSpellPower += 4;
         this.status.maxSpellPower += 4;
+        ManaBladeTrans.gameObject.SetActive(true);
         if (status.ShadowBlade)
         {
+            ShadowBladeTrans.gameObject.SetActive(false);
             this.status.minDamage -= 4;
             this.status.maxDamage -= 4;
             status.ShadowBlade = false;
+        }
+        if (status.FireBlade)
+        {
+            status.FireBlade = false;
+            FireBladeTrans.gameObject.SetActive(false);
+        }
+    }
+    public void AddFireBlade()
+    {
+        status.FireBlade = true;
+        FireBladeTrans.gameObject.SetActive(true);
+        if (status.ShadowBlade)
+        {
+            ShadowBladeTrans.gameObject.SetActive(false);
+            this.status.minDamage -= 4;
+            this.status.maxDamage -= 4;
+            status.ShadowBlade = false;
+        }
+        if (status.ManaBlade)
+        {
+            this.status.minSpellPower -= 4;
+            this.status.maxSpellPower -= 4;
+            status.ManaBlade = false;
+            ManaBladeTrans.gameObject.SetActive(false);
         }
     }
 
