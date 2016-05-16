@@ -5270,17 +5270,10 @@ MonoBehaviour:
   ManaSpendColor: {r: 0, g: 0.5034485, b: 1, a: 1}
   ManaRegainColor: {r: 0, g: 1, b: 1, a: 1}
   status:
-<<<<<<< HEAD
     maxHealth: 10000
     maxMana: 200
     currentMana: 130
     currentHealth: 7000
-=======
-    maxHealth: 1000
-    maxMana: 100
-    currentMana: 100
-    currentHealth: 700
->>>>>>> origin/master
     gainedHealth: 0
     gainedMana: 0
     gainedDamage: 0
