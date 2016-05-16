@@ -57,10 +57,11 @@ public class SkelePunController : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        index = random.Next(0, PunList.Count);
-        Canvas.GetComponent<Text>().text = PunList[index];
+
         if (col.CompareTag("Player"))
         {
+            index = random.Next(0, PunList.Count);
+            Canvas.GetComponent<Text>().text = PunList[index];
             Canvas.Translate(new Vector3(0, 0, -5));
         }
     }
