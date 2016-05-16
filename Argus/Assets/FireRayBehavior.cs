@@ -35,7 +35,7 @@ public class FireRayBehavior : MonoBehaviour {
             {
                 Debug.Log("Damage");
                 int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
-                hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg/10);
+                hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg);
                 hit.transform.GetComponent<EnemyStats>().Ignite(5f);
                 damageCooldown = 1;
             }

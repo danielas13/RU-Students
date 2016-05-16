@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace UnityStandardAssets._2D
-{
     public class Spell : MonoBehaviour
     {
 
@@ -27,7 +25,7 @@ namespace UnityStandardAssets._2D
 
 
         int NumberOfSpells = 4;// Nuber of spells that the player has learned
-        private int currentSpell = 1;
+        public int currentSpell = 1;
 
         void Awake()
         {
@@ -173,4 +171,3 @@ namespace UnityStandardAssets._2D
             }
         }
     }
-}

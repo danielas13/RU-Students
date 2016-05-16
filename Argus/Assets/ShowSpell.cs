@@ -1,0 +1,60 @@
+﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+public class ShowSpell : MonoBehaviour {
+
+    private Spell playerSpell;
+    public GameObject FelBall,Mend,FrostRay,FireRay;
+	// Use this for initialization
+	void Start () {
+        playerSpell = GameObject.Find("Player").GetComponent<Spell>();
+        FelBall.SetActive(true);
+        Mend.SetActive(false);
+        FrostRay.SetActive(false);
+        FireRay.SetActive(false);
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        if (playerSpell.currentSpell == 1)
+        {
+            if (!FelBall.activeSelf)
+            {
+                FelBall.SetActive(true);
+                Mend.SetActive(false);
+                FrostRay.SetActive(false);
+                FireRay.SetActive(false);
+            }
+        }
+        else if(playerSpell.currentSpell ==2)
+        {
+            if (!Mend.activeSelf)
+            {
+                FelBall.SetActive(false);
+                Mend.SetActive(true);
+                FrostRay.SetActive(false);
+                FireRay.SetActive(false);
+            }
+        }
+        else if (playerSpell.currentSpell == 3)
+        {
+            if (!FrostRay.activeSelf)
+            {
+                FelBall.SetActive(false);
+                Mend.SetActive(false);
+                FrostRay.SetActive(true);
+                FireRay.SetActive(false);
+            }
+        }
+        else if (playerSpell.currentSpell == 4)
+        {
+            if (!FireRay.activeSelf)
+            {
+                FelBall.SetActive(false);
+                Mend.SetActive(false);
+                FrostRay.SetActive(false);
+                FireRay.SetActive(true);
+            }
+        }
+    }
+}
