@@ -11,11 +11,12 @@ public class HeraldController : MonoBehaviour {
     public GameObject[] RestorableButtons;
     public GameObject[] ControlsButtons;
     public GameObject[] MiscButtons;
-    private Color basicColor = new Color(51/255f, 51/255f, 1);
-    private Color selectedColor = new Color(0,0,102/255f, 1);
+	private Color basicColor = new Color(0F, 0F, 0F, 0F);
+	private Color selectedColor = new Color(244/255f, 244/255f, 244/255f, 244/255f); 
 
     public Text textArea;
     private string[,] TextArray = new string[6,6];          //Array containing all the dialogs
+	private GameObject[,] ImageArray = new GameObject[6,6];
     public GameObject[] Pannels; //0 = Upgrades, 1 = enemies, 2 = Lore.
     public GameObject canvas;           //The canvas object.
 
@@ -29,14 +30,20 @@ public class HeraldController : MonoBehaviour {
             ResetColor(i);
             Categories[i].GetComponent<Button>().image.color = basicColor;
         }
+		initiateArray();
+
         Pannels[1].SetActive(false);
         Pannels[2].SetActive(false);
         Pannels[3].SetActive(false);
         Pannels[4].SetActive(false);
         Pannels[5].SetActive(false);
-        initiateArray();
+		Pannels[CategorySelection].SetActive(true);
+		if(CategorySelection!=4){
+			ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);	
+		}
+   
         textArea.text = TextArray[CategorySelection, CurrentSelection];
-        canvas.SetActive(false);
+        canvas.SetActive(true);
     }
     void OnTriggerStay2D(Collider2D other)
     {
@@ -65,6 +72,9 @@ public class HeraldController : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.RightArrow))         //Selecting Categories to the right.
         {
+			if(CategorySelection!=4){
+				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);	
+			}
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
             Categories[CategorySelection].GetComponent<Button>().image.color = basicColor;
@@ -80,10 +90,17 @@ public class HeraldController : MonoBehaviour {
             }
             CurrentSelection = 0;
             Pannels[CategorySelection].SetActive(true);        //Enabling current selection
+			if(CategorySelection!=4){
+				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);	
+			}
+
             textArea.text = TextArray[CategorySelection, CurrentSelection];
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))         //Selecting Categories to the left.
         {
+			if(CategorySelection!=4){
+				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);	
+			}
             ResetColor(CategorySelection);
             Pannels[CategorySelection].SetActive(false);        //Disabling old selection
             Categories[CategorySelection].GetComponent<Button>().image.color = basicColor;
@@ -100,6 +117,9 @@ public class HeraldController : MonoBehaviour {
             CurrentSelection = 0;
             Categories[CategorySelection].GetComponent<Button>().image.color = selectedColor;
             Pannels[CategorySelection].SetActive(true);        //Enabling current selection
+			if(CategorySelection!=4){
+				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);	
+			}
             textArea.text = TextArray[CategorySelection, CurrentSelection];
         }
 
@@ -163,33 +183,42 @@ public class HeraldController : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
-            if (CurrentSelection == lis.Length - 1)             //The counter is the last option.
-            {
-                CurrentSelection = 0;
-                lis[CurrentSelection].GetComponent<Button>().image.color = selectedColor;
-            }
-            else                                                //The counter is at the first option.
-            {
-                CurrentSelection = CurrentSelection + 1;
-                lis[CurrentSelection].GetComponent<Button>().image.color = selectedColor;
-            }
-            textArea.text = TextArray[CategorySelection, CurrentSelection];
+			if(lis.Length > 0){
+				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);
+				lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
+				if (CurrentSelection == lis.Length - 1)             //The counter is the last option.
+				{
+					CurrentSelection = 0;
+					lis[CurrentSelection].GetComponent<Button>().image.color = selectedColor;
+					ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);
+				}
+				else                                                //The counter is at the first option.
+				{
+					CurrentSelection = CurrentSelection + 1;
+					lis[CurrentSelection].GetComponent<Button>().image.color = selectedColor;
+					ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);
+				}
+				textArea.text = TextArray[CategorySelection, CurrentSelection];
+			}
+
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))            
         {
-            lis[CurrentSelection].GetComponent<Button>().image.color = basicColor;
-            if (CurrentSelection == 0)     //The counter is at the bottom option.
-            {
-                CurrentSelection = lis.Length - 1;
-                lis[CurrentSelection].GetComponent<Button>().image.color = selectedColor;
-            }
-            else                           //go down a selection
-            {
-                CurrentSelection = CurrentSelection - 1;
-                lis[CurrentSelection].GetComponent<Button>().image.color = selectedColor;
-            }
-            textArea.text = TextArray[CategorySelection, CurrentSelection];
+			if (lis.Length > 0) {
+				ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (false);
+				lis [CurrentSelection].GetComponent<Button> ().image.color = basicColor;
+				if (CurrentSelection == 0) {     //The counter is at the bottom option.
+					CurrentSelection = lis.Length - 1;
+					lis [CurrentSelection].GetComponent<Button> ().image.color = selectedColor;
+					ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);
+
+				} else {                           //go down a selection
+					CurrentSelection = CurrentSelection - 1;
+					lis [CurrentSelection].GetComponent<Button> ().image.color = selectedColor;
+					ImageArray [CategorySelection, CurrentSelection].gameObject.SetActive (true);
+				}
+				textArea.text = TextArray [CategorySelection, CurrentSelection];
+			}
         }
     }
 
@@ -296,6 +325,31 @@ public class HeraldController : MonoBehaviour {
 
     private void initiateArray()
     {
+		for(int i = 0; i < UpgradeButtons.Length; i++){
+			ImageArray[0,i] = (UpgradeButtons [i].transform.GetChild (1).transform.gameObject);
+			ImageArray [0, i].SetActive (false);
+		}
+		for(int i = 0; i < EnemyButtons.Length; i++){
+			ImageArray[1,i] = (EnemyButtons [i].transform.GetChild (1).transform.gameObject);
+			ImageArray [1, i].SetActive (false);
+		}
+		for(int i = 0; i < LoreButtons.Length; i++){
+			ImageArray[2,i] =(LoreButtons [i].transform.GetChild (1).transform.gameObject);
+			ImageArray [2, i].SetActive (false);
+		}
+		for(int i = 0; i < RestorableButtons.Length; i++){
+			ImageArray[3,i] =(RestorableButtons [i].transform.GetChild (1).transform.gameObject);
+			ImageArray [3, i].SetActive (false);
+		}
+		for(int i = 0; i < ControlsButtons.Length; i++){
+			//#4
+		}
+		for(int i = 0; i < MiscButtons.Length; i++){
+			ImageArray[5,i] =(MiscButtons [i].transform.GetChild (1).transform.gameObject);
+			ImageArray [5, i].SetActive (false);
+		}
+
+
         //Upgrade texts.
         TextArray[0,0] = "Health upgrades will increase your maximum health for the current run. These upgrades can be purchased permanently in the upgrade store.";
         TextArray[0,1] = "Mana upgrades will increase your maximum mana for the current run. These upgrades can be purchased permanently in the upgrade store.";

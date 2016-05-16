@@ -39,12 +39,12 @@ Material:
     m_Floats:
       data:
         first:
-          name: _BumpAmt
-        second: 20
-      data:
-        first:
           name: _InvFade
         second: 2.142857
+      data:
+        first:
+          name: _BumpAmt
+        second: 20
       data:
         first:
           name: _ColorStrength
