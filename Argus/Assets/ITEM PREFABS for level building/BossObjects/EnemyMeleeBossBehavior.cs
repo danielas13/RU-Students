@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyMeleeBossBehavior : MonoBehaviour {
@@ -109,8 +109,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         {
             KnightAnimator.speed = 1;
             /* Check if the player is visible to the enemy using rays*/
-            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-
+            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);    
             enemyPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 calculateAngle = playerPos - enemyPos;
 

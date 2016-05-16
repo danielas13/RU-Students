@@ -30,7 +30,7 @@ public class InstantDisable : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.right), 20, notHit);
         if(hit.transform != null)
         {
-            Debug.Log("Name: " + hit.transform.name);
+            //Debug.Log("Name: " + hit.transform.name);
             damageCooldown -= Time.deltaTime;
             if (damageCooldown < 0)
             {
@@ -42,17 +42,17 @@ public class InstantDisable : MonoBehaviour
             freezeTime -= Time.deltaTime;
             if (freezeTime < 0)
             {
-                if(hit.transform.name == "Enemy")
+                if(hit.transform.name == "Enemy(Clone)")
                 {
                     hit.transform.GetComponent<EnemyBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
                 }
-                else if (hit.transform.name == "EnemyCaster")
+                else if (hit.transform.name == "EnemyCaster(Clone)")
                 {
                     hit.transform.GetComponent<EnemyCasterBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyCasterBehavior>().frozenTimer = 4f;
                 }
-                else if (hit.transform.name == "FloatingEnemy")
+                else if (hit.transform.name == "FloatingEnemy(Clone)")
                 {
                     hit.transform.GetComponent<EnemyBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
@@ -68,7 +68,7 @@ public class InstantDisable : MonoBehaviour
         if (spendMana < 0)
         {
 
-            //stats.spendMana(1);
+            stats.spendMana(1);
             spendMana = 1;
         }
         spendMana -= Time.deltaTime;
