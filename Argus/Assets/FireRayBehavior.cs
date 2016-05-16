@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InstantDisable : MonoBehaviour
-{
+public class FireRayBehavior : MonoBehaviour {
+
     private Stats stats;
     private float spendMana = 1;
     private bool stoppedChannel = false;//Check to make sure that the player can not rechannel the already in effect spell
     public LayerMask notHit;
-    private float freezeTime = 1;
     private float damageCooldown = 1;
     private bool outOfMana = false;
 
@@ -15,8 +14,8 @@ public class InstantDisable : MonoBehaviour
 
     void Update()
     {
-        
-        if(stats.status.currentMana < 1)
+
+        if (stats.status.currentMana < 1)
         {
             outOfMana = true;
         }
@@ -28,21 +27,24 @@ public class InstantDisable : MonoBehaviour
         }
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.right), 20, notHit);
-        if(hit.transform != null)
+        if (hit.transform != null)
         {
             //Debug.Log("Name: " + hit.transform.name);
             damageCooldown -= Time.deltaTime;
             if (damageCooldown < 0)
             {
+                Debug.Log("Damage");
                 int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
-                hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg / 2);
+                hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg/10);
+                hit.transform.GetComponent<EnemyStats>().Ignite(5f);
                 damageCooldown = 1;
             }
             
-            freezeTime -= Time.deltaTime;
+
+            /*freezeTime -= Time.deltaTime;
             if (freezeTime < 0)
             {
-                if(hit.transform.name == "Enemy(Clone)")
+                if (hit.transform.name == "Enemy(Clone)")
                 {
                     hit.transform.GetComponent<EnemyBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
@@ -57,12 +59,8 @@ public class InstantDisable : MonoBehaviour
                     hit.transform.GetComponent<EnemyBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
                 }
-            }
-            
-        }
-        else
-        {
-            freezeTime = 1;
+            }*/
+
         }
 
         if (spendMana < 0)
@@ -72,8 +70,8 @@ public class InstantDisable : MonoBehaviour
             spendMana = 1;
         }
         spendMana -= Time.deltaTime;
-        
-        
+
+
 
         if (Input.GetAxis("Vertical") >= 0.2f)
         {
@@ -82,7 +80,7 @@ public class InstantDisable : MonoBehaviour
 
         if (Input.GetAxis("Vertical") < -0.2f)
         {
-            transform.Rotate(new Vector3(0, 0, -10 *Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, -10 * Time.deltaTime));
         }
     }
     void Start()
@@ -91,5 +89,3 @@ public class InstantDisable : MonoBehaviour
         stats = GameObject.Find("Player").GetComponent<Stats>();
     }
 }
-
-

@@ -25,11 +25,21 @@ public class EnemyStats : MonoBehaviour {
     public int MaxScore = 20;
     public int MinScore = 10;
 
+    public Transform OnFire;
+
     //function that damages the current enemy.
     void Start()
     {
         indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
     }
+
+    public void Ignite(float timer)
+    {
+        Debug.Log("BURN BABBY BURRRRRRRN");
+        OnFire.gameObject.SetActive(true);
+        OnFire.GetComponent<DamageOverTime>().Reset();
+    }
+
     public void damageEnemy(int damage)
     {
         
