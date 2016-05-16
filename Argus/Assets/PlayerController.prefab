@@ -5553,18 +5553,18 @@ MonoBehaviour:
   ManaSpendColor: {r: 0, g: 0.5034485, b: 1, a: 1}
   ManaRegainColor: {r: 0, g: 1, b: 1, a: 1}
   status:
-    maxHealth: 10000
+    maxHealth: 100
     maxMana: 100
     currentMana: 100
-    currentHealth: 7000
+    currentHealth: 100
     gainedHealth: 0
     gainedMana: 0
     gainedDamage: 0
     gainedSpellpower: 0
     minDamage: 15
     maxDamage: 25
-    minSpellPower: 25
-    maxSpellPower: 35
+    minSpellPower: 40
+    maxSpellPower: 45
     score: 0
     armor: 0
     deathCount: 0

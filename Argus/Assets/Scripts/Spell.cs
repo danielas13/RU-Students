@@ -186,7 +186,7 @@ using System.Collections;
                 player.restoreHealth(randomDmg);
                 //Instantiate(HealParticle, transform.position, transform.rotation);//The aoe Spell script is called HealAreaOfEffectScript and is located under the Spells folder
                 transform.FindChild("SpellParticles").FindChild("HealParticles").gameObject.SetActive(true);
-                player.spendMana(4);
+                player.spendMana(30);
             }
             else
             {
@@ -209,7 +209,7 @@ using System.Collections;
                 if (player.status.currentMana >= 2)
                 {
                     Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation);
-                    player.spendMana(2);
+                    player.spendMana(20);
                 }
                 else
                 {
@@ -222,7 +222,7 @@ using System.Collections;
                 if (player.status.currentMana >= 2)
                 {
                     Instantiate(FirePrefab, spellPoint.position, spellPoint.rotation);
-                    player.spendMana(2);
+                    player.spendMana(20);
                 }
                 else
                 {
