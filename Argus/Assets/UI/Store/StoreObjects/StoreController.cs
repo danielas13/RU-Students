@@ -133,9 +133,9 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > healthcost)
             {
                 playerStatus.status.score -= healthcost;
-               playerStatus.status.gainedHealth -= 10;
+                playerStatus.status.gainedHealth -= 1;
                 RestartText();
-               playerStatus.restart();
+                playerStatus.restart();
 				ErrorMessage.text = "Purchase complete! ";
             }
 			else{
@@ -157,7 +157,7 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > manaCost)
             {
                 playerStatus.status.score -= manaCost;
-                playerStatus.status.gainedMana -= 10;
+                playerStatus.status.gainedMana -= 1;
                 RestartText();
                 playerStatus.restart();
 				ErrorMessage.text = "Purchase complete! ";
@@ -238,8 +238,8 @@ public class StoreController : MonoBehaviour {
 
 
 		HealthCost.text = (100 + (playerStatus.status.maxHealth-100 - playerStatus.status.gainedHealth) *2).ToString ();
-		ManaCost.text = (150 + (playerStatus.status.maxMana-100 - playerStatus.status.gainedMana) * 2).ToString ();
-		DamageCost.text = (400 + (playerStatus.status.minDamage-15 - playerStatus.status.gainedDamage) * 4).ToString ();
-		SpellpowerCost.text = (300 + (playerStatus.status.minSpellPower-25 - playerStatus.status.gainedSpellpower) * 4).ToString ();
+		ManaCost.text = (150 + (playerStatus.status.maxMana-100 - playerStatus.status.gainedMana) * 3).ToString ();
+		DamageCost.text = (400 + (playerStatus.status.minDamage-15 - playerStatus.status.gainedDamage) * 6).ToString ();
+		SpellpowerCost.text = (300 + (playerStatus.status.minSpellPower-25 - playerStatus.status.gainedSpellpower) * 6).ToString ();
     }
 }

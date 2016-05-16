@@ -22,6 +22,7 @@ TagManager:
   - LeftHandFireTrail
   - RightHandFireTrail
   - StoreDoor
+  - FloatBossPillar
   layers:
   - Default
   - TransparentFX
