@@ -75,12 +75,12 @@ public class FireRayBehavior : MonoBehaviour {
 
         if (Input.GetAxis("Vertical") >= 0.2f)
         {
-            transform.Rotate(new Vector3(0, 0, 10 * Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, 30 * Time.deltaTime));
         }
 
         if (Input.GetAxis("Vertical") < -0.2f)
         {
-            transform.Rotate(new Vector3(0, 0, -10 * Time.deltaTime));
+            transform.Rotate(new Vector3(0, 0, -30 * Time.deltaTime));
         }
     }
     void Start()

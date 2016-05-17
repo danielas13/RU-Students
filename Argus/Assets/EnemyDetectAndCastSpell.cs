@@ -61,18 +61,20 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
         {
             if (IsCasting == true)
             {
-                WizardAnimator.SetTrigger("CastSpell");
+
+                WizardAnimator.SetBool("CastSpell",true);
                //LeftFireTrail.gameObject.SetActive(true);
                 //RightFireTrail.gameObject.SetActive(true);
                 trailsActive = true;
-
+                Debug.Log("hadsuhasduha");
                 castingTime = castingTime - Time.deltaTime;
                 if (castingTime < 0)
                 { //finished channeling cast
                     IsCasting = false;
+
                     CastFireBall();
                     this.transform.parent.GetComponent<EnemyCasterBehavior>().castingSpell = false;
-                    // WizardAnimator.SetBool("IsCasting", IsCasting);
+                    WizardAnimator.SetBool("IsCasting", IsCasting);
                   
                     castingTime = TotalCastingTime;
 
@@ -113,6 +115,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
             /* If a player is detected, attempt to cast spell and play the spellcast animation*/
             if (hit.collider != null && cooldown < 0)
             {
+                Debug.Log(hit.transform.tag);
                 if (hit.transform.tag == "Player")
                 {
                     IsCasting = true;
