@@ -72,16 +72,8 @@ public class EnemyCasterBehavior : MonoBehaviour {
         {
             CasterAnimator.speed = 1f;
             Vector2 playerPos;
-            if (!game.gm.isPlayerDead)
-            {
-                player = GameObject.Find("Player");
-                playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
-            }
-            else
-            {
-                playerPos = new Vector2(game.gm.DeadState.transform.position.x, game.gm.DeadState.transform.position.y);
-            }
-            //Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+
+            playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
             Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 calculateAngle = playerPos - enemyPos;
 
@@ -101,6 +93,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                 {
                     if (direction != 1)
                     {
+                        Debug.Log("!1");
                         Flip();
                     }
                 }
@@ -108,6 +101,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                 {
                     if (direction == 1)
                     {
+                        Debug.Log("1");
                         Flip();
                     }
                 }
@@ -146,7 +140,11 @@ public class EnemyCasterBehavior : MonoBehaviour {
                     {
                         Flip();
                     }
-                    transform.Translate(Vector3.left * Time.deltaTime * movementVelocity);
+                    if (!castingSpell)
+                    {
+                        transform.Translate(Vector3.left * Time.deltaTime * movementVelocity);
+                    }
+
                 }
                 else
                 {
@@ -175,7 +173,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                         {
                             Flip();
                         }
-                        if (hitDown.collider != null && hitForwards.collider == null)
+                        if (hitDown.collider != null && hitForwards.collider == null && !castingSpell)
                         {
                             transform.Translate(Vector3.left * Time.deltaTime * chasingVelocity);
                         }
@@ -186,7 +184,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                         {
                             Flip();
                         }
-                        if (hitDown.collider != null && hitForwards.collider == null)
+                        if (hitDown.collider != null && hitForwards.collider == null && !castingSpell)
                         {
                             transform.Translate(Vector3.left * Time.deltaTime * chasingVelocity);
                         }

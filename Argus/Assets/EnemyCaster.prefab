@@ -3556,7 +3556,7 @@ MonoBehaviour:
   fallDistance: 1.5
   collideDistance: 1.5
   direction: -1
-  aggroRange: 5
+  aggroRange: 6
   aggroLayers:
     serializedVersion: 2
     m_Bits: 1280

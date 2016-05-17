@@ -8,8 +8,8 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 	private float cooldown = 3;
 	private bool IsCasting = false;
 
-	private float TotalCastingTime = 1.6f;
-	private float castingTime = 1.6f;
+	private float TotalCastingTime = 1f;
+	private float castingTime = 1f;
 
     private Transform cleric;
     private Animator clericAnim;
@@ -19,6 +19,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 
 	private Transform Wizard;
 	private Animator WizardAnimator;
+    private EnemyCasterBehavior enemyBehavior;
 
 	private Quaternion preCastingRotation;
 	private Vector3 preCastingPosition;
@@ -28,9 +29,10 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 		character = GameObject.FindGameObjectWithTag("Player");
         cleric = transform.parent.FindChild("Cleric");
         clericAnim = cleric.GetComponent<Animator>();
+        enemyBehavior = transform.parent.GetComponent<EnemyCasterBehavior>();
 
-		//get Wizard animator component 
-		Wizard = transform.parent.FindChild ("Eva_Full_Animated");
+        //get Wizard animator component 
+        Wizard = transform.parent.FindChild ("Eva_Full_Animated");
 		WizardAnimator = Wizard.GetComponent <Animator> ();
 
 		Transform[] children = transform.parent.GetComponentsInChildren<Transform>();
@@ -66,18 +68,22 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                //LeftFireTrail.gameObject.SetActive(true);
                 //RightFireTrail.gameObject.SetActive(true);
                 trailsActive = true;
-                Debug.Log("hadsuhasduha");
-                castingTime = castingTime - Time.deltaTime;
+               // Debug.Log("hadsuhasduha");
+                if(castingTime >= 0)
+                {
+                    castingTime = castingTime - Time.deltaTime;
+                }
+
                 if (castingTime < 0)
                 { //finished channeling cast
                     IsCasting = false;
 
-                    CastFireBall();
-                    this.transform.parent.GetComponent<EnemyCasterBehavior>().castingSpell = false;
+
+                    enemyBehavior.castingSpell = false;
                     WizardAnimator.SetBool("IsCasting", IsCasting);
                   
                     castingTime = TotalCastingTime;
-
+                    CastFireBall();
                     /* This code handles root motion displacement during casting */
                     //WizardAnimator.applyRootMotion = false;
                     transform.parent.FindChild("Eva_Full_Animated").position = preCastingPosition;
@@ -96,17 +102,6 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                 }
             }
 
-
-
-
-
-            /* Used for Raycast comparison */
-            if (character == null)
-            {
-                character = GameObject.FindGameObjectWithTag("Player");
-            }
-
-
             /* HORIZONTAL Raycast that attempts to detect the player */
             RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector3(character.transform.position.x - transform.position.x, 0, character.transform.position.z - transform.position.z), spellDistance, NotHit);
             //Debug.DrawLine(transform.position, new Vector3(transform.position.x - spellDistance, character.transform.position.y), Color.red);
@@ -115,19 +110,21 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
             /* If a player is detected, attempt to cast spell and play the spellcast animation*/
             if (hit.collider != null && cooldown < 0)
             {
-                Debug.Log(hit.transform.tag);
+               // Debug.Log(hit.transform.tag);
                 if (hit.transform.tag == "Player")
                 {
-                    IsCasting = true;
-                    this.transform.parent.GetComponent<EnemyCasterBehavior>().castingSpell = true;
+                    if (!IsCasting)
+                    {
+                        IsCasting = true;
+                        enemyBehavior.castingSpell = true;
 
-                    /* This code handles root motion displacement during casting */
-                    preCastingPosition = transform.parent.FindChild("Eva_Full_Animated").position;
-                    preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
-                 //   WizardAnimator.SetBool("IsCasting", IsCasting);
-                   // WizardAnimator.applyRootMotion = true;
-                    cooldown = 3;
-
+                        /* This code handles root motion displacement during casting */
+                        preCastingPosition = transform.parent.FindChild("Eva_Full_Animated").position;
+                        preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
+                        //   WizardAnimator.SetBool("IsCasting", IsCasting);
+                        // WizardAnimator.applyRootMotion = true;
+                        cooldown = 3;
+                    }
                 }
             }
             cooldown -= Time.deltaTime;
