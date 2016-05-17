@@ -36,7 +36,6 @@ public class SpecialStoreController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Debug.Log("HelloWorld");
         playerStats = GameObject.Find("Player").GetComponent<Stats>();
         playerSpell = GameObject.Find("Player").GetComponent<Spell>();
         Categories[CategorySelection].GetComponent<Button>().image.color = selectedColor;
@@ -305,7 +304,11 @@ public class SpecialStoreController : MonoBehaviour {
             {
                 if (playerStats.status.ManaBlade)
                 {
-                    Prices[1].text = UpgradeAmount[0].ToString();
+                    Prices[1].text = UpgradeAmount[3].ToString() + "x " + "Essences Required";
+                }
+                else if (playerStats.status.FireBlade)
+                {
+                    Prices[2].text = UpgradeAmount[0].ToString() + "x " + "Essences Required";
                 }
                 playerStats.AddShadowBlade();
                 playerStats.status.score -= UpgradeAmount[0];
@@ -331,7 +334,11 @@ public class SpecialStoreController : MonoBehaviour {
             {
                 if (playerStats.status.ShadowBlade)
                 {
-                    Prices[0].text = UpgradeAmount[1].ToString();
+                    Prices[0].text = UpgradeAmount[1].ToString() + "x " + "Essences Required";
+                }
+                if (playerStats.status.FireBlade)
+                {
+                    Prices[2].text = UpgradeAmount[1].ToString() + "x " + "Essences Required";
                 }
                 playerStats.AddManaBlade();
                 playerStats.status.score -= UpgradeAmount[1];
@@ -360,7 +367,7 @@ public class SpecialStoreController : MonoBehaviour {
             playerStats.addDamageReduction(2);
             playerStats.status.score -= UpgradeAmount[3];
             UpgradeAmount[3] = UpgradeAmount[3] * 2;
-            Prices[3].text = UpgradeAmount[3].ToString();
+            Prices[3].text = UpgradeAmount[3].ToString() + "x " + "Essences Required";
             CurrentEssence.text = "Current Essence " + playerStats.status.score;
         }
         else
@@ -377,11 +384,11 @@ public class SpecialStoreController : MonoBehaviour {
             {
                 if (playerStats.status.ShadowBlade)
                 {
-                    Prices[0].text = UpgradeAmount[1].ToString();
+                    Prices[0].text = UpgradeAmount[2].ToString() + "x " + "Essences Required";
                 }
                 if (playerStats.status.ManaBlade)
                 {
-                    Prices[1].text = UpgradeAmount[1].ToString();
+                    Prices[1].text = UpgradeAmount[2].ToString() + "x " + "Essences Required";
                 }
                 playerStats.AddFireBlade();
                 playerStats.status.score -= UpgradeAmount[2];

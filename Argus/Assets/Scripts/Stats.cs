@@ -111,10 +111,15 @@ public class Stats : MonoBehaviour {
     {
 
         //transform.GetComponent<PlatformerCharacter2D>().isChanneling = false;
-      //  skelAnim.SetBool("hit", true);
-        if(damage - status.DamageReduction > 0)
+        //  skelAnim.SetBool("hit", true);
+        int realDamage =damage;
+        if (status.ShadowBlade)
         {
-            combatText.GetComponent<Text>().text = "-" + (damage - status.DamageReduction).ToString();
+            realDamage += (int)1.5 * damage;
+        }
+        if(realDamage - status.DamageReduction > 0)
+        {
+            combatText.GetComponent<Text>().text = "-" + (realDamage - status.DamageReduction).ToString();
         }
         else
         {
@@ -134,11 +139,11 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            if((this.status.currentHealth - (damage-status.DamageReduction)) > 0)
+            if((this.status.currentHealth - (realDamage - status.DamageReduction)) > 0)
             {
-                if((damage - status.DamageReduction) > 0)
+                if((realDamage - status.DamageReduction) > 0)
                 {
-                    this.status.currentHealth -= (damage - status.DamageReduction);
+                    this.status.currentHealth -= (realDamage - status.DamageReduction);
                 }
             }
             else
@@ -177,12 +182,8 @@ public class Stats : MonoBehaviour {
     {
         status.ShadowBlade = true;
         ShadowBladeTrans.gameObject.SetActive(true);
-        this.status.minDamage += 4;
-        this.status.maxDamage += 4;
         if (status.ManaBlade)
         {
-            this.status.minSpellPower -= 4;
-            this.status.maxSpellPower -= 4;
             status.ManaBlade = false;
             ManaBladeTrans.gameObject.SetActive(false);
         }
@@ -205,14 +206,10 @@ public class Stats : MonoBehaviour {
     public void AddManaBlade()
     {
         status.ManaBlade = true;
-        this.status.minSpellPower += 4;
-        this.status.maxSpellPower += 4;
         ManaBladeTrans.gameObject.SetActive(true);
         if (status.ShadowBlade)
         {
             ShadowBladeTrans.gameObject.SetActive(false);
-            this.status.minDamage -= 4;
-            this.status.maxDamage -= 4;
             status.ShadowBlade = false;
         }
         if (status.FireBlade)
@@ -228,14 +225,10 @@ public class Stats : MonoBehaviour {
         if (status.ShadowBlade)
         {
             ShadowBladeTrans.gameObject.SetActive(false);
-            this.status.minDamage -= 4;
-            this.status.maxDamage -= 4;
             status.ShadowBlade = false;
         }
         if (status.ManaBlade)
         {
-            this.status.minSpellPower -= 4;
-            this.status.maxSpellPower -= 4;
             status.ManaBlade = false;
             ManaBladeTrans.gameObject.SetActive(false);
         }

@@ -42,7 +42,6 @@ public class SkelePunController : MonoBehaviour {
         PunList.Add("A man sued an airline company after it lost his luggage. Sadly, he lost his case.");
         PunList.Add("When i was young, i used to think facial hair looked stupid, but then it grew on me.");
         PunList.Add("What would you call a fish with a missing eye? A fsh probably.");
-        PunList.Add("Care to seduce a large woman? Piece of cake.");
         PunList.Add("Can February march? No, but April May.");
         PunList.Add("Oxygen is proven to be a toxic gas. Anyone who inhales it normaly dies within 80 years.");
         PunList.Add("I can't believe I got fired from the calendar factory. All I did was take a day off.");
@@ -53,7 +52,23 @@ public class SkelePunController : MonoBehaviour {
         PunList.Add("To the guy who invented zero. Thanks for nothing.");
         PunList.Add("I'm terrified of elevators. I'll have to take steps to avoid them.");
         PunList.Add("This crypt is geting too crowded. Adventurers are just dying to get in here.");
-        PunList.Add("When life gives you melons, you're probably dyslexic.");
+        PunList.Add("Hello there.");
+        PunList.Add("You want something?");
+        PunList.Add("How's it going?");
+        PunList.Add("This place is actually pretty creepy.");
+        PunList.Add("You saw that revenant over there? Never seen on with that color.");
+        PunList.Add("Why do ghouls and demons hang out together? Because demons are a ghoul's best friend!");
+        PunList.Add("I'm not really a joker.");
+        PunList.Add("Did you hear about the undertaker who buried someone in the wrong place and was sacked for the grave mistake?");
+        PunList.Add("What was the witch's favorite subject in school? Spelling!");
+        PunList.Add("Roses are gray, violets are gray, I'm dead and colorblind.");
+        PunList.Add("Jill broke her finger today, but on the other hand she was completely fine.");
+        PunList.Add("Einstein developed a theory about space, and it was about time too.");
+        PunList.Add("I was going to look for my missing watch, but I could never find the time.");
+        PunList.Add("How's it feel to be dead? Well, I'm living with it.");
+        PunList.Add("I've been dying to meet you!");
+        PunList.Add("How do spirits keep fit?  They exorcise.");
+        PunList.Add("It's not that the man did not know how to juggle, he just didn't have the balls to do it.");
     }
     void OnTriggerEnter2D(Collider2D col)
     {
