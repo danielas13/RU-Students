@@ -36,7 +36,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
 
     void Flip()
     {
-        direction = -direction;
+        direction = -direction; //1 = Right , -1 = Left
 
 
         //transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
@@ -50,8 +50,8 @@ public class EnemyCasterBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        if (direction == 1)
+        
+        if (direction != 1)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
         }
@@ -84,7 +84,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
             //Vector2 playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
             Vector2 enemyPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 calculateAngle = playerPos - enemyPos;
-
+            //Debug.Log("Dir : " + direction + " player" + playerPos + " Caster: " + enemyPos);
             RaycastHit2D rayToPlayer = Physics2D.Raycast(enemyPos, calculateAngle, aggroRange, aggroLayers);
 
             Vector2 trackPosition = new Vector2(trackPoint.position.x, trackPoint.position.y);
@@ -94,6 +94,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
 
             if (castingSpell)
             {
+                Debug.Log("IS CASTING");
                 Quaternion preCastingQuaternion = transform.rotation;
                 Vector3 preCastingPosition = transform.position;
                 //Tell to be idle
@@ -112,7 +113,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                     }
                 }
             }
-            else
+            else // not casting 
             {
                 //Check if the unit should enter chase mode.
                 if (rayToPlayer.collider != null)
@@ -177,7 +178,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                         }
                         if (hitDown.collider != null && hitForwards.collider == null)
                         {
-                            transform.Translate(Vector3.left * Time.deltaTime * chasingVelocity);
+                            transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
                         }
                     }
                     else if (playerPos.x > enemyPos.x)
@@ -188,7 +189,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
                         }
                         if (hitDown.collider != null && hitForwards.collider == null)
                         {
-                            transform.Translate(Vector3.left * Time.deltaTime * chasingVelocity);
+                            transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
                         }
                     }
                 }

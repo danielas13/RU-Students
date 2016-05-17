@@ -82,7 +82,7 @@ public class Stats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Finding a indicator if none is found.
-        if(status.armor > 0 && !Bubble.gameObject.activeSelf)
+        if (status.armor > 0)// && !Bubble.gameObject.activeSelf)
         {
             Bubble.gameObject.SetActive(true);
         }

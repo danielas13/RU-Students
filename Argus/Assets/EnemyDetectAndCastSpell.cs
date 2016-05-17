@@ -66,7 +66,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                //LeftFireTrail.gameObject.SetActive(true);
                 //RightFireTrail.gameObject.SetActive(true);
                 trailsActive = true;
-                Debug.Log("hadsuhasduha");
+          
                 castingTime = castingTime - Time.deltaTime;
                 if (castingTime < 0)
                 { //finished channeling cast
@@ -124,7 +124,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                     /* This code handles root motion displacement during casting */
                     preCastingPosition = transform.parent.FindChild("Eva_Full_Animated").position;
                     preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
-                 //   WizardAnimator.SetBool("IsCasting", IsCasting);
+                    WizardAnimator.SetBool("IsCasting", IsCasting);
                    // WizardAnimator.applyRootMotion = true;
                     cooldown = 3;
 
@@ -146,11 +146,11 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 
 		if (SpellPosition.x < playerPos.x)
 		{
-			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation);
+			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation * Quaternion.Euler(Vector3.up * 180));
 		}
 		else
 		{
-			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation * Quaternion.Euler(Vector3.up * 180));
+			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation );
 		}
 	}
 }

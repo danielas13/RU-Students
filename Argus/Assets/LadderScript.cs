@@ -28,6 +28,10 @@ public class LadderScript : MonoBehaviour {
 
     void Update()
     {
+        if (game.gm.isPlayerDead)
+        {
+            isClimbing = false;
+        }
         if (isClimbing)     //is the player climbing?
         {
             if (Input.GetAxis("Vertical") >= 0.2f)  //Player is going up.
