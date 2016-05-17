@@ -42,7 +42,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
         //transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
         //transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
 
-        //notFlip.rotation = notFlip.rotation * Quaternion.Euler(Vector3.up * 180);
+        notFlip.rotation = notFlip.rotation * Quaternion.Euler(Vector3.up * 180);
         
         // transform.FindChild("NotToFlip").transform.rotation = transform.FindChild("NotToFlip").transform.rotation * Quaternion.Euler(Vector3.up * 180);
     }

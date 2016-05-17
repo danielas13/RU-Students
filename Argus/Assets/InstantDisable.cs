@@ -52,11 +52,11 @@ public class InstantDisable : MonoBehaviour
                     hit.transform.GetComponent<EnemyCasterBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyCasterBehavior>().frozenTimer = 4f;
                 }
-                else if (hit.transform.name == "FloatingEnemy(Clone)")
+               /* else if (hit.transform.name == "FloatingEnemy(Clone)")
                 {
                     hit.transform.GetComponent<EnemyBehavior>().frozen = true;
                     hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
-                }
+                }*/
             }
             
         }
