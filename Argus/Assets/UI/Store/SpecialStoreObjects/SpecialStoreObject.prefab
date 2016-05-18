@@ -2280,10 +2280,10 @@ MonoBehaviour:
   - {fileID: 193894}
   - {fileID: 143410}
   UpgradeButtons:
-  - {fileID: 146738}
-  - {fileID: 142094}
-  - {fileID: 197176}
   - {fileID: 135690}
+  - {fileID: 197176}
+  - {fileID: 142094}
+  - {fileID: 146738}
   Prices:
   - {fileID: 11447216}
   - {fileID: 11496840}

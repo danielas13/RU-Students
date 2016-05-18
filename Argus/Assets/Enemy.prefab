@@ -3543,8 +3543,8 @@ MonoBehaviour:
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
   healthPrefab: {fileID: 444032, guid: 2419eb9aa25f1664b9288a916ab5be2e, type: 2}
   scorePrefab: {fileID: 440172, guid: d32e1293ad2038043936ed3e31082c6d, type: 2}
-  MaxScore: 20
-  MinScore: 10
+  MaxScore: 30
+  MinScore: 20
   OnFire: {fileID: 486192}
 --- !u!114 &11454898
 MonoBehaviour:
@@ -3631,7 +3631,7 @@ MonoBehaviour:
   movementVelocity: 1.85
   NotHit:
     serializedVersion: 2
-    m_Bits: 13568
+    m_Bits: 5430
   fallDistance: 1.5
   collideDistance: 0.5
   direction: 1

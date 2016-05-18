@@ -3552,11 +3552,11 @@ MonoBehaviour:
   movementVelocity: 1.85
   NotHit:
     serializedVersion: 2
-    m_Bits: 15616
+    m_Bits: 5430
   fallDistance: 1.5
   collideDistance: 1.5
   direction: -1
-  aggroRange: 5
+  aggroRange: 6
   aggroLayers:
     serializedVersion: 2
     m_Bits: 1280

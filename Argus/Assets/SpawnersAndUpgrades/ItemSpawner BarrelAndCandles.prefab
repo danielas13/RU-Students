@@ -753,8 +753,8 @@ MonoBehaviour:
   Chances: 6
   scoreChances: 3
   heightOfSpawn: 1
-  MaxScore: 5
-  MinScore: 2
+  MaxScore: 15
+  MinScore: 5
 --- !u!198 &19801058
 ParticleSystem:
   m_ObjectHideFlags: 1
