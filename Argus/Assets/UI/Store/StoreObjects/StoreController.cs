@@ -68,6 +68,11 @@ public class StoreController : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Destroy(this.gameObject);
+            SelectedButton = 0;
+        }
         if (Input.GetButtonDown("Up") || (Input.GetAxisRaw("DVert") >= 1 && !VertDpadPressed))
         {
             VertDpadPressed = true;

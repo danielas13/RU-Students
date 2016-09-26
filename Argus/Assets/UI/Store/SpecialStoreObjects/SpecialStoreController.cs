@@ -82,6 +82,9 @@ public class SpecialStoreController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButtonDown("Cancel")){
+            Destroy(this.gameObject);
+        }
         if (Input.GetButtonDown("Interact"))
         {
             if(counter <= 0)
