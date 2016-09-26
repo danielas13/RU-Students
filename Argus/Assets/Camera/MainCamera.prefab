@@ -766,7 +766,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000013507952184}
+  - 4: {fileID: 4000012040810032}
   - 222: {fileID: 22202728}
   m_Layer: 15
   m_Name: Text (1)
@@ -23720,7 +23720,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154100}
   m_IsPrefabParent: 1
---- !u!4 &4000013507952184
+--- !u!4 &4000012040810032
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

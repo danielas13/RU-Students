@@ -16,7 +16,11 @@ public class MeleeAttackTrigger : MonoBehaviour
             transform.GetComponent<Collider2D>().enabled = false;
             if (player.transform.GetComponent<Stats>().status.FireBlade)
             {
-                col.transform.GetComponent<EnemyStats>().Ignite(5);
+                if (col.transform.GetComponent<EnemyStats>())
+                {
+                    col.transform.GetComponent<EnemyStats>().Ignite(5);
+                }
+
             }
             else if (player.status.ManaBlade)
             {

@@ -5,6 +5,11 @@ public class ChangeSpawnScript : MonoBehaviour {
 
 	public Transform TargetObject;
 
+    void Start()
+    {
+
+    }
+
 	//Will trigger if the player is withing the door boundaries and pressesthe up key.
 	void OnTriggerStay2D(Collider2D other)
 	{
