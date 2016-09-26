@@ -10,7 +10,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
     public LayerMask NotHit;
     public float fallDistance = 1f;
     public float collideDistance = 0.5f;
-    public float direction = -1f;
+    public float direction = 1f;
 
     //Enemy chase variables
     public float aggroRange = 5f;
@@ -49,8 +49,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         if (direction != 1)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
@@ -82,34 +81,27 @@ public class EnemyCasterBehavior : MonoBehaviour {
             Vector2 trackPosition = new Vector2(trackPoint.position.x, trackPoint.position.y);
             RaycastHit2D hitDown = Physics2D.Raycast(trackPosition, new Vector2(0, -1), fallDistance, NotHit);
             RaycastHit2D hitForwards = Physics2D.Raycast(trackPosition, new Vector2(1, 0), collideDistance, NotHit);
-            //Debug.DrawLine(trackPoint.position, hitForwards.point, Color.red);
-
+            //print("player pos: " + playerPos.x + " enemy pos: " + enemyPos.x);
             if (castingSpell)
             {
-                //Debug.Log("IS CASTING");
-                Quaternion preCastingQuaternion = transform.rotation;
-                Vector3 preCastingPosition = transform.position;
-                //Tell to be idle
                 if (playerPos.x > enemyPos.x)   //The player is to the right
                 {
-                    if (direction != 1)
+                    if (direction == 1)
                     {
-                        //Debug.Log("!1");
                         Flip();
                     }
                 }
                 else if (playerPos.x < enemyPos.x)
                 {
-                    if (direction == 1)
-                    {
-                        //Debug.Log("1");
+                    if (direction != 1)
+                    { 
                         Flip();
                     }
                 }
             }
-            else // not casting 
+            else
             {
-                //Check if the unit should enter chase mode.
+                #region shouldCasterFlee
                 if (rayToPlayer.collider != null)
                 {
                     if (rayToPlayer.collider.gameObject.layer == 10)
@@ -121,79 +113,154 @@ public class EnemyCasterBehavior : MonoBehaviour {
                         this.chase = true;
                         //Debug.DrawLine(transform.position, player.transform.position, Color.blue);
                     }
-                    else
-                    {
-                        this.chase = false;
-                    }
+
                 }
                 else
                 {
                     this.chase = false;
                 }
-
-                if (!this.chase)
+                #endregion
+                if (!chase)
                 {
-                    if (hitDown.collider != null && hitForwards.collider == null)
-                    {
-
-                    }
-                    else
+                    if (hitDown.collider == null || hitForwards.collider != null)
                     {
                         Flip();
                     }
-                    if (!castingSpell)
-                    {
-                        transform.Translate(Vector3.left * Time.deltaTime * movementVelocity);
-                    }
-
+                    transform.Translate(Vector3.left * Time.deltaTime * movementVelocity);
                 }
                 else
                 {
                     //The player is to the right.
-                    if ((Mathf.Abs(playerPos.x - enemyPos.x)) < 0.1f)
-                    {
-                        if (playerPos.x > enemyPos.x)
-                        {
-                            if (direction != 1)
-                            {
-                                Flip();
-                            }
-                        }
-                        else if (playerPos.x < enemyPos.x)
-                        {
-                            if (direction == 1)
-                            {
-                                Flip();
-                            }
-                        }
 
-                    }
-                    else if (playerPos.x < enemyPos.x)
+                    if (playerPos.x > enemyPos.x)
                     {
                         if (direction != 1)
                         {
                             Flip();
                         }
-                        if (hitDown.collider != null && hitForwards.collider == null && !castingSpell)
-                        {
-                            transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
-                        }
                     }
-                    else if (playerPos.x > enemyPos.x)
+                    else if (playerPos.x < enemyPos.x)
                     {
                         if (direction == 1)
                         {
                             Flip();
                         }
-                        if (hitDown.collider != null && hitForwards.collider == null && !castingSpell)
-                        {
-                            transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
-                        }
                     }
+                    transform.Translate(Vector3.left * Time.deltaTime * chasingVelocity);
                 }
             }
-        }
-        
 
+            //Debug.DrawLine(trackPoint.position, hitForwards.point, Color.red
+            /* if (castingSpell)
+             {
+                 Debug.Log("IS CASTING");
+                 Quaternion preCastingQuaternion = transform.rotation;
+                 Vector3 preCastingPosition = transform.position;
+                 //Tell to be idle
+                 print("player pos: " + playerPos.x + " enemy pos: " + enemyPos.x);
+                 if (playerPos.x > enemyPos.x)   //The player is to the right
+                 {
+                     if (direction == 1)
+                     {
+                         Debug.Log("1");
+                         Flip();
+                     }
+                 }
+                 else if (playerPos.x < enemyPos.x)
+                 {
+                     if (direction != 1)
+                     {
+                         Debug.Log("!1");
+                         Flip();
+                     }
+                 }
+             }
+             else // not casting 
+             {
+                 //Check if the unit should enter chase mode.
+                 Debug.Log("IS NOT CASTING");
+                 if (rayToPlayer.collider != null)
+                 {
+                     if (rayToPlayer.collider.gameObject.layer == 10)
+                     {
+                         //Debug.DrawLine(transform.position, player.transform.position, Color.red);
+                     }
+                     else if (rayToPlayer.collider.gameObject.layer == 8)
+                     {
+                         this.chase = true;
+                         //Debug.DrawLine(transform.position, player.transform.position, Color.blue);
+                     }
+                     else
+                     {
+                         this.chase = false;
+                     }
+                 }
+                 else
+                 {
+                     this.chase = false;
+                 }
+
+                 if (!this.chase)
+                 {
+                     if (hitDown.collider != null && hitForwards.collider == null)
+                     {
+
+                     }
+                     else
+                     {
+                         Flip();
+                     }
+                     if (!castingSpell)
+                     {
+                         transform.Translate(Vector3.left * Time.deltaTime * movementVelocity);
+                     }
+
+                 }
+                 else
+                 {
+                     //The player is to the right.
+                     if ((Mathf.Abs(playerPos.x - enemyPos.x)) < 0.1f)
+                     {
+                         if (playerPos.x > enemyPos.x)
+                         {
+                             if (direction != 1)
+                             {
+                                 Flip();
+                             }
+                         }
+                         else if (playerPos.x < enemyPos.x)
+                         {
+                             if (direction == 1)
+                             {
+                                 Flip();
+                             }
+                         }
+
+                     }
+                     else if (playerPos.x < enemyPos.x)
+                     {
+                         if (direction != 1)
+                         {
+                             Flip();
+                         }
+                         if (hitDown.collider != null && hitForwards.collider == null && !castingSpell)
+                         {
+                             transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
+                         }
+                     }
+                     else if (playerPos.x > enemyPos.x)
+                     {
+                         if (direction == 1)
+                         {
+                             Flip();
+                         }
+                         if (hitDown.collider != null && hitForwards.collider == null && !castingSpell)
+                         {
+                             transform.Translate(Vector3.right * Time.deltaTime * chasingVelocity);
+                         }
+                     }
+                 }
+             }*/
+        }
     }
 }

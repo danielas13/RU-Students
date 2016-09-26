@@ -113,7 +113,7 @@ public class game : MonoBehaviour {
         }
 
     }
-    void respawn()
+    public void respawn()
     {
         gm.player.SetActive(true);                                                              //Disabling the player objects.
         gm.DeadState.SetActive(false);                                                          //Seting DeadState as active.

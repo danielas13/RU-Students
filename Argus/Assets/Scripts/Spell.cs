@@ -10,6 +10,9 @@ using System.Collections;
         Transform spellPoint;
         //public Transform HealParticle;
         private static readonly System.Random randomAttackGenerator = new System.Random();
+    [SerializeField]
+    private float globalSpellCooldownTimer = 1f;
+    private float resetGlobalCooldownValue;
 
         private Transform skeleton2;
         private Animator skelAnim2;
@@ -34,7 +37,8 @@ using System.Collections;
 
         void Awake()
         {
-			spellPoint = transform.FindChild("ToFlip").FindChild("SpellCast");
+        resetGlobalCooldownValue = globalSpellCooldownTimer;
+            spellPoint = transform.FindChild("ToFlip").FindChild("SpellCast");
             if (spellPoint == null)
             {
                 Debug.LogError("No FirePoint?");
@@ -119,16 +123,19 @@ using System.Collections;
         // Update is called once per frame
         void Update()
         {
+        globalSpellCooldownTimer -= Time.deltaTime;
             if (Input.GetButtonDown("SpellCycle"))
             {
                 incrementSpell();
             }
-            if (Input.GetButtonDown("UseSpell"))
+            if (Input.GetButtonDown("UseSpell") && globalSpellCooldownTimer < 0)
             {
+            globalSpellCooldownTimer = resetGlobalCooldownValue;
                 if (currentSpell == 1)
                 {
                     skeletonAnimator.SetTrigger("CastProjectileSpell");
                     CastFireBall();
+                    
                     //skelAnim2.SetTrigger("CastSpell");
                 }
                 if (currentSpell == 2 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded) //Cast a heal spell when player is on the ground and presses r.

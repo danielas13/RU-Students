@@ -8,8 +8,8 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 	private float cooldown = 3;
 	private bool IsCasting = false;
 
-	private float TotalCastingTime = 1f;
-	private float castingTime = 1f;
+	private float TotalCastingTime = 1.5f;
+	private float castingTime = 1.5f;
 
     private Transform cleric;
     private Animator clericAnim;
@@ -21,7 +21,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 	private Animator WizardAnimator;
     private EnemyCasterBehavior enemyBehavior;
 
-	private Quaternion preCastingRotation;
+	//private Quaternion preCastingRotation;
 	private Vector3 preCastingPosition;
 	private bool trailsActive = false;
     // Use this for initialization
@@ -67,18 +67,8 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                 WizardAnimator.SetBool("CastSpell",true);
                //LeftFireTrail.gameObject.SetActive(true);
                 //RightFireTrail.gameObject.SetActive(true);
-                trailsActive = true;
-//<<<<<<< HEAD
-          
+                trailsActive = true; 
                 castingTime = castingTime - Time.deltaTime;
-/*=======
-               // Debug.Log("hadsuhasduha");
-                if(castingTime >= 0)
-                {
-                    castingTime = castingTime - Time.deltaTime;
-                }
-
->>>>>>> 4311f0def91cfb12d051371cef1036b763e9cce7*/
                 if (castingTime < 0)
                 { //finished channeling cast
                     IsCasting = false;
@@ -92,7 +82,7 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                     /* This code handles root motion displacement during casting */
                     //WizardAnimator.applyRootMotion = false;
                     transform.parent.FindChild("Eva_Full_Animated").position = preCastingPosition;
-                    transform.parent.FindChild("Eva_Full_Animated").rotation = preCastingRotation;
+                    //transform.parent.FindChild("Eva_Full_Animated").rotation = preCastingRotation;
 
                 }
             }
@@ -118,31 +108,15 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
                // Debug.Log(hit.transform.tag);
                 if (hit.transform.tag == "Player")
                 {
-//<<<<<<< HEAD
                     IsCasting = true;
-                    this.transform.parent.GetComponent<EnemyCasterBehavior>().castingSpell = true;
+                   enemyBehavior.castingSpell = true;
 
                     /* This code handles root motion displacement during casting */
                     preCastingPosition = transform.parent.FindChild("Eva_Full_Animated").position;
-                    preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
+                    //preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
                     WizardAnimator.SetBool("IsCasting", IsCasting);
                    // WizardAnimator.applyRootMotion = true;
                     cooldown = 3;
-
-/*=======
-                    if (!IsCasting)
-                    {
-                        IsCasting = true;
-                        enemyBehavior.castingSpell = true;
-
-                        /* This code handles root motion displacement during casting 
-                        preCastingPosition = transform.parent.FindChild("Eva_Full_Animated").position;
-                        preCastingRotation = transform.parent.FindChild("Eva_Full_Animated").rotation;
-                        //   WizardAnimator.SetBool("IsCasting", IsCasting);
-                        // WizardAnimator.applyRootMotion = true;
-                        cooldown = 3;
-                    }
-//>>>>>>> 4311f0def91cfb12d051371cef1036b763e9cce7*/
                 }
             }
             cooldown -= Time.deltaTime;
@@ -159,13 +133,13 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 		//RaycastHit2D hit = Physics2D.Raycast(SpellPosition, new Vector2(SpellPosition.x - playerPos.x, SpellPosition.y - playerPos.y), spellDistance, NotHit);
 
 
-		if (SpellPosition.x < playerPos.x)
+		if (enemyBehavior.direction == 1)
 		{
 			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation * Quaternion.Euler(Vector3.up * 180));
-		}
+        }
 		else
 		{
-			Instantiate(FirePrefab, new Vector3 (transform.parent.position.x,transform.parent.position.y+0.5f, transform.parent.position.z), transform.rotation );
+            Instantiate(FirePrefab, new Vector3(transform.parent.position.x, transform.parent.position.y + 0.5f, transform.parent.position.z), transform.rotation * Quaternion.Euler(Vector3.up * 180));
 		}
 	}
 }
