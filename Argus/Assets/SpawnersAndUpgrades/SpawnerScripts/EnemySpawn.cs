@@ -34,10 +34,10 @@ public class EnemySpawn : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-      //      if(currCooldownValue <= 0)
-      //      {
+            if(currCooldownValue <= 0)
+            {
                 spawning = true;
-      //      }
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -53,12 +53,11 @@ public class EnemySpawn : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        /*if (currCooldownValue >= 0)
+        if (currCooldownValue >= 0)
         {
-            Debug.Log(currCooldownValue);
             currCooldownValue -= Time.deltaTime;
-        }*/
-        if (spawning)
+        }
+        else if (spawning)
         {
             if (canSpawn)
             {
