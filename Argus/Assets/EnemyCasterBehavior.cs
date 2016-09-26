@@ -148,7 +148,6 @@ public class EnemyCasterBehavior : MonoBehaviour {
                     }
                     if(hitDown.collider != null && hitForwards.collider == null)
                     {
-                        print("heuheuheuheuheuheuhe");
                         transform.Translate(Vector3.left * Time.deltaTime * chasingVelocity);
                     }
                 }
