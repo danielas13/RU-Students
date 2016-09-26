@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 496794}
   - 114: {fileID: 11444512}
+  - 114: {fileID: 114000012924197306}
   m_Layer: 0
   m_Name: _game
   m_TagString: game
@@ -25,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.290801, y: -0.54651624, z: -2.3007812}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -42,6 +44,7 @@ MonoBehaviour:
   DeadState: {fileID: 478584, guid: d71fe2deff307d84a80050f5438fe294, type: 2}
   isPlayerDead: 0
   ItemSpawners: []
+  ShopDoors: []
   playerStatsScreenObj: {fileID: 103016, guid: f45f753a83917ed43a36b3abd7de9e86, type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -54,3 +57,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155356}
   m_IsPrefabParent: 1
+--- !u!114 &114000012924197306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77f2b623c061114bb024e9c5afe4d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}

@@ -17,6 +17,12 @@ public class EnemySpawn : MonoBehaviour {
 	private bool canSpawn = true;
     private bool spawning = false;
     private bool hasSpawned = false;
+    private bool Cooldown = false;
+
+    [SerializeField]
+    private float spawningCooldown = 20f;
+
+    private float currCooldownValue = 0;
 
     // Use this for initialization
     void Start () {
@@ -28,7 +34,10 @@ public class EnemySpawn : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            spawning = true;
+            if(currCooldownValue <= 0)
+            {
+                spawning = true;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -37,13 +46,18 @@ public class EnemySpawn : MonoBehaviour {
         {
             spawning = false;
             hasSpawned = false;
+            currCooldownValue = spawningCooldown;
         }
     }
 
 
     // Update is called once per frame
     void Update () {
-        if (spawning)
+        if (currCooldownValue >= 0)
+        {
+            currCooldownValue -= Time.deltaTime;
+        }
+        else if (spawning)
         {
             if (canSpawn)
             {

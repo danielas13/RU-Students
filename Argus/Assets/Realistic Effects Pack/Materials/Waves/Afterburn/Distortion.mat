@@ -15,46 +15,38 @@ Material:
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: ae95e285aef9b0e48b2497903c1f77fb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpMap
-        second:
-          m_Texture: {fileID: 2800000, guid: c8b3e5216f13f1248a0857a10afc8fad, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _CutOut
-        second:
-          m_Texture: {fileID: 2800000, guid: ae95e285aef9b0e48b2497903c1f77fb, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 2800000, guid: c8b3e5216f13f1248a0857a10afc8fad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _CutOut
+      second:
+        m_Texture: {fileID: 2800000, guid: ae95e285aef9b0e48b2497903c1f77fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: ae95e285aef9b0e48b2497903c1f77fb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _BumpAmt
-        second: 25
-      data:
-        first:
-          name: _InvFade
-        second: 2
-      data:
-        first:
-          name: _ColorStrength
-        second: 0.1
+    - first:
+        name: _BumpAmt
+      second: 25
+    - first:
+        name: _ColorStrength
+      second: 0.1
+    - first:
+        name: _InvFade
+      second: 2
     m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: 1, g: 0.35645708, b: 0, a: 1}
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _TintColor
+      second: {r: 1, g: 0.35645708, b: 0, a: 1}
