@@ -23,6 +23,17 @@ public class EnemyMeleeBossStats : MonoBehaviour {
     public int MaxScore = 20;
     public int MinScore = 10;
 
+    [SerializeField]
+    private bool bossLock = false;
+    [SerializeField]
+    private OneToOneDoor finalBossDoor;
+
+    public void setHealth(int health)
+    {
+        this.status.currentHealth = health;
+        indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
+    }
+
     //function that damages the current enemy.
     void Start()
     {
@@ -39,7 +50,10 @@ public class EnemyMeleeBossStats : MonoBehaviour {
 
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
-            
+            if (bossLock)
+            {
+                finalBossDoor.unlock();
+            }
             Key.gameObject.SetActive(true);
             ExitDoor.GetComponent<OneToOneDoor>().unlock();
             Destroy(this.gameObject);

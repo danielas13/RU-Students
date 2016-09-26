@@ -195,15 +195,31 @@ public class game : MonoBehaviour {
                 }
             }*/
         }
-        MeleeBoss.SetActive(true);
-        MeleeBoss.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
-        MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
-        MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
+        if(MeleeBoss != null)
+        {
+            if (!MeleeBoss.activeSelf)
+            {
+                MeleeBoss.SetActive(true);
+            }
 
-        MeleeBoss2.SetActive(true);
+            MeleeBoss.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
+            MeleeBoss.GetComponent<EnemyMeleeBossStats>().setHealth(MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth);
+        }
+
+        //MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
+        //MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
+
+        if (MeleeBoss2 != null)
+        {
+            if (!MeleeBoss2.activeSelf)
+            {
+                MeleeBoss2.SetActive(true);
+            }
         MeleeBoss2.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
-        MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
-        MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
+        MeleeBoss2.GetComponent<EnemyMeleeBossStats>().setHealth(MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth);
+        }
+        //MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
+        //MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
 
 
         floatinBoss.SetActive(true);
