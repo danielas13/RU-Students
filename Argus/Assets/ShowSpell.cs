@@ -5,6 +5,7 @@ public class ShowSpell : MonoBehaviour {
 
     private Spell playerSpell;
     public GameObject FelBall,Mend,FrostRay,FireRay;
+	public Text spellinfo;
 	// Use this for initialization
 	void Start () {
         playerSpell = GameObject.Find("Player").GetComponent<Spell>();
@@ -24,6 +25,7 @@ public class ShowSpell : MonoBehaviour {
                 Mend.SetActive(false);
                 FrostRay.SetActive(false);
                 FireRay.SetActive(false);
+				spellinfo.text = "Felball";
             }
         }
         else if(playerSpell.currentSpell ==2)
@@ -34,6 +36,8 @@ public class ShowSpell : MonoBehaviour {
                 Mend.SetActive(true);
                 FrostRay.SetActive(false);
                 FireRay.SetActive(false);
+				spellinfo.text = "Mend";
+
             }
         }
         else if (playerSpell.currentSpell == 3)
@@ -44,6 +48,7 @@ public class ShowSpell : MonoBehaviour {
                 Mend.SetActive(false);
                 FrostRay.SetActive(true);
                 FireRay.SetActive(false);
+				spellinfo.text = "Frost Ray";
             }
         }
         else if (playerSpell.currentSpell == 4)
@@ -54,6 +59,7 @@ public class ShowSpell : MonoBehaviour {
                 Mend.SetActive(false);
                 FrostRay.SetActive(false);
                 FireRay.SetActive(true);
+				spellinfo.text = "Fire Ray";
             }
         }
     }
