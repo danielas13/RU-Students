@@ -334,7 +334,7 @@ public class Stats : MonoBehaviour {
     //increasing the player´s damage.
     public void increaseDamage(int damage)
     {
-		combatText.GetComponent<Text>().text = "Maxmimum spellpower increased by " + damage.ToString();
+		combatText.GetComponent<Text>().text = "Maxmimum damage increased by " + damage.ToString();
 		combatText.GetComponent<Text>().color = HealColor;
 		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
 
@@ -361,7 +361,12 @@ public class Stats : MonoBehaviour {
     }
 
 
-
+    public void floatingText(string value)
+    {
+        combatText.GetComponent<Text>().text = value;
+        combatText.GetComponent<Text>().color = ManaSpendColor;
+        Instantiate(combatText, newPos(transform.position), transform.rotation);
+    }
     //Spend someof the player's mana.
     public void spendMana(int cost)
     {
