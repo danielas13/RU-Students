@@ -64,6 +64,10 @@ public class HeraldController : MonoBehaviour {
                     canvas.SetActive(false);
                 }
             }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                canvas.SetActive(false);
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)
