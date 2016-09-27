@@ -10,13 +10,25 @@ Material:
   m_Shader: {fileID: 4800000, guid: 4478e3308d85f6048bebca1ffdf1389c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
     - first:
         name: _BumpMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Cube
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _CutOut
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -72,9 +84,12 @@ Material:
     m_Floats:
     - first:
         name: _BumpAmt
-      second: 10
+      second: 50
     - first:
         name: _BumpScale
+      second: 1
+    - first:
+        name: _ColorStrength
       second: 1
     - first:
         name: _Cutoff
@@ -86,11 +101,17 @@ Material:
         name: _DstBlend
       second: 0
     - first:
+        name: _FPOW
+      second: 5
+    - first:
         name: _Glossiness
       second: 0.5
     - first:
         name: _InvFade
       second: 3
+    - first:
+        name: _LightStr
+      second: 1
     - first:
         name: _Metallic
       second: 0
@@ -101,8 +122,20 @@ Material:
         name: _OcclusionStrength
       second: 1
     - first:
+        name: _Opacity
+      second: 0.5
+    - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _R0
+      second: 0.05
+    - first:
+        name: _ReflectionStrength
+      second: 1
+    - first:
+        name: _Shininess
+      second: 0.078125
     - first:
         name: _SrcBlend
       second: 1
@@ -119,6 +152,12 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _ReflectColor
+      second: {r: 1, g: 1, b: 1, a: 0.5}
+    - first:
+        name: _SpecColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - first:
         name: _TintColor
       second: {r: 0.8602941, g: 0.5885075, b: 0.2973075, a: 0.559}

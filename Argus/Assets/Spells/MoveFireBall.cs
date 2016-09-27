@@ -7,7 +7,7 @@ public class MoveFireBall : MonoBehaviour {
     public int speed = 20;
     public int duration = 2;
     public int range = 2;
-
+    public GameObject Impact;
     private int damage = 2;
 
     private Stats player;
@@ -30,7 +30,9 @@ public class MoveFireBall : MonoBehaviour {
             damage = randomSpellPowerGenerator.Next(player.status.minSpellPower, player.status.maxSpellPower);
             col.gameObject.SendMessageUpwards("damageEnemy", damage);
             //transform.FindChild("MovedTrail").FindChild("Explosion").gameObject.SetActive(true);
+            Instantiate(Impact,transform.position, transform.rotation);
             Destroy(this.gameObject);
+
 
         }
         if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
