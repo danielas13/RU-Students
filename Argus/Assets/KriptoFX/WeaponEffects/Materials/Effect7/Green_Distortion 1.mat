@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Distortion 1
+  m_Name: Green_Distortion 1
   m_Shader: {fileID: 4800000, guid: 4478e3308d85f6048bebca1ffdf1389c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
