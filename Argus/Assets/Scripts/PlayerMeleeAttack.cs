@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerMeleeAttack : MonoBehaviour
 {
 
-    bool attacking = false;
+    public bool attacking = false;
     float attackTimer = 0;
     float attackCooldown = 0.6f;
     public Collider2D attackCollider;
@@ -19,6 +19,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     public bool PowerAttack = true;
     public float PowerAttackDamageIncrease = 0.7f;
 
+    private PlatformerCharacter2D playerPlatformer;
+
 	private static readonly System.Random randomSpellPowerGenerator = new System.Random();   
 
     void Awake()
@@ -26,18 +28,18 @@ public class PlayerMeleeAttack : MonoBehaviour
         attackCollider.enabled = false;
 
 
-		//skeleton2 = transform.FindChild("Skeleton_warlord");
-		//skelAnim2 = skeleton2.GetComponent<Animator> ();
-
-		//Skeleton Footman
-		skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
+        //skeleton2 = transform.FindChild("Skeleton_warlord");
+        //skelAnim2 = skeleton2.GetComponent<Animator> ();
+        playerPlatformer = GetComponent<PlatformerCharacter2D>();
+        //Skeleton Footman
+        skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
 		skeletonAnimator = skeletonFootman.GetComponent <Animator> ();
 
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Attack") && !attacking) 				//light attack
+        if (Input.GetButtonDown("Attack") && !attacking && !playerPlatformer.isChanneling) 				//light attack
         {
 
             attacking = true;
@@ -55,7 +57,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 			//skelAnim2.SetInteger ("AttackID", attackID);
         }
 
-		if(Input.GetButtonDown ("PowerAttack") && !attacking){		 		//	heavy attack, change binding +later
+		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling){		 		//	heavy attack, change binding +later
 
 			// 	!!!!  
 			//		TODO Check if grounded 

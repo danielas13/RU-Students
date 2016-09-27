@@ -23,6 +23,7 @@ TagManager:
   - RightHandFireTrail
   - StoreDoor
   - FloatBossPillar
+  - Shield
   layers:
   - Default
   - TransparentFX

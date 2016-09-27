@@ -36,7 +36,6 @@ public class MeleeAttackTrigger : MonoBehaviour
                 if (playerAttack.PowerAttack)
                 {
                     col.SendMessageUpwards("damageEnemy", randomDmg + (randomDmg*playerAttack.PowerAttackDamageIncrease));
-                    print("powerAttack");
                 }
                 else
                 {
@@ -49,7 +48,6 @@ public class MeleeAttackTrigger : MonoBehaviour
                 if (playerAttack.PowerAttack)
                 {
                     col.SendMessageUpwards("damageEnemy", randomDmg + (randomDmg * playerAttack.PowerAttackDamageIncrease));
-                    print("powerAttack");
                 }
                 else
                 {

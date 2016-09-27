@@ -31,6 +31,9 @@ public class Spell : MonoBehaviour
     public bool LearnedFrost = false;
     public bool LearnedFire = false;
 
+    private PlatformerCharacter2D character2D;
+    private PlayerMeleeAttack playerAttack;
+
 
     int NumberOfSpells = 4;// Nuber of spells that the player has learned
     public int currentSpell = 1;
@@ -47,6 +50,8 @@ public class Spell : MonoBehaviour
         skelAnim2 = skeleton2.GetComponent<Animator>();
 
         character = GameObject.FindGameObjectWithTag("Player");
+        playerAttack = GetComponent<PlayerMeleeAttack>();
+        character2D = this.GetComponent<PlatformerCharacter2D>();
         player = character.GetComponent<Stats>();
         //FrostRay = spellPoint.FindChild("FrostRay");
 
@@ -128,9 +133,9 @@ public class Spell : MonoBehaviour
         {
             incrementSpell();
         }
-        if (Input.GetButtonDown("UseSpell") && globalSpellCooldownTimer < 0)
+        if (Input.GetButtonDown("UseSpell") && globalSpellCooldownTimer < 0 && !character2D.isChanneling && !playerAttack.attacking)
         {
-        globalSpellCooldownTimer = resetGlobalCooldownValue;
+            globalSpellCooldownTimer = resetGlobalCooldownValue;
             if (currentSpell == 1)
             {
                 skeletonAnimator.SetTrigger("CastProjectileSpell");
@@ -138,20 +143,20 @@ public class Spell : MonoBehaviour
                 
                 //skelAnim2.SetTrigger("CastSpell");
             }
-            if (currentSpell == 2 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded) //Cast a heal spell when player is on the ground and presses r.
+            if (currentSpell == 2 && character2D.m_Grounded) //Cast a heal spell when player is on the ground and presses r.
             {
                 skeletonAnimator.SetTrigger("CastHealingSpell");
                 CastHeal();
                 //skelAnim2.SetTrigger("CastSpell");
             }
-            if (currentSpell == 3 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
+            if (currentSpell == 3 && character2D.m_Grounded)
             {
                 channelDelay = 0.5f;
                 skeletonAnimator.SetBool("isChanneling", true);
                 ChannelFrostRay();
                 //skelAnim2.SetTrigger("CastSpell");
             }
-            if (currentSpell == 4 && GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().m_Grounded)
+            if (currentSpell == 4 && character2D.m_Grounded)
             {
                 channelDelay = 0.5f;
                 skeletonAnimator.SetBool("isChanneling", true);
@@ -162,7 +167,7 @@ public class Spell : MonoBehaviour
             
 		//Debug.Log (transform.GetComponent<PlatformerCharacter2D> ().isChanneling );
 		channelDelay -= Time.deltaTime;
-		if(transform.GetComponent<PlatformerCharacter2D> ().isChanneling == false && channelDelay < 0){ //this currently always triggers --> channeling wont work
+		if(character2D.isChanneling == false && channelDelay < 0){ //this currently always triggers --> channeling wont work
 			skeletonAnimator.SetBool ("isChanneling", false);
 		}
     }
