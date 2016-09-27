@@ -13,6 +13,10 @@ public class PlayerBlock : MonoBehaviour {
     private PlayerMeleeAttack playerAttack;
     private bool isBlocking = false;
 
+    private bool stopblocking = false;
+
+    private Animator skeletonAnimator;
+    private Transform skeletonFootman;
 
     public float StartCooldown = 0.5f;
     public float StopCooldown = 0.5f;
@@ -22,14 +26,21 @@ public class PlayerBlock : MonoBehaviour {
     void Start () {
         player = GetComponent<PlatformerCharacter2D>();
         playerAttack = GetComponent<PlayerMeleeAttack>();
+        skeletonFootman = transform.FindChild("ToFlip").FindChild("Skeleton_footman");
+        skeletonAnimator = skeletonFootman.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if(Input.GetAxis("Block") > 0f)
         {
-            if (!isBlocking && !player.isChanneling && !playerAttack.attacking)
+            if (!isBlocking && !player.isChanneling && !playerAttack.attacking && player.m_Grounded)
             {
+                if(stopCounter > 0)
+                {
+                    stopCounter = 0;
+                }
+                skeletonAnimator.SetBool("blocking", true);
                 startCounter = StartCooldown;
                 isBlocking = true;
                 player.isChanneling = true;
@@ -43,13 +54,20 @@ public class PlayerBlock : MonoBehaviour {
         {
             if (isBlocking)
             {
+                if(startCounter > 0)
+                {
+                    startCounter = 0;
+                }
                 stopCounter = StopCooldown;
                 isBlocking = false;
+                stopblocking = true;
             }
-            if (stopCounter <= 0 && shield.activeSelf)
+            if (stopCounter <= 0 && stopblocking)
             {
+                skeletonAnimator.SetBool("blocking", false);
                 shield.SetActive(false);
                 player.isChanneling = false;
+                stopblocking = false;
             }
         }
 

@@ -57,12 +57,13 @@ public class PlayerMeleeAttack : MonoBehaviour
 			//skelAnim2.SetInteger ("AttackID", attackID);
         }
 
-		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling){		 		//	heavy attack, change binding +later
+		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling){                //	heavy attack, change binding +later
 
-			// 	!!!!  
-			//		TODO Check if grounded 
-			//	!!!!
-			attacking = true;
+            // 	!!!!  
+            //		TODO Check if grounded 
+            //	!!!!
+            playerPlatformer.isChanneling = true;
+            attacking = true;
             PowerAttack = true;
             attackCollider.enabled = true;
 			attackTimer = attackCooldown + 0.5f; 					//	longer attacks required, if this is removed you can fast attack too soon
@@ -86,11 +87,13 @@ public class PlayerMeleeAttack : MonoBehaviour
             }
             else
             {
+                playerPlatformer.isChanneling = false;
                 attacking = false;
                 attackCollider.enabled = false;
 				skeletonAnimator.SetBool ("MidSwing", false);
                 PowerAttack = false;
-				//skelAnim2.SetBool ("MidSwing", false);
+
+                //skelAnim2.SetBool ("MidSwing", false);
             }
 
         }

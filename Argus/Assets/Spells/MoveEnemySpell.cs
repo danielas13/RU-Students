@@ -13,7 +13,10 @@ public class MoveEnemySpell : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-
+        if (col.CompareTag("Shield"))
+        {
+            Destroy(this.gameObject);
+        }
         //Debug.Log("Collison " + col.name);
         if (col.isTrigger != true && col.gameObject.CompareTag("Player"))
         {

@@ -7,8 +7,9 @@ public class EnemyDetectAndCastSpell : MonoBehaviour {
 	GameObject character;
 	private float cooldown = 3;
 	private bool IsCasting = false;
-
+    [SerializeField]
 	private float TotalCastingTime = 1.5f;
+    [SerializeField]
 	private float castingTime = 1.5f;
 
     private Transform cleric;

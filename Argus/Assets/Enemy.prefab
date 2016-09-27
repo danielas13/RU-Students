@@ -3907,6 +3907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0897d58f98e2c4a5cbf2c4e4f1d5cc2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleForBlocking: {fileID: 1000010442656098, guid: ffdc4666016f17a4a8a3c93163073e73,
+    type: 2}
   damage: 3
 --- !u!137 &13729424
 SkinnedMeshRenderer:
@@ -12759,7 +12761,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -12803,7 +12805,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -12847,7 +12849,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedWireframeHidden: 1
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
