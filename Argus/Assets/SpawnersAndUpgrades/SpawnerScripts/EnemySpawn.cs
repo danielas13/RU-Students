@@ -11,7 +11,8 @@ public class EnemySpawn : MonoBehaviour {
     public float MaxRangeFromPlayer = 10f;  //Distance between the player in order to spawn new objects.
     public LayerMask spawnLayers;           //the layer filtering out the player.
 
-    private Object lis;               //The enemy object.
+    public Transform lis;               //The enemy object.
+    private Transform enemyUnit;
     GameObject player;                //The Player object.
 	public bool SingleSpawn = false;
 	private bool canSpawn = true;
@@ -26,6 +27,7 @@ public class EnemySpawn : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        game.gm.enemySpawners.Add(this.GetComponent<EnemySpawn>());
         //Fetching the player object.
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -48,6 +50,16 @@ public class EnemySpawn : MonoBehaviour {
             hasSpawned = false;
             currCooldownValue = spawningCooldown;
         }
+    }
+
+    public void resetSpawner()
+    {
+        if(lis != null)
+        {
+            Destroy(lis.gameObject);
+        }
+        currCooldownValue = 0;
+       // Destroy(lis.gameObject);
     }
 
 
@@ -81,7 +93,8 @@ public class EnemySpawn : MonoBehaviour {
                         {
 
                             //instantiate the new object ( create a new clone of the enemy prefab).
-                            lis = Instantiate(EnemyPrefab, transform.position, transform.rotation);
+                            lis = (Transform)Instantiate(EnemyPrefab, transform.position, transform.rotation);
+
                             if (SingleSpawn)
                             {
                                 canSpawn = false;

@@ -11,12 +11,21 @@ public class game : MonoBehaviour {
     public List<GameObject> ItemSpawners = new List<GameObject>();
     public List<GameObject> ShopDoors = new List<GameObject>();
 
+    public List<EnemySpawn> enemySpawners = new List<EnemySpawn>();
+
     public GameObject playerStatsScreenObj;                 //The player status screens.
     private GameObject playerStatsScreen;
     private bool statScreenUp = false;
     private GameObject floatinBoss, MeleeBoss, MeleeBoss2;
     private List<GameObject> floatingBossPillars = new List<GameObject>();
 
+    void Awake()
+    {
+        if (gm == null)
+        {
+            gm = GameObject.FindGameObjectWithTag("game").GetComponent<game>();
+        }
+    }
 
     void Start()
     {
@@ -185,6 +194,15 @@ public class game : MonoBehaviour {
             ItemSpawners[i].SetActive(true);
         }
 
+        if(enemySpawners.Count != 0)
+        {
+            foreach(EnemySpawn spawner in enemySpawners)
+            {
+                spawner.resetSpawner();
+            }
+        }
+
+
         for (int i = 0; i < ShopDoors.Count; i++)
         {
       /*      if(ShopDoors != null)
@@ -204,6 +222,7 @@ public class game : MonoBehaviour {
 
             MeleeBoss.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
             MeleeBoss.GetComponent<EnemyMeleeBossStats>().setHealth(MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth);
+            MeleeBoss.GetComponent<EnemyMeleeBossBehavior>().ResetMinions();
         }
 
         //MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
@@ -215,8 +234,9 @@ public class game : MonoBehaviour {
             {
                 MeleeBoss2.SetActive(true);
             }
-        MeleeBoss2.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
-        MeleeBoss2.GetComponent<EnemyMeleeBossStats>().setHealth(MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth);
+            MeleeBoss2.GetComponent<EnemyMeleeBossBehavior>().CombatStarted = false;
+            MeleeBoss2.GetComponent<EnemyMeleeBossStats>().setHealth(MeleeBoss.GetComponent<EnemyMeleeBossStats>().status.maxHealth);
+            MeleeBoss2.GetComponent<EnemyMeleeBossBehavior>().ResetMinions();
         }
         //MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.maxHealth = 300;
         //MeleeBoss2.GetComponent<EnemyMeleeBossStats>().status.currentHealth = 300;
@@ -225,6 +245,7 @@ public class game : MonoBehaviour {
         floatinBoss.SetActive(true);
         floatinBoss.GetComponent<FloatingBossController>().CombatStarted = false;
         floatinBoss.GetComponent<FloatingBossStats>().status.currentHealth = 80;
+        floatinBoss.GetComponent<FloatingBossController>().ResetMinions();
 
         for (int i = 0; i < floatingBossPillars.Count; i++)
         {

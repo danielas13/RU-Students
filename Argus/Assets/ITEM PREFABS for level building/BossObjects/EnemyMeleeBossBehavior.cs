@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyMeleeBossBehavior : MonoBehaviour {
     private static readonly System.Random randomDamageGenerator = new System.Random();     //Create a read only random variable.
@@ -15,6 +16,8 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
     public GameObject EnemyPrefab;
     private float Cooldown = 12;
 
+    private List<GameObject> MinionList = new List<GameObject>();
+ 
 
     //Enemy chase variables
     public float aggroRange = 5f;
@@ -42,8 +45,9 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
     private bool normalAnimationPlayed = false, heavyAnimationPlayed = false, comboAnimationPlayed = false, shieldAnimationPlayed = false;
 
     //new shit
-    enum KnightState { Calm, Combat, Attacking, Chasing, Searching, Patrolling, Idle, SingleAttack, HacknSlash, ChargedAttack };
-    private int CurrentState;
+    public enum KnightState { Calm, Combat, Attacking, Chasing, Searching, Patrolling, Idle, SingleAttack, HacknSlash, ChargedAttack };
+    [HideInInspector]
+    public int CurrentState;
     Transform withinRangeTrigger;
     private static readonly System.Random randomAttackIDGenerator = new System.Random();
     float attackCooldown = 1;
@@ -240,9 +244,19 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         }
         if(Cooldown <= 0)
         {
-            Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.rotation);
+            MinionList.Add ((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.rotation));
             Cooldown = 12;
         }
+    }
+
+    public void ResetMinions()
+    {
+        foreach(GameObject minion in MinionList)
+        {
+            Destroy(minion);
+        }
+        MinionList = new List<GameObject>();
+        Cooldown = 12;
     }
 
     private void Attacking()
@@ -251,7 +265,6 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         KnightAnimator.SetBool("Chasing", false);
         KnightAnimator.SetBool("Searching", false);
         KnightAnimator.SetBool("CombatMode", false);
-
 
         int KnightAttackID = randomAttackIDGenerator.Next(0, 8);
 

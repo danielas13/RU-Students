@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FloatingBossController : MonoBehaviour {
 
@@ -15,12 +16,11 @@ public class FloatingBossController : MonoBehaviour {
     //Enemy chase variables
     public float aggroRange = 5f;
     public LayerMask aggroLayers;
-    GameObject player;
+    private GameObject player;
     private bool chase = false;
     public float chasingVelocity = 6f;
 
-    private Vector2 playerPos;
-    private Vector2 enemyPos;
+    private List<GameObject> MinionList = new List<GameObject>();
 
 
     public int PillarsActiveCount = 4;      //how many pillars are activated.
@@ -56,6 +56,7 @@ public class FloatingBossController : MonoBehaviour {
                 }
             }
         }
+
         if(PillarsActiveCount == 4)
         {
             CombatStarted = false;
@@ -76,8 +77,18 @@ public class FloatingBossController : MonoBehaviour {
         }
         if (Cooldown <= 0 && CombatStarted)
         {
-            Instantiate(EnemyPrefab, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), transform.rotation);
+            MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), transform.rotation));
             Cooldown = 8;
         }
+    }
+    public void ResetMinions()
+    {
+        foreach (GameObject minion in MinionList)
+        {
+            Destroy(minion);
+
+        }
+        MinionList = new List<GameObject>();
+        Cooldown = 8;
     }
 }

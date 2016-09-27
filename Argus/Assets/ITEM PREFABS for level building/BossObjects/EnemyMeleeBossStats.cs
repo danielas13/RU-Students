@@ -28,6 +28,8 @@ public class EnemyMeleeBossStats : MonoBehaviour {
     [SerializeField]
     private OneToOneDoor finalBossDoor;
 
+    private bool hasActivated = false;
+
     public void setHealth(int health)
     {
         this.status.currentHealth = health;
@@ -50,9 +52,10 @@ public class EnemyMeleeBossStats : MonoBehaviour {
 
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
-            if (bossLock)
+            if (bossLock && hasActivated)
             {
                 finalBossDoor.unlock();
+                hasActivated = false;
             }
             Key.gameObject.SetActive(true);
             ExitDoor.GetComponent<OneToOneDoor>().unlock();
