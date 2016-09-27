@@ -53,4 +53,10 @@ public class FloatingBossStats : MonoBehaviour {
             // game.KillEnemy(this);
         }
     }
+
+    public void resetFloatingBossStatus()
+    {
+        this.status.currentHealth = this.status.maxHealth;                    //add the damage.
+        indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
+    }
 }

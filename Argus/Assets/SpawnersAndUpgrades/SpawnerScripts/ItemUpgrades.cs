@@ -14,8 +14,8 @@ public class ItemUpgrades : MonoBehaviour {
     public int scoreChances = 3;
     public float heightOfSpawn = 1f;
 
-    public int MaxScore = 5;
-    public int MinScore = 2;
+    //public int MaxScore = 10;
+    //public int MinScore = 5;
 
     private int calculate = 0;
 
@@ -56,7 +56,7 @@ public class ItemUpgrades : MonoBehaviour {
                 if(calculate == 2 || calculate == 1)
                 {
                     Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
-                    GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
+                    //GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
                 }
             }
 

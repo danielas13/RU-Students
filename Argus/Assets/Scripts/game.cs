@@ -143,6 +143,7 @@ public class game : MonoBehaviour {
         //Setting the current health and mana values.
         playerStatus.status.currentHealth = playerStatus.status.maxHealth;
         playerStatus.status.currentMana = playerStatus.status.maxMana;
+        playerStatus.status.armor = 0;
         //Resets the Gained stats inside the status object.
         playerStatus.resetGained();
         //reseting the status indicator.
@@ -243,13 +244,11 @@ public class game : MonoBehaviour {
 
 
         floatinBoss.SetActive(true);
-        floatinBoss.GetComponent<FloatingBossController>().CombatStarted = false;
-        floatinBoss.GetComponent<FloatingBossStats>().status.currentHealth = 80;
-        floatinBoss.GetComponent<FloatingBossController>().ResetMinions();
-
+        floatinBoss.GetComponent<FloatingBossController>().ResetBoss();
+        /*
         for (int i = 0; i < floatingBossPillars.Count; i++)
         {
             floatingBossPillars[i].GetComponent<FloatingBossPillars>().restart();
-        }
+        }*/
     }
 }

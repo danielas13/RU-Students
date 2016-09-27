@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SpellpowerUpgrade : MonoBehaviour {
 
+    public int Amount = 2;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         //Check if the collition is with a player.
@@ -10,7 +12,7 @@ public class SpellpowerUpgrade : MonoBehaviour {
         {
             GameObject character = GameObject.FindGameObjectWithTag("Player");          //find the player object.
             Stats st = character.gameObject.GetComponent<Stats>();                      //Access the player stats.
-            st.increaseSpellpower(1);                                                   //increase the player Health.
+            st.increaseSpellpower(Amount);                                                   //increase the player Health.
             Destroy(this.gameObject);                                                   //Destroy this object.
         }
     }

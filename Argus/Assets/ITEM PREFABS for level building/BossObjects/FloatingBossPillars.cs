@@ -9,6 +9,10 @@ public class FloatingBossPillars : MonoBehaviour {
     private PillarStatus stat;
     private GameObject beam;
     public bool alive = true;
+    private static readonly System.Random random = new System.Random();     //Create a read only random variable.
+
+    public GameObject manaPrefab, healthPrefab;
+    public int restoreSpawnChance = 5;
 
     void Start()
     {
@@ -23,8 +27,21 @@ public class FloatingBossPillars : MonoBehaviour {
             if (stat.status.currentHealth == 1)
             {
                 bossStats.PillarsActiveCount -= 1;
+
+                if ((random.Next(0, 9)) < restoreSpawnChance)
+                {
+                    if(random.Next(0, 2) == 1)
+                    {
+                        Instantiate(manaPrefab, transform.position + new Vector3(0, 2f, -3f), transform.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(healthPrefab, transform.position + new Vector3(0, 2f, -3f), transform.rotation);
+                    }
+                }
+
                 isActive = false;
-                Delay = 10;
+                Delay = 12;
                 beam.SetActive(false);
 
             }
@@ -68,5 +85,6 @@ public class FloatingBossPillars : MonoBehaviour {
         beam.SetActive(true);
         isActive = true;
         alive = true;
+        this.GetComponent<PillarStatus>().resetPillarStatus();
     }
 }

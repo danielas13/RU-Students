@@ -49,4 +49,10 @@ public class PillarStatus : MonoBehaviour {
             indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
         }
     }
+
+    public void resetPillarStatus()
+    {
+        this.status.currentHealth = this.status.maxHealth;
+        indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
+    }
 }

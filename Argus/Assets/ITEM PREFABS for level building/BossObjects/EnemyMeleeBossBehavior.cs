@@ -376,16 +376,30 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
 
         if (KnightAnimator.GetCurrentAnimatorStateInfo(0).IsName("MKnght_1H_Heavy Smash"))
         {
+            if (!isPowerAttacking)
+            {
+                PowerTimer = 2f;
+            }
             if (!heavyAnimationPlayed)
             {
                 SwordTrigger.gameObject.SetActive(true);
                 isPowerAttacking = true;
-                PowerTimer = 2f;
+
 
             }
+
             currentDmg = randomDamageGenerator.Next(enemyStat.status.minDamage, enemyStat.status.maxDamage);
             SwordTrigger.GetComponent<EnemySwordTriggerScript>().damage = currentDmg * 2;
             heavyAnimationPlayed = true;
+
+            if (isPowerAttacking)
+            {
+                if (PowerTimer <= 0)
+                {
+                    Instantiate(PowerSwing, new Vector3(this.transform.position.x, this.transform.position.y - 0.6f, this.transform.position.z), this.transform.rotation);
+                    isPowerAttacking = false;
+                }
+            }
 
 
         }
@@ -397,20 +411,14 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
             KnightAnimator.SetBool("CombatMode", true);
             SwordTrigger.gameObject.SetActive(false);
             heavyAnimationPlayed = false;
+           // Instantiate(PowerSwing, new Vector3(this.transform.position.x, this.transform.position.y - 0.6f, this.transform.position.z), this.transform.rotation);
             //PowerSwing.SetActive(true);
             //PowerSwing.GetComponent<BossSwingScript>().restart();
 
         }
         else
         {
-            if (isPowerAttacking)
-            {
-                if (PowerTimer <= 0)
-                {
-                    Instantiate(PowerSwing, new Vector3(this.transform.position.x, this.transform.position.y - 0.6f, this.transform.position.z), this.transform.rotation);
-                    isPowerAttacking = false;
-                }
-            }
+
             // Do nothing, wait for animation to play 
         }
 
