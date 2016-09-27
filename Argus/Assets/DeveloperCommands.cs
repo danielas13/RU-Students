@@ -19,63 +19,104 @@ public class DeveloperCommands : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Alpha0))//respawn
         {
             game.gm.respawn();
-            print("res");
+          //  print("res");
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))//health +
         {
             stats.increaseMaxHealth(10);
-            print("health +");
+         //   print("health +");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))//health -
         {
             stats.increaseMaxHealth(-10);
-            print("health -");
+           // print("health -");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))//mana +
         {
             stats.increaseMaxMana(10);
-            print("mana +");
+           // print("mana +");
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))//mana -
         {
             stats.increaseMaxMana(-10);
-            print("mana -");
+           // print("mana -");
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))//manablade
         {
             stats.AddManaBlade();
-            print("manablade");
+            stats.floatingText("ManaBlade added");
+            // print("manablade");
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))//fireblade
         {
             stats.AddFireBlade();
-            print("fireblade");
+            stats.floatingText("FireBlade added");
+            // print("fireblade");
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))//shadowblade
         {
             stats.AddShadowBlade();
-            print("shadowblade");
+            stats.floatingText("ShadowBlade added");
+            // print("shadowblade");
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))//currency +
         {
             stats.increaseScore(100);
-            print("currency increase");
+           // print("currency increase");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            stats.removeSpecialBlades();
+            stats.floatingText("Normal sword restored");
+
         }
 
         if (Input.GetKeyDown(KeyCode.I))//Mend learn/unlearn
         {
             spell.LearnedHeal = !spell.LearnedHeal;
-            print("Mend" + spell.LearnedHeal);
+            if (spell.LearnedHeal)
+            {
+                stats.floatingText("Learned Mend");
+            }
+            else
+            {
+                stats.floatingText("Unlearned Mend");
+            }
+
+            //  print("Mend" + spell.LearnedHeal);
         }
         if (Input.GetKeyDown(KeyCode.O))//fireRay learn/unlearn
         {
             spell.LearnedFire = !spell.LearnedFire;
-            print("fireray" + spell.LearnedFire);
+            if (spell.LearnedFire)
+            {
+                stats.floatingText("Learned FireRay");
+            }
+            else
+            {
+                stats.floatingText("Unlearned FireRay");
+            }
+            //  print("fireray" + spell.LearnedFire);
         }
         if (Input.GetKeyDown(KeyCode.P))//iceRay learn/unlearn
         {
             spell.LearnedFrost = !spell.LearnedFrost;
-            print("frostray" + spell.LearnedFrost);
+            if (spell.LearnedFrost)
+            {
+                stats.floatingText("Learned FrostRay");
+            }
+            else
+            {
+                stats.floatingText("Unlearned FrostRay");
+            }
+            
+           // print("frostray" + spell.LearnedFrost);
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            stats.status.armor = 1;
+            stats.floatingText("Divine Shield added");
+
         }
 
     }

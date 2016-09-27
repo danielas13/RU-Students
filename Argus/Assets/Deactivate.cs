@@ -9,7 +9,7 @@ public class Deactivate : MonoBehaviour {
 	}
 	void OnEnable()
     {
-        deactivateTime = 5;
+        deactivateTime = 3;
     }
 	// Update is called once per frame
 	void Update () {

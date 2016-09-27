@@ -53,6 +53,8 @@ public class Stats : MonoBehaviour {
 	private Animator skelAnim; 
 	private int fontsizeForStuff = 10;
 
+    public Transform NormalSword;
+
     public Transform ManaBladeTrans;
     public Transform ShadowBladeTrans;
     public Transform FireBladeTrans;
@@ -82,6 +84,7 @@ public class Stats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Finding a indicator if none is found.
+
         if (status.armor > 0)// && !Bubble.gameObject.activeSelf)
         {
             Bubble.gameObject.SetActive(true);
@@ -180,6 +183,7 @@ public class Stats : MonoBehaviour {
     //Increments the players damage reduction by 2
     public void AddShadowBlade()
     {
+        NormalSword.gameObject.SetActive(false);
         status.ShadowBlade = true;
         ShadowBladeTrans.gameObject.SetActive(true);
         if (status.ManaBlade)
@@ -195,6 +199,25 @@ public class Stats : MonoBehaviour {
 
         //ShadowBladeTrans.gameObject.SetActive(true);
     }
+    public void removeSpecialBlades()
+    {
+        NormalSword.gameObject.SetActive(true);
+        if (status.ManaBlade)
+        {
+            status.ManaBlade = false;
+            ManaBladeTrans.gameObject.SetActive(false);
+        }
+        if (status.FireBlade)
+        {
+            status.FireBlade = false;
+            FireBladeTrans.gameObject.SetActive(false);
+        }
+        if (status.ShadowBlade)
+        {
+            ShadowBladeTrans.gameObject.SetActive(false);
+            status.ShadowBlade = false;
+        }
+    }
 
     //Increments the players damage reduction by 2
     public void addDamageReduction(int amount)
@@ -205,6 +228,7 @@ public class Stats : MonoBehaviour {
     //Increments the players damage reduction by 2
     public void AddManaBlade()
     {
+        NormalSword.gameObject.SetActive(false);
         status.ManaBlade = true;
         ManaBladeTrans.gameObject.SetActive(true);
         if (status.ShadowBlade)
@@ -220,6 +244,7 @@ public class Stats : MonoBehaviour {
     }
     public void AddFireBlade()
     {
+        NormalSword.gameObject.SetActive(false);
         status.FireBlade = true;
         FireBladeTrans.gameObject.SetActive(true);
         if (status.ShadowBlade)
