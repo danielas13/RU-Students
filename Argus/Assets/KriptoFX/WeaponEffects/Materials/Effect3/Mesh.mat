@@ -121,7 +121,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _TimeScale
-      second: {r: 1, g: 3, b: 0.2, a: -5}
+      second: {r: 1, g: 3.31, b: 0.2, a: -5}
     - first:
         name: _TintColor
       second: {r: 3.2000003, g: 2.938743, b: 2.6588244, a: 1}
