@@ -9,6 +9,7 @@ public class BossSwingScript : MonoBehaviour {
     private Stats playerStats;
     private GameObject fireChild;
     public float dist = 0.04f;
+    public float LiveTimeAfterMovement = 1f;
  //   private Stats playerStats;
 
     void Start()
@@ -21,11 +22,14 @@ public class BossSwingScript : MonoBehaviour {
     void Update () {
 	    if(duration <= 0)
         {
-            Destroy(this.gameObject);
+            if(LiveTimeAfterMovement <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+            LiveTimeAfterMovement -= Time.deltaTime;
         }
         else
         {
-
             transform.Translate(Vector2.right * dist);
             fireChild.transform.Translate(Vector2.right * dist/2);
             Vector2 size = this.gameObject.GetComponent<BoxCollider2D>().size;

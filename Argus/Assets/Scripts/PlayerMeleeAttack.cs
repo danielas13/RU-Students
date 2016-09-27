@@ -16,6 +16,9 @@ public class PlayerMeleeAttack : MonoBehaviour
 	private Animator skeletonAnimator;
 	private Transform skeletonFootman;
 
+    public bool PowerAttack = true;
+    public float PowerAttackDamageIncrease = 0.7f;
+
 	private static readonly System.Random randomSpellPowerGenerator = new System.Random();   
 
     void Awake()
@@ -36,6 +39,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack") && !attacking) 				//light attack
         {
+
             attacking = true;
             attackTimer = attackCooldown;
             attackCollider.enabled = true;
@@ -57,7 +61,8 @@ public class PlayerMeleeAttack : MonoBehaviour
 			//		TODO Check if grounded 
 			//	!!!!
 			attacking = true;
-			attackCollider.enabled = true;
+            PowerAttack = true;
+            attackCollider.enabled = true;
 			attackTimer = attackCooldown + 0.5f; 					//	longer attacks required, if this is removed you can fast attack too soon
 
 
@@ -82,6 +87,7 @@ public class PlayerMeleeAttack : MonoBehaviour
                 attacking = false;
                 attackCollider.enabled = false;
 				skeletonAnimator.SetBool ("MidSwing", false);
+                PowerAttack = false;
 				//skelAnim2.SetBool ("MidSwing", false);
             }
 

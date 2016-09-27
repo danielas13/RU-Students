@@ -4,8 +4,8 @@ using System.Collections;
 public class ResoreHealth : MonoBehaviour {
 
 
-    public int minHeal = 15; //The amount of mana that will be gained by this object.
-    public int maxHeal = 25;
+    public int minHeal = 20; //The amount of mana that will be gained by this object.
+    public int maxHeal = 40;
     private int AmountIncrease = 0;
     private static readonly System.Random random = new System.Random();     //Create a read only random variable.
 

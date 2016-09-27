@@ -5,9 +5,12 @@ public class MeleeAttackTrigger : MonoBehaviour
 {
     private static readonly System.Random randomAttackGenerator = new System.Random();
     private Stats player;
+    private PlayerMeleeAttack playerAttack;
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Stats>();
+        GameObject pl = GameObject.Find("Player");
+        player = pl.GetComponent<Stats>();
+        playerAttack = pl.GetComponent<PlayerMeleeAttack>();
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -30,12 +33,29 @@ public class MeleeAttackTrigger : MonoBehaviour
             if (player.status.ShadowBlade)
             {
                 int randomDmg = randomAttackGenerator.Next(player.status.minDamage, (player.status.maxDamage + (int)(0.3*player.status.maxDamage)));
-                col.SendMessageUpwards("damageEnemy", randomDmg);
+                if (playerAttack.PowerAttack)
+                {
+                    col.SendMessageUpwards("damageEnemy", randomDmg + (randomDmg*playerAttack.PowerAttackDamageIncrease));
+                    print("powerAttack");
+                }
+                else
+                {
+                    col.SendMessageUpwards("damageEnemy", randomDmg);
+                }
             }
             else
             {
                 int randomDmg = randomAttackGenerator.Next(player.status.minDamage, player.status.maxDamage);
-                col.SendMessageUpwards("damageEnemy", randomDmg);
+                if (playerAttack.PowerAttack)
+                {
+                    col.SendMessageUpwards("damageEnemy", randomDmg + (randomDmg * playerAttack.PowerAttackDamageIncrease));
+                    print("powerAttack");
+                }
+                else
+                {
+                    col.SendMessageUpwards("damageEnemy", randomDmg);
+                }
+
             }
         }
         else if(col.CompareTag("Chest"))

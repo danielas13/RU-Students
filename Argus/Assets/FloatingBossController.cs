@@ -21,6 +21,7 @@ public class FloatingBossController : MonoBehaviour {
     public float chasingVelocity = 6f;
 
     private List<GameObject> MinionList = new List<GameObject>();
+    public List<GameObject> PillarList = new List<GameObject>();
 
 
     public int PillarsActiveCount = 4;      //how many pillars are activated.
@@ -31,6 +32,7 @@ public class FloatingBossController : MonoBehaviour {
     public GameObject EnemyPrefab;
     private float Cooldown = 8;
     public bool CombatStarted = false;
+    private static readonly System.Random random = new System.Random();     //Create a read only random variable.
 
     // Use this for initialization
     void Start()
@@ -77,11 +79,25 @@ public class FloatingBossController : MonoBehaviour {
         }
         if (Cooldown <= 0 && CombatStarted)
         {
-            MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x, transform.position.y-1, transform.position.z), transform.rotation));
-            Cooldown = 8;
+            int randNumber = random.Next(0, 3);
+            if (randNumber == 1)
+            {
+                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 15f, transform.position.y - 4, transform.position.z), transform.rotation));
+            }
+            else if(randNumber == 2)
+            {
+                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x - 15f, transform.position.y - 4, transform.position.z), transform.rotation));
+            }
+            else
+            {
+                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), transform.rotation));
+            }
+
+            MinionList[MinionList.Count - 1].GetComponent<FloatingEnemyScript>().aggroRange = 30;
+            Cooldown = 10;
         }
     }
-    public void ResetMinions()
+    public void ResetBoss()
     {
         foreach (GameObject minion in MinionList)
         {
@@ -90,5 +106,12 @@ public class FloatingBossController : MonoBehaviour {
         }
         MinionList = new List<GameObject>();
         Cooldown = 8;
+
+        foreach(GameObject pillar in PillarList)
+        {
+            pillar.GetComponent<FloatingBossPillars>().restart();
+        }
+        this.GetComponent<FloatingBossStats>().resetFloatingBossStatus();
+        this.CombatStarted = false;
     }
 }

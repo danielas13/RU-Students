@@ -30,7 +30,14 @@ public class FloatingEnemyScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        if(player == null)
+        {
+            player = GameObject.Find("Player");
+            if(player == null)
+            {
+                return;
+            }
+        }
         Vector2 playerPos;
         playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
 

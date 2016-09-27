@@ -3,8 +3,8 @@ using System.Collections;
 
 public class RestoreMana : MonoBehaviour {
 
-    public int MinHealPerObject = 15; //The amount of mana that will be gained by this object.
-    public int MaxHealPerObject = 25; //The amount of mana that will be gained by this object.
+    public int MinHealPerObject = 20; //The amount of mana that will be gained by this object.
+    public int MaxHealPerObject = 35; //The amount of mana that will be gained by this object.
     private int AmountIncrease = 0;
     private static readonly System.Random random = new System.Random();     //Create a read only random variable.
 
