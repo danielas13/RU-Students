@@ -23,6 +23,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
     public bool frozen = false;
     public float frozenTimer = 2;
     private Animator CasterAnimator;
+    public Transform notFlip2;
     // Use this for initialization
     Transform notFlip;
     void Start()
@@ -41,15 +42,19 @@ public class EnemyCasterBehavior : MonoBehaviour {
 
         //transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
         //transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
-
+         
         notFlip.rotation = notFlip.rotation * Quaternion.Euler(Vector3.up * 180);
-        
+
+       // notFlip2.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
+        //notFlip2.transform.GetChild(1).rotation = notFlip2.transform.GetChild(1).rotation * Quaternion.Euler(Vector3.up * -180);
+
         // transform.FindChild("NotToFlip").transform.rotation = transform.FindChild("NotToFlip").transform.rotation * Quaternion.Euler(Vector3.up * 180);
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        //notFlip2.position = new Vector3(transform.position.x, transform.position.y + 1.795f, transform.position.z - 2f);
         if (direction != 1)
         {
             transform.rotation = Quaternion.Euler(Vector3.up * 180);
