@@ -51,6 +51,7 @@ public class OneToOneDoor : MonoBehaviour {
                         if (cooldown <= 0)
                         {
                             player.transform.position = new Vector3(TargetObject.position.x, TargetObject.position.y, TargetObject.position.z - 6f);
+                            camera.transform.position = new Vector3(TargetObject.position.x, TargetObject.position.y, camera.transform.position.z);
 
                             if (TargetObject.CompareTag("StoreDoor"))
                             {
