@@ -20,6 +20,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     public float PowerAttackDamageIncrease = 0.7f;
 
     private PlatformerCharacter2D playerPlatformer;
+    private PlayerBlock playerBlock;
 
 	private static readonly System.Random randomSpellPowerGenerator = new System.Random();   
 
@@ -33,13 +34,14 @@ public class PlayerMeleeAttack : MonoBehaviour
         playerPlatformer = GetComponent<PlatformerCharacter2D>();
         //Skeleton Footman
         skeletonFootman = transform.FindChild ("ToFlip").FindChild ("Skeleton_footman");
+        playerBlock = this.GetComponent<PlayerBlock>();
 		skeletonAnimator = skeletonFootman.GetComponent <Animator> ();
 
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Attack") && !attacking && !playerPlatformer.isChanneling) 				//light attack
+        if (Input.GetButtonDown("Attack") && !attacking && !playerPlatformer.isChanneling && !playerBlock.BlockActive) 				//light attack
         {
 
             attacking = true;
@@ -57,7 +59,7 @@ public class PlayerMeleeAttack : MonoBehaviour
 			//skelAnim2.SetInteger ("AttackID", attackID);
         }
 
-		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling && playerPlatformer.m_Grounded)
+		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling && playerPlatformer.m_Grounded && !playerBlock.BlockActive)
         {                //	heavy attack, change binding +later
 
             // 	!!!!  

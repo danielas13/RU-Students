@@ -9,11 +9,9 @@ public class PlayerBlock : MonoBehaviour {
 
     [SerializeField]
     private GameObject shield;
-    private PlatformerCharacter2D player;
+    private PlatformerCharacter2D playerControlls;
     private PlayerMeleeAttack playerAttack;
-    private bool isBlocking = false;
-
-    private bool stopblocking = false;
+    public bool BlockActive = false;
 
     private Animator skeletonAnimator;
     private Transform skeletonFootman;
@@ -24,7 +22,7 @@ public class PlayerBlock : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        player = GetComponent<PlatformerCharacter2D>();
+        playerControlls = GetComponent<PlatformerCharacter2D>();
         playerAttack = GetComponent<PlayerMeleeAttack>();
         skeletonFootman = transform.FindChild("ToFlip").FindChild("Skeleton_footman");
         skeletonAnimator = skeletonFootman.GetComponent<Animator>();
@@ -34,7 +32,7 @@ public class PlayerBlock : MonoBehaviour {
 	void Update () {
         if(Input.GetAxis("Block") > 0f)
         {
-            if (!isBlocking && !player.isChanneling && !playerAttack.attacking && player.m_Grounded)
+            if (!BlockActive && !playerControlls.isChanneling && !playerAttack.attacking && playerControlls.m_Grounded)
             {
                 if(stopCounter > 0)
                 {
@@ -42,33 +40,38 @@ public class PlayerBlock : MonoBehaviour {
                 }
                 skeletonAnimator.SetBool("blocking", true);
                 startCounter = StartCooldown;
-                isBlocking = true;
-                player.isChanneling = true;
+                BlockActive = true;
+
+             //   player.isChanneling = true;
             }
-            else if (startCounter <= 0 && !shield.activeSelf && isBlocking == true)
+            else if (startCounter <= 0 && !shield.activeSelf && BlockActive == true)
             {
                 shield.SetActive(true);
+                playerControlls.blockingActive = true;
             }
         }
         else
         {
-            if (isBlocking)
+            if (BlockActive)         //Let go of button
             {
-                if(startCounter > 0)
+                skeletonAnimator.SetBool("blocking", false);
+                shield.SetActive(false);
+                if (startCounter > 0)
                 {
                     startCounter = 0;
                 }
                 stopCounter = StopCooldown;
-                isBlocking = false;
-                stopblocking = true;
+                BlockActive = false;
+                playerControlls.blockingActive = false;
             }
-            if (stopCounter <= 0 && stopblocking)
+      /*      if (stopCounter <= 0 && stopblocking)   //StopCooldown time after leting go of button
             {
                 skeletonAnimator.SetBool("blocking", false);
                 shield.SetActive(false);
-                player.isChanneling = false;
+                //    player.isChanneling = false;
+                isBlocking = false;
                 stopblocking = false;
-            }
+            }*/
         }
 
 

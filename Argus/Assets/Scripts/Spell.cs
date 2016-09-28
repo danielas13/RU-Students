@@ -33,6 +33,7 @@ public class Spell : MonoBehaviour
 
     private PlatformerCharacter2D character2D;
     private PlayerMeleeAttack playerAttack;
+    private PlayerBlock playerBlock;
 
 
     int NumberOfSpells = 4;// Nuber of spells that the player has learned
@@ -48,7 +49,7 @@ public class Spell : MonoBehaviour
         }
         skeleton2 = transform.FindChild("Skeleton_warlord");
         skelAnim2 = skeleton2.GetComponent<Animator>();
-
+        playerBlock = this.GetComponent<PlayerBlock>();
         character = GameObject.FindGameObjectWithTag("Player");
         playerAttack = GetComponent<PlayerMeleeAttack>();
         character2D = this.GetComponent<PlatformerCharacter2D>();
@@ -133,7 +134,7 @@ public class Spell : MonoBehaviour
         {
             incrementSpell();
         }
-        if (Input.GetButtonDown("UseSpell") && globalSpellCooldownTimer < 0 && !character2D.isChanneling && !playerAttack.attacking)
+        if (Input.GetButtonDown("UseSpell") && globalSpellCooldownTimer < 0 && !character2D.isChanneling && !playerAttack.attacking && !playerBlock.BlockActive)
         {
             globalSpellCooldownTimer = resetGlobalCooldownValue;
             if (currentSpell == 1)
