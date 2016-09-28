@@ -19,6 +19,7 @@ public class EnemyMeleeBossStats : MonoBehaviour {
     private static readonly System.Random random = new System.Random();     //Create a read only random variable.
     public BossStats status = new BossStats();
     public GameObject ExitDoor;
+    public StatusIndicator PlayerIndicator;
 
     public int MaxScore = 20;
     public int MinScore = 10;
@@ -56,6 +57,7 @@ public class EnemyMeleeBossStats : MonoBehaviour {
             {
                 finalBossDoor.unlock();
                 hasActivated = false;
+                PlayerIndicator.LordObjectiveComplete();
             }
             Key.gameObject.SetActive(true);
             ExitDoor.GetComponent<OneToOneDoor>().unlock();

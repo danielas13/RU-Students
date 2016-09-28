@@ -20,6 +20,10 @@ public class StatusIndicator : MonoBehaviour {
     [SerializeField]
     private Text scoreText;
 
+    [SerializeField]
+    private Text Objective,RevenantObjective,LordOjective;
+    private int LordObjectiveIndex = 0;
+
     // Use this for initialization
     void Start () {
 
@@ -27,7 +31,14 @@ public class StatusIndicator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            LordObjectiveComplete();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            EssenceObjective();
+        }
     }
 
     public void SetHealth(int currentHealth, int maxHealth)
@@ -50,5 +61,29 @@ public class StatusIndicator : MonoBehaviour {
     public void SetArmor(int armor)
     {
         armorText.text = armor.ToString();
+    }
+
+    public void LordObjectiveComplete()
+    {
+        if(this.LordObjectiveIndex == 0)
+        {
+            LordOjective.text = "1/2   Lords Defeated";
+        }
+        if(this.LordObjectiveIndex == 1)
+        {
+            LordOjective.text = "2/2   Lords Defeated";
+            Color col = LordOjective.color;
+            col.a = col.a/2;
+            LordOjective.color = col;
+        }
+        this.LordObjectiveIndex++;
+    }
+
+    public void EssenceObjective()
+    {
+        RevenantObjective.text = "1/1   Corrupted essence \n        of Avoran Defeated";
+        Color col = LordOjective.color;
+        col.a = col.a / 2;
+        RevenantObjective.color = col;
     }
 }

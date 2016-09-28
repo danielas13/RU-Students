@@ -178,7 +178,7 @@ using UnityEngine;
                 }
 			//	Debug.Log ("Grounded" + m_Grounded + " , jump " + jump);
                 // If the player should jump...
-                if (m_Grounded && jump)
+                if (m_Grounded && jump && !blockingActive)
                 {
 
                     // Add a vertical force to the player.

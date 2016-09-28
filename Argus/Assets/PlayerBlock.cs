@@ -41,6 +41,7 @@ public class PlayerBlock : MonoBehaviour {
                 skeletonAnimator.SetBool("blocking", true);
                 startCounter = StartCooldown;
                 BlockActive = true;
+                game.gm.ButtonIndicatorController.Blocking(true);
 
              //   player.isChanneling = true;
             }
@@ -56,6 +57,7 @@ public class PlayerBlock : MonoBehaviour {
             {
                 skeletonAnimator.SetBool("blocking", false);
                 shield.SetActive(false);
+                game.gm.ButtonIndicatorController.Blocking(false);
                 if (startCounter > 0)
                 {
                     startCounter = 0;

@@ -10,6 +10,7 @@ public class game : MonoBehaviour {
     private float deadTimer = 2;
     public List<GameObject> ItemSpawners = new List<GameObject>();
     public List<GameObject> ShopDoors = new List<GameObject>();
+    public ButtonIndicatorController ButtonIndicatorController;
 
     public List<EnemySpawn> enemySpawners = new List<EnemySpawn>();
 

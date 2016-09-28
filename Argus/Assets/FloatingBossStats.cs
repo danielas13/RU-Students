@@ -20,6 +20,8 @@ public class FloatingBossStats : MonoBehaviour {
     public BossStats status = new BossStats();
     public GameObject ExitDoor;
 
+    public StatusIndicator playerStatus;
+
     public int MaxScore = 20;
     public int MinScore = 10;
 
@@ -40,7 +42,8 @@ public class FloatingBossStats : MonoBehaviour {
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
 
-            Key.gameObject.SetActive(true);
+            //Key.gameObject.SetActive(true);
+            playerStatus.EssenceObjective();
             ExitDoor.GetComponent<OneToOneDoor>().unlock();
             this.gameObject.SetActive(false);
             //Destroy(this.gameObject);

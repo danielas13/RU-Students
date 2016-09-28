@@ -73,20 +73,14 @@ public class Spell : MonoBehaviour
             if (LearnedHeal)
             {
                 currentSpell = 2;
-                return;
             }
             else if (LearnedFrost)
             {
                 currentSpell = 3;
-                return;
             }
             else if (LearnedFire)
             {
                 currentSpell = 4;
-            }
-            else
-            {
-                return;
             }
         }
         else if (currentSpell == 2)//HEAL
@@ -94,17 +88,14 @@ public class Spell : MonoBehaviour
             if (LearnedFrost)
             {
                 currentSpell = 3;
-                return;
             }
             else if (LearnedFire)
             {
                 currentSpell = 4;
-                return;
             }
             else
             {
                 currentSpell = 1;
-                return;
             }
         }
         else if(currentSpell == 3)//FROST
@@ -112,18 +103,17 @@ public class Spell : MonoBehaviour
             if (LearnedFire)
             {
                 currentSpell = 4;
-                return;
             }
             else
             {
                 currentSpell = 1;
-                return;
             }
         }
         else                       //FIRERAY
         {
             currentSpell = 1;
         }
+        game.gm.ButtonIndicatorController.changeSpell(currentSpell);
     }
 
     // Update is called once per frame
@@ -170,7 +160,11 @@ public class Spell : MonoBehaviour
 		channelDelay -= Time.deltaTime;
 		if(character2D.isChanneling == false && channelDelay < 0){ //this currently always triggers --> channeling wont work
 			skeletonAnimator.SetBool ("isChanneling", false);
-		}
+            if (game.gm.ButtonIndicatorController.channeling)
+            {
+                game.gm.ButtonIndicatorController.Channeling(false);
+            }
+        }
     }
 
 	void LateUpdate(){
@@ -180,13 +174,23 @@ public class Spell : MonoBehaviour
     {
         //FrostRay.gameObject.SetActive(true);
         Instantiate(FireRay, spellPoint.position, spellPoint.rotation * Quaternion.Euler(new Vector3(0, 0, 1) * 1)); // instantate a straight ray
+        if (!game.gm.ButtonIndicatorController.channeling)
+        {
+            game.gm.ButtonIndicatorController.Channeling(true);
+        }
+
 
     }
     void ChannelFrostRay()
     {
         //FrostRay.gameObject.SetActive(true);
         Instantiate(FrostRay,spellPoint.position, spellPoint.rotation * Quaternion.Euler(new Vector3(0,0,1) * 1)); // instantate a straight ray
-        
+        if (!game.gm.ButtonIndicatorController.channeling)
+        {
+            game.gm.ButtonIndicatorController.Channeling(true);
+        }
+
+
     }
     void CastHeal()
     {
