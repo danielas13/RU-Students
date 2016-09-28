@@ -57,7 +57,8 @@ public class PlayerMeleeAttack : MonoBehaviour
 			//skelAnim2.SetInteger ("AttackID", attackID);
         }
 
-		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling){                //	heavy attack, change binding +later
+		if(Input.GetButtonDown ("PowerAttack") && !attacking && !playerPlatformer.isChanneling && playerPlatformer.m_Grounded)
+        {                //	heavy attack, change binding +later
 
             // 	!!!!  
             //		TODO Check if grounded 

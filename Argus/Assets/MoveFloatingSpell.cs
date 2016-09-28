@@ -9,6 +9,7 @@ public class MoveFloatingSpell : MonoBehaviour {
     public int maxDamage = 45;
     public int range = 2;
     private bool Stop = false;
+    private bool blocked = false;
     //private GameObject player;
     // Update is called once per frame
     void Start()
@@ -18,18 +19,29 @@ public class MoveFloatingSpell : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.CompareTag("Shield"))
+        {
 
+            Stop = true;
+            transform.FindChild("Trail").FindChild("Impact").gameObject.SetActive(true);
+            transform.GetComponent<Collider2D>().enabled = false;
+            blocked = true;
+
+        }
         //Debug.Log("Collison " + col.name);
         if (col.isTrigger != true && col.gameObject.CompareTag("Player"))
         {
-            
             //Destroy(this.gameObject);
 
-            col.gameObject.SendMessageUpwards("damagePlayer", randomSpellPowerGenerator.Next(minDamage, maxDamage));
-            transform.FindChild("Trail").FindChild("Impact").gameObject.SetActive(true);
-            // transform.GetComponent<CircleCollider2D>().gameObject.SetActive(false);
-            Stop = true;
-            transform.GetComponent<Collider2D>().enabled = false;
+            if (!blocked)
+            {
+                col.gameObject.SendMessageUpwards("damagePlayer", randomSpellPowerGenerator.Next(minDamage, maxDamage));
+                transform.FindChild("Trail").FindChild("Impact").gameObject.SetActive(true);
+                // transform.GetComponent<CircleCollider2D>().gameObject.SetActive(false);
+                Stop = true;
+                transform.GetComponent<Collider2D>().enabled = false;
+            }
+
         }
         /*if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
         {

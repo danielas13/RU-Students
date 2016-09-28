@@ -7,6 +7,9 @@ public class MoveEnemySpell : MonoBehaviour {
     public int minDamage = 35;      //damage of an attack
     public int maxDamage = 45;      
 	public float initDelay = 0f;
+
+    [SerializeField]
+    private GameObject blockEffect;
 	//private GameObject player;
     // Update is called once per frame
 
@@ -15,7 +18,12 @@ public class MoveEnemySpell : MonoBehaviour {
     {
         if (col.CompareTag("Shield"))
         {
+            GameObject obj = (GameObject)Instantiate(blockEffect, transform.position, transform.rotation);
+            Destroy(obj, 2f);
+
             Destroy(this.gameObject);
+
+            
         }
         //Debug.Log("Collison " + col.name);
         if (col.isTrigger != true && col.gameObject.CompareTag("Player"))
