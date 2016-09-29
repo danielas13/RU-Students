@@ -6,11 +6,21 @@ public class MeleeAttackTrigger : MonoBehaviour
     private static readonly System.Random randomAttackGenerator = new System.Random();
     private Stats player;
     private PlayerMeleeAttack playerAttack;
+    private bool isMainTrigger = true;
     void Start()
     {
         GameObject pl = GameObject.Find("Player");
-        player = pl.GetComponent<Stats>();
-        playerAttack = pl.GetComponent<PlayerMeleeAttack>();
+        if(pl != null)
+        {
+            player = pl.GetComponent<Stats>();
+            playerAttack = pl.GetComponent<PlayerMeleeAttack>();
+            isMainTrigger = false;
+        }
+        else
+        {
+            this.enabled = false;
+        }
+
     }
     void OnTriggerEnter2D(Collider2D col)
     {

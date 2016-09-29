@@ -26,7 +26,7 @@ using UnityEngine;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 		private Transform skeleton2;
 		private Transform skeletonFootman;
-		private Transform lights;
+		public Transform lights;
         private bool knockback = false;
         private float xDiff;
         private float timer = 1;
@@ -47,7 +47,7 @@ using UnityEngine;
 			skeleton2 = transform.FindChild("Skeleton_warlord");
 			skelAnim2 = skeleton2.GetComponent<Animator> ();
 
-			lights = transform.FindChild ("FrontLight");
+			//lights = transform.FindChild ("FrontLight");
 			toFlip = transform.FindChild ("ToFlip");
 
 			//Skeleton Footman
@@ -215,9 +215,9 @@ using UnityEngine;
 			}
 
 		
-			lights.transform.rotation = Quaternion.Euler(0,180,0);
+			/*lights.transform.rotation = Quaternion.Euler(0,180,0);
 			if (m_FacingRight)	lights.transform.localEulerAngles = new Vector3(15,270,0);
-			else lights.transform.localEulerAngles = new Vector3(15,-270,0);
+			else lights.transform.localEulerAngles = new Vector3(15,-270,0);*/
         }
     }
 

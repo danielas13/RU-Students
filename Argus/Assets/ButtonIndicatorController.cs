@@ -62,7 +62,7 @@ public class ButtonIndicatorController : MonoBehaviour {
         {
             AttackX.color = fadedColor;
             JumpA.color = fadedColor;
-            CastB.color = fadedColor;
+            //CastB.color = fadedColor;
             BlockLT.color = fadedColor;
             PowerAttackY.color = fadedColor;
             channeling = true;
@@ -72,7 +72,7 @@ public class ButtonIndicatorController : MonoBehaviour {
             AttackX.color = baseColor;
             JumpA.color = baseColor;
             BlockLT.color = baseColor;
-            CastB.color = baseColor;
+            //CastB.color = baseColor;
             PowerAttackY.color = baseColor;
             channeling = false;
         }

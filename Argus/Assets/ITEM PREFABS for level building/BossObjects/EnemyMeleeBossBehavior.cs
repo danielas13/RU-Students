@@ -244,7 +244,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         }
         if(Cooldown <= 0)
         {
-            MinionList.Add ((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), transform.rotation));
+            MinionList.Add ((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y+2, transform.position.z-2), EnemyPrefab.transform.rotation));
             Cooldown = 12;
         }
     }

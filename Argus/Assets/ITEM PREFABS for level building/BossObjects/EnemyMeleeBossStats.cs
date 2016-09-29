@@ -53,7 +53,7 @@ public class EnemyMeleeBossStats : MonoBehaviour {
 
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
-            if (bossLock && hasActivated)
+            if (bossLock && !hasActivated)
             {
                 finalBossDoor.unlock();
                 hasActivated = false;

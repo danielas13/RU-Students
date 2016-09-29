@@ -31,14 +31,7 @@ public class StatusIndicator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            LordObjectiveComplete();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            EssenceObjective();
-        }
+
     }
 
     public void SetHealth(int currentHealth, int maxHealth)
@@ -81,9 +74,9 @@ public class StatusIndicator : MonoBehaviour {
 
     public void EssenceObjective()
     {
-        RevenantObjective.text = "1/1   Corrupted essence \n        of Avoran Defeated";
+        RevenantObjective.text = "1/1   Corrupted essence \n        of Averon Defeated";
         Color col = LordOjective.color;
-        col.a = col.a / 2;
+        col.a = col.a / 1.5f;
         RevenantObjective.color = col;
     }
 }

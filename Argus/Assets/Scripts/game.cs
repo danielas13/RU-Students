@@ -19,6 +19,8 @@ public class game : MonoBehaviour {
     private bool statScreenUp = false;
     private GameObject floatinBoss, MeleeBoss, MeleeBoss2;
     private List<GameObject> floatingBossPillars = new List<GameObject>();
+    public GameObject SkeletonBody;
+    public GameObject playerLights;
 
     void Awake()
     {
@@ -77,6 +79,13 @@ public class game : MonoBehaviour {
     public static void KillPlayer()
     {
         Vector2 pos = gm.player.transform.position;
+
+        GameObject newBody = (GameObject)Instantiate(gm.SkeletonBody, gm.SkeletonBody.transform.position, gm.SkeletonBody.transform.rotation);
+        newBody.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        GameObject pl = (GameObject)Instantiate(gm.playerLights, gm.playerLights.transform.position, gm.playerLights.transform.rotation);
+        pl.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
+        Destroy(newBody, 2);
+        Destroy(pl, 2);
         gm.player.SetActive(false);
         gm.isPlayerDead = true;
         gm.DeadState.SetActive(true);

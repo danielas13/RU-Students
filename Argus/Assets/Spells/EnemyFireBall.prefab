@@ -247,7 +247,7 @@ MonoBehaviour:
   minDamage: 35
   maxDamage: 45
   initDelay: 0
-  blockEffect: {fileID: 1000012174687610, guid: bf1810bca89096847ab4b8c4f59dfd8f,
+  blockEffect: {fileID: 1000012174687610, guid: c33f6604aefcb81499cb4684b7d19d0f,
     type: 2}
 --- !u!120 &12000836
 LineRenderer:

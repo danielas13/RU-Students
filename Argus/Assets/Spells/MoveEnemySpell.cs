@@ -31,6 +31,8 @@ public class MoveEnemySpell : MonoBehaviour {
             // Debug.Log("git deddd");
             
             col.gameObject.SendMessageUpwards("damagePlayer", randomSpellPowerGenerator.Next(minDamage, maxDamage));
+            GameObject obj = (GameObject)Instantiate(blockEffect, transform.position, transform.rotation);
+
             Destroy(this.gameObject);
         }
         /*if (col.isTrigger != true && col.gameObject.CompareTag("Ground"))
