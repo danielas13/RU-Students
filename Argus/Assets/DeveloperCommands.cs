@@ -18,7 +18,7 @@ public class DeveloperCommands : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Alpha0))//respawn
         {
-            game.gm.respawn();
+            game.KillPlayer();
           //  print("res");
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))//health +
