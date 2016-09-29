@@ -25,6 +25,7 @@ public class HeraldController : MonoBehaviour {
 
     private bool VertDpadPressed = false;
     private bool HorizDpadPressed = false;
+    private bool Activated = false;
 
     // Use this for initialization
     void Start () {
@@ -47,6 +48,7 @@ public class HeraldController : MonoBehaviour {
 		}
    
         textArea.text = TextArray[CategorySelection, CurrentSelection];
+        Activated = false;
         canvas.SetActive(false);
     }
     void OnTriggerStay2D(Collider2D other)
@@ -55,8 +57,9 @@ public class HeraldController : MonoBehaviour {
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (!canvas.activeSelf)
+                if (Activated == false)
                 {
+                    Activated = true;
                     canvas.SetActive(true);
                 }
                 else
@@ -73,6 +76,7 @@ public class HeraldController : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other)
     {
         canvas.SetActive(false);
+        Activated = false;
     }
 
 

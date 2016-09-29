@@ -1357,7 +1357,7 @@ MonoBehaviour:
   scorePrefab: {fileID: 440172, guid: d32e1293ad2038043936ed3e31082c6d, type: 2}
   MaxScore: 50
   MinScore: 30
-  deathSource: 1
+  deathSource: 3
   OnFire: {fileID: 444210}
 --- !u!114 &11424190
 MonoBehaviour:

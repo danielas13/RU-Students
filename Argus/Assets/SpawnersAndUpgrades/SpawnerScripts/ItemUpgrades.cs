@@ -36,10 +36,10 @@ public class ItemUpgrades : MonoBehaviour {
         }
         else
         {
-            calculate = random.Next(1, Chances + 3);           //randomise a number between 1 add the chances variable.
+            calculate = random.Next(1, Chances + 4);           //randomise a number between 1 add the chances variable.
 
             //Debug.Log(calculate);
-            if(calculate == 1)
+            if(calculate == 1 && calculate == 4)
             {
 				Instantiate(ArmorPrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
             }
@@ -52,12 +52,10 @@ public class ItemUpgrades : MonoBehaviour {
 				Instantiate(healthRestorePrefab, new Vector3(transform.position.x, transform.position.y + heightOfSpawn, transform.position.z-3f), transform.rotation);
             }
             calculate = random.Next(1, scoreChances + 1);
+            if(calculate == 2 || calculate == 1)
             {
-                if(calculate == 2 || calculate == 1)
-                {
-                    Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
-                    //GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
-                }
+                Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+                //GameObject.Find(newObj.name).GetComponent<EnemyScoreUpgrade>().scoreAmount = random.Next(MinScore, MaxScore);
             }
 
             this.gameObject.SetActive(false);//Destroy(this.gameObject);
