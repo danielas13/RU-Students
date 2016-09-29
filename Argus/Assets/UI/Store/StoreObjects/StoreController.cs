@@ -38,10 +38,12 @@ public class StoreController : MonoBehaviour {
 	private Color defaultColor;
 	private Color darkColor; 
     public Transform canvasPrefab;
+    public GameObject storeSpawner;
 	Text textcolor;
 
     private bool VertDpadPressed = false;
     private bool HorizDpadPressed = false;
+    private float counter = 0.3f;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -68,8 +70,42 @@ public class StoreController : MonoBehaviour {
 
     void Update()
     {
+        if (counter >= 0)
+        {
+            counter -= 0.02f;
+        }
+        if (Input.GetButtonDown("Interact"))
+        {
+            if (counter <= 0)
+            {
+                Time.timeScale = 1;
+                if (storeSpawner != null)
+                {
+                    storeSpawner.GetComponent<MainStoreSpawner>().EnteredStore = false;
+                }
+                Destroy(this.gameObject);
+            }
+        }
+        /*     if (Input.GetButtonDown("Interact"))
+             {
+                 if(counter <= 0)
+                 {
+                     if (storeSpawner != null)
+                     {
+                         storeSpawner.GetComponent<MainStoreSpawner>().EnteredStore = false;
+                     }
+                     SelectedButton = 0;
+                     Time.timeScale = 1;
+                     Destroy(this.gameObject);
+                 }
+             }*/
+
         if (Input.GetButtonDown("Cancel"))
         {
+            if(storeSpawner != null)
+            {
+                storeSpawner.GetComponent<MainStoreSpawner>().EnteredStore = false;
+            }
             Destroy(this.gameObject);
             SelectedButton = 0;
         }
@@ -152,7 +188,7 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > healthcost)
             {
                 playerStatus.status.score -= healthcost;
-                playerStatus.status.gainedHealth -= 1;
+                playerStatus.status.gainedHealth -= 10;
                 RestartText();
                 playerStatus.restart();
 				ErrorMessage.text = "Purchase complete! ";
@@ -176,7 +212,7 @@ public class StoreController : MonoBehaviour {
             if (playerStatus.status.score > manaCost)
             {
                 playerStatus.status.score -= manaCost;
-                playerStatus.status.gainedMana -= 1;
+                playerStatus.status.gainedMana -= 10;
                 RestartText();
                 playerStatus.restart();
 				ErrorMessage.text = "Purchase complete! ";

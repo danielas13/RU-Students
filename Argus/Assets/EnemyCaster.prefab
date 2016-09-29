@@ -3684,6 +3684,9 @@ MonoBehaviour:
   frozen: 0
   frozenTimer: 2
   notFlip2: {fileID: 4000010788164882}
+  spotLight: {fileID: 1000013945051704}
+  Body: {fileID: 1000013130574928, guid: 9d432c8e390780e4490920628a46e902, type: 2}
+  ActualBody: {fileID: 125070}
 --- !u!114 &11430960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3960,13 +3963,14 @@ MonoBehaviour:
     minDamage: 35
     maxDamage: 45
     spellpower: 30
-  restoreSpawnChance: 10
-  scoreSpawnChance: 5
+  restoreSpawnChance: 8
+  scoreSpawnChance: 6
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
   healthPrefab: {fileID: 444032, guid: 2419eb9aa25f1664b9288a916ab5be2e, type: 2}
   scorePrefab: {fileID: 440172, guid: d32e1293ad2038043936ed3e31082c6d, type: 2}
   MaxScore: 40
   MinScore: 30
+  deathSource: 2
   OnFire: {fileID: 425978}
 --- !u!114 &11498948
 MonoBehaviour:

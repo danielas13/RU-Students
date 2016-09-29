@@ -11,7 +11,14 @@ public class FollowCasterCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    this.transform.position = new Vector3(lookat.position.x, lookat.position.y + 1.795f, lookat.position.z - 2f);
-        this.transform.LookAt(lookat);
+        if(lookat != null)
+        {
+            this.transform.position = new Vector3(lookat.position.x, lookat.position.y + 1.795f, lookat.position.z - 2f);
+            this.transform.LookAt(lookat);
+        }
+        else
+        {
+            this.enabled = false;
+        }
     }
 }

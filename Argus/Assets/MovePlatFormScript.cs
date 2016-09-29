@@ -63,15 +63,18 @@ public class MovePlatFormScript : MonoBehaviour {
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            if (this.GetComponent<MovePlatFormScript>().enabled)
+            {
+                if (dir == 0)
+                {
+                    col.transform.Translate(Vector2.right * Time.deltaTime * speed);
+                }
+                else if (dir == 1)
+                {
+                    col.transform.Translate(Vector2.left * Time.deltaTime * speed);
+                }
+            }
 
-            if (dir==0)
-            {
-                col.transform.Translate(Vector2.right * Time.deltaTime * speed);
-            }
-            else if(dir==1)
-            {
-                col.transform.Translate(Vector2.left * Time.deltaTime * speed);
-            }
         }
     }
 }

@@ -20,6 +20,9 @@ public class EnemyMeleeBossStats : MonoBehaviour {
     public BossStats status = new BossStats();
     public GameObject ExitDoor;
     public StatusIndicator PlayerIndicator;
+    public GameObject DeathKnight,spotlight,pointLight;
+    public GameObject OwnBody;
+
 
     public int MaxScore = 20;
     public int MinScore = 10;
@@ -59,7 +62,18 @@ public class EnemyMeleeBossStats : MonoBehaviour {
                 hasActivated = false;
                 PlayerIndicator.LordObjectiveComplete();
             }
-            Key.gameObject.SetActive(true);
+            //Key.gameObject.SetActive(true);
+
+
+
+            GameObject newKnightBody = (GameObject)Instantiate(DeathKnight, OwnBody.transform.position, OwnBody.transform.rotation);
+            newKnightBody.transform.localScale = new Vector3(newKnightBody.transform.localScale.x + 0.3f, newKnightBody.transform.localScale.y + 0.3f, newKnightBody.transform.localScale.z + 0.3f);
+            Animator deathAnimator = newKnightBody.GetComponent<Animator>();
+            deathAnimator.SetTrigger("bossdeath");
+            Destroy(newKnightBody, 20f);
+
+
+
             ExitDoor.GetComponent<OneToOneDoor>().unlock();
             Destroy(this.gameObject);
             /*

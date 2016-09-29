@@ -41,7 +41,7 @@ public class FloatingBossPillars : MonoBehaviour {
                 }
 
                 isActive = false;
-                Delay = 12;
+                Delay = 11;
                 beam.SetActive(false);
 
             }

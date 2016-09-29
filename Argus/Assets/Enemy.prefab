@@ -3668,8 +3668,8 @@ MonoBehaviour:
     minDamage: 35
     maxDamage: 45
     spellpower: 30
-  restoreSpawnChance: 10
-  scoreSpawnChance: 5
+  restoreSpawnChance: 8
+  scoreSpawnChance: 6
   manaPrefab: {fileID: 402380, guid: 27c34246d63b7b84ab379419350749a4, type: 2}
   healthPrefab: {fileID: 444032, guid: 2419eb9aa25f1664b9288a916ab5be2e, type: 2}
   scorePrefab: {fileID: 440172, guid: d32e1293ad2038043936ed3e31082c6d, type: 2}
@@ -3773,6 +3773,8 @@ MonoBehaviour:
   SwordTrigger: {fileID: 422564}
   frozen: 0
   frozenTimer: 2
+  Spotlight: {fileID: 166432}
+  KnightBody: {fileID: 116244}
 --- !u!114 &11479818
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -55,6 +55,9 @@ public class EnemyBehavior : MonoBehaviour
 
         private float comboTimer = 0;
 
+        private Transform NotToFlip;
+        public GameObject Spotlight, KnightBody;
+
         
 
 
@@ -64,6 +67,7 @@ public class EnemyBehavior : MonoBehaviour
 		// Use this for initialization
 		void Start()
 		{
+            NotToFlip = transform.FindChild("NotToFlip").transform;
             enemyStat = transform.GetComponent<EnemyStats>();
             //Time.timeScale = 0.4F;
 
@@ -92,6 +96,10 @@ public class EnemyBehavior : MonoBehaviour
         {
             frozen = !frozen;
         }*/
+        if(player == null)
+        {
+            player = GameObject.Find("Player");
+        }
         if (frozen)
             {
                 KnightAnimator.speed = 0f;
@@ -107,7 +115,6 @@ public class EnemyBehavior : MonoBehaviour
                 /* Check if the player is visible to the enemy using rays*/
                 if (!game.gm.isPlayerDead)
                 {
-                    player = GameObject.Find("Player");
                     playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
                 }
                 else
@@ -586,7 +593,7 @@ public class EnemyBehavior : MonoBehaviour
         direction = -direction;
         //transform.localScale = new Vector3(-transform.localScale.x, 1f, 1f);
         transform.rotation = transform.rotation * Quaternion.Euler(Vector3.up * 180);
-        transform.FindChild("NotToFlip").transform.rotation = transform.FindChild("NotToFlip").transform.rotation * Quaternion.Euler(Vector3.up * 180);
+        NotToFlip.rotation = NotToFlip.rotation * Quaternion.Euler(Vector3.up * 180);
     }
     
 

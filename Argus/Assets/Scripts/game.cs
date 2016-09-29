@@ -20,6 +20,7 @@ public class game : MonoBehaviour {
     private GameObject floatinBoss, MeleeBoss, MeleeBoss2;
     private List<GameObject> floatingBossPillars = new List<GameObject>();
     public GameObject SkeletonBody;
+    public GameObject KnightBody;
     public GameObject playerLights;
 
     void Awake()
@@ -82,19 +83,59 @@ public class game : MonoBehaviour {
 
         GameObject newBody = (GameObject)Instantiate(gm.SkeletonBody, gm.SkeletonBody.transform.position, gm.SkeletonBody.transform.rotation);
         newBody.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        Animator deathAnimator = newBody.GetComponent<Animator>();
+        deathAnimator.SetTrigger("death");
+
         GameObject pl = (GameObject)Instantiate(gm.playerLights, gm.playerLights.transform.position, gm.playerLights.transform.rotation);
         pl.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
-        Destroy(newBody, 2);
-        Destroy(pl, 2);
+        Destroy(newBody, 3);
+        Destroy(pl, 3);
         gm.player.SetActive(false);
         gm.isPlayerDead = true;
         gm.DeadState.SetActive(true);
         gm.DeadState.transform.position = new Vector2(pos.x,pos.y+2);
     }
-    public static void KillEnemy(EnemyStats enemy)
+    public static void KillEnemy(EnemyStats enemy,int source)
     {
         //Stats playerStatus = gm.player.GetComponent<Stats>();
         //playerStatus.increaseScore(1);
+        /*
+        Transform knightBody 
+        GameObject newBody = (GameObject)Instantiate(gm.knightBody, gm.SkeletonBody.transform.position, gm.SkeletonBody.transform.rotation);
+        newBody.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+
+        new Vector3(enemy.transform.position.x,)*/
+        if(source == 1)
+        {
+            EnemyBehavior knightStats = enemy.GetComponent<EnemyBehavior>();
+            GameObject knightSpotlight = (GameObject)Instantiate(knightStats.Spotlight, new Vector3(knightStats.Spotlight.transform.position.x, knightStats.Spotlight.transform.position.y - 1.7f, knightStats.Spotlight.transform.position.z), knightStats.Spotlight.transform.rotation);
+            GameObject newKnightBody = (GameObject)Instantiate(gm.KnightBody, knightStats.KnightBody.transform.position, knightStats.KnightBody.transform.rotation);
+            Animator deathAnimator = newKnightBody.GetComponent<Animator>();
+            deathAnimator.SetTrigger("death");
+
+            Destroy(knightSpotlight, 10f);
+            Destroy(newKnightBody, 10f);
+        }
+        else if(source == 2)
+        {
+            EnemyCasterBehavior casterStats = enemy.GetComponent<EnemyCasterBehavior>();
+            GameObject casterSpotLight = (GameObject)Instantiate(casterStats.spotLight, new Vector3(casterStats.spotLight.transform.position.x, casterStats.spotLight.transform.position.y - 1.7f, casterStats.spotLight.transform.position.z), casterStats.spotLight.transform.rotation);
+            casterSpotLight.GetComponent<FollowCasterCamera>().lookat = enemy.transform;
+            GameObject newCasterBody = (GameObject)Instantiate(casterStats.Body, casterStats.ActualBody.transform.position, casterStats.ActualBody.transform.rotation);
+            Animator deathAnimator = newCasterBody.GetComponent<Animator>();
+            deathAnimator.SetTrigger("death");
+
+            //Destroy(casterSpotLight, 10f);
+            Destroy(newCasterBody, 10f);
+        }
+        else if(source == 3)
+        {
+
+        }
+
+
+
         Destroy(enemy.gameObject);
     }
 
@@ -111,7 +152,7 @@ public class game : MonoBehaviour {
             if (deadTimer <= 0)
             {
                 respawn();
-                deadTimer = 2;
+                deadTimer = 3;
             }
         }
 

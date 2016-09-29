@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SpecialStoreSpawner : MonoBehaviour {
     public Transform store;
-    private bool EnteredStore = false;
+    public bool EnteredStore = false;
     void OnTriggerStay2D(Collider2D collision)
     {
         
@@ -16,7 +16,8 @@ public class SpecialStoreSpawner : MonoBehaviour {
 
                 if (EnteredStore == false)
                 {
-                    Instantiate(store, transform.position, transform.rotation);
+                    Transform storeObject = (Transform)Instantiate(store, transform.position, transform.rotation);
+                    storeObject.GetComponent<SpecialStoreController>().storeSpawner = this.gameObject;
                     EnteredStore = true;
                 }
             }

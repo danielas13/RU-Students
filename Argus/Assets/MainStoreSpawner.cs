@@ -3,7 +3,8 @@ using System.Collections;
 
 public class MainStoreSpawner : MonoBehaviour {
     public Transform store;
-    private bool EnteredStore = false;
+    public bool EnteredStore = false;
+    private Transform storeObject;
     void OnTriggerStay2D(Collider2D collision)
     {
         //Check if the collition is with a player.
@@ -13,8 +14,17 @@ public class MainStoreSpawner : MonoBehaviour {
             {
                 if (EnteredStore == false)
                 {
-                    Instantiate(store, transform.position, transform.rotation);
+                    Transform storeObject = (Transform)Instantiate(store, transform.position, transform.rotation);
+                    storeObject.GetComponent<StoreController>().storeSpawner = this.gameObject;
                     EnteredStore = true;
+                }
+                else
+                {
+                    if(storeObject != null)
+                    {
+                        Destroy(storeObject);
+                        Time.timeScale = 1;
+                    }
                 }
             }
         }

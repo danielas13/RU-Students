@@ -24,6 +24,7 @@ public class EnemyStats : MonoBehaviour {
 
     public int MaxScore = 20;
     public int MinScore = 10;
+    public int deathSource = 1;
 
     public Transform OnFire;
 
@@ -68,7 +69,7 @@ public class EnemyStats : MonoBehaviour {
                 if(chance == 1 || chance == 2)
                 {
                     //Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x+0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
-                    Transform obj = Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z),transform.rotation) as Transform;
+                    Transform obj = (Transform)Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z),transform.rotation);
                 }
             }
             /*
@@ -77,7 +78,7 @@ public class EnemyStats : MonoBehaviour {
                 GameObject newObj = (GameObject)Instantiate(scorePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
                 newObj.
            }*/
-            game.KillEnemy(this);
+            game.KillEnemy(this, deathSource);
         }
     }
 }

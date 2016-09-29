@@ -24,6 +24,7 @@ public class EnemyCasterBehavior : MonoBehaviour {
     public float frozenTimer = 2;
     private Animator CasterAnimator;
     public Transform notFlip2;
+    public GameObject spotLight, Body, ActualBody;
     // Use this for initialization
     Transform notFlip;
     void Start()

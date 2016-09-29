@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Knight_Boss_Material_distortion
-  m_Shader: {fileID: 4800000, guid: 5b37d55e769a1ac44b21efeaa67219fc, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 3000
+  m_Shader: {fileID: 4800000, guid: 652c2a99c6cba874ca99f3e5bd619e1c, type: 3}
+  m_ShaderKeywords: _EMISSION _NORMALMAP
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -98,8 +98,14 @@ Material:
         name: _FPOW
       second: 1
     - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
         name: _Glossiness
       second: 0.5
+    - first:
+        name: _GlossyReflections
+      second: 1
     - first:
         name: _InvFade
       second: 0
@@ -118,6 +124,12 @@ Material:
     - first:
         name: _R0
       second: 0.5
+    - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
     - first:
         name: _SrcBlend
       second: 1

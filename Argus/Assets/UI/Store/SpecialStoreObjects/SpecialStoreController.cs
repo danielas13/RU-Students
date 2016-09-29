@@ -26,13 +26,15 @@ public class SpecialStoreController : MonoBehaviour {
 
     private int CategorySelection = 0;
     private int CurrentSelection = 0;
-    private float counter = 1f;
+    private float counter = 0.3f;
 
     private Stats playerStats;
     private Spell playerSpell;
 
     private bool VertDpadPressed = false;
     private bool HorizDpadPressed = false;
+
+    public GameObject storeSpawner;
     // Use this for initialization
     void Start()
     {
@@ -90,12 +92,16 @@ public class SpecialStoreController : MonoBehaviour {
             if(counter <= 0)
             {
                 Time.timeScale = 1;
+                if (storeSpawner != null)
+                {
+                    storeSpawner.GetComponent<SpecialStoreSpawner>().EnteredStore = false;
+                }
                 Destroy(this.gameObject);
             }
         }
         if(counter >= 0)
         {
-            counter -= 0.01f;
+            counter -= 0.02f;
         }
         if (Input.GetButtonDown("Right") || (Input.GetAxisRaw("DHoriz") >= 1 && !HorizDpadPressed))         //Selecting Categories to the right.
         {
@@ -317,6 +323,7 @@ public class SpecialStoreController : MonoBehaviour {
                 playerStats.status.score -= UpgradeAmount[0];
                 Prices[0].text = "Equipped";
                 CurrentEssence.text = "Current Essences " + playerStats.status.score;
+                playerStats.restart();
             }
             else
             {
@@ -347,6 +354,7 @@ public class SpecialStoreController : MonoBehaviour {
                 playerStats.status.score -= UpgradeAmount[1];
                 Prices[1].text = "Equipped";
                 CurrentEssence.text = "Current Essences " + playerStats.status.score;
+                playerStats.restart();
 
 
             }
@@ -372,6 +380,7 @@ public class SpecialStoreController : MonoBehaviour {
             UpgradeAmount[3] = UpgradeAmount[3] * 2;
             Prices[3].text = UpgradeAmount[3].ToString() + "x " + "Essences Required";
             CurrentEssence.text = "Current Essence " + playerStats.status.score;
+            playerStats.restart();
         }
         else
         {
@@ -397,6 +406,7 @@ public class SpecialStoreController : MonoBehaviour {
                 playerStats.status.score -= UpgradeAmount[2];
                 Prices[2].text = "Equipped";
                 CurrentEssence.text = "Current Essences " + playerStats.status.score;
+                playerStats.restart();
             }
             else
             {
@@ -420,6 +430,7 @@ public class SpecialStoreController : MonoBehaviour {
                 playerStats.status.score -= SpellPriceAmount[0];
                 Prices[2].text = "Purchased";
                 CurrentEssence.text = "Current Essences " + playerStats.status.score;
+                playerStats.restart();
             }
             else
             {
@@ -441,6 +452,7 @@ public class SpecialStoreController : MonoBehaviour {
                 playerStats.status.score -= SpellPriceAmount[1];
                 Prices[1].text = "Purchased";
                 CurrentEssence.text = "Current Essences " + playerStats.status.score;
+                playerStats.restart();
             }
             else
             {
@@ -462,6 +474,7 @@ public class SpecialStoreController : MonoBehaviour {
                 playerStats.status.score -= SpellPriceAmount[2];
                 Prices[0].text = "Purchased";
                 CurrentEssence.text = "Current Essences " + playerStats.status.score;
+                playerStats.restart();
             }
             else
             {
