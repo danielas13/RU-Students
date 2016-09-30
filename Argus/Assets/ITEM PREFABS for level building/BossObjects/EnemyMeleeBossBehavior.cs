@@ -14,7 +14,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
     public float direction = -1f;
 
     public GameObject EnemyPrefab;
-    private float Cooldown = 12;
+    private float Cooldown = 14;
 
     private List<GameObject> MinionList = new List<GameObject>();
  
@@ -30,6 +30,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
     private bool isBlocking = false;
     private bool midAnimation = false;
     public Transform SwordTrigger;
+    public GameObject spawnindicator1, spawnindicator2;
 
     Vector2 enemyPos;
     Vector2 playerPos;
@@ -244,8 +245,21 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         }
         if(Cooldown <= 0)
         {
-            MinionList.Add ((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y+2, transform.position.z-2), EnemyPrefab.transform.rotation));
-            Cooldown = 12;
+            int calc = randomDamageGenerator.Next(1,4);
+            if(calc == 1)
+            {
+                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(spawnindicator2.transform.position.x + 1, spawnindicator2.transform.position.y + 2, spawnindicator2.transform.position.z - 2), EnemyPrefab.transform.rotation));
+            }
+            else if(calc == 2)
+            {
+                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(spawnindicator1.transform.position.x + 1, spawnindicator1.transform.position.y, spawnindicator1.transform.position.z - 2), EnemyPrefab.transform.rotation));
+            }
+            else
+            {
+                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y,transform.position.z - 2), EnemyPrefab.transform.rotation));
+            }
+
+            Cooldown = 14;
         }
     }
 
@@ -256,7 +270,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
             Destroy(minion);
         }
         MinionList = new List<GameObject>();
-        Cooldown = 12;
+        Cooldown = 14;
     }
 
     private void Attacking()

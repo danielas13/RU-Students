@@ -22,6 +22,7 @@ public class EnemyMeleeBossStats : MonoBehaviour {
     public StatusIndicator PlayerIndicator;
     public GameObject DeathKnight,spotlight,pointLight;
     public GameObject OwnBody;
+    public Color shadowDamage;
 
 
     public int MaxScore = 20;
@@ -83,6 +84,47 @@ public class EnemyMeleeBossStats : MonoBehaviour {
                 newObj.
            }*/
            // game.KillEnemy(this);
+        }
+    }
+
+    public void damageShadowBlade(int damage)
+    {
+
+        combatText.GetComponent<Text>().text = "-" + damage.ToString();
+        combatText.GetComponent<Text>().color = shadowDamage;
+        Instantiate(combatText, transform.position + Vector3.down + (Vector3.right/2), Quaternion.Euler(new Vector3(0, 0, 1)));
+        this.status.currentHealth -= damage;                    //add the damage.
+        indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
+
+        if (this.status.currentHealth <= 0)                     //Check if the enemy died.
+        {
+            if (bossLock && !hasActivated)
+            {
+                finalBossDoor.unlock();
+                hasActivated = false;
+                PlayerIndicator.LordObjectiveComplete();
+            }
+            //Key.gameObject.SetActive(true);
+
+
+
+            GameObject newKnightBody = (GameObject)Instantiate(DeathKnight, OwnBody.transform.position, OwnBody.transform.rotation);
+            newKnightBody.transform.localScale = new Vector3(newKnightBody.transform.localScale.x + 0.3f, newKnightBody.transform.localScale.y + 0.3f, newKnightBody.transform.localScale.z + 0.3f);
+            Animator deathAnimator = newKnightBody.GetComponent<Animator>();
+            deathAnimator.SetTrigger("bossdeath");
+            Destroy(newKnightBody, 20f);
+
+
+
+            ExitDoor.GetComponent<OneToOneDoor>().unlock();
+            Destroy(this.gameObject);
+            /*
+            else if (chance == 3)
+            {
+                GameObject newObj = (GameObject)Instantiate(scorePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
+                newObj.
+           }*/
+            // game.KillEnemy(this);
         }
     }
 }

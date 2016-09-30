@@ -48,7 +48,7 @@ public class StatusIndicator : MonoBehaviour {
     }
     public void SetScore(int score)
     {
-        scoreText.text = "x " + score;
+        scoreText.text = score.ToString();
     }
 
     public void SetArmor(int armor)

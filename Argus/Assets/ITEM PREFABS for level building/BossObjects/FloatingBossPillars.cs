@@ -30,7 +30,7 @@ public class FloatingBossPillars : MonoBehaviour {
 
                 if ((random.Next(0, 9)) < restoreSpawnChance)
                 {
-                    if(random.Next(0, 2) == 1)
+                    if(random.Next(0, 3) == 1)
                     {
                         Instantiate(manaPrefab, transform.position + new Vector3(0, 2f, -3f), transform.rotation);
                     }

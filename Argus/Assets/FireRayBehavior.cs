@@ -7,14 +7,18 @@ public class FireRayBehavior : MonoBehaviour {
     private float spendMana = 0;
     private bool stoppedChannel = false;//Check to make sure that the player can not rechannel the already in effect spell
     public LayerMask notHit;
-    private float damageCooldown = 1;
+    private float damageCooldown = 0.3f;
     private bool outOfMana = false;
+    private PlatformerCharacter2D player;
 
     private static readonly System.Random damageGen = new System.Random();
 
     void Update()
     {
-
+        if(player == null)
+        {
+            player = GameObject.Find("Player").GetComponent<PlatformerCharacter2D>();
+        }
         if (stats.status.currentMana < 1)
         {
             outOfMana = true;
@@ -22,7 +26,10 @@ public class FireRayBehavior : MonoBehaviour {
 
         if (!Input.GetButton("UseSpell") || outOfMana)
         {
-            GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = false;//Re-enable movement for the player
+            if(player != null)
+            {
+                player.isChanneling = false;//Re-enable movement for the player
+            }
             Destroy(this.gameObject);
         }
 
@@ -33,11 +40,22 @@ public class FireRayBehavior : MonoBehaviour {
             damageCooldown -= Time.deltaTime;
             if (damageCooldown < 0)
             {
-                Debug.Log("Damage");
-                int randomDmg = damageGen.Next(stats.status.minSpellPower*2, stats.status.maxSpellPower*2);
-                hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg);
-                hit.transform.GetComponent<EnemyStats>().Ignite(5f);
-                damageCooldown = 1;
+                if(hit.transform.GetComponent<EnemyMeleeBossStats>() == null)
+                {
+                    int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
+                    float someNumber = randomDmg *0.4f; 
+                    hit.transform.GetComponent<EnemyStats>().damageEnemy((int)someNumber);
+                    hit.transform.GetComponent<EnemyStats>().Ignite(5f);
+                    damageCooldown = 0.3f;
+                }
+                else
+                {
+                    int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
+                    float someNumber = randomDmg * 0.4f;
+                    hit.transform.GetComponent<EnemyMeleeBossStats>().damageEnemy((int)someNumber);
+                    damageCooldown = 0.3f;
+                }
+
             }
             
 
@@ -66,8 +84,8 @@ public class FireRayBehavior : MonoBehaviour {
         if (spendMana < 0)
         {
 
-            stats.spendMana(15);
-            spendMana = 1;
+            stats.spendMana(10);
+            spendMana = 0.5f;
         }
         spendMana -= Time.deltaTime;
 
@@ -87,5 +105,6 @@ public class FireRayBehavior : MonoBehaviour {
     {
         GameObject.Find("Player").GetComponent<PlatformerCharacter2D>().isChanneling = true;//Disable movement for the player
         stats = GameObject.Find("Player").GetComponent<Stats>();
+        player = GameObject.Find("Player").GetComponent<PlatformerCharacter2D>();
     }
 }

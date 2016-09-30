@@ -230,13 +230,13 @@ public class StoreController : MonoBehaviour {
     }
     public void IncreaseDamage()
     {
-        if (playerStatus.status.gainedDamage > 0)
+        if (playerStatus.status.gainedDamage > 1)
         {
             int damageCost = 400 + (playerStatus.status.minDamage - 15) * 4;
             if (playerStatus.status.score > damageCost)
             {
                 playerStatus.status.score -= damageCost;
-                playerStatus.status.gainedDamage -= 1;
+                playerStatus.status.gainedDamage -= 2;
                 RestartText();
                 playerStatus.restart();
 				ErrorMessage.text = "Purchase complete! ";

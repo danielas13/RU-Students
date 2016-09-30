@@ -548,9 +548,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 431.01917, y: 465.63416, z: -46.80645}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -143.9, y: -60.749, z: 4.8456}
+  m_LocalScale: {x: 1.2652733, y: 1.2652732, z: 1.2652732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22434374}
@@ -903,6 +903,7 @@ MonoBehaviour:
   DamageCost: {fileID: 11481970}
   SpellpowerCost: {fileID: 11458860}
   canvasPrefab: {fileID: 0}
+  storeSpawner: {fileID: 0}
 --- !u!114 &11415888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2582,7 +2583,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 987, y: 520}
+  m_AnchoredPosition: {x: 685, y: 369}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.4999999, y: 0.49999997}
 --- !u!224 &22483216

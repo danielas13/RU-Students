@@ -3957,6 +3957,7 @@ MonoBehaviour:
   indicator: {fileID: 11478572}
   combatText: {fileID: 102658, guid: 3bd2703969c08fa4385dc3b8645a6aa6, type: 2}
   DamageColor: {r: 1, g: 0, b: 0, a: 1}
+  shadowColor: {r: 0.77254903, g: 0, b: 0.89411765, a: 1}
   status:
     maxHealth: 40
     currentHealth: 40

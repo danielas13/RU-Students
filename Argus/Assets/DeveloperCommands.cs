@@ -6,6 +6,8 @@ public class DeveloperCommands : MonoBehaviour {
     public Transform player;
     private Spell spell;
     private Stats stats;
+    public OneToOneDoor Smirnoff;
+    public GameObject Boss1, Boss2;
     
 	// Use this for initialization
 	void Start () {
@@ -16,6 +18,13 @@ public class DeveloperCommands : MonoBehaviour {
     // Update is called once per frame
     //currency, maxhealth+/-, maxMana +/-, Blades, spells
     void Update () {
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Smirnoff.unlock();
+            Smirnoff.unlock();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha0))//respawn
         {
             game.KillPlayer();

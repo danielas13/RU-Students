@@ -6,6 +6,7 @@ public class MeleeAttackTrigger : MonoBehaviour
     private static readonly System.Random randomAttackGenerator = new System.Random();
     private Stats player;
     private PlayerMeleeAttack playerAttack;
+    public GameObject combatText;
     private bool isMainTrigger = false;
     void Start()
     {
@@ -44,14 +45,24 @@ public class MeleeAttackTrigger : MonoBehaviour
                 }
                 if (player.status.ShadowBlade)
                 {
-                    int randomDmg = randomAttackGenerator.Next(player.status.minDamage, (player.status.maxDamage + (int)(0.3 * player.status.maxDamage)));
+                    int shadowDamage = (int)(0.3 * player.status.maxDamage);
+                    int randomDmg = randomAttackGenerator.Next(player.status.minDamage, (player.status.maxDamage));
                     if (playerAttack.PowerAttack)
                     {
-                        col.SendMessageUpwards("damageEnemy", randomDmg + (randomDmg * playerAttack.PowerAttackDamageIncrease));
+                        col.SendMessageUpwards("damageShadowBlade", (int)(0.3 * (player.status.maxDamage + (player.status.maxDamage * playerAttack.PowerAttackDamageIncrease))));
+                        if(col != null)
+                        {
+                            col.SendMessageUpwards("damageEnemy", randomDmg + (randomDmg * playerAttack.PowerAttackDamageIncrease));
+                        }
+
                     }
                     else
                     {
-                        col.SendMessageUpwards("damageEnemy", randomDmg);
+                        col.SendMessageUpwards("damageShadowBlade", shadowDamage);
+                        if(col != null)
+                        {
+                            col.SendMessageUpwards("damageEnemy", randomDmg);
+                        }
                     }
                 }
                 else

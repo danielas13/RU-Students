@@ -51,7 +51,7 @@ public class Stats : MonoBehaviour {
 
 	private Transform skeleton;
 	private Animator skelAnim; 
-	private int fontsizeForStuff = 10;
+	private int fontsizeForStuff = 13;
 
     public Transform NormalSword;
 
@@ -263,9 +263,9 @@ public class Stats : MonoBehaviour {
     //increases the player's health.
     public void restoreHealth(int heal)
     {
-        combatText.GetComponent<Text>().text = "+" + heal.ToString();
+        combatText.GetComponent<Text>().text = "+ " + heal.ToString() + " health restored";
         combatText.GetComponent<Text>().color = HealColor;
-		Instantiate(combatText, newPos(transform.position), transform.rotation);
+		Instantiate(combatText, newPos(transform.position) + Vector3.up, transform.rotation);
         //Increasing the player´s health. Checking for overheal.
         if ((this.status.currentHealth+heal) > this.status.maxHealth)
         {
@@ -286,7 +286,7 @@ public class Stats : MonoBehaviour {
     //increases the player's health.
     public void restoreMana(int heal)
     {
-        combatText.GetComponent<Text>().text = "+" + heal.ToString();
+        combatText.GetComponent<Text>().text = "+" + heal.ToString() + " mana restored";
         combatText.GetComponent<Text>().color = ManaRegainColor;
 
 		Instantiate(combatText, newPos(transform.position), transform.rotation);
@@ -372,7 +372,7 @@ public class Stats : MonoBehaviour {
     //increasing the player's score.
     public void increaseScore(int amount)
     {
-		combatText.GetComponent<Text>().text = "Soul Essences picked up";
+		combatText.GetComponent<Text>().text = amount.ToString()+ " Soul Essences picked up";
 		combatText.GetComponent<Text>().color = HealColor;
 		combatText.GetComponent<Text> ().fontSize = fontsizeForStuff;
 

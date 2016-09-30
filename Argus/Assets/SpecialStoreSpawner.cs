@@ -16,7 +16,7 @@ public class SpecialStoreSpawner : MonoBehaviour {
 
                 if (EnteredStore == false)
                 {
-                    Transform storeObject = (Transform)Instantiate(store, transform.position, transform.rotation);
+                    Transform storeObject = (Transform)Instantiate(store, transform.position +new Vector3(0,0,0), transform.rotation);
                     storeObject.GetComponent<SpecialStoreController>().storeSpawner = this.gameObject;
                     EnteredStore = true;
                 }
