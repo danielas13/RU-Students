@@ -32,6 +32,8 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
     public Transform SwordTrigger;
     public GameObject spawnindicator1, spawnindicator2;
 
+    public bool isknight = true;
+
     Vector2 enemyPos;
     Vector2 playerPos;
 
@@ -66,7 +68,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
 
     private float comboTimer = 0;
     public bool CombatStarted = false;
-
+    public float cooldownValue = 14f;
     /* Update Variables made accessible */
     private RaycastHit2D hitForwards, hitDown, rayToPlayer;
 
@@ -90,6 +92,21 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         CurrentState = (int)KnightState.Calm; // Default state
         withinRangeTrigger = transform.FindChild("EnemyMeleeAttackTrigger");
         SwordTrigger.gameObject.SetActive(false);
+
+    }
+
+    private int maxNum()
+    {
+        int ctr = 0;
+
+        foreach (GameObject minion in MinionList)
+        {
+            if (minion != null)
+            {
+                ctr++;
+            }
+        }
+        return ctr;
 
     }
 
@@ -245,21 +262,33 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
         }
         if(Cooldown <= 0)
         {
-            int calc = randomDamageGenerator.Next(1,4);
-            if(calc == 1)
+            if(maxNum() < 2)
             {
-                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(spawnindicator2.transform.position.x + 1, spawnindicator2.transform.position.y + 2, spawnindicator2.transform.position.z - 2), EnemyPrefab.transform.rotation));
-            }
-            else if(calc == 2)
-            {
-                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(spawnindicator1.transform.position.x + 1, spawnindicator1.transform.position.y, spawnindicator1.transform.position.z - 2), EnemyPrefab.transform.rotation));
-            }
-            else
-            {
-                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y,transform.position.z - 2), EnemyPrefab.transform.rotation));
+                if (isknight)
+                {
+                    MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z - 2), EnemyPrefab.transform.rotation));
+                }
+                else
+                {
+                    int calc = randomDamageGenerator.Next(1, 4);
+                    if (calc == 1)
+                    {
+                        MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(spawnindicator2.transform.position.x + 1, spawnindicator2.transform.position.y + 2, spawnindicator2.transform.position.z - 2), EnemyPrefab.transform.rotation));
+                    }
+                    else if (calc == 2)
+                    {
+                        MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(spawnindicator1.transform.position.x + 1, spawnindicator1.transform.position.y, spawnindicator1.transform.position.z - 2), EnemyPrefab.transform.rotation));
+                    }
+                    else
+                    {
+                        MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z - 2), EnemyPrefab.transform.rotation));
+                    }
+                }
+
             }
 
-            Cooldown = 14;
+
+            Cooldown = cooldownValue;
         }
     }
 
@@ -270,7 +299,7 @@ public class EnemyMeleeBossBehavior : MonoBehaviour {
             Destroy(minion);
         }
         MinionList = new List<GameObject>();
-        Cooldown = 14;
+        Cooldown = cooldownValue;
     }
 
     private void Attacking()

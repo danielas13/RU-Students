@@ -24,6 +24,8 @@ public class EnemyMeleeBossStats : MonoBehaviour {
     public GameObject OwnBody;
     public Color shadowDamage;
 
+    public Transform OnFire;
+
 
     public int MaxScore = 20;
     public int MinScore = 10;
@@ -71,7 +73,7 @@ public class EnemyMeleeBossStats : MonoBehaviour {
             newKnightBody.transform.localScale = new Vector3(newKnightBody.transform.localScale.x + 0.3f, newKnightBody.transform.localScale.y + 0.3f, newKnightBody.transform.localScale.z + 0.3f);
             Animator deathAnimator = newKnightBody.GetComponent<Animator>();
             deathAnimator.SetTrigger("bossdeath");
-            Destroy(newKnightBody, 20f);
+            Destroy(newKnightBody, 60f);
 
 
 
@@ -92,10 +94,10 @@ public class EnemyMeleeBossStats : MonoBehaviour {
 
         combatText.GetComponent<Text>().text = "-" + damage.ToString();
         combatText.GetComponent<Text>().color = shadowDamage;
-        Instantiate(combatText, transform.position + Vector3.down + (Vector3.right/2), Quaternion.Euler(new Vector3(0, 0, 1)));
+        Instantiate(combatText, transform.position + (Vector3.down/2) + (Vector3.right/2), Quaternion.Euler(new Vector3(0, 0, 1)));
         this.status.currentHealth -= damage;                    //add the damage.
         indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
-
+        /*
         if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
             if (bossLock && !hasActivated)
@@ -117,7 +119,7 @@ public class EnemyMeleeBossStats : MonoBehaviour {
 
 
             ExitDoor.GetComponent<OneToOneDoor>().unlock();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);*/
             /*
             else if (chance == 3)
             {
@@ -125,6 +127,11 @@ public class EnemyMeleeBossStats : MonoBehaviour {
                 newObj.
            }*/
             // game.KillEnemy(this);
-        }
     }
+
+        public void Ignite(float timer)
+        {
+            OnFire.gameObject.SetActive(true);
+            OnFire.GetComponent<DamageOverTime>().Reset();
+        }
 }

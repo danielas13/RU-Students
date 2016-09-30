@@ -36,6 +36,10 @@ public class MeleeAttackTrigger : MonoBehaviour
                     {
                         col.transform.GetComponent<EnemyStats>().Ignite(5);
                     }
+                    else if (col.transform.GetComponent<EnemyMeleeBossStats>())
+                    {
+                        col.transform.GetComponent<EnemyMeleeBossStats>().Ignite(5);
+                    }
 
                 }
                 else if (player.status.ManaBlade)

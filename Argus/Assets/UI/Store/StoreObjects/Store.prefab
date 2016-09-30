@@ -550,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 105264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -143.9, y: -60.749, z: 4.8456}
-  m_LocalScale: {x: 1.2652733, y: 1.2652732, z: 1.2652732}
+  m_LocalScale: {x: 1.3158842, y: 1.3158841, z: 1.3158841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22434374}

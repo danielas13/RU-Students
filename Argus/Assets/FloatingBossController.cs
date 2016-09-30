@@ -80,22 +80,42 @@ public class FloatingBossController : MonoBehaviour {
         if (Cooldown <= 0 && CombatStarted)
         {
             int randNumber = random.Next(0, 3);
-            if (randNumber == 1)
+
+            if(maxNum() < 2)
             {
-                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 15f, transform.position.y - 4, transform.position.z), transform.rotation));
+                if (randNumber == 1)
+                {
+                    MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x + 15f, transform.position.y - 4, transform.position.z), transform.rotation));
+                }
+                else if (randNumber == 2)
+                {
+                    MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x - 15f, transform.position.y - 4, transform.position.z), transform.rotation));
+                }
+                else
+                {
+                    MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), transform.rotation));
+                }
             }
-            else if(randNumber == 2)
-            {
-                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x - 15f, transform.position.y - 4, transform.position.z), transform.rotation));
-            }
-            else
-            {
-                MinionList.Add((GameObject)Instantiate(EnemyPrefab, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), transform.rotation));
-            }
+
 
             MinionList[MinionList.Count - 1].GetComponent<FloatingEnemyScript>().aggroRange = 30;
             Cooldown = 10;
         }
+    }
+
+    private int maxNum()
+    {
+        int ctr = 0;
+
+        foreach(GameObject minion in MinionList)
+        {
+            if(minion != null)
+            {
+                ctr++;
+            }
+        }
+        return ctr;
+
     }
     public void ResetBoss()
     {

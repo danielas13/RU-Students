@@ -92,7 +92,7 @@ public class EnemyStats : MonoBehaviour {
         this.status.currentHealth -= damage;                    //add the damage.
         indicator.SetHealth(this.status.currentHealth, this.status.maxHealth);
 
-        if (this.status.currentHealth <= 0)                     //Check if the enemy died.
+   /*     if (this.status.currentHealth <= 0)                     //Check if the enemy died.
         {
             int chance = random.Next(1, restoreSpawnChance + 3);//Generate a random number in order to calculate if a restore item drops.
             if (chance < 3)                                      //checks if an item spawns.
@@ -114,15 +114,13 @@ public class EnemyStats : MonoBehaviour {
                     //Object newObj = Instantiate(scorePrefab, new Vector3(transform.position.x+0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
                     Transform obj = (Transform)Instantiate(scorePrefab, new Vector3(transform.position.x + 0.5f, transform.position.y + 0.5f, transform.position.z), transform.rotation);
                 }
-            }
+            }*/
             /*
             else if (chance == 3)
             {
                 GameObject newObj = (GameObject)Instantiate(scorePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), transform.rotation);
                 newObj.
            }*/
-            game.KillEnemy(this, deathSource);
-        }
     }
 
 }

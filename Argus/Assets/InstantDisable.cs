@@ -30,34 +30,48 @@ public class InstantDisable : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.right), 20, notHit);
         if(hit.transform != null)
         {
-            //Debug.Log("Name: " + hit.transform.name);
-            damageCooldown -= Time.deltaTime;
-            if (damageCooldown < 0)
+            if (hit.transform.GetComponent<EnemyStats>())
             {
-                int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
-                hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg / 2);
-                damageCooldown = 1;
+                //Debug.Log("Name: " + hit.transform.name);
+                damageCooldown -= Time.deltaTime;
+                if (damageCooldown < 0)
+                {
+                    int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
+                    hit.transform.GetComponent<EnemyStats>().damageEnemy(randomDmg / 2);
+                    damageCooldown = 1;
+                }
+
+                freezeTime -= Time.deltaTime;
+                if (freezeTime < 0)
+                {
+                    if (hit.transform.name == "Enemy(Clone)")
+                    {
+                        hit.transform.GetComponent<EnemyBehavior>().frozen = true;
+                        hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
+                    }
+                    else if (hit.transform.name == "EnemyCaster(Clone)")
+                    {
+                        hit.transform.GetComponent<EnemyCasterBehavior>().frozen = true;
+                        hit.transform.GetComponent<EnemyCasterBehavior>().frozenTimer = 4f;
+                    }
+                    /* else if (hit.transform.name == "FloatingEnemy(Clone)")
+                     {
+                         hit.transform.GetComponent<EnemyBehavior>().frozen = true;
+                         hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
+                     }*/
+                }
             }
-            
-            freezeTime -= Time.deltaTime;
-            if (freezeTime < 0)
+            else if (hit.transform.GetComponent<EnemyMeleeBossStats>())
             {
-                if(hit.transform.name == "Enemy(Clone)")
+                damageCooldown -= Time.deltaTime;
+                if (damageCooldown < 0)
                 {
-                    hit.transform.GetComponent<EnemyBehavior>().frozen = true;
-                    hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
+                    int randomDmg = damageGen.Next(stats.status.minSpellPower, stats.status.maxSpellPower);
+                    hit.transform.GetComponent<EnemyMeleeBossStats>().damageEnemy(randomDmg / 2);
+                    damageCooldown = 1;
                 }
-                else if (hit.transform.name == "EnemyCaster(Clone)")
-                {
-                    hit.transform.GetComponent<EnemyCasterBehavior>().frozen = true;
-                    hit.transform.GetComponent<EnemyCasterBehavior>().frozenTimer = 4f;
-                }
-               /* else if (hit.transform.name == "FloatingEnemy(Clone)")
-                {
-                    hit.transform.GetComponent<EnemyBehavior>().frozen = true;
-                    hit.transform.GetComponent<EnemyBehavior>().frozenTimer = 4f;
-                }*/
             }
+
             
         }
         else
